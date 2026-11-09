@@ -33,3 +33,6 @@ All new assets follow [asset workflow](docs/ASSET_CREATION_WORKFLOW.md), [style 
 
 ## Current mythic mask and VFX production milestone
 Original Kitsune decoy, Oni burst, and Tengu wind actives are scripted with server-owned cooldown/damage/movement and Kage Dojo-restricted mask switching. See [mythic mask multiplayer test](docs/MYTHIC_MASKS_TEST.md). Four new GPT-generated high-impact VFX concept images are packaged as a conversation attachment and described in [VFX concept handoff](docs/VFX_CONCEPT_HANDOFF.md); image binaries have **not yet been pushed into this GitHub repo**, and game-ready sprite/particle/mesh creation is still an art-agent task. All features require actual Roblox Studio gameplay and art QA.
+
+## Four-class visual systems and VFX assets
+The four warrior classes have original visual profiles tied to the verified VFX sheets in `assets/concept-sheets/clan-vfx-v01/`. See [Class VFX bible](docs/CLASS_VFX_PRODUCTION.md) and [Grid4x4 flipbook handoff](docs/VFX_FLIPBOOK_IMPORT.md). The current game renders layered local geometry and can optionally display uploaded transparent ParticleEmitter flipbooks; actual Roblox texture asset IDs remain blank until publication. Oni now damages Moonfall Yokai server-side, and Kitsune can distract one Lantern Yokai attack. These code changes remain **Studio-unverified**.
