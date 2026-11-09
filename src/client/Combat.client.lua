@@ -9,12 +9,13 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 local Rules = require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("CombatRules"))
 local remote = ReplicatedStorage:WaitForChild("KageboundCombat")
-local localReady = {Light=0,Heavy=0,Parry=0,Dash=0}
+local localReady = {Light=0,Heavy=0,Parry=0,Dash=0,DoubleJump=0}
 local delays = {
     Light=Rules.LightCooldown,
     Heavy=Rules.HeavyCooldown,
     Parry=Rules.ParryCooldown,
-    Dash=Rules.DashCooldown
+    Dash=Rules.DashCooldown,
+    DoubleJump=Rules.DoubleJumpCooldown
 }
 
 local function request(action, payload)
@@ -75,6 +76,46 @@ ContextActionService:SetPosition("KageboundHeavy",UDim2.new(1,-168,1,-145))
 ContextActionService:SetPosition("KageboundParry",UDim2.new(1,-168,1,-220))
 ContextActionService:SetPosition("KageboundDash",UDim2.new(1,-85,1,-220))
 
+-- JumpRequest handles mobile, keyboard and controller. Require a release
+-- between the ground jump and the second jump to avoid hold-to-auto-double-jump.
+local doubleJumpUsed=false
+local jumpReleased=false
+local function watchCharacter(char)
+    doubleJumpUsed=false
+    jumpReleased=false
+    local hum=char:WaitForChild("Humanoid",8)
+    if hum then
+        hum.StateChanged:Connect(function(_,newState)
+            if newState==Enum.HumanoidStateType.Landed
+                or newState==Enum.HumanoidStateType.Running then
+                doubleJumpUsed=false
+            end
+        end)
+    end
+end
+player.CharacterAdded:Connect(watchCharacter)
+if player.Character then task.spawn(watchCharacter,player.Character) end
+UserInputService.InputEnded:Connect(function(input)
+    if input.KeyCode==Enum.KeyCode.Space or input.KeyCode==Enum.KeyCode.ButtonA
+        or input.UserInputType==Enum.UserInputType.Touch then
+        jumpReleased=true
+    end
+end)
+UserInputService.JumpRequest:Connect(function()
+    local char=player.Character
+    local hum=char and char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    if hum.FloorMaterial~=Enum.Material.Air then
+        doubleJumpUsed=false
+        jumpReleased=false
+        return -- Roblox default jump handles the first press
+    end
+    if doubleJumpUsed or not jumpReleased then return end
+    doubleJumpUsed=true
+    jumpReleased=false
+    request("DoubleJump")
+end)
+
 local gui = Instance.new("ScreenGui")
 gui.Name = "KageboundCombatHUD"
 gui.ResetOnSpawn = false
@@ -90,7 +131,7 @@ label.TextColor3 = Color3.fromRGB(240,232,226)
 label.Font = Enum.Font.GothamBold
 label.TextScaled = true
 label.TextWrapped = true
-label.Text = "KAGEBOUND | Mouse1: Slash   R: Heavy   F: Parry\nQ: Dash   G: Kitsune"
+label.Text = "KAGEBOUND | Mouse1: Slash   R: Heavy   F: Parry\nQ: Dash   G: Kitsune   Space: Double Jump"
 label.Visible = not UserInputService.TouchEnabled
 label.Parent = gui
 local corner = Instance.new("UICorner")
