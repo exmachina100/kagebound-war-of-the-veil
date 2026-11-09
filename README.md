@@ -15,6 +15,8 @@ An original Japanese-mythology-inspired Roblox competitive action game featuring
 
 The first **vertical slice** is Moonfall Bamboo greybox + 2 players + Shinobi katana combo/parry/dash + Kitsune illusion + Veilfall + complete Shadow Duel round.
 
+Studio-only startup smoke checks are included in `src/server/StudioSmoke.server.lua`; no automated Roblox runtime CI is configured.
+
 Read [Progression QA](docs/PROGRESSION_01_TEST.md), [Combat 0.3 test](docs/COMBAT_03_TEST.md), [Yokai test](docs/YOKAI_01_TEST.md), [Grand World test](docs/WORLD_TESTING.md), [Visual standards](docs/ART_DIRECTION.md), [Prototype validation](docs/PROTOTYPE_01_TEST.md), [Roadmap](docs/ROADMAP.md), [VFX specification](docs/VFX_SPEC.md), [Asset manifest](docs/ASSET_MANIFEST.md), [Roblox sync](docs/ROBLOX_SYNC.md), and [Art prompts](assets/prompts/OPENART_SEEDANCE_SHOTLIST.md).
 
 ## Rojo quick start
