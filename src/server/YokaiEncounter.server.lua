@@ -171,6 +171,7 @@ for i,home in ipairs(homes) do
             if model.Parent then
                 model:SetAttribute("AIState","Defeated")
                 combat:FireAllClients("YokaiDefeated",model)
+                task.wait(.3) -- allow death effect to resolve before destruction
                 model:Destroy()
             end
             task.wait(14)
