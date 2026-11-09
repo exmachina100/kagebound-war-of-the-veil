@@ -40,3 +40,14 @@ Reconnect Rojo in Studio if needed. Do not run two Rojo servers on the same port
 - Log any errors from the `[KAGEBOUND]` startup messages and capture a screenshot for comparison with approved concept references.
 
 **Remaining acceptance gap:** no proper katana mesh/rig/animation, no finished VFX, no best-of-five match loop or dojo return, no 3-mask or multi-arena MVP. No scripted assets have been verified in a running Roblox Studio session here.
+
+## Server-owned stamina regression (unverified)
+1. Use two-player test after `git pull origin main` and a Rojo reconnect.
+2. Confirm `ReplicatedStorage/KageboundShared/CombatRules` and `StarterPlayerScripts/KageboundClient/StaminaHUD`.
+3. Press **Mouse1**: subtract 7 spirit stamina per accepted attack. Press **R**: 23; **F**: 14; **Q**: 22. Passive recovery is 16 per second up to 100.
+4. Rapidly spam attacks: once stamina drops below cost, the server should reject the action and should not broadcast Swing/Hit or parry/dash FX.
+5. With two players, attack from outside range or behind a wall: no damage. Parry from the correct facing direction in the timing window: no damage.
+6. Client controls never set `KageboundStamina`; only the server writes it.
+7. Desktop HUD may still show placeholder visual artifacts; document screenshot mismatches against ART-001 to ART-004.
+
+Security caveat: This is a prototype with server authority for combat decisions and stamina costs, not a certified anti-exploit system. Test remote event spam and movement exploits in Studio.
