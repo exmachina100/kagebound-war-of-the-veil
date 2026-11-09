@@ -37,3 +37,6 @@ Use docs/VFX_SPEC.md. Katana FX-001 narrow red/magenta, hit FX-002 crisp gold co
 
 ## Acceptance
 Inspect the actual relevant ART image, compare concept/mesh screenshot at close-up and ordinary gameplay camera distance, review silhouette and material treatment, and test on desktop + low-end/mobile graphics before marking art validated.
+
+## Production contrast and low-poly materials
+ART-003 Veilblade priority order: tapered dark silhouette → crimson/magenta edge → gold tsuba → wrapped grip → restrained tassel/fox seal. In game, a glowing edge may never replace the physically readable blade body. ART-004 Dojo target priority: readable striking post with ivory fox-mask target, dark body, crimson/gold accents; do not give decorative meshes collision or server authority. Prototype OBJ material assignments: `Ink`, `Graphite`, `Crimson`, `HotPink`, `Gold`, `Ivory`, `Violet`, `Stone`. Revisit color fidelity against source PNG after importing; numerical values do not prove sampled pixel accuracy.
