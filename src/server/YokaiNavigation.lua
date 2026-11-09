@@ -85,7 +85,7 @@ function Navigation.MoveToward(model,target,speed,dt,state)
     -- A waypoint can become blocked after being calculated; hold position
     -- and allow the next capped replan instead of walking through geometry.
     if obstacle(model,origin,goal) then
-        state.replanAt=0
+        state.replanAt=os.clock()+1
         model:SetAttribute("NavigationStatus","Blocked")
         return false
     end
