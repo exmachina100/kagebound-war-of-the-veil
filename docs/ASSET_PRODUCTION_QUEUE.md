@@ -29,3 +29,10 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Offline export package: `KAGEBOUND_Veilblade_v01_3D_Prototype.zip` from the development conversation containing `.glb`, `.obj`, reproducible `.py` generator and import readme.
 - OpenArt turnaround source URL: https://cdn.openart.ai/openart-ai/production/2026-11/create-image/zJfldFkAyO87iqeQBjIU/image_1794254479643_167418f1_1794254480598_ab4a07b6.png
 - No verified GitHub binary path / Roblox asset ID yet. Before replacing `src/server/Veilblade.server.lua`, import into Roblox Studio, check pivot, materials and blade trail attachment, use approved ART-003 for visual correction, confirm 2-player combat unaffected.
+
+## New active Duel Veilfall environment dependency
+- Asset ID: `KGB_ENV_DuelVeilfall_SpectralRoutes_Default`
+- References: ART-001 and ART-004; code prototype: `src/server/DuelVeilfall.lua`
+- Stage: `briefed` (eight server-controlled procedural surfaces plus decorative spirit ring; **not yet** imported low-poly meshes)
+- Export goal: real static `.glb/.gltf` low-poly mesh kit (or `.obj` fallback) with editable source, safe collision proxies, pivot/scale and graphics tiers. Replace cosmetics only after two-player Studio validation, and keep server collision authoritative.
+- Production rule: existing approved concept images satisfy G2; no redundant image generation required if geometry can be modeled directly.
