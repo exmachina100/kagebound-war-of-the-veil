@@ -36,3 +36,11 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Stage: `briefed` (eight server-controlled procedural surfaces plus decorative spirit ring; **not yet** imported low-poly meshes)
 - Export goal: real static `.glb/.gltf` low-poly mesh kit (or `.obj` fallback) with editable source, safe collision proxies, pivot/scale and graphics tiers. Replace cosmetics only after two-player Studio validation, and keep server collision authoritative.
 - Production rule: existing approved concept images satisfy G2; no redundant image generation required if geometry can be modeled directly.
+
+## New original grand-scale VFX concepts (generated, packaging complete; binary push pending)
+- `KGB_VFX_FX006_OniBossEruption_CONCEPT_v01.png`: original boss-scale rupture visual reference (ART-001/002/004), 2D concept-draft only.
+- `KGB_VFX_FX008_VeilfallSequence_CONCEPT_v01.png`: phased portal and spectral route reference (ART-001/004), concept-draft only.
+- `KGB_VFX_FX005_KitsuneUltimate_CONCEPT_v01.png`: original Kitsune and high-energy sword attack reference (ART-001/002/003), concept-draft only.
+- `KGB_VFX_MythicMovesShowcase_CONCEPT_v01.png`: multi-ability showreel board, concept-draft only. Text rendered inside any image is not authoritative naming or proof of implemented abilities.
+- Source: user-facing `KAGEBOUND_VFX_ConceptPack_v01.zip`, four PNGs and `VFX_CONCEPT_MANIFEST.json`; expected extraction into `assets/concept-sheets/vfx-v01/`. **GitHub PNG binary upload has not been verified.**
+- Next production task: create distinct transparent sprite sheets and optional low-poly FX geometry, add timing and mobile tiers, then Studio test. See [VFX_CONCEPT_HANDOFF.md](VFX_CONCEPT_HANDOFF.md).
