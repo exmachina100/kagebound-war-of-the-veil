@@ -23,6 +23,9 @@ Output should include `[KAGEBOUND] Grand World generated: 5 connected regions` a
 ## Yokai prototype
 Moonfall Bamboo now has a three-enemy Lantern Yokai encounter under `Workspace/KageboundEnemies`. Run [YOKAI_01_TEST.md](YOKAI_01_TEST.md) separately for server-owned hitboxes, parry/telegraphs and respawn. Lantern Yokai now grant session-only Spirit Shards and Veilblade Mastery to the last server-verified attacker; no boss quest reward or persistent inventory yet. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md).
 
+## Kage Dojo practice lane (unverified)
+A safe 3-target training lane is scripted at X 64, Z 65, with posts at Z 76. Only these posts are damageable by equipped Veilblade within the practice circle; player health remains protected across the hub. Run the [DOJO_TRAINING_TEST.md](DOJO_TRAINING_TEST.md) checklist before considering this safe. Outside the ring in the dojo, ordinary sword attacks remain disabled.
+
 ## Walkthrough
 1. Press Play. Spawn at Kage Dojo, see explorable houses, torii, lanterns and world HUD.
 2. Walk toward the Keeper NPC close to (24, 4, 15). Use **E** on the proximity prompt to accept "Whispers Across the Veil".
