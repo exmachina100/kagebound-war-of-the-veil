@@ -56,3 +56,12 @@ At each significant gameplay implementation pass, select the highest-priority fe
 
 ## Required status
 backlog -> briefed -> concept-draft -> concept-approved -> 3d-draft -> game-prep -> imported -> gameplay-qa -> visual-qa -> validated. Use blocked or needs-revision when appropriate. Do not mark final until both gameplay and visual gates pass.
+
+## Working asset batch: importable proof rather than promises
+The **first two original editable static models** are in GitHub `assets/roblox-ready/`: `KGB_WPN_Veilblade_Default_GAME_v02.obj/.mtl` and `KGB_PROP_DojoPracticePost_Default_GAME_v01.obj/.mtl`. They are real 3D geometry, but not uploaded MeshParts or signed-off final art. This proves G4 only, not G6/G7.
+
+- **Rebuild:** `node tools/generate_kagebound_obj.js`.
+- **Static QA:** `node tools/check_kagebound_obj.js`.
+- **Import/placement:** read [ASSET_IMPORT_HANDOFF_v01.md](ASSET_IMPORT_HANDOFF_v01.md); use validated `ServerStorage/KageboundArt` templates to swap cosmetic visuals without changing authoritative hitboxes.
+- **Rule for subsequent asset batches:** update or reuse the relevant 2D design from ART-001..004, create a reproducible mesh/sprite texture, record exact prompt/provider or generator script, run static checks, commit source/export and manifest, then import and compare in Studio. Use OpenArt images where additional viewpoints or detail truly help; never spend image credits on redundant viewpoints when approved concept already suffices.
+- **No implied background generation:** create during actual development or scheduled explicitly authorized asset jobs, with each job storing its GitHub issue and upload evidence.
