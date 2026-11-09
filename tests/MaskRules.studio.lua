@@ -1,0 +1,16 @@
+-- KAGEBOUND mask gameplay contract for Roblox Studio SERVER Command Bar.
+local Rules=require(game.ReplicatedStorage.KageboundShared.MaskRules)
+local function check(label,value)
+    assert(value,"[KAGEBOUND MASK FAIL] "..label)
+    print("[KAGEBOUND MASK PASS] "..label)
+end
+check("Exactly three original mythic masks",#Rules.Order==3)
+check("Kitsune valid",Rules.IsValid("Kitsune"))
+check("Oni valid",Rules.IsValid("Oni"))
+check("Tengu valid",Rules.IsValid("Tengu"))
+check("Unknown mask rejected",not Rules.IsValid("OnePieceFruit"))
+check("Oni burst bounded",Rules.Oni.Radius<=16 and Rules.Oni.Damage<=20)
+check("Tengu burst cooldown",Rules.Tengu.Cooldown>=8 and Rules.Tengu.UpwardSpeed>0)
+check("Every active has cooldown",Rules.Kitsune.Cooldown>0 and Rules.Oni.Cooldown>0 and Rules.Tengu.Cooldown>0)
+check("Original masks have separate effects",Rules.Oni.Damage>0 and Rules.Tengu.ForwardSpeed>0)
+print("[KAGEBOUND] Mask balance contract complete; test abilities in two-player Studio.")
