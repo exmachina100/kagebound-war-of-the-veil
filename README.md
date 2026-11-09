@@ -39,3 +39,6 @@ The four warrior classes have original visual profiles tied to the verified VFX 
 
 ## Safe progression persistence scaffold
 `ProfileSchema.lua` and `ProfileStore.lua` prepare versioned UpdateAsync event-based saves, but `PersistenceConfig.Enabled=false` and no live progression save integration exists. Current rewards remain session-only. Follow [persistence safety gates](docs/PERSISTENCE_GATE.md) before enabling a private test place.
+
+## Full original game-design concept
+The complete original 338-line KAGEBOUND concept has been preserved under [GAME_DESIGN_ORIGINAL_338.md](docs/GAME_DESIGN_ORIGINAL_338.md), without replacing the shorter production-oriented [GAME_DESIGN.md](docs/GAME_DESIGN.md). Use the full original for future gameplay/ability/weapon/mode decisions.
