@@ -4,6 +4,7 @@
 -- Visual styling: ART-001 key art, ART-004 Kage Dojo ceremonial courtyard.
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Workspace=game:GetService("Workspace")
+local ServerStorage=game:GetService("ServerStorage")
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled or not World.TrainingGrounds then return end
 local world=Workspace:WaitForChild("KageboundWorld",45)
@@ -34,6 +35,36 @@ local function part(parent,name,size,cf,color,material,isTarget)
     return p
 end
 
+-- Optional original visual mesh imported into ServerStorage/KageboundArt.
+-- All gameplay hitboxes and server health remain on the invisible practice root.
+local function importedVisual(model,root,x,z)
+    local art=ServerStorage:FindFirstChild("KageboundArt")
+    local template=art and art:FindFirstChild("DojoPracticePostVisual")
+    if not template or not template:IsA("Model") then return false end
+    local visual=template:Clone()
+    visual.Name="DojoPracticePostVisual"
+    visual.Parent=model
+    visual:PivotTo(CFrame.new(x,1,z)) -- authored OBJ origin is at its ground base
+    local count=0
+    for _,p in ipairs(visual:GetDescendants()) do
+        if p:IsA("BasePart") then
+            p.Anchored=true
+            p.CanCollide=false
+            p.CanTouch=false
+            p.CanQuery=false
+            p.CastShadow=false
+            count+=1
+        end
+    end
+    if count==0 then visual:Destroy() return false end
+    for _,p in ipairs(model:GetChildren()) do
+        if p:IsA("BasePart") then p.Transparency=1 end
+    end
+    root.CanQuery=true
+    model:SetAttribute("KageboundImportedVisual",true)
+    return true
+end
+
 local function dummy(index,x,z)
     local model=Instance.new("Model")
     model.Name="PracticePost_"..index
@@ -57,6 +88,7 @@ local function dummy(index,x,z)
         palette.warm,Enum.Material.Metal)
     part(model,"FootBase",Vector3.new(4.5,.35,4.5),CFrame.new(x,1.1,z),
         palette.stone,Enum.Material.Slate)
+    importedVisual(model,root,x,z)
     local gui=Instance.new("BillboardGui")
     gui.Name="PracticeHealthBillboard"
     gui.Size=UDim2.fromOffset(164,54)
