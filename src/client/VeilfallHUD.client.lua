@@ -43,6 +43,13 @@ evt.OnClientEvent:Connect(function(state, seconds)
         text.Visible=true
         text.Text="VEILFALL — SPIRIT PLATFORMS ACTIVE"
         task.delay(3,function() if sequence==current then text.Visible=false end end)
+    elseif state=="Closing" then
+        text.Visible=true
+        for n=seconds,1,-1 do
+            if sequence~=current then return end
+            text.Text="VEIL CLOSING IN "..n.." — RETURN TO SAFE GROUND"
+            task.wait(1)
+        end
     elseif state=="Closed" then
         text.Visible=true
         text.Text="VEIL SEALED — ARENA RESTORED"
