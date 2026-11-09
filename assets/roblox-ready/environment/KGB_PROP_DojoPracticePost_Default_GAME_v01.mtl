@@ -1,0 +1,55 @@
+newmtl Ink
+Kd 0.105 0.104 0.16
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl Graphite
+Kd 0.23 0.22 0.31
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl Crimson
+Kd 0.62 0.1 0.25
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl HotPink
+Kd 1 0.24 0.56
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl Gold
+Kd 0.93 0.67 0.31
+Ka 0.1 0.1 0.1
+Ks 0.4 0.4 0.4
+Ns 24
+illum 2
+
+newmtl Ivory
+Kd 0.97 0.91 0.96
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl Violet
+Kd 0.62 0.3 0.89
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
+
+newmtl Stone
+Kd 0.32 0.33 0.43
+Ka 0.1 0.1 0.1
+Ks 0.08 0.08 0.08
+Ns 7
+illum 2
