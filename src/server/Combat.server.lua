@@ -26,6 +26,16 @@ local function protectedHub(pos)
     return false
 end
 
+local function inTrainingCircle(pos)
+    if not World.Enabled or not World.TrainingGrounds then return false end
+    local cfg=World.TrainingGrounds
+    return (Vector2.new(pos.X-cfg.x,pos.Z-cfg.z)).Magnitude<=cfg.radius
+end
+
+local function canSwingAt(pos)
+    return not protectedHub(pos) or inTrainingCircle(pos)
+end
+
 local function resetState(player)
     state[player] = {
         lightAt = -math.huge, heavyAt = -math.huge,
@@ -120,6 +130,15 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
             end
         end
     end
+    local practice=workspace:FindFirstChild("KageboundTraining")
+    if practice and inTrainingCircle(attackerRoot.Position) then
+        for _,dummy in ipairs(practice:GetChildren()) do
+            if dummy:IsA("Model") and dummy:GetAttribute("KageboundTrainingTarget")==true
+                and dummy.PrimaryPart and (dummy:GetAttribute("Health") or 0)>0 then
+                table.insert(targets,dummy)
+            end
+        end
+    end
     if #targets == 0 then return false end
 
     local params = OverlapParams.new()
@@ -197,6 +216,26 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                 hitCount+=1
                 if hitCount >= Rules.MaxPlayersHitPerSwing then return true end
             end
+        elseif model and model:GetAttribute("KageboundTrainingTarget")==true
+            and model.PrimaryPart and not hitRegistry[model]
+            and inTrainingCircle(attackerRoot.Position) then
+            -- Training is the only sword target permitted within the social hub.
+            -- No player damage, NPC reward, kill credit or inventory mutation.
+            local dummyRoot=model.PrimaryPart
+            local health=tonumber(model:GetAttribute("Health")) or 0
+            local delta=dummyRoot.Position-attackerRoot.Position
+            if health>0 and delta.Magnitude<=range+1 and math.abs(delta.Y)<=6
+                and facing(attackerRoot,dummyRoot.Position,0.26)
+                and hasLineOfSight(attackerChar,model,
+                    attackerRoot.Position+Vector3.new(0,1,0),
+                    dummyRoot.Position+Vector3.new(0,1,0)) then
+                hitRegistry[model]=true
+                model:SetAttribute("HitCount",(model:GetAttribute("HitCount") or 0)+1)
+                model:SetAttribute("Health",math.max(0,health-damage))
+                remote:FireAllClients("HitTarget",model,damage)
+                hitCount+=1
+                if hitCount>=Rules.MaxPlayersHitPerSwing then return true end
+            end
         end
     end
     return false
@@ -206,7 +245,7 @@ local function attack(player, heavy)
     local now = os.clock()
     local s = getState(player)
     local char, _, root = getRig(player)
-    if not root or protectedHub(root.Position) then return end
+    if not root or not canSwingAt(root.Position) then return end
     if not hasEquippedVeilblade(char) then return end
     if now < s.busyUntil or now < s.staggerUntil then return end
 
@@ -238,7 +277,7 @@ local function attack(player, heavy)
     task.delay(timeline.windup,function()
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
-            or s.attackToken ~= token or protectedHub(actorRoot.Position)
+            or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
             or not hasEquippedVeilblade(actorChar) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
@@ -246,7 +285,7 @@ local function attack(player, heavy)
         for i=1,Rules.AttackSamples do
             actorChar, _, actorRoot = getRig(player)
             if not actorRoot or actorChar ~= char or s.attackToken ~= token
-                or protectedHub(actorRoot.Position)
+                or not canSwingAt(actorRoot.Position)
                 or not hasEquippedVeilblade(actorChar) then break end
             local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
             if interrupted then break end
