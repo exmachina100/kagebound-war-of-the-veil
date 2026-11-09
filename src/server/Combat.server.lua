@@ -32,7 +32,7 @@ local function resetState(player)
         parryAt = -math.huge, dashAt = -math.huge,
         comboAt = -math.huge, combo = 0,
         parryUntil = 0, busyUntil = 0, staggerUntil = 0,
-        attackToken = 0,
+        attackToken = 0, doubleJumpUsed = false, doubleJumpAt = -math.huge,
         stamina = Rules.MaxStamina, staminaAt = os.clock()
     }
     player:SetAttribute("KageboundStamina", Rules.MaxStamina)
@@ -214,8 +214,9 @@ remote.OnServerEvent:Connect(function(player, action, payload)
     if typeof(action) ~= "string" then return end
     local now = os.clock()
     local s = getState(player)
-    local _, _, root = getRig(player)
+    local _, humanoid, root = getRig(player)
     if not root then return end
+    if humanoid.FloorMaterial ~= Enum.Material.Air then s.doubleJumpUsed = false end
 
     if action == "Light" then
         attack(player,false)
@@ -229,6 +230,16 @@ remote.OnServerEvent:Connect(function(player, action, payload)
         s.parryUntil = now+Rules.ParryWindow
         s.busyUntil = s.parryUntil
         remote:FireAllClients("ParryStart",player)
+    elseif action == "DoubleJump" then
+        if now < s.busyUntil or now < s.staggerUntil or s.doubleJumpUsed
+            or now-s.doubleJumpAt < Rules.DoubleJumpCooldown then return end
+        if humanoid.FloorMaterial ~= Enum.Material.Air then return end
+        if not spend(player,s,"DoubleJump",now) then return end
+        s.doubleJumpUsed = true
+        s.doubleJumpAt = now
+        local velocity = root.AssemblyLinearVelocity
+        root.AssemblyLinearVelocity = Vector3.new(velocity.X,Rules.DoubleJumpVelocity,velocity.Z)
+        remote:FireAllClients("DoubleJumpFX",player)
     elseif action == "Dash" then
         if now < s.busyUntil or now < s.staggerUntil
             or now-s.dashAt < Rules.DashCooldown then return end
@@ -258,7 +269,11 @@ task.spawn(function()
         task.wait(0.25)
         local now=os.clock()
         for player,s in pairs(state) do
-            if player.Parent == Players then updateStamina(player,s,now) end
+            if player.Parent == Players then
+                updateStamina(player,s,now)
+                local _, hum = getRig(player)
+                if hum and hum.FloorMaterial ~= Enum.Material.Air then s.doubleJumpUsed = false end
+            end
         end
     end
 end)
