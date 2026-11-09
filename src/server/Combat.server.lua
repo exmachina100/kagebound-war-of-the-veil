@@ -2,7 +2,19 @@
 -- All hit tests, damage, cooldowns and parry outcomes are decided here.
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Rules = require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("CombatRules"))
+local Shared = ReplicatedStorage:WaitForChild("KageboundShared")
+local Rules = require(Shared:WaitForChild("CombatRules"))
+local World = require(Shared:WaitForChild("WorldConfig"))
+local function protectedHub(pos)
+    if not World.Enabled then return false end
+    for _,zone in ipairs(World.Zones) do
+        if zone.kind=="SafeHub" then
+            local offset=Vector2.new(pos.X-zone.x,pos.Z-zone.z)
+            if offset.Magnitude <= zone.radius then return true end
+        end
+    end
+    return false
+end
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
     remote = Instance.new("RemoteEvent")
@@ -76,7 +88,7 @@ local function attack(player, heavy)
     local now = os.clock()
     local s = getState(player)
     local char, _, root = getRig(player)
-    if not root then return end
+    if not root or protectedHub(root.Position) then return end
     local combo, cooldown, damage, range
     if heavy then
         if now - s.heavyAt < Rules.HeavyCooldown or now - s.lightAt < Rules.LightCooldown then return end
@@ -96,7 +108,7 @@ local function attack(player, heavy)
     for _, opponent in ipairs(Players:GetPlayers()) do
         if opponent ~= player then
             local otherChar, otherHum, otherRoot = getRig(opponent)
-            if otherRoot then
+            if otherRoot and not protectedHub(otherRoot.Position) then
                 local offset = otherRoot.Position - root.Position
                 if offset.Magnitude <= range and math.abs(offset.Y) <= 6 and facing(root, otherRoot.Position) and not obstruction(char, otherChar, root.Position+Vector3.new(0,2,0), otherRoot.Position+Vector3.new(0,2,0)) then
                     local otherState = getState(opponent)
@@ -119,6 +131,7 @@ remote.OnServerEvent:Connect(function(player, action, payload)
     local s = getState(player)
     local _, humanoid, root = getRig(player)
     if not root then return end
+    if protectedHub(root.Position) and (action == "Light" or action == "Heavy" or action == "Parry") then return end
     if action == "Light" then
         attack(player, false)
     elseif action == "Heavy" then
