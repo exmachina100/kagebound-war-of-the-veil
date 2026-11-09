@@ -1,6 +1,6 @@
 # KAGEBOUND — Asset Production Rules v1
 
-This document is mandatory for each KAGEBOUND content milestone, alongside docs/GAME_DESIGN.md, docs/WORLD_VISION.md, docs/ROADMAP.md, docs/ART_DIRECTION.md, and docs/ASSET_MANIFEST.md.
+This document is mandatory for each KAGEBOUND content milestone, alongside docs/GAME_DESIGN_ORIGINAL_338.md (complete archived source), docs/GAME_DESIGN.md (production adaptation), docs/WORLD_VISION.md, docs/ROADMAP.md, docs/ART_DIRECTION.md, and docs/ASSET_MANIFEST.md.
 
 ## Canonical images
 ART-001: approved key art. ART-002: four warrior designs. ART-003: weapons and masks. ART-004: Moonfall / dojo / Veilfall. All four original PNGs are in assets/concept-art/. Open the actual relevant image before asset generation; do not substitute generic Roblox or anime imagery.
