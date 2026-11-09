@@ -28,3 +28,15 @@ Reconnect Rojo in Studio if needed. Do not run two Rojo servers on the same port
 - Dash uses replicated root velocity; tune force and anti-speed-exploit monitoring for production.
 - No team ownership, match timer, spawn selection, energy meter, camera lock, mobile controls, persistence, final VFX/animations or Veilfall yet.
 - Decorative bamboo is non-colliding on purpose. Geometry and lighting are greybox approximations.
+
+## 0.2 art / Veilfall / Kitsune test pass (not yet executed)
+**Reference gates:** ART-001 hero mood, ART-002 blocky character proportions, ART-003 mask/katana design, ART-004 Moonfall world and Veilfall layout.
+
+- New environment script: `src/server/MoonfallArt.server.lua`. Confirm shrine tiers, torii, distant moon, violet center sigil, cliff routes, lamp accents and atmosphere without obstructing combat.
+- New cosmetic VFX: `src/client/CombatVFX.client.lua`. Swing produces narrow magenta sword arc, parry blue circular ring, hit gold glint, dash purple foot ring.
+- Veilfall server: `src/server/Veilfall.server.lua`. Approximately 35 s after server start: 6 s warning, then 40 s spectral platforms enabled, with 6 s closing notice before deactivation. Confirm colliders only exist while visible. Validate safe relocation of players atop a platform on closure. Timing is temporary and not integrated with match state.
+- Kitsune mask prototype: press **G**. Server spawns a brief block-figure magenta illusion that moves ahead and vanishes after 3.5 s. Cooldown 14 s; never deals damage. It is a visual decoy **not yet a genuine target for combat logic**.
+- Test with 2 Studio players; test on mobile device emulation and low graphics before marking an art pass polished.
+- Log any errors from the `[KAGEBOUND]` startup messages and capture a screenshot for comparison with approved concept references.
+
+**Remaining acceptance gap:** no proper katana mesh/rig/animation, no finished VFX, no best-of-five match loop or dojo return, no 3-mask or multi-arena MVP. No scripted assets have been verified in a running Roblox Studio session here.
