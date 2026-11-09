@@ -20,6 +20,9 @@ Important: delete or disable the default Baseplate `SpawnLocation` if it compete
 
 Output should include `[KAGEBOUND] Grand World generated: 5 connected regions` and `[KAGEBOUND] World exploration quest initialized`.
 
+## Yokai prototype
+Moonfall Bamboo now has a three-enemy Lantern Yokai encounter under `Workspace/KageboundEnemies`. Run [YOKAI_01_TEST.md](YOKAI_01_TEST.md) separately for server-owned hitboxes, parry/telegraphs and respawn. No boss quest reward or persistent inventory yet.
+
 ## Walkthrough
 1. Press Play. Spawn at Kage Dojo, see explorable houses, torii, lanterns and world HUD.
 2. Walk toward the Keeper NPC close to (24, 4, 15). Use **E** on the proximity prompt to accept "Whispers Across the Veil".
@@ -36,7 +39,7 @@ In Grand World mode, the old arena Veilfall script is intentionally disabled; th
 
 ## Scope and known limitations
 - World is a continuous 2700x2700-stud **flat ground blockout with five themed districts**. It has NOT reached the density, terrain complexity, travel diversity, map scale or world interactions of a mature action RPG.
-- No world streaming, quest persistence, multi-server travel, encounter spawning, dungeons, full regional world-event orchestration or navigation map yet. One prototype regional Veilfall cycle is now scripted for Moonfall Bamboo but untested.
+- No world streaming, quest persistence, multi-server travel, advanced encounter spawning, dungeons, full regional world-event orchestration or navigation map yet. One static 3-Yokai encounter and one prototype regional Veilfall cycle are scripted but remain untested. One prototype regional Veilfall cycle is now scripted for Moonfall Bamboo but untested.
 - Combat.server.lua now checks the Kage Dojo SafeHub against attackers and targets before PvP damage; validation in a two-client Studio session remains mandatory. Gameplay safety beyond the defined hub requires future design.
 - Do not mistake a cosmetic counter named QuestShards for a secure inventory.
 - Road connections and world geo must be stress-tested and reworked to look like canonical art, not left as square platforms.
