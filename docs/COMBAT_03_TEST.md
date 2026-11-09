@@ -71,3 +71,10 @@ Paste the source of `tests/CombatRules.studio.lua` into Studio's Command Bar in 
 - Combat sweeps target other players and three tagged original Moonfall Lantern Yokai; later introduce stronger faction filters, boss resistances and secure loot rewards.
 
 **Pass gate:** 2 players can fight outside the safe hub without duplicate hits or remote exploits; attack timings, parry/guardbreak, stamina, movement, weapon attachment, regional Veilfall and safe-zone behavior are confirmed in Studio.
+
+## Animation-ready Veilblade v0.4 addendum (unverified)
+- Check `KageboundShared/AnimationCatalog`, `KageboundClient/ShinobiAnimation`, the `Veilblade` Tool, and its `BladeVeilEdge/VeilbladeTrail`. Reference ART-002/003 directly.
+- With an equipped sword, Mouse1 generates windup and active follow-through motion; the blade-bound magenta Trail appears only on a server-accepted Swing. R has a longer windup and heavier follow-through.
+- Unequip the Tool to confirm sword attacks are rejected by both input guard and server. Press F for parry and Q for dash; these remain independent of sword equip.
+- No published animation IDs exist; the current fallback uses `Tool.Grip` rather than editing avatar Motor6D joints. Expect authored animation tracks only after you publish your own to Roblox Studio and insert their IDs in `AnimationCatalog.lua`.
+- Run `tests/AnimationCatalog.studio.lua` and `tests/VeilbladeEquipment.studio.lua` in Studio SERVER Command Bar. Follow [SHINOBI_ANIMATION_PIPELINE.md](SHINOBI_ANIMATION_PIPELINE.md).
