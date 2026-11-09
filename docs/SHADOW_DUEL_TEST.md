@@ -35,3 +35,14 @@
 - Clan Clash and expanded loadouts
 
 **Do not describe Shadow Duel as production-validated until both gameplay and art gates pass.**
+
+## Shadow Duel Veilfall 0.2 (new server-controlled round event; NOT Studio tested)
+- New module `src/server/DuelVeilfall.lua` creates `KageboundShadowDuelArena/VeilfallRuntime`. This is **procedural visual and collision geometry**; assets are pending the ART-001/004 low-poly pipeline.
+- `src/shared/DuelRules.lua` defines a deterministic event on every Active round: at **20s**, show **6s warning**, then **18s active spectral routes**, followed by **6s closing warning**, then hide collision and effects. The event ends well before the 70s round deadline.
+- During an active duel, both fighters should see a secondary Veilfall HUD banner. The main round timer and score **must not reset** when these banners arrive.
+- Verify eight raised spectral surfaces activate on the server for both clients, not through local client toggles. Their colliders and CanQuery should be disabled when hidden.
+- If a fighter remains on a surface when it closes, the server should place the fighter safely above the permanent floor at the **same X/Z location** and clear vertical velocity.
+- If a KO, forfeit, disconnect or round timeout occurs during the 20-second wait, opening warning, active phase or closing warning, the script must invalidate pending transitions and clean up collision before the next round.
+- No Studio client should be able to send arbitrary Veilfall commands, claim extra bridge time or damage. The event is controlled by the match controller only, not by any RemoteEvent from clients.
+- Run `tests/ShadowDuelVeilfall.studio.lua` in Studio server Command Bar. Separately test the actual timeline and collision in a **two-player Studio session**, and compare with the ART-004 environment board.
+- Match-isolated Veilfall must not alter the permanent regional Moonfall Veilfall, Grand World traversal, social Kage Dojo collision, or Player attributes outside the match.
