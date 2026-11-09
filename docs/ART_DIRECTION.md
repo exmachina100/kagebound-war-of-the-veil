@@ -34,8 +34,8 @@ The four approved PNGs ART-001..004 are uploaded on main under `assets/concept-a
 7. Record source, version, Roblox asset ID and verification results in the asset manifest.
 
 ## Current combat prototype
-`src/server/MoonfallArena.server.lua` is the **greybox collision layout**. `src/server/MoonfallArt.server.lua` adds a first stylized pass based on ART-001 and ART-004; this remains procedural art, not final approved importable meshes.
-`src/client/CombatVFX.client.lua` contains ART-003-inspired combat arcs, rings and Yokai feedback. `src/server/ShinobiAppearance.server.lua` is the ART-002 cosmetic placeholder. Neither VFX nor avatar model is final production art.
+**Grand World is currently enabled by default.** `src/server/GrandWorld.server.lua` is the active five-region greybox; `MoonfallArena.server.lua` and `MoonfallArt.server.lua` are legacy duel-area scripts disabled in Grand World mode. All current geometry is procedural test scenery and must be upgraded against ART-001/004 before final approval.
+`src/client/CombatVFX.client.lua` contains ART-003-inspired combat arcs, rings and Yokai feedback. `src/server/ShinobiAppearance.server.lua` is an ART-001/002 cosmetic blockout with tilted fox mask, charcoal plates, angular hair and vermilion scarf; `src/server/Veilblade.server.lua` is an ART-003 sword blockout. No final rig, animation assets, texture set, or screenshot parity approval yet.
 Do not treat working geometry or placeholder neon spheres as art approval.
 
 ## Review gates
