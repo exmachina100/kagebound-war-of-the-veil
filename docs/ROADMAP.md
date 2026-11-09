@@ -20,7 +20,7 @@ Source folders, Rojo map, art catalog, original design notes, VFX requirements. 
 ### P1 — Combat vertical slice [server-timed sweeps, stamina, mobile/controller input, equipped-weapon enforcement, Veilblade grip poses and blade Trail committed; Studio playtest pending]
 Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
 
-### P2 — Mythic + Veilfall [regional Moonfall bridge cycle and Kitsune decoy prototype committed; Studio playtest pending]
+### P2 — Mythic + Veilfall [Kitsune decoy, Oni knockback and Tengu wind prototype, dojo-only loadout switching and regional Veilfall scripted; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
 ### P3 — Match loop [Shadow Duel 1v1 best-of-five + per-round Veilfall scripted; Studio test and Clan Clash pending]
@@ -75,3 +75,6 @@ The code in `src/server/ShadowDuel.server.lua`, `DuelService.lua`, `DuelRules.lu
 
 ## Shadow Duel spectral route transition (server code committed; Studio QA pending)
 The optional 1v1 Shadow Duel now schedules a predictable round-local Veilfall with 6s opening and closing warning, server-owned spectral platforms and cleanup on KO/forfeit/timeouts. It does not change Grand World RegionalVeilfall. Run [SHADOW_DUEL_TEST.md](SHADOW_DUEL_TEST.md) and [tests/ShadowDuelVeilfall.studio.lua](../tests/ShadowDuelVeilfall.studio.lua); production low-poly route art must follow [ASSET_CREATION_WORKFLOW.md](ASSET_CREATION_WORKFLOW.md). No live Studio execution claimed.
+
+## Three-mask milestone and cinematic VFX handoff (code committed; Studio QA pending)
+`src/shared/MaskRules.lua`, `src/server/MaskAbilities.server.lua`, `src/client/MaskHUD.client.lua` and `src/client/MaskVFX.client.lua` implement original Oni/Tengu skills and server-restricted loadout switching, while existing Kitsune checks the selected mask. Run [MYTHIC_MASKS_TEST.md](MYTHIC_MASKS_TEST.md) before P2 signoff. Four new **GPT-generated VFX concept boards** have been packed for artist handoff (conversation archive, not GitHub images yet). See [VFX_CONCEPT_HANDOFF.md](VFX_CONCEPT_HANDOFF.md); they're not finished transparent emitter textures, animations, or game-ready effects.
