@@ -21,14 +21,14 @@ Important: delete or disable the default Baseplate `SpawnLocation` if it compete
 Output should include `[KAGEBOUND] Grand World generated: 5 connected regions` and `[KAGEBOUND] World exploration quest initialized`.
 
 ## Yokai prototype
-Moonfall Bamboo now has a three-enemy Lantern Yokai encounter under `Workspace/KageboundEnemies`. Run [YOKAI_01_TEST.md](YOKAI_01_TEST.md) separately for server-owned hitboxes, parry/telegraphs and respawn. No boss quest reward or persistent inventory yet.
+Moonfall Bamboo now has a three-enemy Lantern Yokai encounter under `Workspace/KageboundEnemies`. Run [YOKAI_01_TEST.md](YOKAI_01_TEST.md) separately for server-owned hitboxes, parry/telegraphs and respawn. Lantern Yokai now grant session-only Spirit Shards and Veilblade Mastery to the last server-verified attacker; no boss quest reward or persistent inventory yet. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md).
 
 ## Walkthrough
 1. Press Play. Spawn at Kage Dojo, see explorable houses, torii, lanterns and world HUD.
 2. Walk toward the Keeper NPC close to (24, 4, 15). Use **E** on the proximity prompt to accept "Whispers Across the Veil".
 3. Travel the north road to Moonfall Bamboo (near X 0, Z -780). Reach within 90 studs of the zone center.
 4. Confirm the journal says Moonfall discovered. Return along the road to the Keeper and complete the quest.
-5. Confirm Player attribute `KageboundQuestShards` becomes 25. The reward is **in-memory session-only**; no inventory persistence or real currency economy exists yet.
+5. Confirm Player attribute `KageboundQuestShards` becomes 25. The quest now also credits the central session-only Spirit Shards account via server-only RewardService; no inventory persistence or real currency economy exists yet.
 6. Continue exploring the Shogun city, Frozen Shrine and Yomi Rift. Look for road gaps, buildings blocking routes, performance spikes, disconnected terrain or stuck character collisions.
 7. Test 2 players, including joining after the first player's quest is active. Quest stages should be isolated.
 8. Confirm the legacy KageboundArena is not generated when WorldConfig.Enabled=true; this keeps world exploration free of boxed-in arena walls.
