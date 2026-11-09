@@ -20,11 +20,17 @@ local function check(label,predicate)
     end
 end
 check("CombatRules present",shared:FindFirstChild("CombatRules")~=nil)
+check("MaskRules present",shared:FindFirstChild("MaskRules")~=nil)
+check("Four-class VFX profiles present",shared:FindFirstChild("VFXProfiles")~=nil)
+check("VFX texture catalog present",shared:FindFirstChild("VFXTextureCatalog")~=nil)
 check("RewardPolicy present",shared:FindFirstChild("RewardPolicy")~=nil)
 check("Server RewardService present",script.Parent:FindFirstChild("RewardService")~=nil)
+check("Server EnemyDamage present",script.Parent:FindFirstChild("EnemyDamage")~=nil)
 check("Shinobi appearance script present",script.Parent:FindFirstChild("ShinobiAppearance")~=nil)
 check("Veilblade equipment script present",script.Parent:FindFirstChild("Veilblade")~=nil)
 check("Combat remote active",ReplicatedStorage:WaitForChild("KageboundCombat",20)~=nil)
+check("Three-mask remote active",ReplicatedStorage:WaitForChild("KageboundMask",20)~=nil)
+check("Kitsune decoy remote active",ReplicatedStorage:WaitForChild("KageboundKitsune",20)~=nil)
 if worldConfig.Enabled then
     local world=Workspace:WaitForChild("KageboundWorld",35)
     check("Grand World generated",world~=nil)
