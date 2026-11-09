@@ -6,6 +6,7 @@ local Workspace=game:GetService("Workspace")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local HttpService=game:GetService("HttpService")
 local Rewards=require(script.Parent:WaitForChild("RewardService"))
+local Navigation=require(script.Parent:WaitForChild("YokaiNavigation"))
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled then return end
 
@@ -117,16 +118,6 @@ local function targetRig(player)
     local root=char and char:FindFirstChild("HumanoidRootPart")
     if hum and root and hum.Health>0 then return hum,root end
 end
-local function moveToward(model,destination,speed,dt)
-    local root=model.PrimaryPart
-    if not root then return end
-    local delta=Vector3.new(destination.X-root.Position.X,0,destination.Z-root.Position.Z)
-    if delta.Magnitude<.15 then return end
-    local distance=math.min(delta.Magnitude,speed*dt)
-    local pos=root.Position+delta.Unit*distance
-    model:PivotTo(CFrame.lookAt(pos,pos+delta.Unit))
-end
-
 local homes={
     Vector3.new(moonfall.x-90,3.7,moonfall.z+25),
     Vector3.new(moonfall.x+88,3.7,moonfall.z-15),
@@ -136,6 +127,7 @@ for i,home in ipairs(homes) do
     task.spawn(function()
         while folder.Parent do
             local model=createEnemy(i,home)
+            local navigation=Navigation.New()
             while model.Parent and (model:GetAttribute("Health") or 0)>0 do
                 local root=model.PrimaryPart
                 local target,distance=nearestPlayer(root.Position,home)
@@ -182,7 +174,7 @@ for i,home in ipairs(homes) do
                 else
                     model:SetAttribute("AIState",target and "Pursue" or "Return")
                     local _,targetRoot=targetRig(target)
-                    moveToward(model,targetRoot and targetRoot.Position or home,12,.14)
+                    Navigation.MoveToward(model,targetRoot and targetRoot.Position or home,12,.14,navigation)
                     task.wait(.14)
                 end
             end
