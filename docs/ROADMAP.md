@@ -14,8 +14,8 @@ Original Japanese fantasy; competitive third-person melee; responsive traversal 
 ### P0 — Foundation [GitHub files committed; Studio sync pending]
 Source folders, Rojo map, art catalog, original design notes, VFX requirements. Verify Rojo connection and startup output.
 
-### P1 — Combat vertical slice [not started]
-Moonfall Bamboo greybox, 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
+### P1 — Combat vertical slice [initial code committed; Roblox playtest pending]
+Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
 
 ### P2 — Mythic + Veilfall [not started]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
@@ -31,6 +31,9 @@ Mastery XP, cosmetics, currencies, shop, inventory, secure persistence, trading 
 
 ### P6 — Alpha / launch [not started]
 Network/latency tests, accessibility, moderation and security, multiplayer soak, matchmaking, onboarding and analytics.
+
+## Mandatory visual production gate
+Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The concept PNGs are still pending import in issue #1.
 
 ## Future updates
 Wall run and grapple, Yokai Hunt PvE, Spirit Run parkour, synchronized spirit fusion, sword clashes, clan rivalries and seasonal invasions.
