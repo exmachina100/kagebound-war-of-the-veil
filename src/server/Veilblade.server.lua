@@ -51,7 +51,7 @@ local function createKatana()
 
     fitted("BladeShadow",Vector3.new(.35,4.4,.65),
         CFrame.new(0,3.32,0)*CFrame.Angles(0,0,math.rad(-3)),INK,Enum.Material.Metal)
-    fitted("BladeVeilEdge",Vector3.new(.11,4.3,.68),
+    local bladeEdge = fitted("BladeVeilEdge",Vector3.new(.11,4.3,.68),
         CFrame.new(.19,3.4,0)*CFrame.Angles(0,0,math.rad(-3)),HOT,Enum.Material.Neon)
     fitted("BladeCrimsonCore",Vector3.new(.13,4.0,.4),
         CFrame.new(.04,3.28,-.15)*CFrame.Angles(0,0,math.rad(-3)),CRIMSON,Enum.Material.Metal)
@@ -65,6 +65,31 @@ local function createKatana()
         CFrame.new(0,-1.2,0),GOLD,Enum.Material.Metal)
     fitted("RedTassel",Vector3.new(.13,1.2,.13),
         CFrame.new(.35,-1.65,0),CRIMSON,Enum.Material.Fabric)
+    -- Blade-attached trail is cosmetic. Client enables it only on server Swing.
+    -- Attachment span creates a narrow anime-fantasy slash ribbon at the blade.
+    local base = Instance.new("Attachment")
+    base.Name = "TrailBase"
+    base.Position = Vector3.new(0,-1.85,0)
+    base.Parent = bladeEdge
+    local tip = Instance.new("Attachment")
+    tip.Name = "TrailTip"
+    tip.Position = Vector3.new(0,1.95,0)
+    tip.Parent = bladeEdge
+    local trail = Instance.new("Trail")
+    trail.Name = "VeilbladeTrail"
+    trail.Attachment0 = base
+    trail.Attachment1 = tip
+    trail.Color = ColorSequence.new(CRIMSON,HOT)
+    trail.Transparency = NumberSequence.new({
+        NumberSequenceKeypoint.new(0,0.14),
+        NumberSequenceKeypoint.new(1,1)
+    })
+    trail.Lifetime = 0.15
+    trail.MinLength = 0.05
+    trail.LightEmission = 0.7
+    trail.FaceCamera = true
+    trail.Enabled = false
+    trail.Parent = bladeEdge
     return tool
 end
 
