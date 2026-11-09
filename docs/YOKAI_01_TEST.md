@@ -33,4 +33,10 @@ See [GAME_DESIGN](GAME_DESIGN.md), [WORLD_VISION](WORLD_VISION.md), [VFX_SPEC](V
 - No AI spawn culling or world streaming integration yet. Test client/server load on mobile before increasing counts.
 - NPC and player parry now use the same consumed server-side parry attribute, and facing is checked. A formal DefenseService and multiplayer abuse tests remain necessary.
 
-**Next gate:** record actual Studio Output and screenshots against ART-001/002/004, then refine navigation, group credit and durable reward transactions before more enemy varieties. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md).
+**Next gate:** record actual Studio Output and screenshots against ART-001/002/004, then refine waypoint navigation (including dynamic obstacle failures), group credit and durable reward transactions before more enemy varieties. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md).
+
+## Navigation test (Studio only)
+- `KageboundServer/YokaiNavigation` should be a ModuleScript. The enemy's server-set `NavigationStatus` should show `Direct`, `Path`, or `Blocked` while chasing.
+- Put a collidable temporary wall between a player and a Lantern Yokai; the anchored model must not tunnel straight through it. With an accessible alternative route it should follow waypoints; if no valid path exists, it must pause/retry instead of teleporting.
+- Repeating failed path computations are throttled; monitor Studio's Script Performance view with all three enemies.
+- Paste `tests/YokaiNavigation.studio.lua` into the SERVER Command Bar in an isolated test. No CLI execution of this Roblox-specific test has been performed here.
