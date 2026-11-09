@@ -1,0 +1,62 @@
+{
+  "pack": "KAGEBOUND \u2014 War of the Veil, VFX concept pack v01",
+  "date": "2026-11-10",
+  "asset_kind": "2D VFX concept boards and storyboards, NOT particle sprites, mesh, prebuilt effects or game-ready textures",
+  "canonical_art_refs": [
+    "ART-001",
+    "ART-002",
+    "ART-003",
+    "ART-004"
+  ],
+  "disclaimer": "AI-created labels/visual action names are proposals, not evidence of implemented gameplay. Do not copy assets from any third-party anime game. The actual original reference images in GitHub remain the art authority. Extract/rebuild isolated transparent particles and flipbooks, then test in Roblox Studio before gameplay acceptance.",
+  "assets": [
+    {
+      "filename": "KGB_VFX_FX006_OniBossEruption_CONCEPT_v01.png",
+      "fx_ids": "FX-006 / FX-010",
+      "art_refs": "ART-001 / ART-002 / ART-004",
+      "description": "Oni boss-scale rupture and guardian reveal. Cinematic scale reference; not a combat particle texture.",
+      "width": 1672,
+      "height": 941,
+      "bytes": 3095227,
+      "sha256": "7a158692db150cb2ddd6cc6854f4addbeba8ee0dddb628a002fe4b11707460a1",
+      "status": "concept-draft; visual QA and effect extraction pending",
+      "original_generator": "GPT image generation (this conversation)"
+    },
+    {
+      "filename": "KGB_VFX_FX008_VeilfallSequence_CONCEPT_v01.png",
+      "fx_ids": "FX-008 / FX-009",
+      "art_refs": "ART-001 / ART-004",
+      "description": "Veilfall spatial transformation and phased sequence board; game event / environment staging reference.",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2730160,
+      "sha256": "34c9f7aec51cfcca81866f900e0a2d96692ff46288df48ef0fb3ca13fc84ea4a",
+      "status": "concept-draft; visual QA and effect extraction pending",
+      "original_generator": "GPT image generation (this conversation)"
+    },
+    {
+      "filename": "KGB_VFX_FX005_KitsuneUltimate_CONCEPT_v01.png",
+      "fx_ids": "FX-001 / FX-005",
+      "art_refs": "ART-001 / ART-002 / ART-003",
+      "description": "Kitsune charged blade crescent, sequenced combat energy and segmented effect breakdown.",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2914514,
+      "sha256": "3c2153c8617fa196d46799de37fa40648149c7ecdca12d9424b1895672f6d707",
+      "status": "concept-draft; visual QA and effect extraction pending",
+      "original_generator": "GPT image generation (this conversation)"
+    },
+    {
+      "filename": "KGB_VFX_MythicMovesShowcase_CONCEPT_v01.png",
+      "fx_ids": "FX-001..009",
+      "art_refs": "ART-001 / ART-002 / ART-003 / ART-004",
+      "description": "Broad mythic combat portfolio board, including multiple skill presentation ideas. Any AI-generated captions are just visual proposal text; no features implied implemented.",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2882646,
+      "sha256": "0374ed68bbf3bd8776fe0d2c3e4ca9a83b39122069ebdbde07ad075c03dfc0f1",
+      "status": "concept-draft; visual QA and effect extraction pending",
+      "original_generator": "GPT image generation (this conversation)"
+    }
+  ]
+}
