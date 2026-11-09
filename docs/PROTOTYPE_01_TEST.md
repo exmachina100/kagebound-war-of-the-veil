@@ -1,4 +1,5 @@
-# Combat Prototype 0.1 — Studio validation
+> **Historical 0.1 test note:** Combat v0.3 supersedes some timing and missing-feature statements below. Use [COMBAT_03_TEST.md](COMBAT_03_TEST.md) for current gameplay checks.
+\n# Combat Prototype 0.1 — Studio validation
 
 ## Included
 - Server-generated Moonfall Bamboo greybox (stone platform, boundaries, torii, bamboo, lanterns, two spawn pads).
