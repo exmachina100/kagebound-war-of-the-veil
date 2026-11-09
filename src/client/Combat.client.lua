@@ -1,94 +1,99 @@
--- KAGEBOUND desktop input and light-weight prototype effects.
--- Mouse1 light, R heavy, F parry, Q dash. Server decides all damage.
+-- KAGEBOUND Combat 0.3 controls (keyboard, mouse, gamepad, touch).
+-- ContextActionService creates touch controls; all gameplay is server-authorized.
+-- Cosmetic VFX live in CombatVFX.client.lua, not here (avoid double spawns).
 local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
+local ContextActionService = game:GetService("ContextActionService")
+local UserInputService = game:GetService("UserInputService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local TweenService = game:GetService("TweenService")
-local Debris = game:GetService("Debris")
+
 local player = Players.LocalPlayer
+local Rules = require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("CombatRules"))
 local remote = ReplicatedStorage:WaitForChild("KageboundCombat")
-local localCooldown = {Light = 0, Heavy = 0, Parry = 0, Dash = 0}
-local delays = {Light = 0.34, Heavy = 1.05, Parry = 1.3, Dash = 1.7}
-local function send(action, payload)
+local localReady = {Light=0,Heavy=0,Parry=0,Dash=0}
+local delays = {
+    Light=Rules.LightCooldown,
+    Heavy=Rules.HeavyCooldown,
+    Parry=Rules.ParryCooldown,
+    Dash=Rules.DashCooldown
+}
+
+local function request(action, payload)
     local now = os.clock()
-    if now < localCooldown[action] then return end
-    localCooldown[action] = now + delays[action]
-    remote:FireServer(action, payload)
+    if now < localReady[action] then return end
+    localReady[action] = now + delays[action]
+    remote:FireServer(action,payload)
 end
-local function getRoot(target)
-    local char = target and target.Character
-    return char and char:FindFirstChild("HumanoidRootPart")
+
+local function directionForDash()
+    local char = player.Character
+    local hum = char and char:FindFirstChildOfClass("Humanoid")
+    local root = char and char:FindFirstChild("HumanoidRootPart")
+    if not root then return nil end
+    local move = hum and hum.MoveDirection or Vector3.zero
+    return move.Magnitude > 0.1 and move or root.CFrame.LookVector
 end
-UIS.InputBegan:Connect(function(input, processed)
-    if processed or UIS:GetFocusedTextBox() then return end
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        send("Light")
-    elseif input.KeyCode == Enum.KeyCode.R then
-        send("Heavy")
-    elseif input.KeyCode == Enum.KeyCode.F then
-        send("Parry")
-    elseif input.KeyCode == Enum.KeyCode.Q then
-        local char = player.Character
-        local hum = char and char:FindFirstChildOfClass("Humanoid")
-        local root = getRoot(player)
-        if not root then return end
-        local dir = hum and hum.MoveDirection or Vector3.zero
-        if dir.Magnitude < 0.1 then dir = root.CFrame.LookVector end
-        send("Dash", dir)
+
+local actions = {
+    KageboundLight = "Light",
+    KageboundHeavy = "Heavy",
+    KageboundParry = "Parry",
+    KageboundDash = "Dash"
+}
+
+local function onAction(name, inputState)
+    if inputState ~= Enum.UserInputState.Begin then return Enum.ContextActionResult.Pass end
+    if UserInputService:GetFocusedTextBox() then return Enum.ContextActionResult.Pass end
+    local action = actions[name]
+    if not action then return Enum.ContextActionResult.Pass end
+    if action=="Dash" then
+        local direction = directionForDash()
+        if direction then request("Dash",direction) end
+    else
+        request(action)
     end
-end)
+    return Enum.ContextActionResult.Sink
+end
+
+ContextActionService:BindAction("KageboundLight",onAction,true,
+    Enum.UserInputType.MouseButton1,Enum.KeyCode.ButtonR2)
+ContextActionService:BindAction("KageboundHeavy",onAction,true,
+    Enum.KeyCode.R,Enum.KeyCode.ButtonX)
+ContextActionService:BindAction("KageboundParry",onAction,true,
+    Enum.KeyCode.F,Enum.KeyCode.ButtonL2)
+ContextActionService:BindAction("KageboundDash",onAction,true,
+    Enum.KeyCode.Q,Enum.KeyCode.ButtonB)
+
+-- SetTitle/SetPosition only affect auto-created touch buttons.
+for name,title in pairs({
+    KageboundLight="SLASH", KageboundHeavy="HEAVY",
+    KageboundParry="PARRY", KageboundDash="DASH"
+}) do
+    ContextActionService:SetTitle(name,title)
+end
+ContextActionService:SetPosition("KageboundLight",UDim2.new(1,-85,1,-145))
+ContextActionService:SetPosition("KageboundHeavy",UDim2.new(1,-168,1,-145))
+ContextActionService:SetPosition("KageboundParry",UDim2.new(1,-168,1,-220))
+ContextActionService:SetPosition("KageboundDash",UDim2.new(1,-85,1,-220))
+
 local gui = Instance.new("ScreenGui")
 gui.Name = "KageboundCombatHUD"
 gui.ResetOnSpawn = false
 gui.Parent = player:WaitForChild("PlayerGui")
 local label = Instance.new("TextLabel")
 label.Name = "Controls"
-label.Size = UDim2.new(0, 390, 0, 68)
-label.Position = UDim2.new(0.5, -195, 1, -84)
-label.BackgroundColor3 = Color3.fromRGB(19, 20, 32)
-label.BackgroundTransparency = 0.2
-label.TextColor3 = Color3.fromRGB(240, 232, 226)
+label.AnchorPoint = Vector2.new(.5,1)
+label.Size = UDim2.new(.78,0,0,60)
+label.Position = UDim2.new(.5,0,1,-14)
+label.BackgroundColor3 = Color3.fromRGB(19,20,32)
+label.BackgroundTransparency = .15
+label.TextColor3 = Color3.fromRGB(240,232,226)
 label.Font = Enum.Font.GothamBold
-label.TextSize = 15
-label.Text = "KAGEBOUND | Mouse1: Combo  •  R: Heavy\nF: Parry  •  Q: Directional Dash"
+label.TextScaled = true
+label.TextWrapped = true
+label.Text = "KAGEBOUND | Mouse1: Slash   R: Heavy   F: Parry\nQ: Dash   G: Kitsune"
+label.Visible = not UserInputService.TouchEnabled
 label.Parent = gui
 local corner = Instance.new("UICorner")
-corner.CornerRadius = UDim.new(0, 10)
+corner.CornerRadius = UDim.new(0,10)
 corner.Parent = label
-
-local function pulseAt(pos, color, size)
-    local fx = Instance.new("Part")
-    fx.Name = "KageboundLocalFX"
-    fx.Shape = Enum.PartType.Ball
-    fx.Material = Enum.Material.Neon
-    fx.Color = color
-    fx.Size = Vector3.new(1, 1, 1) * size
-    fx.Position = pos
-    fx.Anchored = true
-    fx.CanCollide = false
-    fx.CanTouch = false
-    fx.CanQuery = false
-    fx.Transparency = 0.3
-    fx.Parent = workspace
-    TweenService:Create(fx, TweenInfo.new(0.28, Enum.EasingStyle.Quad), {
-        Size = Vector3.new(1, 1, 1) * size * 2.5,
-        Transparency = 1
-    }):Play()
-    Debris:AddItem(fx, 0.33)
-end
-remote.OnClientEvent:Connect(function(event, actor, arg1, arg2)
-    local root = getRoot(actor)
-    if not root then return end
-    if event == "Swing" then
-        pulseAt(root.Position + root.CFrame.LookVector * 4 + Vector3.new(0, 2, 0), arg1 == "Heavy" and Color3.fromRGB(255, 55, 105) or Color3.fromRGB(255, 107, 130), 1.9)
-    elseif event == "ParryStart" then
-        pulseAt(root.Position + Vector3.new(0, 2.5, 0), Color3.fromRGB(65, 170, 255), 2)
-    elseif event == "DashFX" then
-        pulseAt(root.Position, Color3.fromRGB(193, 117, 235), 1.6)
-    elseif event == "Parried" then
-        pulseAt(root.Position + Vector3.new(0, 2.5, 0), Color3.fromRGB(105, 220, 255), 3.5)
-    elseif event == "Hit" then
-        pulseAt(root.Position + Vector3.new(0, 2, 0), Color3.fromRGB(255, 196, 92), 2.4)
-    end
-end)
-print("[KAGEBOUND] Shinobi combat controls ready")
+print("[KAGEBOUND] Cross-platform combat input ready (server-timed strikes)")
