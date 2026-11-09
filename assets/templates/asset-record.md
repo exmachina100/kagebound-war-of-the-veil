@@ -14,3 +14,17 @@
 - Studio screenshots and mobile/performance QA:
 - Commit SHA and verified GitHub binary paths:
 - Approval notes, deviations, next action:
+
+## Technical production evidence
+- Generator or image model & exact reference inputs:
+- Generated image URL/history ID (if used):
+- Actual editable source file:
+- Actual mesh or sprite export file:
+- Format and materials/UVs:
+- Measured vertices / triangles / texture dimensions:
+- Static geometry validator result:
+- Roblox MeshId/ImageId (only real uploaded IDs):
+- Studio template path and asset pivot:
+- Mobile/desktop screenshots and FPS evidence:
+- Gameplay collision, server-authority and replication checks:
+- Gate status (G0–G8) and reviewer approval:
