@@ -53,3 +53,11 @@ Four GPT-generated 1672x941 RGB composite concept boards (Oni eruption, Veilfall
 - **Transparent VFX texture handoff generated:** `KAGEBOUND_VFX_Flipbooks_v01.zip` (7 RGBA 1024×1024 / 16-frame atlases; source Python and manifest). These files are still **pending GitHub binary upload and Roblox Studio import**. Target path `assets/vfx/flipbooks/v01/`.
 - **Runtime script integration committed:** `src/shared/VFXProfiles.lua`, `src/shared/VFXTextureCatalog.lua`, `src/client/VFXFactory.lua`, `src/client/VFXSpriteEmitter.lua`, and updated combat/mask FX renderers. Without verified Roblox upload IDs the game displays procedural neon-geometry FX only.
 - **Original production instructions:** `docs/CLASS_VFX_PRODUCTION.md`, `docs/VFX_FLIPBOOK_IMPORT.md`. Do not mark effects production ready until both visual and Studio multiplayer QA pass.
+
+## Source-controlled original 3D mesh exports — actual geometry, not game-approved yet
+| Asset ID | GitHub file | Source / measured complexity | Current status |
+| --- | --- | --- | --- |
+| KGB_WPN_Veilblade_Default_GAME_v02 | `assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.obj` with same-base `.mtl` | Reproducible `tools/generate_kagebound_obj.js`; ART-003 + existing OpenArt turnaround; 668 vertices / 1220 triangles / 32 mesh objects | 3d-draft; static OBJ pass, no uploaded MeshId, no Studio screenshot |
+| KGB_PROP_DojoPracticePost_Default_GAME_v01 | `assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01.obj` with same-base `.mtl` | Same source; ART-001/004; 184 vertices / 296 triangles / 18 mesh objects | 3d-draft; static OBJ pass, no uploaded MeshId, no Studio screenshot |
+
+`tools/check_kagebound_obj.js` rejects nonfinite vertices, bad face indices, degenerate triangles and missing material names. Its checks do not certify manifold geometry, UVs, normals, rigging, imported color or device performance. The game scripts can optionally display them when imported into `ServerStorage/KageboundArt` under the exact names documented in [ASSET_IMPORT_HANDOFF_v01.md](ASSET_IMPORT_HANDOFF_v01.md). **The current procedural asset path remains active until that actual import is done.**
