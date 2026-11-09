@@ -110,6 +110,8 @@ remote.OnClientEvent:Connect(function(event,actor,arg1,arg2)
         ring(root,C.crimson,3.7,ringSegments,2.3,"FX003_GuardBreak")
     elseif event=="DashFX" then
         ring(root,C.veil,2.3,ringSegments,.3,"FX004_Dash")
+    elseif event=="DoubleJumpFX" then
+        ring(root,C.parry,2.5,ringSegments,-1.4,"FX004_DoubleJump")
     elseif event=="Hit" then
         ring(root,C.gold,1.5,ringSegments,2,"FX002_Impact")
     end
