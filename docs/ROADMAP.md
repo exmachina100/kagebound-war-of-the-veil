@@ -15,7 +15,7 @@ Original Japanese fantasy; competitive third-person melee; responsive traversal 
 
 ## Delivery gates
 ### P0 — Foundation [GitHub files committed; Studio sync pending]
-Source folders, Rojo map, art catalog, original design notes, VFX requirements. Verify Rojo connection and startup output.
+Source folders, Rojo map, art catalog, original design notes, VFX requirements. The original 338-line game concept is now archived in [GAME_DESIGN_ORIGINAL_338.md](GAME_DESIGN_ORIGINAL_338.md). Verify Rojo connection and startup output.
 
 ### P1 — Combat vertical slice [server-timed sweeps, stamina, mobile/controller input, equipped-weapon enforcement, Veilblade grip poses and blade Trail committed; Studio playtest pending]
 Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
