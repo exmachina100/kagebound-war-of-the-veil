@@ -36,6 +36,7 @@ local function resetState(player)
         stamina = Rules.MaxStamina, staminaAt = os.clock()
     }
     player:SetAttribute("KageboundStamina", Rules.MaxStamina)
+    player:SetAttribute("KageboundParryUntil", 0)
 end
 
 local function getState(player)
@@ -102,6 +103,15 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
             end
         end
     end
+    local enemyFolder = workspace:FindFirstChild("KageboundEnemies")
+    if enemyFolder then
+        for _,enemy in ipairs(enemyFolder:GetChildren()) do
+            if enemy:IsA("Model") and enemy:GetAttribute("KageboundEnemy")==true
+                and (enemy:GetAttribute("Health") or 0)>0 and enemy.PrimaryPart then
+                table.insert(targets,enemy)
+            end
+        end
+    end
     if #targets == 0 then return false end
 
     local params = OverlapParams.new()
@@ -134,6 +144,7 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
 
                     if isParrying and not (heavy and Rules.HeavyBreaksParry) then
                         opponentState.parryUntil = 0
+                        opponent:SetAttribute("KageboundParryUntil",0)
                         s.staggerUntil = os.clock()+Rules.ParryStagger
                         s.attackToken += 1 -- parry cancels further active samples
                         remote:FireAllClients("Parried", opponent, player)
@@ -142,6 +153,7 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
 
                     if isParrying then
                         opponentState.parryUntil = 0
+                        opponent:SetAttribute("KageboundParryUntil",0)
                         opponentState.busyUntil = os.clock()+Rules.GuardBreakStagger
                         opponentState.staggerUntil = opponentState.busyUntil
                         opponentState.attackToken += 1
@@ -152,6 +164,22 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                     hitCount += 1
                     if hitCount >= Rules.MaxPlayersHitPerSwing then return true end
                 end
+            end
+        elseif model and model:GetAttribute("KageboundEnemy")==true
+            and model.PrimaryPart and not hitRegistry[model] then
+            local enemyRoot=model.PrimaryPart
+            local health=tonumber(model:GetAttribute("Health")) or 0
+            local delta=enemyRoot.Position-attackerRoot.Position
+            if health>0 and delta.Magnitude<=range+1 and math.abs(delta.Y)<=6
+                and facing(attackerRoot,enemyRoot.Position,0.26)
+                and hasLineOfSight(attackerChar,model,
+                    attackerRoot.Position+Vector3.new(0,1,0),
+                    enemyRoot.Position+Vector3.new(0,1,0)) then
+                hitRegistry[model]=true
+                model:SetAttribute("Health",math.max(0,health-damage))
+                remote:FireAllClients("HitTarget",model,damage)
+                hitCount+=1
+                if hitCount >= Rules.MaxPlayersHitPerSwing then return true end
             end
         end
     end
@@ -228,6 +256,7 @@ remote.OnServerEvent:Connect(function(player, action, payload)
         if not spend(player,s,"Parry",now) then return end
         s.parryAt = now
         s.parryUntil = now+Rules.ParryWindow
+        player:SetAttribute("KageboundParryUntil",s.parryUntil)
         s.busyUntil = s.parryUntil
         remote:FireAllClients("ParryStart",player)
     elseif action == "DoubleJump" then
