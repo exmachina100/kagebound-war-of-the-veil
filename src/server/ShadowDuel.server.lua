@@ -8,6 +8,7 @@ local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local Rules=require(Shared:WaitForChild("DuelRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local Authority=require(script.Parent:WaitForChild("DuelService"))
+local Veilfall=require(script.Parent:WaitForChild("DuelVeilfall"))
 if not World.Enabled then return end
 
 local event=ReplicatedStorage:FindFirstChild("KageboundShadowDuel")
@@ -69,6 +70,7 @@ for i=1,20 do
             center-Vector3.new(0,2.72,0)+w),
         palette.spirit,false,Enum.Material.Neon)
 end
+local veilfall=Veilfall.new(arena,center,Rules,palette)
 -- Kage Dojo: join booth is deliberately inside the safe hub; server checks distance.
 local kioskPos=Vector3.new(-45,4,45)
 local kiosk=part(Workspace,"KageboundDuelKiosk",Vector3.new(8,7,2),
@@ -144,6 +146,7 @@ end
 local function finish(match,winner,reason)
     if match.finished then return end
     match.finished=true
+    veilfall:Stop({match.a,match.b})
     phase(match,"Finished")
     local label
     if winner=="A" then label=match.a.Name
@@ -185,12 +188,21 @@ local function runMatch(match)
         phase(match,"Active")
         broadcast(match,"RoundStart",{round=index,
             duration=Rules.RoundSeconds,scoreA=match.scoreA,scoreB=match.scoreB})
+        veilfall:Start({match.a,match.b},
+            function()
+                return active==match and not match.finished and not match.forfeit
+                    and match.phase=="Active" and pairAlive(match)
+            end,
+            function(kind,payload)
+                broadcast(match,kind,payload)
+            end)
         local deadline=os.clock()+Rules.RoundSeconds
         repeat
             if match.forfeit or not pairAlive(match) then break end
             if humA.Health<=0 or humB.Health<=0 then break end
             task.wait(.15)
         until os.clock()>=deadline
+        veilfall:Stop({match.a,match.b})
         if match.forfeit or not pairAlive(match) then break end
         phase(match,"Intermission")
         local result=Rules.ResolveRound(humA.Health,humB.Health)
