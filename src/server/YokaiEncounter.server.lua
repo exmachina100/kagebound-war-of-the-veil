@@ -52,7 +52,7 @@ local function createEnemy(index,position)
     model:SetAttribute("KageboundEnemy",true)
     model:SetAttribute("EncounterToken",HttpService:GenerateGUID(false))
     model:SetAttribute("LastDamagerUserId",0)
-    model:SetAttribute("LastDamagedAt",-math.huge)
+    model:SetAttribute("LastDamagedAt",0)
     model:SetAttribute("StaggerUntil",0)
     model:SetAttribute("Health",110)
     model:SetAttribute("MaxHealth",110)
@@ -148,10 +148,18 @@ for i,home in ipairs(homes) do
                     combat:FireAllClients("YokaiTelegraph",model)
                     task.wait(.70)
                     local hum,enemyRoot=targetRig(target)
-                    if model.Parent and (model:GetAttribute("Health") or 0)>0 and hum and enemyRoot then
+                    if model.Parent and (model:GetAttribute("Health") or 0)>0 and hum and enemyRoot
+                        and os.clock()>=(model:GetAttribute("StaggerUntil") or 0) then
                         if (enemyRoot.Position-model.PrimaryPart.Position).Magnitude<=10 then
                             local parryUntil=target:GetAttribute("KageboundParryUntil") or 0
-                            if typeof(parryUntil)=="number" and os.clock()<=parryUntil then
+                            local toward=model.PrimaryPart.Position-enemyRoot.Position
+                            local facing=false
+                            local toEnemy=Vector3.new(toward.X,0,toward.Z)
+                            local face=Vector3.new(enemyRoot.CFrame.LookVector.X,0,enemyRoot.CFrame.LookVector.Z)
+                            if toEnemy.Magnitude>.1 and face.Magnitude>.1 then
+                                facing=face.Unit:Dot(toEnemy.Unit)>.25
+                            end
+                            if facing and typeof(parryUntil)=="number" and os.clock()<=parryUntil then
                                 target:SetAttribute("KageboundParryUntil",0)
                                 combat:FireAllClients("Parried",target)
                             else
