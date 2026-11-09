@@ -62,11 +62,12 @@ Paste the source of `tests/CombatRules.studio.lua` into Studio's Command Bar in 
 - `[KAGEBOUND] Reference-driven combat VFX 0.3 initialized`
 - `[KAGEBOUND] Veilblade prototype equipment ready (ART-003)`
 - `[KAGEBOUND] Grand World Moonfall regional Veilfall enabled (ART-004)`
+- `[KAGEBOUND] Moonfall Lantern Yokai: 3 server-owned PvE enemies online`
 
 ## Remaining production work
 - Authored, uploaded Roblox katana and character animations with timing markers, sound effects, true skin/weapon meshes, mobile touch layout polish and real camera movement. **Do not claim uploaded animation-marker sync exists yet.** Server timing is a temporary trustworthy source.
-- More complex world bosses/quest fights and 4 style loadouts. PvE NPCs are not yet included in the combat sweep.
+- Three basic Lantern Yokai are now included in server-owned combat sweeps; advanced bosses, quest rewards and four-style loadouts remain pending. See [YOKAI_01_TEST.md](YOKAI_01_TEST.md).
 - Studio runtime test + high-ping combat evaluation + low-end mobile profile + screenshot matching ART-001..004.
-- Combat sweeps currently target other players only; later introduce damageable NPCs with role/faction filter and server-owned health.
+- Combat sweeps target other players and three tagged original Moonfall Lantern Yokai; later introduce stronger faction filters, boss resistances and secure loot rewards.
 
 **Pass gate:** 2 players can fight outside the safe hub without duplicate hits or remote exploits; attack timings, parry/guardbreak, stamina, movement, weapon attachment, regional Veilfall and safe-zone behavior are confirmed in Studio.
