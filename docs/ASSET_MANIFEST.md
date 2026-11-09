@@ -42,3 +42,5 @@ Each item requires visual side-by-side review against the actual uploaded four P
 - Animation design and Studio publishing/verification: `docs/SHINOBI_ANIMATION_PIPELINE.md`.
 
 - `src/server/DojoTraining.server.lua`: ART-001/004 ceremonial practice-post geometry with ivory mask motifs, warm-gold bands and a spirit-violet practice ring. Three tagged server-side training hitboxes; **not** the final asset kit.
+
+- `src/server/DuelVeilfall.lua`: original ART-001/004 procedural round-local raised spectral routes and rift ring for Shadow Duel, still a greybox. Separate from open-world RegionalVeilfall; low-poly art replacement pending the asset workstream and Studio gameplay QA.
