@@ -17,7 +17,7 @@ Original Japanese fantasy; competitive third-person melee; responsive traversal 
 ### P0 — Foundation [GitHub files committed; Studio sync pending]
 Source folders, Rojo map, art catalog, original design notes, VFX requirements. Verify Rojo connection and startup output.
 
-### P1 — Combat vertical slice [server-timed sweeps, stamina, touch/controller input, Veilblade blockout committed; Studio playtest pending]
+### P1 — Combat vertical slice [server-timed sweeps, stamina, mobile/controller input, equipped-weapon enforcement, Veilblade grip poses and blade Trail committed; Studio playtest pending]
 Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
 
 ### P2 — Mythic + Veilfall [regional Moonfall bridge cycle and Kitsune decoy prototype committed; Studio playtest pending]
@@ -26,7 +26,7 @@ Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning
 ### P3 — Match loop [not started]
 Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic dojo return.
 
-### P4 — Content MVP [not started]
+### P4 — Content MVP [optional animation catalog and visual fallback coded; actual model/rig/animation assets pending]
 Four styles, eight weapons, three masks, two finished arenas, dojo, weapon sounds, animations, gameplay VFX and HUD. Validate mobile and desktop graphics budgets.
 
 ### P5 — Progression / collection [session-only Spirit Shards and weapon mastery prototype committed; persistence and economy pending]
@@ -49,6 +49,9 @@ Reviewed three user-provided Roblox projects; architectural findings and safety 
 
 ## Mandatory visual production gate
 Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The four approved reference PNGs ART-001..004 are uploaded and recorded in ASSET_MANIFEST.md. Additional asset boards remain pending.
+
+## Animation integration v0.4
+`src/shared/AnimationCatalog.lua` holds empty slots for *owned* Shinobi animation IDs. `src/client/ShinobiAnimation.client.lua` plays authored tracks when available or uses temporary local Tool.Grip poses; the blade Trail follows only a server-accepted swing. **No animation assets have been published or verified**. Source-of-truth production guide: [SHINOBI_ANIMATION_PIPELINE.md](SHINOBI_ANIMATION_PIPELINE.md). Attacks now require Veilblade equipped and keep damage authority on the server. Studio QA remains open in issue #21.
 
 ## Current verification and production tasks
 - [Issue #19](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/19): 2-player reward/appearance QA.
