@@ -139,7 +139,10 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
 
                     hitRegistry[opponent] = true
                     local opponentState = getState(opponent)
+                    local serverParryUntil = opponent:GetAttribute("KageboundParryUntil") or 0
                     local isParrying = os.clock() <= opponentState.parryUntil
+                        and typeof(serverParryUntil) == "number"
+                        and os.clock() <= serverParryUntil
                         and facing(opponentRoot, attackerRoot.Position, 0.25)
 
                     if isParrying and not (heavy and Rules.HeavyBreaksParry) then
