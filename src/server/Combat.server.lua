@@ -273,6 +273,7 @@ local function attack(player, heavy)
     end
 
     s.parryUntil = 0
+    player:SetAttribute("KageboundParryUntil",0)
     s.busyUntil = now+timeline.windup+timeline.active+timeline.recovery
     s.attackToken += 1
     local token = s.attackToken
