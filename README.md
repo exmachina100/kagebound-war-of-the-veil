@@ -8,14 +8,14 @@ An original Japanese-mythology-inspired Roblox competitive action game featuring
 - Repository foundation: initialized
 - Rojo files were reported visible by the user; current runtime verification of combat features remains pending
 - Art: four approved PNG concept boards uploaded on main, registered in docs/ASSET_MANIFEST.md
-- Gameplay: Moonfall Bamboo + art pass, first Shinobi attacks/parry/dash, Veilfall and Kitsune decoy coded; **not yet playtested in Roblox Studio**
+- Gameplay: Moonfall Bamboo + art pass, server-timed Shinobi katana strikes/parry/dash, server-owned stamina, cross-platform inputs, double jump, regional Veilfall and Kitsune decoy coded; **not yet playtested in Roblox Studio**
 
 ## Canonical MVP
 4 warrior styles (Shinobi, Ronin, Onmyoji, Oni Disciple); 8 main weapons; 3 mythic masks (Kitsune, Oni, Tengu); 2 arenas; 2 PvP modes; 1 dojo lobby.
 
 The first **vertical slice** is Moonfall Bamboo greybox + 2 players + Shinobi katana combo/parry/dash + Kitsune illusion + Veilfall + complete Shadow Duel round.
 
-Read [Visual standards](docs/ART_DIRECTION.md), [Prototype validation](docs/PROTOTYPE_01_TEST.md), [Roadmap](docs/ROADMAP.md), [VFX specification](docs/VFX_SPEC.md), [Asset manifest](docs/ASSET_MANIFEST.md), [Roblox sync](docs/ROBLOX_SYNC.md), and [Art prompts](assets/prompts/OPENART_SEEDANCE_SHOTLIST.md).
+Read [Combat 0.3 test](docs/COMBAT_03_TEST.md), [Grand World test](docs/WORLD_TESTING.md), [Visual standards](docs/ART_DIRECTION.md), [Prototype validation](docs/PROTOTYPE_01_TEST.md), [Roadmap](docs/ROADMAP.md), [VFX specification](docs/VFX_SPEC.md), [Asset manifest](docs/ASSET_MANIFEST.md), [Roblox sync](docs/ROBLOX_SYNC.md), and [Art prompts](assets/prompts/OPENART_SEEDANCE_SHOTLIST.md).
 
 ## Rojo quick start
 1. Clone this GitHub repository to your computer.
