@@ -5,6 +5,7 @@ local Profiles={}
 
 Profiles.Classes={
     Shinobi={
+        texture="Shinobi",
         core=Color3.fromRGB(237,73,139),edge=Color3.fromRGB(168,71,234),
         defense=Color3.fromRGB(132,215,252),
         motif="Crimson fox / razor crescent / ribbon afterimage",
@@ -12,6 +13,7 @@ Profiles.Classes={
         abilities={"Foxblade Three-Cut","Shadow Slip","Veilguard Counter","Foxfire Crosscut","Crimson Afterimage","Thousand-Tails Veil"}
     },
     Ronin={
+        texture="Ronin",
         core=Color3.fromRGB(113,203,252),edge=Color3.fromRGB(175,160,249),
         defense=Color3.fromRGB(218,241,255),
         motif="Moon crescent / crystalline clash / clean iai ribbon",
@@ -19,6 +21,7 @@ Profiles.Classes={
         abilities={"Crescent Draw","Wind Step","Moon Guard","Rising Tide Cut","Cross Moon","Full Moon Execution"}
     },
     Onmyoji={
+        texture="Onmyoji",
         core=Color3.fromRGB(183,116,249),edge=Color3.fromRGB(246,201,119),
         defense=Color3.fromRGB(221,197,255),
         motif="Ofuda seal / violet spirit ring / sacred paper orbit",
@@ -26,6 +29,7 @@ Profiles.Classes={
         abilities={"Ofuda Barrage","Spirit Step","Barrier Ward","Seal Prison","Divine Exorcism","Veil Liturgy"}
     },
     ["Oni Disciple"]={
+        texture="Oni",
         core=Color3.fromRGB(239,72,88),edge=Color3.fromRGB(165,79,219),
         defense=Color3.fromRGB(255,179,125),
         motif="Horn fracture / black-red shockwave / chain sparks",
