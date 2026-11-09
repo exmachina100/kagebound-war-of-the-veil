@@ -23,7 +23,7 @@ Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana com
 ### P2 — Mythic + Veilfall [regional Moonfall bridge cycle and Kitsune decoy prototype committed; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
-### P3 — Match loop [not started]
+### P3 — Match loop [Shadow Duel 1v1 best-of-five scripts committed; Studio test and Clan Clash pending]
 Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic dojo return.
 
 ### P4 — Content MVP [optional animation catalog and visual fallback coded; actual model/rig/animation assets pending]
@@ -69,3 +69,6 @@ Wall run and grapple, Yokai Hunt PvE, Spirit Run parkour, synchronized spirit fu
 
 ## Asset pipeline milestone — Veilblade v01 (concept completed / draft mesh, Roblox QA pending)
 The mandatory [asset production workflow](ASSET_CREATION_WORKFLOW.md), [style guide](STYLE_GUIDE.md) and [active queue](ASSET_PRODUCTION_QUEUE.md) are committed. First real artwork batch uses approved ART-003 as OpenArt image-to-image reference: the Veilblade 2K turnaround is generated. A separate original 516-triangle parametric GLB/OBJ mesh draft and source script were exported in the conversation as a handoff ZIP, **not yet uploaded to GitHub or Roblox Studio**. Do not claim screenshot parity or replace the live procedural Tool before issue [#24](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/24) passes.
+
+## Shadow Duel multiplayer QA
+The code in `src/server/ShadowDuel.server.lua`, `DuelService.lua`, `DuelRules.lua` and `src/client/ShadowDuelHUD.client.lua` provides an opt-in first-to-three / best-of-five 1v1 arena prototype. The dedicated [Studio test](SHADOW_DUEL_TEST.md) is required before marking P3 complete. Current prototype remains separate from final arena art and round-triggered Veilfall.
