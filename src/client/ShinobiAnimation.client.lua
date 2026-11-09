@@ -18,6 +18,8 @@ local failedTracks = {}
 local baseGrips = setmetatable({}, {__mode="k"})
 local activeTween = nil
 local poseSequence = 0
+local trailSequence = 0
+local lastPose = nil
 
 local function stopTween()
     if activeTween then activeTween:Cancel() activeTween=nil end
@@ -58,8 +60,12 @@ end
 local function playTrack(key)
     local track = getTrack(key)
     if not track then return false end
-    -- Play only on the owning client; Roblox replicates eligible character tracks.
-    -- Never connect markers to FireServer or treat them as damage authorization.
+    -- A combo should replace the previous attack track, not blend indefinitely.
+    for name,other in pairs(tracks) do
+        if name~=key and other.IsPlaying then other:Stop(.05) end
+    end
+    -- Play only on the owning client; eligible player tracks replicate.
+    -- Damage remains server-timed and independent of cosmetic marker callbacks.
     track:Play(0.06,1,1)
     return true
 end
@@ -88,9 +94,10 @@ end
 local function beginPose(key,windup,recovery)
     poseSequence+=1
     local token=poseSequence
-    if playTrack(key) then return end
+    local authored = playTrack(key)
     local tool=equippedVeilblade()
-    if not tool then return end
+    lastPose = {key=key, authored=authored, tool=tool, sequence=token}
+    if authored or not tool then return end
 
     local angles={
         Light1={-35,-30,35},
@@ -109,8 +116,49 @@ local function beginPose(key,windup,recovery)
     end)
 end
 
+-- A blade-bound Trail follows the actual equipped tool locally; remote players
+-- still receive authored combat VFX via CombatVFX.client.lua.
+local function activeBladeTrail()
+    local tool=equippedVeilblade()
+    if not tool then return end
+    local trail=tool:FindFirstChild("VeilbladeTrail",true)
+    if not trail or not trail:IsA("Trail") then return end
+    trailSequence+=1
+    local token=trailSequence
+    trail.Enabled=true
+    task.delay(.16,function()
+        if trailSequence==token and trail.Parent then
+            trail.Enabled=false
+        end
+    end)
+end
+
+local function finishSwing(action,combo)
+    local pose=lastPose
+    if not pose then return end
+    local expected=action=="Heavy" and "Heavy" or "Light"..tostring(combo or 1)
+    if pose.key~=expected or pose.sequence~=poseSequence then return end
+    activeBladeTrail()
+    if pose.authored then return end
+    local tool=pose.tool
+    if not tool or tool.Parent~=player.Character then return end
+    -- Fast slash follow-through; the original windup schedules the reset.
+    local angles={
+        Light1={26,18,-55},
+        Light2={-32,-18,56},
+        Light3={41,14,-70},
+        Heavy={55,35,-90}
+    }
+    local v=angles[expected] or {0,0,0}
+    local duration=Rules.AttackTimeline[action].active
+    gripPose(tool,CFrame.Angles(math.rad(v[1]),math.rad(v[2]),math.rad(v[3])),
+        math.max(.07,duration*.7))
+end
+
 local function onCharacter(character)
     poseSequence+=1
+    trailSequence+=1
+    lastPose=nil
     stopTween()
     for _,track in pairs(tracks) do
         track:Stop(.05)
@@ -136,6 +184,8 @@ combat.OnClientEvent:Connect(function(event,actor,arg1,arg2)
             beginPose("Heavy",Rules.AttackTimeline.Heavy.windup,
                 Rules.AttackTimeline.Heavy.active+Rules.AttackTimeline.Heavy.recovery)
         end
+    elseif event=="Swing" then
+        finishSwing(arg1,arg2)
     elseif event=="ParryStart" then
         beginPose("Parry",Rules.ParryWindow,.1)
     elseif event=="DashFX" then
