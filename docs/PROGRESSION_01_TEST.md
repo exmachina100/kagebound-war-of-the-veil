@@ -17,6 +17,7 @@ Source of truth: [WORLD_VISION](WORLD_VISION.md), [GAME_DESIGN](GAME_DESIGN.md),
 2. Roblox Studio: reconnect Rojo; choose **Test → Start** with two players; check Output.
 3. Explorer: verify `ReplicatedStorage/KageboundShared/RewardPolicy`, `ServerScriptService/KageboundServer/RewardService`, `ServerScriptService/KageboundServer/ShinobiAppearance`, `PlayerGui/KageboundProgressionHUD`.
 4. All 4 approved concept boards remain in `assets/concept-art` for side-by-side screenshot review.
+5. The new `StudioSmoke.server.lua` runs only in Studio and prints `[KAGEBOUND SMOKE PASS]` or `[KAGEBOUND SMOKE FAIL]` for expected server objects. Failures require investigation, and passes are not proof the game mechanics work.
 
 ## Reward and visual acceptance
 1. Spawn in Kage Dojo. Spirit Shards, Mastery and Yokai defeat counters begin at 0 for each joining player.
