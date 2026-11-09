@@ -37,10 +37,16 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Export goal: real static `.glb/.gltf` low-poly mesh kit (or `.obj` fallback) with editable source, safe collision proxies, pivot/scale and graphics tiers. Replace cosmetics only after two-player Studio validation, and keep server collision authoritative.
 - Production rule: existing approved concept images satisfy G2; no redundant image generation required if geometry can be modeled directly.
 
-## New original grand-scale VFX concepts (generated, packaging complete; binary push pending)
+## New original grand-scale VFX concepts (8 PNGs verified on GitHub main)
 - `KGB_VFX_FX006_OniBossEruption_CONCEPT_v01.png`: original boss-scale rupture visual reference (ART-001/002/004), 2D concept-draft only.
 - `KGB_VFX_FX008_VeilfallSequence_CONCEPT_v01.png`: phased portal and spectral route reference (ART-001/004), concept-draft only.
 - `KGB_VFX_FX005_KitsuneUltimate_CONCEPT_v01.png`: original Kitsune and high-energy sword attack reference (ART-001/002/003), concept-draft only.
 - `KGB_VFX_MythicMovesShowcase_CONCEPT_v01.png`: multi-ability showreel board, concept-draft only. Text rendered inside any image is not authoritative naming or proof of implemented abilities.
-- Source: user-facing `KAGEBOUND_VFX_ConceptPack_v01.zip`, four PNGs and `VFX_CONCEPT_MANIFEST.json`; expected extraction into `assets/concept-sheets/vfx-v01/`. **GitHub PNG binary upload has not been verified.**
+- Source: user-facing `KAGEBOUND_VFX_ConceptPack_v01.zip`, four PNGs and `VFX_CONCEPT_MANIFEST.json`; expected extraction into `assets/concept-sheets/vfx-v01/`. **GitHub PNG binary upload has been verified** for `assets/concept-sheets/vfx-v01/` and `assets/concept-sheets/clan-vfx-v01/`.
 - Next production task: create distinct transparent sprite sheets and optional low-poly FX geometry, add timing and mobile tiers, then Studio test. See [VFX_CONCEPT_HANDOFF.md](VFX_CONCEPT_HANDOFF.md).
+
+## Transparent texture development — new deliverables
+- Seven generated original RGBA 1024×1024 Grid4x4 flipbooks: Shinobi, Ronin, Onmyoji, Oni, Kitsune, Tengu, Parry. Handoff archive in this conversation: `KAGEBOUND_VFX_Flipbooks_v01.zip` (includes exact Python source and metadata). **Generated, but binary files not yet committed to GitHub or uploaded to Roblox.**
+- Target repository path: `assets/vfx/flipbooks/v01/`.
+- Runtime hookup committed: `src/shared/VFXTextureCatalog.lua` (no fake IDs) + `src/client/VFXSpriteEmitter.lua` + layered geometry `src/client/VFXFactory.lua`. Four class profiles and four class board references in `src/shared/VFXProfiles.lua`.
+- See [VFX_FLIPBOOK_IMPORT.md](VFX_FLIPBOOK_IMPORT.md) and [CLASS_VFX_PRODUCTION.md](CLASS_VFX_PRODUCTION.md). Next: local PNG upload, real asset IDs, Studio two-player VFX and mobile performance QA.
