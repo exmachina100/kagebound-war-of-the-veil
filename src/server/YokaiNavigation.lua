@@ -6,7 +6,7 @@ local Workspace=game:GetService("Workspace")
 local Navigation={}
 
 function Navigation.New()
-    return {waypoints=nil,index=2,replanAt=0,target=nil,failed=false}
+    return {waypoints=nil,index=2,replanAt=0,target=nil,failed=false,blockedReplan=false}
 end
 
 local function planarDelta(from,to)
@@ -37,6 +37,7 @@ function Navigation.MoveToward(model,target,speed,dt,state)
         local targetMoved=not state.target or planarDelta(state.target,target).Magnitude>11
         if now>=state.replanAt or targetMoved then
             state.replanAt=now+2.5 -- cap expensive navigation computations
+            state.blockedReplan=false
             state.target=target
             local path=PathfindingService:CreatePath({
                 AgentRadius=2.5,
@@ -78,6 +79,7 @@ function Navigation.MoveToward(model,target,speed,dt,state)
         state.index=2
         state.target=target
         state.failed=false
+        state.blockedReplan=false
     end
 
     local desired=planarDelta(origin,goal)
@@ -85,7 +87,10 @@ function Navigation.MoveToward(model,target,speed,dt,state)
     -- A waypoint can become blocked after being calculated; hold position
     -- and allow the next capped replan instead of walking through geometry.
     if obstacle(model,origin,goal) then
-        state.replanAt=os.clock()+1
+        if not state.blockedReplan then
+            state.replanAt=os.clock()+1
+            state.blockedReplan=true
+        end
         model:SetAttribute("NavigationStatus","Blocked")
         return false
     end
