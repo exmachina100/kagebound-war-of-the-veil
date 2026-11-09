@@ -5,6 +5,7 @@ local Players=game:GetService("Players")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Workspace=game:GetService("Workspace")
 local cfg=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
+local Rewards=require(script.Parent:WaitForChild("RewardService"))
 if not cfg.Enabled then return end
 local world=Workspace:WaitForChild("KageboundWorld",45)
 if not world then warn("[KAGEBOUND] Quest system: world missing") return end
@@ -58,9 +59,14 @@ prompt.Triggered:Connect(function(player)
         send(player,"Follow the north lantern road and discover the Moonfall Bamboo shrine.")
     elseif st==2 then
         quests[player.UserId]=3
-        local shards=(player:GetAttribute("KageboundQuestShards") or 0)
-        player:SetAttribute("KageboundQuestShards",shards+25)
-        send(player,"QUEST COMPLETE: +25 Spirit Shards (prototype session only).")
+        local awarded, receipt=Rewards.Award(player,"WhispersQuest","first-completion")
+        if awarded then
+            -- Retain historical quest-specific attribute for old HUDs.
+            player:SetAttribute("KageboundQuestShards",25)
+            send(player,"QUEST COMPLETE: +25 Spirit Shards (session only).")
+        else
+            send(player,"QUEST COMPLETE: reward already recorded for this session.")
+        end
     else
         send(player,"The veil remembers your journey. Explore the other realms.")
     end
