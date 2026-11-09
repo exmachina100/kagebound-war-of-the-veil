@@ -34,3 +34,9 @@ Each item requires visual side-by-side review against the actual uploaded four P
 
 - `src/server/ShinobiAppearance.server.lua`: ART-001/002 procedural avatar accessory pass with charcoal plated silhouette, crimson scarf, angular black hair, tilted ivory fox mask and gold accents. Zero-collision welds; **not** an imported R15 rig, finished mask mesh or finalized character model.
 - `src/client/ProgressionHUD.client.lua`: ART-001/004-inspired small Spirit Shards / Veilblade Mastery HUD, reflects server-owned session counters.
+
+## Optional animation pipeline v0.4
+- `src/shared/AnimationCatalog.lua`: slots for Light1/2/3, Heavy, Parry, Dash, DoubleJump and Idle. All slot IDs **intentionally empty** until game-owned animations are published; no fake Roblox asset IDs.
+- `src/client/ShinobiAnimation.client.lua`: plays owned Animator tracks when available; otherwise uses a local, temporary Veilblade `Tool.Grip` windup/follow-through. Does **not** authorize damage.
+- `src/server/Veilblade.server.lua`: original ART-003-derived edge `Trail` with two blade attachments, a cosmetic proxy enabled on server-accepted Swing by the client. Not a final slash texture.
+- Animation design and Studio publishing/verification: `docs/SHINOBI_ANIMATION_PIPELINE.md`.
