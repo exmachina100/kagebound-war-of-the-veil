@@ -1,0 +1,27 @@
+# KAGEBOUND: WAR OF THE VEIL
+
+**Two worlds. One battlefield. Become the legend.**
+
+An original Japanese-mythology-inspired Roblox competitive action game featuring melee combat, mythic masks and **Veilfall**, a mid-match transformation of the battlefield.
+
+## Project status
+- Repository foundation: initialized
+- Roblox Studio and Rojo live sync: **not yet connected**
+- Art: concept references created; PNG boards **not yet uploaded to this repository**
+- Gameplay: Luau boot foundation only; playable combat **not yet implemented**
+
+## Canonical MVP
+4 warrior styles (Shinobi, Ronin, Onmyoji, Oni Disciple); 8 main weapons; 3 mythic masks (Kitsune, Oni, Tengu); 2 arenas; 2 PvP modes; 1 dojo lobby.
+
+The first **vertical slice** is Moonfall Bamboo greybox + 2 players + Shinobi katana combo/parry/dash + Kitsune illusion + Veilfall + complete Shadow Duel round.
+
+Read [Roadmap](docs/ROADMAP.md), [VFX specification](docs/VFX_SPEC.md), [Asset manifest](docs/ASSET_MANIFEST.md), [Roblox sync](docs/ROBLOX_SYNC.md), and [Art prompts](assets/prompts/OPENART_SEEDANCE_SHOTLIST.md).
+
+## Rojo quick start
+1. Clone this GitHub repository to your computer.
+2. Install Rojo CLI and the compatible Rojo Roblox Studio plugin.
+3. Run `rojo serve` in the repository folder.
+4. Open Roblox Studio, create/open the target place, connect using Rojo.
+5. Inspect Explorer for KageboundShared, KageboundServer, and KageboundClient.
+
+**Important:** Concept PNGs are illustrative references, not rigged avatars, particle systems or importable 3D gameplay objects. Use Roblox Studio to build/test the actual game.
