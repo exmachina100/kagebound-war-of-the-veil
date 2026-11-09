@@ -10,7 +10,7 @@ Profiles.Classes={
         defense=Color3.fromRGB(132,215,252),
         motif="Crimson fox / razor crescent / ribbon afterimage",
         board="assets/concept-sheets/clan-vfx-v01/KGB_VFX_Shinobi_ConceptSheet_v01.png",
-        abilities={"Foxblade Three-Cut","Shadow Slip","Veilguard Counter","Foxfire Crosscut","Crimson Afterimage","Thousand-Tails Veil"}
+        abilities={"Veil Slash","Shadow Dash","Parry Burst","Fox Veil Illusion","Cross-Cut","Veil Release"}
     },
     Ronin={
         texture="Ronin",
