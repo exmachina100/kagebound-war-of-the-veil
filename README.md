@@ -36,3 +36,6 @@ Original Kitsune decoy, Oni burst, and Tengu wind actives are scripted with serv
 
 ## Four-class visual systems and VFX assets
 The four warrior classes have original visual profiles tied to the verified VFX sheets in `assets/concept-sheets/clan-vfx-v01/`. See [Class VFX bible](docs/CLASS_VFX_PRODUCTION.md) and [Grid4x4 flipbook handoff](docs/VFX_FLIPBOOK_IMPORT.md). The current game renders layered local geometry and can optionally display uploaded transparent ParticleEmitter flipbooks; actual Roblox texture asset IDs remain blank until publication. Oni now damages Moonfall Yokai server-side, and Kitsune can distract one Lantern Yokai attack. These code changes remain **Studio-unverified**.
+
+## Safe progression persistence scaffold
+`ProfileSchema.lua` and `ProfileStore.lua` prepare versioned UpdateAsync event-based saves, but `PersistenceConfig.Enabled=false` and no live progression save integration exists. Current rewards remain session-only. Follow [persistence safety gates](docs/PERSISTENCE_GATE.md) before enabling a private test place.
