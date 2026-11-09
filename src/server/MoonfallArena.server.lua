@@ -1,3 +1,11 @@
+-- Legacy duel-area renderer: disabled when the Grand World is active.
+local _shared = game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared")
+local _worldConfig = require(_shared:WaitForChild("WorldConfig"))
+if _worldConfig.Enabled then
+    print("[KAGEBOUND] Legacy arena component skipped in Grand World mode: MoonfallArena.server.lua")
+    return
+end
+
 -- Moonfall Bamboo: repeatable procedural greybox for KAGEBOUND PvP.
 -- Every part is created by the server; no manual Studio geometry required.
 local Workspace = game:GetService("Workspace")
