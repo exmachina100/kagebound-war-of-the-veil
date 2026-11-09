@@ -1,20 +1,11 @@
--- Server-authoritative KAGEBOUND combat prototype.
--- All hit tests, damage, cooldowns and parry outcomes are decided here.
+-- KAGEBOUND Combat 0.3 | original server-authored windup / active / recovery melee.
+-- ART-001/003 drive VFX; hitboxes, damage, parry and stamina are never client-authored.
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Shared = ReplicatedStorage:WaitForChild("KageboundShared")
 local Rules = require(Shared:WaitForChild("CombatRules"))
 local World = require(Shared:WaitForChild("WorldConfig"))
-local function protectedHub(pos)
-    if not World.Enabled then return false end
-    for _,zone in ipairs(World.Zones) do
-        if zone.kind=="SafeHub" then
-            local offset=Vector2.new(pos.X-zone.x,pos.Z-zone.z)
-            if offset.Magnitude <= zone.radius then return true end
-        end
-    end
-    return false
-end
+
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
     remote = Instance.new("RemoteEvent")
@@ -22,39 +13,51 @@ if not remote then
     remote.Parent = ReplicatedStorage
 end
 
-local LIGHT_DAMAGE = Rules.LightDamage
-local LIGHT_RANGE = Rules.LightRange
-local HEAVY_RANGE = Rules.HeavyRange
-local PARRY_WINDOW = Rules.ParryWindow
-local PARRY_COOLDOWN = Rules.ParryCooldown
-local DASH_COOLDOWN = Rules.DashCooldown
-local DASH_SPEED = Rules.DashSpeed
 local state = {}
 
-local function getState(player)
-    if not state[player] then
-        state[player] = {
-            lightAt = -math.huge, heavyAt = -math.huge, parryAt = -math.huge, dashAt = -math.huge,
-            comboAt = -math.huge, combo = 0, parryUntil = 0,
-            stamina = Rules.MaxStamina, staminaAt = os.clock()
-        }
+local function protectedHub(pos)
+    if not World.Enabled then return false end
+    for _, zone in ipairs(World.Zones) do
+        if zone.kind == "SafeHub" then
+            local offset = Vector2.new(pos.X-zone.x, pos.Z-zone.z)
+            if offset.Magnitude <= zone.radius then return true end
+        end
     end
+    return false
+end
+
+local function resetState(player)
+    state[player] = {
+        lightAt = -math.huge, heavyAt = -math.huge,
+        parryAt = -math.huge, dashAt = -math.huge,
+        comboAt = -math.huge, combo = 0,
+        parryUntil = 0, busyUntil = 0, staggerUntil = 0,
+        attackToken = 0,
+        stamina = Rules.MaxStamina, staminaAt = os.clock()
+    }
+    player:SetAttribute("KageboundStamina", Rules.MaxStamina)
+end
+
+local function getState(player)
+    if not state[player] then resetState(player) end
     return state[player]
 end
--- Stamina is tracked exclusively on the server; Player attributes are read-only HUD mirrors.
+
 local function updateStamina(player, s, now)
     local elapsed = math.clamp(now - s.staminaAt, 0, 1)
-    s.stamina = math.min(Rules.MaxStamina, s.stamina + elapsed * Rules.StaminaRegenPerSecond)
+    s.stamina = math.min(Rules.MaxStamina, s.stamina + elapsed*Rules.StaminaRegenPerSecond)
     s.staminaAt = now
-    player:SetAttribute("KageboundStamina", math.floor(s.stamina + .5))
+    player:SetAttribute("KageboundStamina", math.floor(s.stamina+0.5))
 end
+
 local function spend(player, s, action, now)
     updateStamina(player, s, now)
     if not Rules.CanSpend(s.stamina, action) then return false end
     s.stamina -= Rules.ActionCost[action]
-    player:SetAttribute("KageboundStamina", math.floor(s.stamina + .5))
+    player:SetAttribute("KageboundStamina", math.floor(s.stamina+0.5))
     return true
 end
+
 local function getRig(player)
     local char = player.Character
     if not char then return nil end
@@ -63,114 +66,200 @@ local function getRig(player)
     if not humanoid or not root or humanoid.Health <= 0 then return nil end
     return char, humanoid, root
 end
-local function horizontalUnit(vec)
-    if typeof(vec) ~= "Vector3" then return nil end
-    if vec.X ~= vec.X or vec.Z ~= vec.Z or math.abs(vec.X) > 100000 or math.abs(vec.Z) > 100000 then return nil end
-    local horizontal = Vector3.new(vec.X, 0, vec.Z)
-    if horizontal.Magnitude < 0.1 then return nil end
-    return horizontal.Unit
+
+local function horizontalUnit(vector)
+    if typeof(vector) ~= "Vector3" then return nil end
+    if vector.X ~= vector.X or vector.Z ~= vector.Z then return nil end
+    if math.abs(vector.X) > 100000 or math.abs(vector.Z) > 100000 then return nil end
+    local horizontal = Vector3.new(vector.X,0,vector.Z)
+    return horizontal.Magnitude > 0.1 and horizontal.Unit or nil
 end
-local function facing(root, targetPosition)
-    local displacement = targetPosition - root.Position
-    local dir = horizontalUnit(displacement)
-    if not dir then return false end
+
+local function facing(root, targetPosition, threshold)
+    local toTarget = horizontalUnit(targetPosition-root.Position)
     local forward = horizontalUnit(root.CFrame.LookVector)
-    return forward and forward:Dot(dir) > 0.25
+    return toTarget ~= nil and forward ~= nil and forward:Dot(toTarget) >= threshold
 end
-local function obstruction(char, targetChar, origin, destination)
+
+local function hasLineOfSight(attackerChar, targetChar, from, to)
     local params = RaycastParams.new()
     params.FilterType = Enum.RaycastFilterType.Exclude
-    params.FilterDescendantsInstances = {char, targetChar}
-    local hit = workspace:Raycast(origin, destination - origin, params)
-    return hit ~= nil
+    params.FilterDescendantsInstances = {attackerChar, targetChar}
+    params.RespectCanCollide = true -- ignore decorative leaves and local VFX
+    return workspace:Raycast(from, to-from, params) == nil
 end
+
+-- Active strike: rectangular sweep in front of the character, sampled three
+-- times. Ignore world art and only query character assemblies; line of sight
+-- prevents hitting behind walls. The hitRegistry prevents multi-hit per swing.
+local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range, hitRegistry)
+    local targets = {}
+    for _, other in ipairs(Players:GetPlayers()) do
+        if other ~= player then
+            local otherChar, _, otherRoot = getRig(other)
+            if otherRoot and not protectedHub(otherRoot.Position) then
+                table.insert(targets, otherChar)
+            end
+        end
+    end
+    if #targets == 0 then return false end
+
+    local params = OverlapParams.new()
+    params.FilterType = Enum.RaycastFilterType.Include
+    params.FilterDescendantsInstances = targets
+    params.MaxParts = 128
+    local size = Rules.AttackTimeline[heavy and "Heavy" or "Light"]
+    local box = attackerRoot.CFrame*CFrame.new(0,0,-(range/2+0.6))
+    local candidates = workspace:GetPartBoundsInBox(box, Vector3.new(size.width,size.height,range), params)
+    local hitCount = 0
+
+    for _, part in ipairs(candidates) do
+        local model = part:FindFirstAncestorOfClass("Model")
+        local opponent = model and Players:GetPlayerFromCharacter(model)
+        if opponent and opponent ~= player and not hitRegistry[opponent] then
+            local opponentChar, opponentHum, opponentRoot = getRig(opponent)
+            if opponentRoot and opponentChar == model then
+                local delta = opponentRoot.Position-attackerRoot.Position
+                if delta.Magnitude <= range+1 and math.abs(delta.Y) <= 6
+                    and facing(attackerRoot, opponentRoot.Position, 0.26)
+                    and not protectedHub(opponentRoot.Position)
+                    and hasLineOfSight(attackerChar, opponentChar,
+                        attackerRoot.Position+Vector3.new(0,1,0),
+                        opponentRoot.Position+Vector3.new(0,1,0)) then
+
+                    hitRegistry[opponent] = true
+                    local opponentState = getState(opponent)
+                    local isParrying = os.clock() <= opponentState.parryUntil
+                        and facing(opponentRoot, attackerRoot.Position, 0.25)
+
+                    if isParrying and not (heavy and Rules.HeavyBreaksParry) then
+                        opponentState.parryUntil = 0
+                        s.staggerUntil = os.clock()+Rules.ParryStagger
+                        s.attackToken += 1 -- parry cancels further active samples
+                        remote:FireAllClients("Parried", opponent, player)
+                        return true
+                    end
+
+                    if isParrying then
+                        opponentState.parryUntil = 0
+                        opponentState.busyUntil = os.clock()+Rules.GuardBreakStagger
+                        opponentState.staggerUntil = opponentState.busyUntil
+                        opponentState.attackToken += 1
+                        remote:FireAllClients("GuardBroken", opponent, player)
+                    end
+                    opponentHum:TakeDamage(damage)
+                    remote:FireAllClients("Hit", opponent, damage)
+                    hitCount += 1
+                    if hitCount >= Rules.MaxPlayersHitPerSwing then return true end
+                end
+            end
+        end
+    end
+    return false
+end
+
 local function attack(player, heavy)
     local now = os.clock()
     local s = getState(player)
     local char, _, root = getRig(player)
     if not root or protectedHub(root.Position) then return end
-    local combo, cooldown, damage, range
+    if now < s.busyUntil or now < s.staggerUntil then return end
+
+    local action = heavy and "Heavy" or "Light"
+    local timeline = Rules.AttackTimeline[action]
+    local combo, damage, range
+
     if heavy then
-        if now - s.heavyAt < Rules.HeavyCooldown or now - s.lightAt < Rules.LightCooldown then return end
-        if not spend(player, s, "Heavy", now) then return end
+        if now-s.heavyAt < Rules.HeavyCooldown or now-s.lightAt < Rules.LightCooldown then return end
+        if not spend(player,s,"Heavy",now) then return end
         s.heavyAt = now
         s.combo = 0
-        combo, cooldown, damage, range = 0, Rules.HeavyCooldown, Rules.HeavyDamage, HEAVY_RANGE
+        combo, damage, range = 0, Rules.HeavyDamage, Rules.HeavyRange
     else
-        if now - s.lightAt < Rules.LightCooldown or now - s.heavyAt < 0.7 then return end
-        if not spend(player, s, "Light", now) then return end
+        if now-s.lightAt < Rules.LightCooldown or now-s.heavyAt < 0.7 then return end
+        if not spend(player,s,"Light",now) then return end
         s.lightAt = now
-        s.combo = Rules.NextCombo(s.combo, now - s.comboAt)
+        s.combo = Rules.NextCombo(s.combo, now-s.comboAt)
         s.comboAt = now
-        combo, cooldown, damage, range = s.combo, Rules.LightCooldown, LIGHT_DAMAGE[s.combo], LIGHT_RANGE
+        combo, damage, range = s.combo, Rules.LightDamage[s.combo], Rules.LightRange
     end
-    remote:FireAllClients("Swing", player, heavy and "Heavy" or "Light", combo)
-    for _, opponent in ipairs(Players:GetPlayers()) do
-        if opponent ~= player then
-            local otherChar, otherHum, otherRoot = getRig(opponent)
-            if otherRoot and not protectedHub(otherRoot.Position) then
-                local offset = otherRoot.Position - root.Position
-                if offset.Magnitude <= range and math.abs(offset.Y) <= 6 and facing(root, otherRoot.Position) and not obstruction(char, otherChar, root.Position+Vector3.new(0,2,0), otherRoot.Position+Vector3.new(0,2,0)) then
-                    local otherState = getState(opponent)
-                    if now <= otherState.parryUntil and facing(otherRoot, root.Position) then
-                        otherState.parryUntil = 0
-                        remote:FireAllClients("Parried", opponent, player)
-                    else
-                        otherHum:TakeDamage(damage)
-                        remote:FireAllClients("Hit", opponent, damage)
-                    end
-                end
+
+    s.parryUntil = 0
+    s.busyUntil = now+timeline.windup+timeline.active+timeline.recovery
+    s.attackToken += 1
+    local token = s.attackToken
+    remote:FireAllClients("Windup",player,action,combo)
+
+    task.delay(timeline.windup,function()
+        local actorChar, _, actorRoot = getRig(player)
+        if not actorRoot or actorChar ~= char or state[player] ~= s
+            or s.attackToken ~= token or protectedHub(actorRoot.Position) then return end
+        remote:FireAllClients("Swing",player,action,combo)
+
+        local hitRegistry = {}
+        for i=1,Rules.AttackSamples do
+            actorChar, _, actorRoot = getRig(player)
+            if not actorRoot or actorChar ~= char or s.attackToken ~= token
+                or protectedHub(actorRoot.Position) then break end
+            local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
+            if interrupted then break end
+            if i < Rules.AttackSamples then
+                task.wait(timeline.active/(Rules.AttackSamples-1))
             end
         end
-    end
+    end)
 end
 
 remote.OnServerEvent:Connect(function(player, action, payload)
     if typeof(action) ~= "string" then return end
     local now = os.clock()
     local s = getState(player)
-    local _, humanoid, root = getRig(player)
+    local _, _, root = getRig(player)
     if not root then return end
-    if protectedHub(root.Position) and (action == "Light" or action == "Heavy" or action == "Parry") then return end
+
     if action == "Light" then
-        attack(player, false)
+        attack(player,false)
     elseif action == "Heavy" then
-        attack(player, true)
+        attack(player,true)
     elseif action == "Parry" then
-        if now - s.parryAt < PARRY_COOLDOWN then return end
-        if not spend(player, s, "Parry", now) then return end
+        if protectedHub(root.Position) or now < s.busyUntil
+            or now < s.staggerUntil or now-s.parryAt < Rules.ParryCooldown then return end
+        if not spend(player,s,"Parry",now) then return end
         s.parryAt = now
-        s.parryUntil = now + PARRY_WINDOW
-        remote:FireAllClients("ParryStart", player)
+        s.parryUntil = now+Rules.ParryWindow
+        s.busyUntil = s.parryUntil
+        remote:FireAllClients("ParryStart",player)
     elseif action == "Dash" then
-        if now - s.dashAt < DASH_COOLDOWN then return end
+        if now < s.busyUntil or now < s.staggerUntil
+            or now-s.dashAt < Rules.DashCooldown then return end
         local direction = horizontalUnit(payload)
-        if not direction then return end
-        if not spend(player, s, "Dash", now) then return end
-        -- Client supplies intent only, capped to a normalized direction.
-        -- Prevent dashing upward/flying; Roblox physics replicates movement.
+        if not direction or not spend(player,s,"Dash",now) then return end
         s.dashAt = now
-        root.AssemblyLinearVelocity = direction * DASH_SPEED + Vector3.new(0, math.max(root.AssemblyLinearVelocity.Y, 0), 0)
-        remote:FireAllClients("DashFX", player)
+        s.busyUntil = now+0.16
+        -- Client sends normalized intent; only the server controls velocity.
+        root.AssemblyLinearVelocity = direction*Rules.DashSpeed
+            + Vector3.new(0,math.clamp(root.AssemblyLinearVelocity.Y,0,35),0)
+        remote:FireAllClients("DashFX",player)
     end
 end)
 
-Players.PlayerAdded:Connect(function(player)
-    local s = getState(player)
-    player:SetAttribute("KageboundStamina", Rules.MaxStamina)
-end)
-for _,player in ipairs(Players:GetPlayers()) do
-    getState(player)
-    player:SetAttribute("KageboundStamina", Rules.MaxStamina)
+local function register(player)
+    resetState(player)
+    player.CharacterAdded:Connect(function()
+        resetState(player)
+    end)
 end
+Players.PlayerAdded:Connect(register)
+for _,player in ipairs(Players:GetPlayers()) do register(player) end
+Players.PlayerRemoving:Connect(function(player) state[player] = nil end)
+
 task.spawn(function()
     while true do
-        task.wait(.25)
-        local now = os.clock()
-        for player, s in pairs(state) do
-            if player.Parent then updateStamina(player,s,now) end
+        task.wait(0.25)
+        local now=os.clock()
+        for player,s in pairs(state) do
+            if player.Parent == Players then updateStamina(player,s,now) end
         end
     end
 end)
-Players.PlayerRemoving:Connect(function(player) state[player] = nil end)
-print("[KAGEBOUND] Shinobi combat server ready")
+print("[KAGEBOUND] Combat v0.3: server-timed active windows / box sweeps / safe hub")
