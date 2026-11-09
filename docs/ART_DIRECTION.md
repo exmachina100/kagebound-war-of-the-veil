@@ -5,10 +5,10 @@
 ## Canonical reference hierarchy
 
 Always open and inspect these **user-approved generated concept images** before producing a visual:
-1. **Key art** (`assets/concept-art/key-art.png` planned) — overall world style, silhouettes, atmosphere and palette.
-2. **Warrior style board** (`warrior-styles.png` planned) — Shinobi, Ronin, Onmyoji, Oni Disciple and their proportions.
-3. **Weapons and masks board** (`weapons-and-masks.png` planned) — katana geometry, Kitsune / Oni / Tengu mask identity and material treatment.
-4. **Environment / Veilfall board** (`environments-and-veilfall.png` planned) — Moonfall Bamboo arena, torii and shrine kits, Kage Dojo and sky-rift states.
+1. **Key art** (`assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_15 PM-1.png` (ART-001)) — overall world style, silhouettes, atmosphere and palette.
+2. **Warrior style board** (`assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_24 PM-2.png` (ART-002)) — Shinobi, Ronin, Onmyoji, Oni Disciple and their proportions.
+3. **Weapons and masks board** (`assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_30 PM-3.png` (ART-003)) — katana geometry, Kitsune / Oni / Tengu mask identity and material treatment.
+4. **Environment / Veilfall board** (`assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_36 PM-4.png` (ART-004)) — Moonfall Bamboo arena, torii and shrine kits, Kage Dojo and sky-rift states.
 5. **Gameplay VFX board** (`gameplay-vfx-abilities.png` planned) — attack trails, impact/parry effects, spirit attacks.
 6. **Modular props / UI board** (`modular-assets-game-ui.png` planned) — reusable architecture and interaction UI.
 
@@ -34,8 +34,8 @@ The concept art was generated in the earlier ChatGPT design session. **Image fil
 7. Record source, version, Roblox asset ID and verification results in the asset manifest.
 
 ## Current combat prototype
-`src/server/MoonfallArena.server.lua` is **GREYBOX ONLY**, built for gameplay testing; it is NOT the approved Moonfall Bamboo final visual treatment.
-`src/client/Combat.client.lua` pulses are **PLACEHOLDER VFX ONLY**; they are NOT the approved graphic slash/parry/VFX designs.
+`src/server/MoonfallArena.server.lua` is the **greybox collision layout**. `src/server/MoonfallArt.server.lua` adds a first stylized pass based on ART-001 and ART-004; this remains procedural art, not final approved importable meshes.
+`src/client/Combat.client.lua` pulses are **placeholder VFX**, complemented by the early art-inspired arcs in `src/client/CombatVFX.client.lua`. Neither is final production VFX.
 Do not treat working geometry or placeholder neon spheres as art approval.
 
 ## Review gates
