@@ -2,6 +2,7 @@
 -- Reference ART-003 weapon board. This is a *visual blockout*, not a final mesh.
 -- Server creates one tool per spawn; combat authority remains Combat.server.lua.
 local Players = game:GetService("Players")
+local ServerStorage = game:GetService("ServerStorage")
 
 local INK = Color3.fromRGB(32,30,51)
 local CRIMSON = Color3.fromRGB(145,31,65)
@@ -93,6 +94,49 @@ local function createKatana()
     return tool
 end
 
+-- Optional real Studio-imported OBJ mesh visual.
+-- The live hitbox/damage does NOT change; only the fallback parts are hidden.
+-- Importers must preserve an origin at the grip midpoint (0,0,0).
+local function applyImportedVisual(tool)
+    local art = ServerStorage:FindFirstChild("KageboundArt")
+    local reference = art and art:FindFirstChild("VeilbladeVisual")
+    if not reference or not reference:IsA("Model") then return false end
+    local handle = tool:FindFirstChild("Handle")
+    if not handle or not handle:IsA("BasePart") then return false end
+    local clone = reference:Clone()
+    clone.Name = "VeilbladeVisual"
+    clone.Parent = tool
+    clone:PivotTo(handle.CFrame)
+    local count = 0
+    for _, part in ipairs(clone:GetDescendants()) do
+        if part:IsA("BasePart") then
+            part.Anchored = false
+            part.CanCollide = false
+            part.CanTouch = false
+            part.CanQuery = false
+            part.Massless = true
+            part.CastShadow = false
+            local weld = Instance.new("WeldConstraint")
+            weld.Name = "VeilbladeVisualWeld"
+            weld.Part0 = handle
+            weld.Part1 = part
+            weld.Parent = part
+            count += 1
+        end
+    end
+    if count == 0 then
+        clone:Destroy()
+        return false
+    end
+    for _,part in ipairs(tool:GetChildren()) do
+        if part:IsA("BasePart") then
+            part.Transparency = 1 -- preserve invisible blade trail anchor
+        end
+    end
+    tool:SetAttribute("KageboundImportedVisual",true)
+    return true
+end
+
 local function equip(player,character)
     local backpack = player:WaitForChild("Backpack",8)
     local humanoid = character:WaitForChild("Humanoid",8)
@@ -102,6 +146,7 @@ local function equip(player,character)
     local held = character:FindFirstChild("Veilblade")
     if held then held:Destroy() end
     local tool = createKatana()
+    applyImportedVisual(tool) -- fallback stays visible unless Studio import exists
     tool.Parent = backpack
     -- Automatically equip for MVP combat; the player can switch weapons later.
     task.defer(function()
