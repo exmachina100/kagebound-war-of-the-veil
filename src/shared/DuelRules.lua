@@ -8,6 +8,8 @@ Rules.CountdownSeconds=3
 Rules.RoundBreakSeconds=4
 Rules.ArenaCenter=Vector3.new(1740,140,1720)
 Rules.SpawnOffset=28
+-- Predictable, per-round spectral routes. 20+6+18+6=50s within 70s round.
+Rules.Veilfall={StartAt=20,WarningSeconds=6,ActiveSeconds=18,ClosingSeconds=6}
 
 -- Health values are evaluated by the server only at round end.
 function Rules.ResolveRound(healthA,healthB)
