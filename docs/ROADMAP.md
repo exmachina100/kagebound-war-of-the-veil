@@ -1,5 +1,8 @@
 # Roadmap — KAGEBOUND: WAR OF THE VEIL
 
+## Primary experience: Grand World
+KAGEBOUND is a large-scale connected Japanese mythological adventure, not principally a small duel arena. Read [WORLD_VISION.md](WORLD_VISION.md) and test the [Grand World blockout](WORLD_TESTING.md). Five connected districts + exploration quest are committed but not Studio-validated. Ranked Shadow Duel/Clan Clash remain optional world activities; future Yokai Hunt, world bosses, PvP safety zones, traversal, collection, economy and dynamic regional Veilfall form the primary adventure loop. World issues #14–#18 track production.
+
 ## Design pillars
 Original Japanese fantasy; competitive third-person melee; responsive traversal and tactical parries; masks alter tactics rather than simply increasing damage; map transformations called **Veilfall**; no pay-to-win.
 
