@@ -38,6 +38,9 @@ Network/latency tests, accessibility, moderation and security, multiplayer soak,
 ## Current 0.3 acceptance gate
 Run [COMBAT_03_TEST.md](COMBAT_03_TEST.md) with two Studio clients. Verify world PvP safety, delayed katana sweeps, once-per-swing registration, stamina, guardbreak, double jump, Veilblade tool and regional Grand World Veilfall. The provided scripts are untested here; authored animations, final models, PvE and match state are still pending.
 
+## First world PvE encounter (code committed; Studio test pending)
+Three original Lantern Yokai are scripted in Moonfall Bamboo, with server-owned health, proximity pursuit, telegraphed attacks, parry handling, 14s respawn, and damage from the same swept katana hitboxes as PvP. These are **prototype enemies**, not a complete Yokai Hunt mode, boss AI, loot loop, or finished character assets. See [YOKAI_01_TEST.md](YOKAI_01_TEST.md) and issue #10.
+
 ## External system references
 Reviewed three user-provided Roblox projects; architectural findings and safety decisions in [REFERENCE_REPOSITORY_REVIEW.md](REFERENCE_REPOSITORY_REVIEW.md). KAGEBOUND implementations are original. Do not import copyrighted One Piece assets or scripts. Follow issue #9 (stamina security), #10 (Yokai AI), #11 (progression/shop/trading), #12 (animation marker hitboxes) and #13 (cross-platform controls).
 
