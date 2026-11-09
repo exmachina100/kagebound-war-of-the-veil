@@ -1,6 +1,6 @@
 # KAGEBOUND — Grand Mythic VFX concept handoff v01
 
-**Status: Four original GPT image-generation boards prepared in this conversation; source PNGs packaged as `KAGEBOUND_VFX_ConceptPack_v01.zip`. Not yet uploaded to GitHub.** The game source references remain approved ART-001 through ART-004 in `assets/concept-art`. No asset should claim to be an imported ParticleEmitter, animation or validated Roblox effect at this stage.
+**Status: Four original GPT image-generation boards and four warrior-class boards are verified on GitHub `main`** under `assets/concept-sheets/vfx-v01/` and `assets/concept-sheets/clan-vfx-v01/`. Original authoring packages remain archived in the conversation. The game source references remain approved ART-001 through ART-004 in `assets/concept-art`. No asset should claim to be an imported ParticleEmitter, animation or validated Roblox effect at this stage.
 
 ## Generated production references
 
@@ -29,6 +29,9 @@ All four are 1672x941 original RGB composite images. Their artwork is **visual s
 
 ## File and QA handoff
 
-Unpack the chat archive into `assets/concept-sheets/vfx-v01/` in the local KAGEBOUND repository, then commit these exact PNGs to GitHub main if appropriate. Do not claim they are present in GitHub until the push is verified.
+The eight reference PNGs are **already committed and verified** at the exact paths above. Do not re-upload duplicates. The next binaries are the seven generated transparent `KAGEBOUND_VFX_Flipbooks_v01.zip` atlases, which are **not yet committed**; see [VFX_FLIPBOOK_IMPORT.md](VFX_FLIPBOOK_IMPORT.md).
 
 Image generation in this chat is complete; isolating and animating individual VFX components into real usable Roblox effects is the *next agent task*. Tests must capture live gameplay screenshots alongside the same original art reference and consider the cost of overdraw on mobile.
+
+## Character sheet integration
+All 4 class boards (Shinobi, Ronin, Onmyoji, Oni Disciple) now have distinct **visual-only profiles** in `src/shared/VFXProfiles.lua` and the canonical motion/motif prompts in [CLASS_VFX_PRODUCTION.md](CLASS_VFX_PRODUCTION.md). Runtime effects use `src/client/VFXFactory.lua` and optional ParticleEmitter sprites after real Roblox asset IDs are supplied.
