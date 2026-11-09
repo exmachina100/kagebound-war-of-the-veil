@@ -4,6 +4,8 @@
 local Players=game:GetService("Players")
 local Workspace=game:GetService("Workspace")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
+local HttpService=game:GetService("HttpService")
+local Rewards=require(script.Parent:WaitForChild("RewardService"))
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled then return end
 
@@ -48,6 +50,10 @@ local function createEnemy(index,position)
     local model=Instance.new("Model")
     model.Name="Moonfall_LanternYokai_"..index
     model:SetAttribute("KageboundEnemy",true)
+    model:SetAttribute("EncounterToken",HttpService:GenerateGUID(false))
+    model:SetAttribute("LastDamagerUserId",0)
+    model:SetAttribute("LastDamagedAt",-math.huge)
+    model:SetAttribute("StaggerUntil",0)
     model:SetAttribute("Health",110)
     model:SetAttribute("MaxHealth",110)
     model:SetAttribute("AIState","Idle")
@@ -133,7 +139,11 @@ for i,home in ipairs(homes) do
             while model.Parent and (model:GetAttribute("Health") or 0)>0 do
                 local root=model.PrimaryPart
                 local target,distance=nearestPlayer(root.Position,home)
-                if target and distance<=10 then
+                local staggerUntil=model:GetAttribute("StaggerUntil") or 0
+                if os.clock()<staggerUntil then
+                    model:SetAttribute("AIState","Stagger")
+                    task.wait(.12)
+                elseif target and distance<=10 then
                     model:SetAttribute("AIState","Telegraph")
                     combat:FireAllClients("YokaiTelegraph",model)
                     task.wait(.70)
@@ -170,7 +180,21 @@ for i,home in ipairs(homes) do
             end
             if model.Parent then
                 model:SetAttribute("AIState","Defeated")
-                combat:FireAllClients("YokaiDefeated",model)
+                if (model:GetAttribute("Health") or 0)<=0 then
+                    local killerId=model:GetAttribute("LastDamagerUserId")
+                    local hitAt=model:GetAttribute("LastDamagedAt")
+                    if typeof(killerId)=="number" and killerId>0
+                        and typeof(hitAt)=="number" and os.clock()-hitAt<20 then
+                        local killer=Players:GetPlayerByUserId(killerId)
+                        if killer then
+                            local ok=Rewards.Award(killer,"LanternYokai",model:GetAttribute("EncounterToken"))
+                            if ok then
+                                print("[KAGEBOUND] Lantern Yokai defeat rewarded:",killer.UserId)
+                            end
+                        end
+                    end
+                    combat:FireAllClients("YokaiDefeated",model)
+                end
                 task.wait(.3) -- allow death effect to resolve before destruction
                 model:Destroy()
             end
