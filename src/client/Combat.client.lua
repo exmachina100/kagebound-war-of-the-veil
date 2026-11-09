@@ -19,6 +19,11 @@ local delays = {
 }
 
 local function request(action, payload)
+    if action=="Light" or action=="Heavy" then
+        local character=player.Character
+        local tool=character and character:FindFirstChild("Veilblade")
+        if not tool or not tool:IsA("Tool") then return end
+    end
     local now = os.clock()
     if now < localReady[action] then return end
     localReady[action] = now + delays[action]
