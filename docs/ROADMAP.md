@@ -66,3 +66,6 @@ Kage Dojo now contains 3 ceremonial practice posts within the world-defined trai
 Wall run and grapple, Yokai Hunt PvE, Spirit Run parkour, synchronized spirit fusion, sword clashes, clan rivalries and seasonal invasions.
 
 **Acceptance for first playable:** Two players complete a complete 1v1 round, with sword combat, defensive timing, mythic ability and Veilfall; return to dojo without manual intervention.
+
+## Asset pipeline milestone — Veilblade v01 (concept completed / draft mesh, Roblox QA pending)
+The mandatory [asset production workflow](ASSET_CREATION_WORKFLOW.md), [style guide](STYLE_GUIDE.md) and [active queue](ASSET_PRODUCTION_QUEUE.md) are committed. First real artwork batch uses approved ART-003 as OpenArt image-to-image reference: the Veilblade 2K turnaround is generated. A separate original 516-triangle parametric GLB/OBJ mesh draft and source script were exported in the conversation as a handoff ZIP, **not yet uploaded to GitHub or Roblox Studio**. Do not claim screenshot parity or replace the live procedural Tool before issue [#24](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/24) passes.
