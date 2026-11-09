@@ -31,3 +31,6 @@ Note: PNG concept boards are illustrative references, not directly importable 3D
 Each item requires visual side-by-side review against the actual uploaded four PNGs before final-art approval.
 
 - `src/server/YokaiEncounter.server.lua`: ART-001/002/004-inspired original Lantern Yokai enemy blockout (ivory ritual mask, vermilion horns, ink robe/body, violet spirit heart) with server-owned health. Procedural geometry only; no source mesh or authored animation yet.
+
+- `src/server/ShinobiAppearance.server.lua`: ART-001/002 procedural avatar accessory pass with charcoal plated silhouette, crimson scarf, angular black hair, tilted ivory fox mask and gold accents. Zero-collision welds; **not** an imported R15 rig, finished mask mesh or finalized character model.
+- `src/client/ProgressionHUD.client.lua`: ART-001/004-inspired small Spirit Shards / Veilblade Mastery HUD, reflects server-owned session counters.
