@@ -176,6 +176,11 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                     attackerRoot.Position+Vector3.new(0,1,0),
                     enemyRoot.Position+Vector3.new(0,1,0)) then
                 hitRegistry[model]=true
+                -- Reward attribution is written by this server-only hit resolver.
+                -- Set the attacker BEFORE Health triggers the defeat loop.
+                model:SetAttribute("LastDamagerUserId",player.UserId)
+                model:SetAttribute("LastDamagedAt",os.clock())
+                model:SetAttribute("StaggerUntil",os.clock()+0.17)
                 model:SetAttribute("Health",math.max(0,health-damage))
                 remote:FireAllClients("HitTarget",model,damage)
                 hitCount+=1
