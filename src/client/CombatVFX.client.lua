@@ -27,8 +27,13 @@ local function visible(root)
 end
 
 local function rootOf(actor)
-    local char = actor and actor.Character
-    return char and char:FindFirstChild("HumanoidRootPart")
+    if typeof(actor)~="Instance" then return nil end
+    if actor:IsA("Model") then return actor.PrimaryPart end
+    if actor:IsA("Player") then
+        local char=actor.Character
+        return char and char:FindFirstChild("HumanoidRootPart")
+    end
+    return nil
 end
 
 local function line(name,a,b,width,color,duration)
@@ -114,6 +119,14 @@ remote.OnClientEvent:Connect(function(event,actor,arg1,arg2)
         ring(root,C.parry,2.5,ringSegments,-1.4,"FX004_DoubleJump")
     elseif event=="Hit" then
         ring(root,C.gold,1.5,ringSegments,2,"FX002_Impact")
+    elseif event=="HitTarget" then
+        ring(root,C.gold,2.2,ringSegments,1.3,"FX002_YokaiHit")
+    elseif event=="YokaiTelegraph" then
+        ring(root,C.crimson,4,ringSegments,-1.2,"FX005_YokaiWarning")
+    elseif event=="YokaiStrike" then
+        ring(root,C.hot,4,ringSegments,1.2,"FX005_YokaiStrike")
+    elseif event=="YokaiDefeated" then
+        ring(root,C.veil,5,ringSegments,1.5,"FX005_YokaiDefeat")
     end
 end)
 print("[KAGEBOUND] Reference-driven combat VFX 0.3 initialized")
