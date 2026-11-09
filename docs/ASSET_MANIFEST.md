@@ -40,3 +40,5 @@ Each item requires visual side-by-side review against the actual uploaded four P
 - `src/client/ShinobiAnimation.client.lua`: plays owned Animator tracks when available; otherwise uses a local, temporary Veilblade `Tool.Grip` windup/follow-through. Does **not** authorize damage.
 - `src/server/Veilblade.server.lua`: original ART-003-derived edge `Trail` with two blade attachments, a cosmetic proxy enabled on server-accepted Swing by the client. Not a final slash texture.
 - Animation design and Studio publishing/verification: `docs/SHINOBI_ANIMATION_PIPELINE.md`.
+
+- `src/server/DojoTraining.server.lua`: ART-001/004 ceremonial practice-post geometry with ivory mask motifs, warm-gold bands and a spirit-violet practice ring. Three tagged server-side training hitboxes; **not** the final asset kit.
