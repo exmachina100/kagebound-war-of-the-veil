@@ -25,8 +25,9 @@ function Service.Apply(attacker,model,damage,maxRange,staggerSeconds)
         or attacker.Parent~=Players or DuelAuthority.IsParticipant(attacker) then
         return false
     end
-    if typeof(model)~="Instance" or not model:IsA("Model")
-        or model.Parent~=Workspace:FindFirstChild("KageboundEnemies")
+    local enemyFolder=Workspace:FindFirstChild("KageboundEnemies")
+    if not enemyFolder or typeof(model)~="Instance" or not model:IsA("Model")
+        or model.Parent~=enemyFolder
         or model:GetAttribute("KageboundEnemy")~=true
         or not model.PrimaryPart then return false end
     local char=attacker.Character
