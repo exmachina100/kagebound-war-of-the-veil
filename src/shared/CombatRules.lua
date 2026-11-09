@@ -1,18 +1,30 @@
--- Original KAGEBOUND combat policy. Reference architecture only:
--- docs/REFERENCE_REPOSITORY_REVIEW.md. No One Piece implementation imported.
+-- KAGEBOUND combat policy — ORIGINAL implementation grounded in GAME_DESIGN.md.
+-- Timings are server-owned. Animation events must never authorize damage.
 local Rules = {}
 
 Rules.LightDamage = {12, 14, 18}
 Rules.LightRange = 9
 Rules.HeavyRange = 11
 Rules.HeavyDamage = 27
-Rules.LightCooldown = .34
+Rules.LightCooldown = 0.34
 Rules.HeavyCooldown = 1.05
 Rules.ComboReset = 1
-Rules.ParryWindow = .32
+Rules.ParryWindow = 0.32
 Rules.ParryCooldown = 1.3
 Rules.DashCooldown = 1.7
 Rules.DashSpeed = 68
+
+-- The active frame begins *after* windup. Recovery blocks cancel-spam.
+-- Total light duration intentionally does not exceed the client input cadence.
+Rules.AttackTimeline = {
+    Light = {windup = 0.12, active = 0.12, recovery = 0.08, width = 8, height = 6},
+    Heavy = {windup = 0.35, active = 0.16, recovery = 0.30, width = 10, height = 6.5}
+}
+Rules.AttackSamples = 3
+Rules.HeavyBreaksParry = true
+Rules.ParryStagger = 0.28
+Rules.GuardBreakStagger = 0.35
+Rules.MaxPlayersHitPerSwing = 5
 
 Rules.MaxStamina = 100
 Rules.StaminaRegenPerSecond = 16
