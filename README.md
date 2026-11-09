@@ -42,3 +42,11 @@ The four warrior classes have original visual profiles tied to the verified VFX 
 
 ## Full original game-design concept
 The complete original 338-line KAGEBOUND concept has been preserved under [GAME_DESIGN_ORIGINAL_338.md](docs/GAME_DESIGN_ORIGINAL_338.md), without replacing the shorter production-oriented [GAME_DESIGN.md](docs/GAME_DESIGN.md). Use the full original for future gameplay/ability/weapon/mode decisions.
+
+## Original asset pipeline and first 3D exports
+Read [Asset Production Rules](docs/ASSET_CREATION_WORKFLOW.md), [Style Guide](docs/STYLE_GUIDE.md), [Active Queue](docs/ASSET_PRODUCTION_QUEUE.md), and [3D Import Handoff](docs/ASSET_IMPORT_HANDOFF_v01.md). The repo now includes **real, original OBJ+MTL low-poly Veilblade and Dojo practice-post models** in `assets/roblox-ready` plus deterministic Node generator/validator. They are source-controlled 3D drafts only; import, uploaded asset IDs and in-game validation are pending. Run:
+
+```powershell
+node tools/generate_kagebound_obj.js
+node tools/check_kagebound_obj.js
+```
