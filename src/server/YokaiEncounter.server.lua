@@ -172,30 +172,29 @@ for i,home in ipairs(homes) do
                                 combat:FireAllClients("YokaiStrike",model)
                                 target:Destroy()
                             elseif hum and target:IsA("Player") then
-                            local parryUntil=target:GetAttribute("KageboundParryUntil") or 0
-                            local toward=model.PrimaryPart.Position-enemyRoot.Position
-                            local facing=false
-                            local toEnemy=Vector3.new(toward.X,0,toward.Z)
-                            local face=Vector3.new(enemyRoot.CFrame.LookVector.X,0,enemyRoot.CFrame.LookVector.Z)
-                            if toEnemy.Magnitude>.1 and face.Magnitude>.1 then
-                                facing=face.Unit:Dot(toEnemy.Unit)>.25
-                            end
-                            if facing and typeof(parryUntil)=="number" and os.clock()<=parryUntil then
-                                target:SetAttribute("KageboundParryUntil",0)
-                                combat:FireAllClients("Parried",target)
-                            else
-                                local params=RaycastParams.new()
-                                params.FilterType=Enum.RaycastFilterType.Exclude
-                                params.FilterDescendantsInstances={model,target.Character}
-                                params.RespectCanCollide=true
-                                local from=model.PrimaryPart.Position
-                                local obstruction=workspace:Raycast(from,enemyRoot.Position-from,params)
-                                if not obstruction then
-                                    hum:TakeDamage(11)
-                                    combat:FireAllClients("YokaiStrike",model)
-                                    combat:FireAllClients("Hit",target,11)
+                                local parryUntil=target:GetAttribute("KageboundParryUntil") or 0
+                                local toward=model.PrimaryPart.Position-enemyRoot.Position
+                                local toEnemy=Vector3.new(toward.X,0,toward.Z)
+                                local face=Vector3.new(enemyRoot.CFrame.LookVector.X,0,enemyRoot.CFrame.LookVector.Z)
+                                local facing=toEnemy.Magnitude>.1 and face.Magnitude>.1
+                                    and face.Unit:Dot(toEnemy.Unit)>.25
+                                if facing and typeof(parryUntil)=="number"
+                                    and os.clock()<=parryUntil then
+                                    target:SetAttribute("KageboundParryUntil",0)
+                                    combat:FireAllClients("Parried",target)
+                                else
+                                    local params=RaycastParams.new()
+                                    params.FilterType=Enum.RaycastFilterType.Exclude
+                                    params.FilterDescendantsInstances={model,target.Character}
+                                    params.RespectCanCollide=true
+                                    local from=model.PrimaryPart.Position
+                                    local obstruction=workspace:Raycast(from,enemyRoot.Position-from,params)
+                                    if not obstruction then
+                                        hum:TakeDamage(11)
+                                        combat:FireAllClients("YokaiStrike",model)
+                                        combat:FireAllClients("Hit",target,11)
+                                    end
                                 end
-                            end
                             end
                         end
                     end
