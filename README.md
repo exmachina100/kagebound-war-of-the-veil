@@ -27,3 +27,6 @@ Read [Dojo training QA](docs/DOJO_TRAINING_TEST.md), [Shinobi animation pipeline
 5. Inspect Explorer for KageboundShared, KageboundServer, and KageboundClient.
 
 **Important:** Concept PNGs are illustrative references, not rigged avatars, particle systems or importable 3D gameplay objects. Use Roblox Studio to build/test the actual game.
+
+## New content workflow
+All new assets follow [asset workflow](docs/ASSET_CREATION_WORKFLOW.md), [style guide](docs/STYLE_GUIDE.md), and [asset production queue](docs/ASSET_PRODUCTION_QUEUE.md). ART-001..004 are source-of-truth. Veilblade first turnaround is generated in OpenArt and a separate prototype 3D handoff package exists, but **the GLB/OBJ is not imported into Roblox Studio or committed as a GitHub binary**. See issue #24.
