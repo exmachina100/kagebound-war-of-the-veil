@@ -7,6 +7,7 @@ local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local HttpService=game:GetService("HttpService")
 local Rewards=require(script.Parent:WaitForChild("RewardService"))
 local Navigation=require(script.Parent:WaitForChild("YokaiNavigation"))
+local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled then return end
 
@@ -96,13 +97,13 @@ local function createEnemy(index,position)
     return model
 end
 
-local function nearestPlayer(origin,home)
+local function nearestTarget(origin,home)
     local best,range=nil,65
     for _,player in ipairs(Players:GetPlayers()) do
         local char=player.Character
         local hum=char and char:FindFirstChildOfClass("Humanoid")
         local root=char and char:FindFirstChild("HumanoidRootPart")
-        if root and hum and hum.Health>0 then
+        if root and hum and hum.Health>0 and not DuelAuthority.IsParticipant(player) then
             local homeDelta=root.Position-home
             local dist=(root.Position-origin).Magnitude
             if Vector3.new(homeDelta.X,0,homeDelta.Z).Magnitude<=85 and dist<range then
@@ -110,10 +111,33 @@ local function nearestPlayer(origin,home)
             end
         end
     end
+    -- Kitsune optical decoys are now real non-damaging distraction targets.
+    -- Prioritize an active nearby fox over a player, but never from a different
+    -- encounter region or a player participating in Shadow Duel.
+    for _,decoy in ipairs(workspace:GetChildren()) do
+        if decoy:IsA("Model") and decoy:GetAttribute("KageboundDecoy")==true then
+            local ownerId=decoy:GetAttribute("OwnerId")
+            local owner=typeof(ownerId)=="number" and Players:GetPlayerByUserId(ownerId)
+            local decoyRoot=decoy.PrimaryPart
+            if owner and not DuelAuthority.IsParticipant(owner) and decoyRoot then
+                local dist=(decoyRoot.Position-origin).Magnitude
+                local homeOffset=decoyRoot.Position-home
+                local homeDistance=Vector3.new(homeOffset.X,0,homeOffset.Z).Magnitude
+                if dist<=35 and homeDistance<=85 then
+                    return decoy,dist
+                end
+            end
+        end
+    end
     return best,range
 end
-local function targetRig(player)
-    local char=player and player.Character
+local function targetRig(target)
+    if typeof(target)~="Instance" then return nil,nil end
+    if target:IsA("Model") and target:GetAttribute("KageboundDecoy")==true then
+        return nil,target.PrimaryPart
+    end
+    if not target:IsA("Player") then return nil,nil end
+    local char=target.Character
     local hum=char and char:FindFirstChildOfClass("Humanoid")
     local root=char and char:FindFirstChild("HumanoidRootPart")
     if hum and root and hum.Health>0 then return hum,root end
@@ -130,7 +154,7 @@ for i,home in ipairs(homes) do
             local navigation=Navigation.New()
             while model.Parent and (model:GetAttribute("Health") or 0)>0 do
                 local root=model.PrimaryPart
-                local target,distance=nearestPlayer(root.Position,home)
+                local target,distance=nearestTarget(root.Position,home)
                 local staggerUntil=model:GetAttribute("StaggerUntil") or 0
                 if os.clock()<staggerUntil then
                     model:SetAttribute("AIState","Stagger")
@@ -140,9 +164,14 @@ for i,home in ipairs(homes) do
                     combat:FireAllClients("YokaiTelegraph",model)
                     task.wait(.70)
                     local hum,enemyRoot=targetRig(target)
-                    if model.Parent and (model:GetAttribute("Health") or 0)>0 and hum and enemyRoot
+                    if model.Parent and (model:GetAttribute("Health") or 0)>0 and enemyRoot
                         and os.clock()>=(model:GetAttribute("StaggerUntil") or 0) then
                         if (enemyRoot.Position-model.PrimaryPart.Position).Magnitude<=10 then
+                            if target:IsA("Model") and target:GetAttribute("KageboundDecoy")==true then
+                                -- A fox illusion absorbs a Yokai swing with no damage or reward.
+                                combat:FireAllClients("YokaiStrike",model)
+                                target:Destroy()
+                            elseif hum and target:IsA("Player") then
                             local parryUntil=target:GetAttribute("KageboundParryUntil") or 0
                             local toward=model.PrimaryPart.Position-enemyRoot.Position
                             local facing=false
@@ -166,6 +195,7 @@ for i,home in ipairs(homes) do
                                     combat:FireAllClients("YokaiStrike",model)
                                     combat:FireAllClients("Hit",target,11)
                                 end
+                            end
                             end
                         end
                     end
