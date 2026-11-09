@@ -64,6 +64,49 @@ local buttonCorner=Instance.new("UICorner")
 buttonCorner.CornerRadius=UDim.new(0,7)
 buttonCorner.Parent=action
 
+-- Separate Veilfall notice: does not reset the round timer HUD.
+local veilNote=Instance.new("TextLabel")
+veilNote.Name="DuelVeilfallNotice"
+veilNote.AnchorPoint=Vector2.new(.5,0)
+veilNote.Position=UDim2.new(.5,0,0,151)
+veilNote.Size=UDim2.new(.76,0,0,37)
+veilNote.BackgroundColor3=Color3.fromRGB(60,29,100)
+veilNote.BackgroundTransparency=.08
+veilNote.TextColor3=Color3.fromRGB(248,208,245)
+veilNote.TextScaled=true
+veilNote.Font=Enum.Font.GothamBold
+veilNote.Visible=false
+veilNote.Parent=gui
+local veilCorner=Instance.new("UICorner")
+veilCorner.CornerRadius=UDim.new(0,9)
+veilCorner.Parent=veilNote
+local veilSequence=0
+local function showVeil(eventName,data)
+    veilSequence+=1
+    local current=veilSequence
+    if eventName=="VeilWarning" or eventName=="VeilClosing" then
+        local seconds=tonumber(data.seconds) or 6
+        veilNote.Visible=true
+        task.spawn(function()
+            for remaining=seconds,1,-1 do
+                if veilSequence~=current then return end
+                veilNote.Text=eventName=="VeilWarning"
+                    and ("VEILFALL IN "..remaining.." — ROUTES WILL OPEN")
+                    or ("VEIL SEALS IN "..remaining.." — LEAVE THE PLATFORMS")
+                task.wait(1)
+            end
+        end)
+    else
+        veilNote.Visible=true
+        veilNote.Text=eventName=="VeilActive"
+            and "VEILFALL — SPECTRAL ROUTES OPEN"
+            or "VEIL SEALED — NORMAL ARENA"
+        task.delay(3,function()
+            if veilSequence==current then veilNote.Visible=false end
+        end)
+    end
+end
+
 local mode="None"
 local token=0
 local function show(head,body,buttonMode)
@@ -92,6 +135,15 @@ end
 
 event.OnClientEvent:Connect(function(eventName,data)
     data=data or {}
+    if eventName=="VeilWarning" or eventName=="VeilActive"
+        or eventName=="VeilClosing" or eventName=="VeilClosed" then
+        showVeil(eventName,data)
+        return
+    end
+    if eventName=="MatchEnd" or eventName=="RoundResult" then
+        veilSequence+=1
+        veilNote.Visible=false
+    end
     token+=1
     local thisToken=token
     if eventName=="Queued" then
