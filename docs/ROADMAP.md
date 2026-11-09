@@ -50,6 +50,9 @@ Reviewed three user-provided Roblox projects; architectural findings and safety 
 ## Mandatory visual production gate
 Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The four approved reference PNGs ART-001..004 are uploaded and recorded in ASSET_MANIFEST.md. Additional asset boards remain pending.
 
+## Safe Kage Dojo practice lane (code committed; Studio QA pending)
+Kage Dojo now contains 3 ceremonial practice posts within the world-defined training circle. Sword attacks are allowed here **only against practice targets**; SafeHub player damage stays disabled and no rewards are granted. Posts display health/hit counts and reset on defeat. See [DOJO_TRAINING_TEST.md](DOJO_TRAINING_TEST.md) before signing off gameplay safety.
+
 ## Animation integration v0.4
 `src/shared/AnimationCatalog.lua` holds empty slots for *owned* Shinobi animation IDs. `src/client/ShinobiAnimation.client.lua` plays authored tracks when available or uses temporary local Tool.Grip poses; the blade Trail follows only a server-accepted swing. **No animation assets have been published or verified**. Source-of-truth production guide: [SHINOBI_ANIMATION_PIPELINE.md](SHINOBI_ANIMATION_PIPELINE.md). Attacks now require Veilblade equipped and keep damage authority on the server. Studio QA remains open in issue #21.
 
