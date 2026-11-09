@@ -7,6 +7,7 @@ local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local MaskRules=require(Shared:WaitForChild("MaskRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
+local EnemyDamage=require(script.Parent:WaitForChild("EnemyDamage"))
 
 local remote=ReplicatedStorage:FindFirstChild("KageboundMask")
 if not remote then
@@ -66,6 +67,33 @@ local function oniBurst(player,char,root)
                     targetHum:TakeDamage(rules.Damage)
                     targetRoot.AssemblyLinearVelocity=horizontal.Unit*rules.Knockback
                         +Vector3.new(0,rules.UpwardSpeed,0)
+                end
+            end
+        end
+    end
+    -- PvE: Oni is a shockwave, so every visible eligible Yokai in range can
+    -- be staggered. Server-owned HP/credit uses the same resolver as katana.
+    -- Mask pulses cannot affect encounter enemies while a player is in Duel.
+    if not DuelAuthority.IsParticipant(player) then
+        local enemies=workspace:FindFirstChild("KageboundEnemies")
+        if enemies then
+            local affected=0
+            for _,enemy in ipairs(enemies:GetChildren()) do
+                if affected>=8 then break end
+                if enemy:IsA("Model") and enemy:GetAttribute("KageboundEnemy")==true
+                    and enemy.PrimaryPart and (enemy:GetAttribute("Health") or 0)>0 then
+                    local target=enemy.PrimaryPart.Position
+                    local planar=Vector3.new(target.X-root.Position.X,0,target.Z-root.Position.Z)
+                    if planar.Magnitude<=rules.Radius
+                        and math.abs(target.Y-root.Position.Y)<=7
+                        and hasLineOfSight(char,enemy,root.Position+Vector3.new(0,1,0),
+                            target+Vector3.new(0,1,0)) then
+                        local applied=EnemyDamage.Apply(player,enemy,rules.Damage,rules.Radius,0.6)
+                        if applied then
+                            affected+=1
+                            remote:FireAllClients("OniImpactFX",enemy)
+                        end
+                    end
                 end
             end
         end
