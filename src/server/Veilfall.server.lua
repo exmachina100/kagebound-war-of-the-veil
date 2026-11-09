@@ -2,6 +2,7 @@
 -- Server manages collision & platform timing. Visual warnings replicate to clients.
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Workspace=game:GetService("Workspace")
+local Players=game:GetService("Players")
 local Lighting=game:GetService("Lighting")
 local arena=Workspace:WaitForChild("KageboundArena",25)
 if not arena then warn("[KAGEBOUND] Veilfall could not find arena") return end
@@ -54,7 +55,26 @@ task.spawn(function()
         task.wait(6)
         if not arena.Parent then break end
         setActive(true)
-        task.wait(40)
+        task.wait(34)
+        evt:FireAllClients("Closing", 6)
+        task.wait(6)
+        -- Relocate any character currently standing on a spectral platform before
+        -- turning collision off. This avoids dropping a player into an unsafe void.
+        for _,player in ipairs(Players:GetPlayers()) do
+            local char=player.Character
+            local root=char and char:FindFirstChild("HumanoidRootPart")
+            if root then
+                for _,platform in ipairs(platforms:GetChildren()) do
+                    if platform:IsA("BasePart") then
+                        local offset=root.Position-platform.Position
+                        if math.abs(offset.X)<platform.Size.X/2+1 and math.abs(offset.Z)<platform.Size.Z/2+1 and offset.Y>0 and offset.Y<8 then
+                            root.CFrame=CFrame.new(0,6,0)
+                            break
+                        end
+                    end
+                end
+            end
+        end
         setActive(false)
     end
 end)
