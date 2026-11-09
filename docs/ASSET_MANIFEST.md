@@ -47,3 +47,9 @@ Each item requires visual side-by-side review against the actual uploaded four P
 
 ## New cinematic VFX boards — conversation handoff, NOT imported assets
 Four GPT-generated 1672x941 RGB composite concept boards (Oni eruption, Veilfall stages, Kitsune blade/illusion, mythic move showcase) are packaged as `KAGEBOUND_VFX_ConceptPack_v01.zip`, available from the current conversation. Their filenames and role are documented in `docs/VFX_CONCEPT_HANDOFF.md`. They have **not yet been verified as GitHub files** and cannot be used directly as alpha ParticleEmitter textures; production sprite conversion and Studio QA are pending. Keep original ART-001..004 as style approval authority.
+
+## Class and mask VFX assets v0.5
+- **Reference boards verified on GitHub:** 4 user-approved concept-art PNGs under `assets/concept-art/`; four original cinematic boards under `assets/concept-sheets/vfx-v01/`; four original warrior VFX boards (Shinobi/Ronin/Onmyoji/Oni Disciple) under `assets/concept-sheets/clan-vfx-v01/`.
+- **Transparent VFX texture handoff generated:** `KAGEBOUND_VFX_Flipbooks_v01.zip` (7 RGBA 1024×1024 / 16-frame atlases; source Python and manifest). These files are still **pending GitHub binary upload and Roblox Studio import**. Target path `assets/vfx/flipbooks/v01/`.
+- **Runtime script integration committed:** `src/shared/VFXProfiles.lua`, `src/shared/VFXTextureCatalog.lua`, `src/client/VFXFactory.lua`, `src/client/VFXSpriteEmitter.lua`, and updated combat/mask FX renderers. Without verified Roblox upload IDs the game displays procedural neon-geometry FX only.
+- **Original production instructions:** `docs/CLASS_VFX_PRODUCTION.md`, `docs/VFX_FLIPBOOK_IMPORT.md`. Do not mark effects production ready until both visual and Studio multiplayer QA pass.
