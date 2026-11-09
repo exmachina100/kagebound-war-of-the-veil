@@ -5,6 +5,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Shared = ReplicatedStorage:WaitForChild("KageboundShared")
 local Rules = require(Shared:WaitForChild("CombatRules"))
 local World = require(Shared:WaitForChild("WorldConfig"))
+local DuelAuthority = require(script.Parent:WaitForChild("DuelService"))
 
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
@@ -116,13 +117,14 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
     for _, other in ipairs(Players:GetPlayers()) do
         if other ~= player then
             local otherChar, _, otherRoot = getRig(other)
-            if otherRoot and not protectedHub(otherRoot.Position) then
+            if otherRoot and not protectedHub(otherRoot.Position)
+                and DuelAuthority.CanDamage(player,other) then
                 table.insert(targets, otherChar)
             end
         end
     end
     local enemyFolder = workspace:FindFirstChild("KageboundEnemies")
-    if enemyFolder then
+    if enemyFolder and not DuelAuthority.IsParticipant(player) then
         for _,enemy in ipairs(enemyFolder:GetChildren()) do
             if enemy:IsA("Model") and enemy:GetAttribute("KageboundEnemy")==true
                 and (enemy:GetAttribute("Health") or 0)>0 and enemy.PrimaryPart then
@@ -131,7 +133,8 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
         end
     end
     local practice=workspace:FindFirstChild("KageboundTraining")
-    if practice and inTrainingCircle(attackerRoot.Position) then
+    if practice and not DuelAuthority.IsParticipant(player)
+        and inTrainingCircle(attackerRoot.Position) then
         for _,dummy in ipairs(practice:GetChildren()) do
             if dummy:IsA("Model") and dummy:GetAttribute("KageboundTrainingTarget")==true
                 and dummy.PrimaryPart and (dummy:GetAttribute("Health") or 0)>0 then
@@ -160,6 +163,7 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                 if delta.Magnitude <= range+1 and math.abs(delta.Y) <= 6
                     and facing(attackerRoot, opponentRoot.Position, 0.26)
                     and not protectedHub(opponentRoot.Position)
+                    and DuelAuthority.CanDamage(player,opponent)
                     and hasLineOfSight(attackerChar, opponentChar,
                         attackerRoot.Position+Vector3.new(0,1,0),
                         opponentRoot.Position+Vector3.new(0,1,0)) then
@@ -246,7 +250,7 @@ local function attack(player, heavy)
     local s = getState(player)
     local char, _, root = getRig(player)
     if not root or not canSwingAt(root.Position) then return end
-    if not hasEquippedVeilblade(char) then return end
+    if not hasEquippedVeilblade(char) or not DuelAuthority.CanAct(player) then return end
     if now < s.busyUntil or now < s.staggerUntil then return end
 
     local action = heavy and "Heavy" or "Light"
@@ -278,7 +282,8 @@ local function attack(player, heavy)
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
             or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
-            or not hasEquippedVeilblade(actorChar) then return end
+            or not hasEquippedVeilblade(actorChar)
+            or not DuelAuthority.CanAct(player) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
         local hitRegistry = {}
@@ -286,7 +291,8 @@ local function attack(player, heavy)
             actorChar, _, actorRoot = getRig(player)
             if not actorRoot or actorChar ~= char or s.attackToken ~= token
                 or not canSwingAt(actorRoot.Position)
-                or not hasEquippedVeilblade(actorChar) then break end
+                or not hasEquippedVeilblade(actorChar)
+                or not DuelAuthority.CanAct(player) then break end
             local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
             if interrupted then break end
             if i < Rules.AttackSamples then
@@ -301,7 +307,7 @@ remote.OnServerEvent:Connect(function(player, action, payload)
     local now = os.clock()
     local s = getState(player)
     local _, humanoid, root = getRig(player)
-    if not root then return end
+    if not root or not DuelAuthority.CanAct(player) then return end
     if humanoid.FloorMaterial ~= Enum.Material.Air then s.doubleJumpUsed = false end
 
     if action == "Light" then
