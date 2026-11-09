@@ -45,3 +45,6 @@ These are contracts, not a substitute for verifying attack, client UI and AI beh
 - NPC pathfinding, collision avoidance, network stress tests, server streaming and quest lifecycle at scale.
 
 **Do not call the game 'complete' before the documented Studio and security checks pass.**
+
+## Additional AI navigation contract
+The first three Yokai use `YokaiNavigation.lua` to step toward players on clear ground and calculate capped paths around blocked geometry. This is experimental anchored-model navigation, not a validated pathfinding AI. See [YOKAI_01_TEST.md](YOKAI_01_TEST.md) and `tests/YokaiNavigation.studio.lua` for the visual and blocked-wall checks.
