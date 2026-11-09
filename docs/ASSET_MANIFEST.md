@@ -1,21 +1,24 @@
-# KAGEBOUND asset manifest
+# KAGEBOUND Approved Asset Manifest
 
-## Visual references produced (not yet uploaded to GitHub)
-The art package previously generated in ChatGPT contains these concept-board names:
-- `assets/concept-art/key-art.png` — overall game visual identity
-- `assets/concept-art/warrior-styles.png` — initial four classes
-- `assets/concept-art/weapons-and-masks.png` — eight weapons and three masks
-- `assets/concept-art/environments-and-veilfall.png` — Moonfall Bamboo and dojo
-- `assets/concept-art/gameplay-vfx-abilities.png` — FX-001 through FX-012 concepts
-- `assets/concept-art/modular-assets-game-ui.png` — props, inventory and interface ideas
-- `assets/concept-art/development-dashboard-concept.png` — production reference only
+## Confirmed GitHub visual references — uploaded on main
 
-**Status:** all listed images are reference illustrations rather than imported Roblox objects. GitHub binary assets are **pending upload**. They exist in the earlier starter ZIP provided in this conversation.
+These are the **actual names of the four PNGs committed under** `assets/concept-art/`. Use these as the primary references for all design and implementation work.
 
-## Requirements for game-ready assets
-For each actual asset register a unique ID, owner, source geometry/texture files, animation/particle recipe, expected scale, variants, memory/particle performance budget, Roblox uploaded asset ID, and test screenshots.
+| ID | Asset | GitHub path | Role |
+|---|---|---|---|
+| ART-001 | Overall game key art | `assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_15 PM-1.png` | Hero character, lighting, mythology and environment |
+| ART-002 | Warrior styles concept sheet | `assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_24 PM-2.png` | Shinobi, Ronin, Onmyoji, Oni Disciple proportions and styling |
+| ART-003 | Weapons and masks concept sheet | `assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_30 PM-3.png` | Katana and seven other weapons; Kitsune, Oni, Tengu masks and tools |
+| ART-004 | Environment and game look concept sheet | `assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_36 PM-4.png` | Moonfall Bamboo normal/Veilfall, Kage Dojo lobby, props, palette and layout |
 
-Suggested folders: `assets/concept-art/`, `assets/prompts/`, `assets/models/`, `assets/textures/`, `assets/vfx/`, `assets/animations/`, `assets/audio/`.
+The first four images are source-of-truth design references. Do **not** replace them with unrelated stock images or unapproved generic game visuals. Compare Roblox Studio screenshots with these source boards.
 
-## Copyright
-Do not redistribute third-party photo examples mentioned in the original game brief as owned game assets. Do not assume concept-board images can be used as actual particle sprite textures without extracting/licensing appropriate underlying art.
+## Pending supplementary artwork
+- VFX/abilities board — to produce/upload
+- Modular assets/UI board — to produce/upload
+- Separated game-ready sprite textures, mesh assets, rigs, animation assets and sound effects — **not yet produced**
+
+## Production asset tracking rules
+For each actual implementation record asset ID, concept anchor ID, geometry/texture/animation source, expected scale, performance budget, Roblox uploaded asset ID and verification screenshot.
+
+Note: PNG concept boards are illustrative references, not directly importable 3D rigs, particle effects or executable gameplay systems.
