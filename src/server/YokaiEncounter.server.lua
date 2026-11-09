@@ -140,15 +140,31 @@ for i,home in ipairs(homes) do
                     local hum,enemyRoot=targetRig(target)
                     if model.Parent and (model:GetAttribute("Health") or 0)>0 and hum and enemyRoot then
                         if (enemyRoot.Position-model.PrimaryPart.Position).Magnitude<=10 then
-                            hum:TakeDamage(11)
-                            combat:FireAllClients("YokaiStrike",model)
+                            local parryUntil=target:GetAttribute("KageboundParryUntil") or 0
+                            if typeof(parryUntil)=="number" and os.clock()<=parryUntil then
+                                target:SetAttribute("KageboundParryUntil",0)
+                                combat:FireAllClients("Parried",target)
+                            else
+                                local params=RaycastParams.new()
+                                params.FilterType=Enum.RaycastFilterType.Exclude
+                                params.FilterDescendantsInstances={model,target.Character}
+                                params.RespectCanCollide=true
+                                local from=model.PrimaryPart.Position
+                                local obstruction=workspace:Raycast(from,enemyRoot.Position-from,params)
+                                if not obstruction then
+                                    hum:TakeDamage(11)
+                                    combat:FireAllClients("YokaiStrike",model)
+                                    combat:FireAllClients("Hit",target,11)
+                                end
+                            end
                         end
                     end
                     model:SetAttribute("AIState","Recover")
                     task.wait(.85)
                 else
                     model:SetAttribute("AIState",target and "Pursue" or "Return")
-                    moveToward(model,target and target.Character.HumanoidRootPart.Position or home,12,.14)
+                    local _,targetRoot=targetRig(target)
+                    moveToward(model,targetRoot and targetRoot.Position or home,12,.14)
                     task.wait(.14)
                 end
             end
