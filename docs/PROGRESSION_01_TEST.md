@@ -5,7 +5,7 @@ Source of truth: [WORLD_VISION](WORLD_VISION.md), [GAME_DESIGN](GAME_DESIGN.md),
 
 ## Implemented
 - `src/shared/RewardPolicy.lua`: fixed server rule table. Whispers quest = 25 Spirit Shards; Lantern Yokai = 6 Spirit Shards + 4 Veilblade Mastery, +1 Yokai defeat.
-- `src/server/RewardService.lua`: server-only award API, per-player session record, source:token duplicate guard, attribute mirrors, cleanup on leave. **No DataStore**.
+- `src/server/RewardService.lua`: server-only award API, per-player session record, source:token duplicate guard, attribute mirrors, cleanup on leave. **No live DataStore connection**; a disabled v1 adapter is staged separately (see PERSISTENCE_GATE.md).
 - `src/server/ExplorationQuest.server.lua`: Keeper quest rewards through RewardService once upon completion. Historical `KageboundQuestShards` attribute remains for compatibility but not spendable.
 - `src/server/Combat.server.lua`: only successful server-side NPC damage marks LastDamagerUserId and LastDamagedAt.
 - `src/server/YokaiEncounter.server.lua`: a valid final hit credits the named player once, then a new spawn has a fresh unique token. NPC attacks can be parried only when facing it. A hit briefly staggers the enemy.
@@ -29,7 +29,7 @@ Source of truth: [WORLD_VISION](WORLD_VISION.md), [GAME_DESIGN](GAME_DESIGN.md),
 7. Check enemy parry facing: F toward the Yokai during the 0.32s server window can cancel its telegraphed attack. Pressing F while facing away must not.
 8. Player damage during the Yokai's telegraph should stagger it briefly and can interrupt its strike.
 9. Verify the Shinobi has angular dark hair, charcoal armor, vermilion scarf and a tilted ivory fox mask. No cosmetic BasePart should collide, touch or query. Confirm katana is still equipped, no malformed avatar respawn.
-10. Rejoin a new Play test: session currency starts at zero. **This is intentional until durable persistence is implemented.** Do not test purchases/trading yet.
+10. Rejoin a new Play test: session currency starts at zero. **This is intentional because persistence remains disabled and not integrated.** Do not test purchases/trading yet.
 
 ## Studio-only scripts (not synchronized through Rojo)
 - Run `tests/RewardPolicy.studio.lua` in Studio server command bar.
@@ -48,3 +48,6 @@ These are contracts, not a substitute for verifying attack, client UI and AI beh
 
 ## Additional AI navigation contract
 The first three Yokai use `YokaiNavigation.lua` to step toward players on clear ground and calculate capped paths around blocked geometry. This is experimental anchored-model navigation, not a validated pathfinding AI. See [YOKAI_01_TEST.md](YOKAI_01_TEST.md) and `tests/YokaiNavigation.studio.lua` for the visual and blocked-wall checks.
+
+## Disabled persistence test stage
+`ProfileSchema.lua` / `ProfileStore.lua` now exist, but `PersistenceConfig.Enabled=false`. Run `tests/ProfileSchema.studio.lua` and `tests/ProfileStore.studio.lua`; no real save/rejoin behavior is available until [PERSISTENCE_GATE.md](PERSISTENCE_GATE.md) is satisfied. Do not flip the flag in a production experience.
