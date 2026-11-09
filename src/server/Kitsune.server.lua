@@ -4,14 +4,15 @@ local Players=game:GetService("Players")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Debris=game:GetService("Debris")
 local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
+local MaskRules=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("MaskRules"))
 local evt=ReplicatedStorage:FindFirstChild("KageboundKitsune")
 if not evt then
     evt=Instance.new("RemoteEvent")
     evt.Name="KageboundKitsune"
     evt.Parent=ReplicatedStorage
 end
-local COOLDOWN=14
-local LIFETIME=3.5
+local COOLDOWN=MaskRules.Kitsune.Cooldown
+local LIFETIME=MaskRules.Kitsune.Lifetime
 local state={}
 local function makePart(parent,name,size,cf,color,transparency)
     local p=Instance.new("Part")
@@ -29,6 +30,7 @@ local function makePart(parent,name,size,cf,color,transparency)
     return p
 end
 local function cast(player)
+    if player:GetAttribute("KageboundMask")~="Kitsune" then return end
     if not DuelAuthority.CanAct(player) then return end
     local now=os.clock()
     if now-(state[player] or -1000)<COOLDOWN then return end
