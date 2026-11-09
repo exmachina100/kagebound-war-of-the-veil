@@ -50,4 +50,4 @@ Combat feel first, movement second, masks and Veilfall third, complete multiplay
 Premium Roblox-inspired blocky character geometry, highly readable silhouettes, moonlit Japanese shrines, torii, bamboo and lanterns. Crimson = offense, blue = defensive precision, violet = supernatural/Veilfall, warm gold = world/accent. Keep VFX restrained enough for mobile PvP clarity.
 
 ## Source preservation note
-This is a structured adaptation of the original 338-line KAGEBOUND concept supplied by the user. The complete unedited text is in the original ChatGPT starter ZIP and is **pending GitHub upload**. Do not treat this adaptation as a verbatim copy of that document.
+This is a structured adaptation of the original 338-line KAGEBOUND concept supplied by the user. The complete 338-line source has now been preserved in [GAME_DESIGN_ORIGINAL_338.md](GAME_DESIGN_ORIGINAL_338.md), separately from this condensed production brief. Treat the full source as the archived concept and this document as the implementation-facing adaptation.
