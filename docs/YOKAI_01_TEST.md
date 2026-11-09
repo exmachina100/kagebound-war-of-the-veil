@@ -23,7 +23,7 @@ See [GAME_DESIGN](GAME_DESIGN.md), [WORLD_VISION](WORLD_VISION.md), [VFX_SPEC](V
 - Health must decrease from 110 to 0 and cause defeat VFX, then the enemy should respawn after approximately 14 seconds.
 - Attacking from behind a solid wall or outside reach should not deal damage.
 - Keep one player in Kage Dojo and another near Moonfall; the enemy must not appear in or attack inside the safe hub.
-- Observe no duplicate damage from a single swing, no malformed model pivots, no telegraph spamming, and no progression rewards being awarded (rewards aren't implemented yet).
+- Observe no duplicate damage from a single swing, no malformed model pivots, no telegraph spamming, and a server-validated final hit awarding 6 Spirit Shards, 4 Veilblade Mastery and +1 defeat to the last hitter exactly once.
 - Verify the same behavior with 2 players present simultaneously, without one player impersonating another via remotes.
 
 ## Known limitations
@@ -31,6 +31,6 @@ See [GAME_DESIGN](GAME_DESIGN.md), [WORLD_VISION](WORLD_VISION.md), [VFX_SPEC](V
 - Simple state machine: Return / Pursue / Telegraph / Recover / Defeated. No coordinated groups, pathfinding, wall avoidance, feinting, dodge, stagger, boss phases, loot or persistent reward grants.
 - Enemy hitbox and health are server-owned, but not penetration-tested in a live Roblox multiplayer test.
 - No AI spawn culling or world streaming integration yet. Test client/server load on mobile before increasing counts.
-- NPC and player parry share a server-set timing attribute for this prototype. A future defense service must unify parry consumption across PvP and PvE to eliminate cross-mode edge cases.
+- NPC and player parry now use the same consumed server-side parry attribute, and facing is checked. A formal DefenseService and multiplayer abuse tests remain necessary.
 
-**Next gate:** record actual Studio Output and screenshots against ART-001/002/004, then add hit reactions, navigation and server-owned reward transactions before more enemy varieties.
+**Next gate:** record actual Studio Output and screenshots against ART-001/002/004, then refine navigation, group credit and durable reward transactions before more enemy varieties. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md).
