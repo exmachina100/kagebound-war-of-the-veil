@@ -17,7 +17,7 @@ Source folders, Rojo map, art catalog, original design notes, VFX requirements. 
 ### P1 — Combat vertical slice [initial code committed; Roblox playtest pending]
 Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
 
-### P2 — Mythic + Veilfall [not started]
+### P2 — Mythic + Veilfall [basic timed Veilfall implemented; untested; mask powers pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
 ### P3 — Match loop [not started]
@@ -33,7 +33,7 @@ Mastery XP, cosmetics, currencies, shop, inventory, secure persistence, trading 
 Network/latency tests, accessibility, moderation and security, multiplayer soak, matchmaking, onboarding and analytics.
 
 ## Mandatory visual production gate
-Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The concept PNGs are still pending import in issue #1.
+Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The four approved reference PNGs ART-001..004 are uploaded and recorded in ASSET_MANIFEST.md. Additional asset boards remain pending.
 
 ## Future updates
 Wall run and grapple, Yokai Hunt PvE, Spirit Run parkour, synchronized spirit fusion, sword clashes, clan rivalries and seasonal invasions.
