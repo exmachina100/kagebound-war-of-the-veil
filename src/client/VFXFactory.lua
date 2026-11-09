@@ -5,6 +5,7 @@
 local TweenService=game:GetService("TweenService")
 local Debris=game:GetService("Debris")
 local UIS=game:GetService("UserInputService")
+local Sprite=require(script.Parent:WaitForChild("VFXSpriteEmitter"))
 local Factory={}
 local mobile=UIS.TouchEnabled
 local MAX_PARTS=mobile and 105 or 260
@@ -103,6 +104,7 @@ end
 
 function Factory.Slash(root,profile,heavy,combo)
     if not Factory.Visible(root) then return end
+    Sprite.Play(root,profile.texture or "Shinobi",heavy and 12 or 8,heavy and .54 or .37)
     local base=root.Position+Vector3.new(0,1.6,0)
     local cf=root.CFrame
     local radius=heavy and 7.4 or 5.1
@@ -149,6 +151,7 @@ end
 
 function Factory.Parry(root,profile,perfect)
     if not Factory.Visible(root) then return end
+    Sprite.Play(root,"Parry",perfect and 9 or 5,perfect and .44 or .26)
     Factory.Ring(root,perfect and 4.8 or 2.8,1.9,profile.defense,
         perfect and "FX003_Perfect" or "FX003_Parry",mobile and 9 or 18,.34)
     if perfect then
@@ -159,6 +162,7 @@ end
 
 function Factory.Oni(root,profile)
     if not Factory.Visible(root) then return end
+    Sprite.Play(root,"Oni",17,.75)
     Factory.Ring(root,7,.2,profile.core,"FX006_RuptureInner",mobile and 9 or 18,.55)
     Factory.Ring(root,13,.4,profile.edge,"FX006_RuptureOuter",mobile and 10 or 20,.66)
     Factory.Spokes(root,16,12,.2,profile.core,"FX006_GroundCracks",.57)
@@ -168,6 +172,7 @@ end
 
 function Factory.Tengu(root,profile)
     if not Factory.Visible(root) then return end
+    Sprite.Play(root,"Tengu",10,.58)
     local n=mobile and 5 or 10
     for i=1,n do
         local t=i/n
@@ -184,6 +189,7 @@ end
 
 function Factory.Kitsune(root,profile)
     if not Factory.Visible(root) then return end
+    Sprite.Play(root,"Kitsune",10,.65)
     Factory.Seal(root,profile,.25,4.2,"FX005_FoxSeal")
     Factory.Spokes(root,11,5.8,2,profile.edge,"FX005_FoxAfterimages",.4)
 end
