@@ -1,0 +1,23 @@
+{
+  "name": "KAGEBOUND_WarOfTheVeil",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "KageboundShared": {
+        "$path": "src/shared"
+      }
+    },
+    "ServerScriptService": {
+      "KageboundServer": {
+        "$path": "src/server"
+      }
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "KageboundClient": {
+          "$path": "src/client"
+        }
+      }
+    }
+  }
+}
