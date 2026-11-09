@@ -30,3 +30,6 @@ Read [Dojo training QA](docs/DOJO_TRAINING_TEST.md), [Shinobi animation pipeline
 
 ## New content workflow
 All new assets follow [asset workflow](docs/ASSET_CREATION_WORKFLOW.md), [style guide](docs/STYLE_GUIDE.md), and [asset production queue](docs/ASSET_PRODUCTION_QUEUE.md). ART-001..004 are source-of-truth. Veilblade first turnaround is generated in OpenArt and a separate prototype 3D handoff package exists, but **the GLB/OBJ is not imported into Roblox Studio or committed as a GitHub binary**. See issue #24.
+
+## Current mythic mask and VFX production milestone
+Original Kitsune decoy, Oni burst, and Tengu wind actives are scripted with server-owned cooldown/damage/movement and Kage Dojo-restricted mask switching. See [mythic mask multiplayer test](docs/MYTHIC_MASKS_TEST.md). Four new GPT-generated high-impact VFX concept images are packaged as a conversation attachment and described in [VFX concept handoff](docs/VFX_CONCEPT_HANDOFF.md); image binaries have **not yet been pushed into this GitHub repo**, and game-ready sprite/particle/mesh creation is still an art-agent task. All features require actual Roblox Studio gameplay and art QA.
