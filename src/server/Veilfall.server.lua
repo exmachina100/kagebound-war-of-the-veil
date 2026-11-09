@@ -1,3 +1,11 @@
+-- Legacy duel-area renderer: disabled when the Grand World is active.
+local _shared = game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared")
+local _worldConfig = require(_shared:WaitForChild("WorldConfig"))
+if _worldConfig.Enabled then
+    print("[KAGEBOUND] Legacy arena component skipped in Grand World mode: Veilfall.server.lua")
+    return
+end
+
 -- KAGEBOUND Veilfall prototype (ART-004 / FX-008, FX-009).
 -- Server manages collision & platform timing. Visual warnings replicate to clients.
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
