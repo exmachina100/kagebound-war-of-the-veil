@@ -27,7 +27,8 @@ end
 -- Untrusted schema values are sanitized, and only bounded receipt tokens survive.
 function Schema.Reconcile(raw)
     if typeof(raw)~="table" then return Schema.New() end
-    if typeof(raw.version)=="number" and raw.version>Schema.Version then return nil end
+    if raw.version~=nil and (typeof(raw.version)~="number"
+        or raw.version>Schema.Version or raw.version<0) then return nil end
     local r=Schema.New()
     r.shards=bounded(raw.shards)
     r.mastery=bounded(raw.mastery)
