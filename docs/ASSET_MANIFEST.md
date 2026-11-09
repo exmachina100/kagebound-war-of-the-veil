@@ -29,3 +29,5 @@ Note: PNG concept boards are illustrative references, not directly importable 3D
 - `src/server/RegionalVeilfall.server.lua`: world-space Moonfall spectral bridge and rift visual placeholder referencing ART-004.
 
 Each item requires visual side-by-side review against the actual uploaded four PNGs before final-art approval.
+
+- `src/server/YokaiEncounter.server.lua`: ART-001/002/004-inspired original Lantern Yokai enemy blockout (ivory ritual mask, vermilion horns, ink robe/body, violet spirit heart) with server-owned health. Procedural geometry only; no source mesh or authored animation yet.
