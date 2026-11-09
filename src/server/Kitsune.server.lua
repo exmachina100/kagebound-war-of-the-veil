@@ -3,6 +3,7 @@
 local Players=game:GetService("Players")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Debris=game:GetService("Debris")
+local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
 local evt=ReplicatedStorage:FindFirstChild("KageboundKitsune")
 if not evt then
     evt=Instance.new("RemoteEvent")
@@ -28,6 +29,7 @@ local function makePart(parent,name,size,cf,color,transparency)
     return p
 end
 local function cast(player)
+    if not DuelAuthority.CanAct(player) then return end
     local now=os.clock()
     if now-(state[player] or -1000)<COOLDOWN then return end
     local character=player.Character
