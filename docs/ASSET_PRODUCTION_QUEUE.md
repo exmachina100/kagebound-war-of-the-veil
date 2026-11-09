@@ -4,11 +4,11 @@
 
 | Priority | Asset ID | References | Current stage | Next action |
 | --- | --- | --- | --- | --- |
-| 1 | KGB_WPN_Veilblade_Default | ART-003 | 3d-draft (prototype) | Completed OpenArt turnaround + procedural 516-triangle GLB/OBJ draft. Compare fidelity, import/rig/attach and test in Studio; no asset ID yet |
+| 1 | KGB_WPN_Veilblade_Default | ART-003 | 3d-draft (GitHub OBJ v02) | New 1220-triangle OBJ/MTL and generator on main; previous offline 516-triangle GLB/OBJ v01 also exists in conversation. Import via ASSET_IMPORT_HANDOFF_v01.md; no Studio asset ID yet |
 | 2 | KGB_CHAR_Shinobi_Default | ART-001/002 | briefed | Multi-view, editable R15 appearance and animation asset authoring |
 | 3 | KGB_VFX_KatanaSlash_Default | ART-001/003 | briefed | Clean sprite + low graphics alternative and collision-timed effects |
 | 4 | KGB_VFX_Parry_Default | ART-003 | briefed | Blue defensive VFX sprite and particle test |
-| 5 | KGB_PROP_DojoPracticePost_Default | ART-004 | briefed | Approved prop geometry replacing blockout |
+| 5 | KGB_PROP_DojoPracticePost_Default | ART-004 | 3d-draft (GitHub OBJ v01) | New 296-triangle OBJ/MTL and generator on main. Import as visual-only template and validate 3 targets plus SafeHub immunity |
 | 6 | KGB_NPC_LanternYokai_Default | ART-002/004 | briefed | Character front/side/back and rig-friendly original mesh |
 | 7 | KGB_ENV_Moonfall_ModularKit | ART-004 | briefed | Reusable bamboo, torii, stone, lantern, bridge sheet / mesh kit |
 | 8 | KGB_MASK_Kitsune_Default | ART-002/003 | briefed | Wearable mask turnaround and 3D conversion |
@@ -50,3 +50,11 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Target repository path: `assets/vfx/flipbooks/v01/`.
 - Runtime hookup committed: `src/shared/VFXTextureCatalog.lua` (no fake IDs) + `src/client/VFXSpriteEmitter.lua` + layered geometry `src/client/VFXFactory.lua`. Four class profiles and four class board references in `src/shared/VFXProfiles.lua`.
 - See [VFX_FLIPBOOK_IMPORT.md](VFX_FLIPBOOK_IMPORT.md) and [CLASS_VFX_PRODUCTION.md](CLASS_VFX_PRODUCTION.md). Next: local PNG upload, real asset IDs, Studio two-player VFX and mobile performance QA.
+
+## Verified new source-controlled mesh batch
+- `assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.obj` and matching `.mtl` — **668 vertices / 1220 triangles / 32 mesh objects**, grip origin at (0,0,0), ART-003 source.
+- `assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01.obj` and matching `.mtl` — **184 vertices / 296 triangles / 18 mesh objects**, ground base at Y≈0, ART-001/004 source.
+- Generator: `tools/generate_kagebound_obj.js`. Validator: `tools/check_kagebound_obj.js`.
+- Measured preflight: finite vertices, valid face indices, no degenerate triangles, valid MTL refs, below preliminary low-poly budgets. Both files pass the checker, **not yet Blender watertight/normal or Roblox Studio QA**.
+- Studio-only cosmetic integration: `ServerStorage/KageboundArt/VeilbladeVisual` and `ServerStorage/KageboundArt/DojoPracticePostVisual`, consumed automatically by `src/server/Veilblade.server.lua` / `src/server/DojoTraining.server.lua` with existing visual fallback. See [import handoff](ASSET_IMPORT_HANDOFF_v01.md).
+- Both assets remain **3d-draft**, not `imported` or `validated`.
