@@ -17,10 +17,10 @@ Original Japanese fantasy; competitive third-person melee; responsive traversal 
 ### P0 — Foundation [GitHub files committed; Studio sync pending]
 Source folders, Rojo map, art catalog, original design notes, VFX requirements. Verify Rojo connection and startup output.
 
-### P1 — Combat vertical slice [initial code + server-owned stamina committed; Roblox playtest pending]
+### P1 — Combat vertical slice [server-timed sweeps, stamina, touch/controller input, Veilblade blockout committed; Studio playtest pending]
 Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana combo, heavy attack, perfect parry, directional dash, round reset. Server validates hit detection, damage and cooldowns. No repeated hit registration.
 
-### P2 — Mythic + Veilfall [basic timed Veilfall implemented; untested; mask powers pending]
+### P2 — Mythic + Veilfall [regional Moonfall bridge cycle and Kitsune decoy prototype committed; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
 ### P3 — Match loop [not started]
@@ -34,6 +34,9 @@ Mastery XP, cosmetics, currencies, shop, inventory, secure persistence, trading 
 
 ### P6 — Alpha / launch [not started]
 Network/latency tests, accessibility, moderation and security, multiplayer soak, matchmaking, onboarding and analytics.
+
+## Current 0.3 acceptance gate
+Run [COMBAT_03_TEST.md](COMBAT_03_TEST.md) with two Studio clients. Verify world PvP safety, delayed katana sweeps, once-per-swing registration, stamina, guardbreak, double jump, Veilblade tool and regional Grand World Veilfall. The provided scripts are untested here; authored animations, final models, PvE and match state are still pending.
 
 ## External system references
 Reviewed three user-provided Roblox projects; architectural findings and safety decisions in [REFERENCE_REPOSITORY_REVIEW.md](REFERENCE_REPOSITORY_REVIEW.md). KAGEBOUND implementations are original. Do not import copyrighted One Piece assets or scripts. Follow issue #9 (stamina security), #10 (Yokai AI), #11 (progression/shop/trading), #12 (animation marker hitboxes) and #13 (cross-platform controls).
