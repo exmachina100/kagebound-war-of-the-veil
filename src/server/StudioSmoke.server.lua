@@ -33,6 +33,10 @@ if worldConfig.Enabled then
     local enemies=Workspace:WaitForChild("KageboundEnemies",25)
     check("Original Yokai folder created",enemies~=nil)
     if enemies then
+        local deadline=os.clock()+6
+        while enemies.Parent and #enemies:GetChildren()<3 and os.clock()<deadline do
+            task.wait(.2)
+        end
         check("Three Yokai spawned",#enemies:GetChildren()>=3)
     end
     check("Regional Veilfall remote active",
