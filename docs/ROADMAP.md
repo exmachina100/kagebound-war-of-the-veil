@@ -50,6 +50,12 @@ Reviewed three user-provided Roblox projects; architectural findings and safety 
 ## Mandatory visual production gate
 Before refining any greybox or placeholder FX, inspect the approved concept images listed in [ART_DIRECTION.md](ART_DIRECTION.md). Both gameplay and visual gates must pass; do not mark a placeholder as final art. The four approved reference PNGs ART-001..004 are uploaded and recorded in ASSET_MANIFEST.md. Additional asset boards remain pending.
 
+## Current verification and production tasks
+- [Issue #19](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/19): 2-player reward/appearance QA.
+- [Issue #20](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/20): durable save/recovery after session reward prototype.
+- [Issue #21](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/21): final Shinobi/Veilblade rig and authored animations matching ART-001/002/003.
+- `src/server/StudioSmoke.server.lua` reports basic Rojo/runtime object presence in Studio only; it is **not a full gameplay or CI test**.
+
 ## Future updates
 Wall run and grapple, Yokai Hunt PvE, Spirit Run parkour, synchronized spirit fusion, sword clashes, clan rivalries and seasonal invasions.
 
