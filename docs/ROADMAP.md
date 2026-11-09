@@ -23,7 +23,7 @@ Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana com
 ### P2 — Mythic + Veilfall [regional Moonfall bridge cycle and Kitsune decoy prototype committed; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
-### P3 — Match loop [Shadow Duel 1v1 best-of-five scripts committed; Studio test and Clan Clash pending]
+### P3 — Match loop [Shadow Duel 1v1 best-of-five + per-round Veilfall scripted; Studio test and Clan Clash pending]
 Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic dojo return.
 
 ### P4 — Content MVP [optional animation catalog and visual fallback coded; actual model/rig/animation assets pending]
@@ -72,3 +72,6 @@ The mandatory [asset production workflow](ASSET_CREATION_WORKFLOW.md), [style gu
 
 ## Shadow Duel multiplayer QA
 The code in `src/server/ShadowDuel.server.lua`, `DuelService.lua`, `DuelRules.lua` and `src/client/ShadowDuelHUD.client.lua` provides an opt-in first-to-three / best-of-five 1v1 arena prototype. The dedicated [Studio test](SHADOW_DUEL_TEST.md) is required before marking P3 complete. Current prototype remains separate from final arena art and round-triggered Veilfall.
+
+## Shadow Duel spectral route transition (server code committed; Studio QA pending)
+The optional 1v1 Shadow Duel now schedules a predictable round-local Veilfall with 6s opening and closing warning, server-owned spectral platforms and cleanup on KO/forfeit/timeouts. It does not change Grand World RegionalVeilfall. Run [SHADOW_DUEL_TEST.md](SHADOW_DUEL_TEST.md) and [tests/ShadowDuelVeilfall.studio.lua](../tests/ShadowDuelVeilfall.studio.lua); production low-poly route art must follow [ASSET_CREATION_WORKFLOW.md](ASSET_CREATION_WORKFLOW.md). No live Studio execution claimed.
