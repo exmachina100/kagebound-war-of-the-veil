@@ -68,6 +68,14 @@ local function getRig(player)
     return char, humanoid, root
 end
 
+-- Weapon ownership is checked on the server for every sword attack.
+-- Tool in Backpack is NOT equipped and cannot authorize katana damage.
+local function hasEquippedVeilblade(character)
+    local tool = character and character:FindFirstChild("Veilblade")
+    return tool ~= nil and tool:IsA("Tool") and tool.Enabled
+        and tool:FindFirstChild("Handle") ~= nil
+end
+
 local function horizontalUnit(vector)
     if typeof(vector) ~= "Vector3" then return nil end
     if vector.X ~= vector.X or vector.Z ~= vector.Z then return nil end
@@ -199,6 +207,7 @@ local function attack(player, heavy)
     local s = getState(player)
     local char, _, root = getRig(player)
     if not root or protectedHub(root.Position) then return end
+    if not hasEquippedVeilblade(char) then return end
     if now < s.busyUntil or now < s.staggerUntil then return end
 
     local action = heavy and "Heavy" or "Light"
@@ -229,14 +238,16 @@ local function attack(player, heavy)
     task.delay(timeline.windup,function()
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
-            or s.attackToken ~= token or protectedHub(actorRoot.Position) then return end
+            or s.attackToken ~= token or protectedHub(actorRoot.Position)
+            or not hasEquippedVeilblade(actorChar) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
         local hitRegistry = {}
         for i=1,Rules.AttackSamples do
             actorChar, _, actorRoot = getRig(player)
             if not actorRoot or actorChar ~= char or s.attackToken ~= token
-                or protectedHub(actorRoot.Position) then break end
+                or protectedHub(actorRoot.Position)
+                or not hasEquippedVeilblade(actorChar) then break end
             local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
             if interrupted then break end
             if i < Rules.AttackSamples then
