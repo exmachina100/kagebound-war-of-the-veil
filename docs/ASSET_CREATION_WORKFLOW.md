@@ -7,7 +7,7 @@ ART-001: approved key art. ART-002: four warrior designs. ART-003: weapons and m
 
 ## Standing rules
 1. Retain the approved Japanese mythology, stylized Roblox silhouette and color language. Never copy models, animations, VFX or copyrighted material from the One Piece reference games.
-2. Begin every **new** character, weapon, enemy or environment form with a reference-backed 2D concept or turnaround. Code-only geometry for testing is explicitly a greybox exception.
+2. Before new visual forms, inspect the actual relevant approved ART-001..004 PNG. **Existing approved concept art satisfies the concept gate**: proceed directly to original low-poly geometry from that reference when appropriate. Only generate additional concept/turnaround images when the shape, views, or details are insufficient. Code-only geometry for testing is explicitly a greybox exception.
 3. Create assets as gameplay advances: each major playable system receives associated visual work in the same or next development batch. Do not defer all artwork until launch.
 4. Keep source images unchanged; give new files versioned names. Record generation provider, prompt, source IDs, selected image and original asset location.
 5. A 2D concept, video, or Gaussian splat is not a usable Roblox 3D mesh. A real mesh must be exported, checked and imported.
@@ -32,6 +32,18 @@ ART-001: approved key art. ART-002: four warrior designs. ART-003: weapons and m
 OpenArt image models: reference-backed images, 3-view turnarounds, concept and texture sheets, 2D VFX and icons. Use image-to-image with the approved PNG as an actual image input when possible. Do not assume OpenArt image/video generation produces rigged meshes.
 
 3D tools (when supported/connected): convert selected concept to an editable mesh. Blender/local mesh construction: topology, UV, pivots, shape cleanup, rigging and export. Roblox Studio: import as MeshPart/model, create and publish animation assets, test actual scale, physics and device budgets. GitHub: source, docs, scripts and verified binaries.
+
+## Authorized low-poly Roblox asset deliverables (2026-11-10)
+The user explicitly authorizes **low-poly original geometry** as production work, even when not produced by a paid 3D generator. Produce actual importable files rather than a concept-only report whenever possible.
+
+- **GLB / glTF** — preferred interchange for original low-poly static or material-bearing meshes, including weapons, masks, props, scenery and modular kits. glTF/GLB can contain hierarchies and compatible rigs.
+- **FBX** — recommended interchange for skeleton/skin/animated character assets, where created and exportable; do not claim an FBX rig unless a real rig exists.
+- **OBJ (+ MTL/texture files)** — accepted static geometry fallback, without the richer rig/animation features.
+- **Editable source** — save a `.blend` project or a reproducible modeling script along with exports. Prefer actual source files over narrative instructions.
+- **Roblox-ready checks** — finite vertices, actual triangle counts, watertight/nonzero-volume geometry where applicable, appropriate normals, pivot at intended grasp/base point, consistent scale/axis, material or UV paths, attachment notes, separate collision proxy and reasonable mobile geometry.
+- Roblox Studio's Importer supports FBX, OBJ, glTF/GLB, but **successful export is not successful Studio import**; verify imported MeshParts and actual published IDs before marking `imported`. Roblox documentation: https://create.roblox.com/docs/studio/importer and https://create.roblox.com/docs/art/modeling/specifications.
+- Preserve the asset source and export under versioned `assets/3d-source/` and `assets/roblox-ready/` when binary uploads can be verified, and never overwrite the four original concept PNGs.
+- Appearance/color should respect ART-001..004 even in very low-poly geometry; use a restrained silhouette rather than photoreal detail.
 
 ## Naming
 Use KGB_CATEGORY_Name_Variant_STAGE_vNN. Examples: KGB_WPN_Veilblade_Default_CONCEPT_v01.png, KGB_WPN_Veilblade_Default_GAME_v01.glb, KGB_VFX_Parry_Default_SPRITE_v01.png.
