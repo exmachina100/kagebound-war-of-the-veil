@@ -1,3 +1,11 @@
+-- Legacy duel-area renderer: disabled when the Grand World is active.
+local _shared = game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared")
+local _worldConfig = require(_shared:WaitForChild("WorldConfig"))
+if _worldConfig.Enabled then
+    print("[KAGEBOUND] Legacy arena component skipped in Grand World mode: MoonfallArt.server.lua")
+    return
+end
+
 -- KAGEBOUND Moonfall Bamboo art pass v0.2
 -- Approved anchors: ART-001 (key art), ART-004 (environment/Veilfall).
 -- This is stylized procedural Roblox geometry, NOT an imported finished model.
