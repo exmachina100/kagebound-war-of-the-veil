@@ -5,6 +5,8 @@ World.Enabled = true
 World.Seed = 260911
 World.TileSize = 120
 World.Origin = Vector3.new(0, 0, 0)
+-- Safe-hub training practice; sword damage permitted on dummies ONLY.
+World.TrainingGrounds = {x=64, z=65, radius=33}
 World.Zones = {
     {id="KageDojo",name="Kage Dojo",x=0,z=0,radius=290,tint=Color3.fromRGB(65,69,86),accent=Color3.fromRGB(236,170,106),level=1,kind="SafeHub"},
     {id="MoonfallBamboo",name="Moonfall Bamboo",x=0,z=-780,radius=310,tint=Color3.fromRGB(45,86,74),accent=Color3.fromRGB(228,92,164),level=1,kind="Wilderness"},
