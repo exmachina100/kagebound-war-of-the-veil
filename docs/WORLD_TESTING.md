@@ -31,9 +31,12 @@ Output should include `[KAGEBOUND] Grand World generated: 5 connected regions` a
 8. Confirm the legacy KageboundArena is not generated when WorldConfig.Enabled=true; this keeps world exploration free of boxed-in arena walls.
 9. Run mobile emulator / low graphics pass and capture screenshots against ART-001..ART-004. This blockout is **not** visually polished.
 
+## Grand World combat + regional Veilfall
+In Grand World mode, the old arena Veilfall script is intentionally disabled; the new `RegionalVeilfall.server.lua` supplies Moonfall bridge phases and the client HUD RemoteEvent. See [COMBAT_03_TEST.md](COMBAT_03_TEST.md) for the two-player combat, safe-zone and bridge tests.
+
 ## Scope and known limitations
 - World is a continuous 2700x2700-stud **flat ground blockout with five themed districts**. It has NOT reached the density, terrain complexity, travel diversity, map scale or world interactions of a mature action RPG.
-- No world streaming, quests persistence, multi-server travel, encounter spawning, dungeons, regional Veilfall or navigation map yet.
-- The combat prototype currently permits damage between nearby players regardless of safe hub membership; implement world PvP safety zones before an open multiplayer launch.
+- No world streaming, quest persistence, multi-server travel, encounter spawning, dungeons, full regional world-event orchestration or navigation map yet. One prototype regional Veilfall cycle is now scripted for Moonfall Bamboo but untested.
+- Combat.server.lua now checks the Kage Dojo SafeHub against attackers and targets before PvP damage; validation in a two-client Studio session remains mandatory. Gameplay safety beyond the defined hub requires future design.
 - Do not mistake a cosmetic counter named QuestShards for a secure inventory.
 - Road connections and world geo must be stress-tested and reworked to look like canonical art, not left as square platforms.
