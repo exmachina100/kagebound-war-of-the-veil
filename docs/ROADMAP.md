@@ -29,7 +29,7 @@ Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic
 ### P4 — Content MVP [not started]
 Four styles, eight weapons, three masks, two finished arenas, dojo, weapon sounds, animations, gameplay VFX and HUD. Validate mobile and desktop graphics budgets.
 
-### P5 — Progression / collection [not started]
+### P5 — Progression / collection [session-only Spirit Shards and weapon mastery prototype committed; persistence and economy pending]
 Mastery XP, cosmetics, currencies, shop, inventory, secure persistence, trading constraints and duplication protection. All gameplay powers earnable through play.
 
 ### P6 — Alpha / launch [not started]
@@ -40,6 +40,9 @@ Run [COMBAT_03_TEST.md](COMBAT_03_TEST.md) with two Studio clients. Verify world
 
 ## First world PvE encounter (code committed; Studio test pending)
 Three original Lantern Yokai are scripted in Moonfall Bamboo, with server-owned health, proximity pursuit, telegraphed attacks, parry handling, 14s respawn, and damage from the same swept katana hitboxes as PvP. These are **prototype enemies**, not a complete Yokai Hunt mode, boss AI, loot loop, or finished character assets. See [YOKAI_01_TEST.md](YOKAI_01_TEST.md) and issue #10.
+
+## Session rewards and avatar visual pass (code committed, Studio test pending)
+Original server-only RewardService and RewardPolicy award 25 Spirit Shards for first Whispers completion, or 6 Spirit Shards and 4 Veilblade Mastery on a Lantern Yokai defeat. Encounter tokens reject duplicate awards; no DataStore, commerce, inventory, trade or permanent save exists. ShinobiAppearance.server.lua adds a cosmetic no-collision ART-002 placeholder costume. See [PROGRESSION_01_TEST.md](PROGRESSION_01_TEST.md) and issue #11.
 
 ## External system references
 Reviewed three user-provided Roblox projects; architectural findings and safety decisions in [REFERENCE_REPOSITORY_REVIEW.md](REFERENCE_REPOSITORY_REVIEW.md). KAGEBOUND implementations are original. Do not import copyrighted One Piece assets or scripts. Follow issue #9 (stamina security), #10 (Yokai AI), #11 (progression/shop/trading), #12 (animation marker hitboxes) and #13 (cross-platform controls).
