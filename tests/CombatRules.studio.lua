@@ -17,5 +17,7 @@ check("Wind-up configured", Rules.AttackTimeline.Light.windup>0 and Rules.Attack
 check("Active windows configured", Rules.AttackTimeline.Light.active>0 and Rules.AttackTimeline.Heavy.active>0)
 check("Light total fits cooldown", Rules.AttackTimeline.Light.windup+Rules.AttackTimeline.Light.active+Rules.AttackTimeline.Light.recovery <= Rules.LightCooldown)
 check("Sweep samples bounded", Rules.AttackSamples>=2 and Rules.AttackSamples<=5)
+check("Double jump costs stamina", Rules.CanSpend(12,"DoubleJump") and not Rules.CanSpend(11,"DoubleJump"))
+check("Double jump bounded impulse", Rules.DoubleJumpVelocity > 20 and Rules.DoubleJumpVelocity < 70)
 check("Guard break is heavy only", Rules.HeavyBreaksParry == true)
 print("[KAGEBOUND] Combat policy checks passed; still run the multiplayer functional test.")
