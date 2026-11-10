@@ -22,6 +22,7 @@ local function canSelect(player)
     local hum=char and char:FindFirstChildOfClass("Humanoid")
     local root=char and char:FindFirstChild("HumanoidRootPart")
     if not hum or hum.Health<=0 or not root then return false end
+    if os.clock()<(player:GetAttribute("KageboundCombatBusyUntil") or 0) then return false end
     local dojo=World.Zones[1]
     if not dojo or dojo.id~="KageDojo" then return false end
     local dx=root.Position.X-dojo.x
@@ -39,13 +40,19 @@ remote.OnServerEvent:Connect(function(player,action,requested)
     if now-(lastRequest[player] or -math.huge)<0.25 then return end
     lastRequest[player]=now
     if not canSelect(player) then return end
-    -- Katana remains the only playable weapon until distinct server attack
-    -- implementations and equip lifecycle are wired and Studio tested.
-    if Authority.Select(player,requested) then
-        remote:FireClient(player,"Selected",requested)
+    local equipment=script.Parent:FindFirstChild("KageboundEquipWeapon")
+    if not equipment or not equipment:IsA("BindableFunction") then return end
+    local previous=Authority.Get(player)
+    if not Authority.Select(player,requested) then return end
+    local ok,success=pcall(function() return equipment:Invoke(player,requested) end)
+    if not ok or not success then
+        Authority.Select(player,previous)
+        pcall(function() equipment:Invoke(player,previous) end)
+        return
     end
+    remote:FireClient(player,"Selected",requested)
 end)
 Players.PlayerAdded:Connect(register)
 for _,player in ipairs(Players:GetPlayers()) do register(player) end
 Players.PlayerRemoving:Connect(function(player) lastRequest[player]=nil end)
-print("[KAGEBOUND] Server weapon selection policy ready; Katana only")
+print("[KAGEBOUND] Server weapon selection with verified equipment handoff ready")
