@@ -12,6 +12,7 @@ Rules.WinsRequired=3
 Rules.MaxRounds=5
 Rules.ArenaCenter=Vector3.new(2160,145,2090)
 Rules.SpawnOffset=39
+Rules.Veilfall={StartAt=24,WarningSeconds=6,ActiveSeconds=22,ClosingSeconds=6}
 
 function Rules.ResolveRound(aliveA,aliveB,hpA,hpB)
     if aliveA<=0 and aliveB<=0 then return "Draw" end
