@@ -4,6 +4,7 @@
 local Players = game:GetService("Players")
 local ServerStorage = game:GetService("ServerStorage")
 local Authority = require(script.Parent:WaitForChild("WeaponAuthority"))
+local Weapons = require(game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared"):WaitForChild("WeaponRules"))
 
 local INK = Color3.fromRGB(32,30,51)
 local CRIMSON = Color3.fromRGB(145,31,65)
@@ -185,7 +186,7 @@ local function equip(player,character,weaponName)
     if not backpack or not humanoid or humanoid.Health<=0
         or player.Character ~= character then return false end
     weaponName=weaponName or Authority.Get(player)
-    if not weaponName then return false end
+    if not weaponName or not Weapons.CanSelect(weaponName) then return false end
 
     -- Prepare replacement before removing the current registered weapon.
     -- No yielding after validation: selection and tool handoff stay atomic.
