@@ -1,0 +1,11 @@
+-- Studio command bar after Rojo sync. Asset ownership still needs manual review.
+local Shared=game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared")
+local Catalog=require(Shared:WaitForChild("LocomotionAnimationCatalog"))
+assert(Catalog.Resolve("Shinobi","Sprint")==nil,"No unowned animation IDs allowed")
+assert(Catalog.Resolve("Ronin","Idle")==nil)
+assert(Catalog.Resolve("Shinobi","Unknown")==nil)
+assert(Catalog.Resolve("Unknown","Sprint")==nil)
+assert(Catalog.Resolve("Shinobi",{})==nil)
+assert(Catalog.Universal.Dash=="")
+assert(Catalog.Universal.Veilfall=="")
+print("Locomotion animation empty-slot fallback contract PASS")
