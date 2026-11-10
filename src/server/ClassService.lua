@@ -223,7 +223,7 @@ end
 
 -- Call only from trusted server-authorized hit paths.
 -- Returns actual damage, whether a frontal Ronin Moon Guard blocked it.
-function Service.ResolveDefense(victim,attackerPosition,rawDamage)
+function Service.ResolveDefense(victim,attackerPosition,rawDamage,heavy)
     local amount=Rules.ClampDamage(rawDamage)
     local record=state[victim]
     if amount==0 or not record then return amount,false end
@@ -237,6 +237,12 @@ function Service.ResolveDefense(victim,attackerPosition,rawDamage)
         if forward and horizontal.Magnitude>.1
             and forward:Dot(horizontal.Unit)>=.25 then
             record.guardUntil=0 -- consumed by the first correctly faced attack
+            if heavy then
+                -- Heavy attacks still break a Ronin guard; consistent with
+                -- the game's heavy-breaks-parry core combat rule.
+                remote:FireAllClients("DefenseFX",victim,"RoninBroken",root.Position)
+                return amount,false
+            end
             remote:FireAllClients("DefenseFX",victim,"Ronin",root.Position)
             return 0,true
         end
