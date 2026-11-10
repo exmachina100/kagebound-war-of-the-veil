@@ -50,3 +50,6 @@ Read [Asset Production Rules](docs/ASSET_CREATION_WORKFLOW.md), [Style Guide](do
 node tools/generate_kagebound_obj.js
 node tools/check_kagebound_obj.js
 ```
+
+## Warrior style selection (starter class mechanics)
+Four original playable warrior styles have code-level starter abilities. Select Shinobi, Ronin, Onmyoji or Oni Disciple using the Kage Dojo class toolbar; press **H** / controller **L1** / touch **STYLE** to use your current class ability. The class is locked during Shadow Duel, combat damage and cooldowns remain server-controlled, and weapon selection is not permanently locked. See [Four Warriors test](docs/FOUR_WARRIORS_TEST.md). **This feature is not Roblox Studio-validated; final art/rigs for the other three classes are still in the asset lane.**
