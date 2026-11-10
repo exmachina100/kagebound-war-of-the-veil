@@ -297,6 +297,7 @@ local function attack(player, heavy)
     markBusy(player,s,now+profile.windup+profile.active+profile.recovery)
     s.attackToken += 1
     local token = s.attackToken
+    local issuedTool=WeaponAuthority.GetIssuedTool(player,char)
     remote:FireAllClients("Windup",player,action,combo)
 
     task.delay(profile.windup,function()
@@ -304,6 +305,7 @@ local function attack(player, heavy)
         if not actorRoot or actorChar ~= char or state[player] ~= s
             or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
             or equippedWeapon(player,actorChar)~=weaponName
+            or WeaponAuthority.GetIssuedTool(player,actorChar)~=issuedTool
             or not DuelAuthority.CanAct(player) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
