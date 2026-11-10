@@ -46,3 +46,9 @@ In Grand World mode, the old arena Veilfall script is intentionally disabled; th
 - Combat.server.lua now checks the Kage Dojo SafeHub against attackers and targets before PvP damage; validation in a two-client Studio session remains mandatory. Gameplay safety beyond the defined hub requires future design.
 - Do not mistake a cosmetic counter named QuestShards for a secure inventory.
 - Road connections and world geo must be stress-tested and reworked to look like canonical art, not left as square platforms.
+
+## Two opt-in match kiosks at Kage Dojo
+- Shadow Duel 1v1 queue kiosk: approximately X=-45, Z=45.
+- Clan Clash 2v2 queue kiosk: approximately X=45, Z=45.
+- One active match per mode per Roblox server. Joining one waiting queue blocks the other. Both matches use isolated arena layouts and return players to Kage Dojo afterward.
+- **Clan Clash code remains Studio-unverified.** See [CLAN_CLASH_TEST.md](CLAN_CLASH_TEST.md) and issue #30. The current 2v2 is a prototype, not a genuine clan account/roster/ranked system.
