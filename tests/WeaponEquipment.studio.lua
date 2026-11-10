@@ -6,6 +6,8 @@ assert(player,"Start a Studio play session before running this test")
 local char=player.Character
 assert(char,"Character must exist")
 local active=Authority.Get(player)
+local issued=Authority.GetIssuedTool(player,char)
+assert(issued and issued:IsA("Tool"),"Server-issued tool must exist before equipment test")
 assert(active=="Katana" or active=="Nodachi" or active=="Tanto")
 local legitimate=char:FindFirstChild("Veilblade")
 if legitimate then
@@ -18,6 +20,7 @@ handle.Name="Handle"
 handle.Parent=forged
 forged.Parent=char
 assert(not Authority.IsEquipped(player,char,active),"Forged tool must not authorize damage")
+assert(Authority.GetIssuedTool(player,char)==issued,"Forged tool must not replace issued identity")
 forged:Destroy()
 if legitimate and legitimate.Parent then
     legitimate.Parent=char
