@@ -6,10 +6,13 @@ local function mirror(p,r)
     if p.Parent~=Players then return end
     p:SetAttribute("KageboundDuelId",r and r.id or "")
     p:SetAttribute("KageboundDuelPhase",r and r.phase or "None")
+    p:SetAttribute("KageboundMatchTeam",r and r.team or "")
+    p:SetAttribute("KageboundMatchMode",r and r.mode or "")
 end
-function Service.Assign(p,id)
+function Service.Assign(p,id,team)
     if not p or p.Parent~=Players or members[p] or type(id)~="string" or id=="" then return false end
-    members[p]={id=id,phase="Preparing"}
+    if team~=nil and team~="A" and team~="B" then return false end
+    members[p]={id=id,phase="Preparing",team=team,mode=team and "ClanClash" or "ShadowDuel"}
     mirror(p,members[p])
     return true
 end
@@ -32,7 +35,14 @@ function Service.CanDamage(a,b)
     if a==b then return false end
     local x,y=members[a],members[b]
     if not x and not y then return true end
-    return x~=nil and y~=nil and x.id==y.id and x.phase=="Active" and y.phase=="Active"
+    if not x or not y or x.id~=y.id or x.phase~="Active" or y.phase~="Active" then
+        return false
+    end
+    -- Legacy 1v1 players have no team; Clan Clash requires opposing teams.
+    if x.team or y.team then
+        return x.team~=nil and y.team~=nil and x.team~=y.team
+    end
+    return true
 end
 function Service.Clear(p,id)
     local r=members[p]
