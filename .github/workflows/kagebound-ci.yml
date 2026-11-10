@@ -1,0 +1,30 @@
+name: KAGEBOUND Source and Mesh Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-and-low-poly:
+    name: Rojo source and OBJ/MTL preflight
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout KAGEBOUND source
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check scripts, canonical art and Rojo mappings
+        run: node tools/check_source_integrity.js
+      - name: Check source-controlled original OBJ/MTL geometry
+        run: node tools/check_kagebound_obj.js
+      - name: Explain platform limitations
+        run: echo "Static checks only; Lua runtime, multi-client combat and Roblox Studio imports need manual QA."
