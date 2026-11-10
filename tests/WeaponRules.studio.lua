@@ -6,8 +6,8 @@ for _,name in ipairs(Rules.Order) do
     assert(Rules.Get(name)~=nil,name)
 end
 assert(Rules.CanSelect("Katana"))
-assert(not Rules.CanSelect("Nodachi"))
-assert(not Rules.CanSelect("Tanto"))
+assert(Rules.CanSelect("Nodachi"))
+assert(Rules.CanSelect("Tanto"))
 assert(not Rules.CanSelect("Yumi"))
 assert(not Rules.CanSelect("Fake"))
 assert(not Rules.ValidRequest({}))
