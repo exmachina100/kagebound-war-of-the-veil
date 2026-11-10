@@ -53,3 +53,6 @@ node tools/check_kagebound_obj.js
 
 ## Warrior style selection (starter class mechanics)
 Four original playable warrior styles have code-level starter abilities. Select Shinobi, Ronin, Onmyoji or Oni Disciple using the Kage Dojo class toolbar; press **H** / controller **L1** / touch **STYLE** to use your current class ability. The class is locked during Shadow Duel, combat damage and cooldowns remain server-controlled, and weapon selection is not permanently locked. See [Four Warriors test](docs/FOUR_WARRIORS_TEST.md). **This feature is not Roblox Studio-validated; final art/rigs for the other three classes are still in the asset lane.**
+
+## Clan Clash 2v2 — prototype
+The Grand World now has an opt-in **Clan Clash** kiosk at Kage Dojo (X≈45, Z≈45). Four players are assigned to two server-owned teams; a separate 2v2 arena runs 80-second, first-to-three rounds and Veilfall. Server authority rejects friendly fire and cross-mode participants, and shared queue ownership stops entry into both Shadow Duel and Clan Clash at once. This is **code committed, not four-client Studio tested**, and does not yet implement 3v3–5v5, clan rosters, parties, ranked matchmaking or rewards. Follow [Clan Clash four-player QA](docs/CLAN_CLASH_TEST.md).
