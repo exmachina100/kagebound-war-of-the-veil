@@ -7,6 +7,7 @@ local Weapons=require(Shared:WaitForChild("WeaponRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local Duel=require(script.Parent:WaitForChild("DuelService"))
 local Queues=require(script.Parent:WaitForChild("QueueRegistry"))
+local Authority=require(script.Parent:WaitForChild("WeaponAuthority"))
 local remote=ReplicatedStorage:FindFirstChild("KageboundWeapon")
 if not remote then
     remote=Instance.new("RemoteEvent")
@@ -29,7 +30,7 @@ local function canSelect(player)
 end
 local function register(player)
     -- Attributes mirror server decisions; they are never accepted as authority.
-    player:SetAttribute("KageboundPrimaryWeapon",Weapons.Default)
+    Authority.Reset(player)
 end
 remote.OnServerEvent:Connect(function(player,action,requested)
     if action~="Select" or not Weapons.ValidRequest(requested)
@@ -40,8 +41,9 @@ remote.OnServerEvent:Connect(function(player,action,requested)
     if not canSelect(player) then return end
     -- Katana remains the only playable weapon until distinct server attack
     -- implementations and equip lifecycle are wired and Studio tested.
-    player:SetAttribute("KageboundPrimaryWeapon",requested)
-    remote:FireClient(player,"Selected",requested)
+    if Authority.Select(player,requested) then
+        remote:FireClient(player,"Selected",requested)
+    end
 end)
 Players.PlayerAdded:Connect(register)
 for _,player in ipairs(Players:GetPlayers()) do register(player) end
