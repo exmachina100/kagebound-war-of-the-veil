@@ -72,10 +72,11 @@ local function updateStamina(player, s, now)
     player:SetAttribute("KageboundStamina", math.floor(s.stamina+0.5))
 end
 
-local function spend(player, s, action, now)
+local function spend(player, s, action, now, overrideCost)
     updateStamina(player, s, now)
-    if not Rules.CanSpend(s.stamina, action) then return false end
-    s.stamina -= Rules.ActionCost[action]
+    local cost=overrideCost or Rules.ActionCost[action]
+    if s.stamina<cost then return false end
+    s.stamina -= cost
     player:SetAttribute("KageboundStamina", math.floor(s.stamina+0.5))
     return true
 end
@@ -91,8 +92,8 @@ end
 
 -- Weapon ownership is checked on the server for every sword attack.
 -- Tool in Backpack is NOT equipped and cannot authorize katana damage.
-local function hasEquippedVeilblade(player, character)
-    return WeaponAuthority.IsEquipped(player, character, "Katana")
+local function equippedWeapon(player, character)
+    return WeaponAuthority.ActiveEquipped(player,character)
 end
 
 local function horizontalUnit(vector)
@@ -265,7 +266,8 @@ local function attack(player, heavy)
     local s = getState(player)
     local char, _, root = getRig(player)
     if not root or not canSwingAt(root.Position) then return end
-    if not hasEquippedVeilblade(player,char) or not DuelAuthority.CanAct(player) then return end
+    local weaponName=equippedWeapon(player,char)
+    if not weaponName or not DuelAuthority.CanAct(player) then return end
     if now < s.busyUntil or now < s.staggerUntil
         or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
 
@@ -273,20 +275,20 @@ local function attack(player, heavy)
     local combo, damage, range, profile
 
     if heavy then
-        profile=WeaponAttacks.Resolve("Katana",true,0)
+        profile=WeaponAttacks.Resolve(weaponName,true,0)
         if not profile or now-s.heavyAt < profile.cooldown or now-s.lightAt < Rules.LightCooldown then return end
-        if not spend(player,s,"Heavy",now) then return end
+        if not spend(player,s,"Heavy",now,profile.cost) then return end
         s.heavyAt = now
         s.combo = 0
         combo, damage, range = 0, profile.damage, profile.range
     else
         if now-s.lightAt < Rules.LightCooldown or now-s.heavyAt < 0.7 then return end
-        if not spend(player,s,"Light",now) then return end
-        s.lightAt = now
-        s.combo = Rules.NextCombo(s.combo, now-s.comboAt)
-        s.comboAt = now
-        profile=WeaponAttacks.Resolve("Katana",false,s.combo)
-        if not profile then return end
+        local nextCombo=Rules.NextCombo(s.combo,now-s.comboAt)
+        profile=WeaponAttacks.Resolve(weaponName,false,nextCombo)
+        if not profile or now-s.lightAt<profile.cooldown or not spend(player,s,"Light",now,profile.cost) then return end
+        s.lightAt=now
+        s.combo=nextCombo
+        s.comboAt=now
         combo, damage, range = s.combo, profile.damage, profile.range
     end
 
@@ -301,7 +303,7 @@ local function attack(player, heavy)
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
             or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
-            or not hasEquippedVeilblade(player,actorChar)
+            or equippedWeapon(player,actorChar)~=weaponName
             or not DuelAuthority.CanAct(player) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
@@ -310,7 +312,7 @@ local function attack(player, heavy)
             actorChar, _, actorRoot = getRig(player)
             if not actorRoot or actorChar ~= char or s.attackToken ~= token
                 or not canSwingAt(actorRoot.Position)
-                or not hasEquippedVeilblade(player,actorChar)
+                or equippedWeapon(player,actorChar)~=weaponName
                 or not DuelAuthority.CanAct(player) then break end
             local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry,profile)
             if interrupted then break end
