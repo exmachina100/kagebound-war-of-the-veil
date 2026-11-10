@@ -23,7 +23,7 @@ Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana com
 ### P2 — Mythic + Veilfall [Kitsune decoy, Oni knockback and Tengu wind prototype, dojo-only loadout switching and regional Veilfall scripted; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
-### P3 — Match loop [Shadow Duel + Veilfall + 4 warrior starter loadouts coded; Studio test and Clan Clash pending]
+### P3 — Match loop [Shadow Duel + Veilfall, 2v2 Clan Clash, four starter class loadouts coded; Studio multiplayer QA pending]
 Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic dojo return.
 
 ### P4 — Content MVP [optional animation catalog and visual fallback coded; actual model/rig/animation assets pending]
@@ -90,3 +90,6 @@ The asset workflow and style rules are now linked to **two actual GitHub OBJ/MTL
 
 ## Four playable warrior loadouts — code committed, Roblox QA pending
 All four original player styles now have a **server-authoritative starter ability** with dojo-only selection: Shinobi Shadow Slip, Ronin Moon Guard, Onmyoji Ofuda Seal and Oni Disciple Iron Resolve. This is ONE distinct starter move per style, **not** all six proposed VFX-board moves or full final weapons. Basic WalkSpeed reflects style; main weapon and masks remain independently selectable. Class cooldowns, PvP matching, hub safety, NPC conditions, guarded hit damage and class VFX are server-controlled. See [FOUR_WARRIORS_TEST.md](FOUR_WARRIORS_TEST.md), `src/shared/ClassRules.lua`, `src/server/ClassService.lua`, `src/client/ClassHUD.client.lua`; issue #29. Actual Studio gameplay, authored visual assets, class-specific animations and competitive balancing are pending.
+
+## Clan Clash 2v2 — team arena prototype (unverified)
+`src/shared/ClanRules.lua`, `src/server/ClanClash.server.lua`, `src/client/ClanClashHUD.client.lua` now implement an isolated **2v2**, first-to-three/best-of-five team match with server-controlled scores, intermission, 80-second rounds, forfeit/disconnect cleanup and mid-round Veilfall warnings/collision. `DuelService.lua` has backward-compatible team membership and bans friendly fire; `QueueRegistry.lua` prevents simultaneous Shadow Duel/Clan queue participation. Four-player Studio QA and team spectator/skill isolation are pending in [CLAN_CLASH_TEST.md](CLAN_CLASH_TEST.md), issue [#30](https://github.com/exmachina100/kagebound-war-of-the-veil/issues/30). True clan membership, parties, scalable 3v3–5v5, ranked matchmaking and other content remain open.
