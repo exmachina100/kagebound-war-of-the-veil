@@ -9,6 +9,7 @@ local DuelAuthority = require(script.Parent:WaitForChild("DuelService"))
 local EnemyDamage = require(script.Parent:WaitForChild("EnemyDamage"))
 local Classes = require(script.Parent:WaitForChild("ClassService"))
 local WeaponAuthority = require(script.Parent:WaitForChild("WeaponAuthority"))
+local WeaponAttacks = require(Shared:WaitForChild("WeaponAttackRules"))
 
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
@@ -119,7 +120,7 @@ end
 -- Active strike: rectangular sweep in front of the character, sampled three
 -- times. Ignore world art and only query character assemblies; line of sight
 -- prevents hitting behind walls. The hitRegistry prevents multi-hit per swing.
-local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range, hitRegistry)
+local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range, hitRegistry, profile)
     local targets = {}
     for _, other in ipairs(Players:GetPlayers()) do
         if other ~= player then
@@ -155,7 +156,7 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
     params.FilterType = Enum.RaycastFilterType.Include
     params.FilterDescendantsInstances = targets
     params.MaxParts = 128
-    local size = Rules.AttackTimeline[heavy and "Heavy" or "Light"]
+    local size = profile
     local box = attackerRoot.CFrame*CFrame.new(0,0,-(range/2+0.6))
     local candidates = workspace:GetPartBoundsInBox(box, Vector3.new(size.width,size.height,range), params)
     local hitCount = 0
@@ -183,7 +184,7 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                         and os.clock() <= serverParryUntil
                         and facing(opponentRoot, attackerRoot.Position, 0.25)
 
-                    if isParrying and not (heavy and Rules.HeavyBreaksParry) then
+                    if isParrying and not profile.guardBreak then
                         opponentState.parryUntil = 0
                         opponent:SetAttribute("KageboundParryUntil",0)
                         s.staggerUntil = os.clock()+Rules.ParryStagger
@@ -269,32 +270,34 @@ local function attack(player, heavy)
         or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
 
     local action = heavy and "Heavy" or "Light"
-    local timeline = Rules.AttackTimeline[action]
-    local combo, damage, range
+    local combo, damage, range, profile
 
     if heavy then
-        if now-s.heavyAt < Rules.HeavyCooldown or now-s.lightAt < Rules.LightCooldown then return end
+        profile=WeaponAttacks.Resolve("Katana",true,0)
+        if not profile or now-s.heavyAt < profile.cooldown or now-s.lightAt < Rules.LightCooldown then return end
         if not spend(player,s,"Heavy",now) then return end
         s.heavyAt = now
         s.combo = 0
-        combo, damage, range = 0, Rules.HeavyDamage, Rules.HeavyRange
+        combo, damage, range = 0, profile.damage, profile.range
     else
         if now-s.lightAt < Rules.LightCooldown or now-s.heavyAt < 0.7 then return end
         if not spend(player,s,"Light",now) then return end
         s.lightAt = now
         s.combo = Rules.NextCombo(s.combo, now-s.comboAt)
         s.comboAt = now
-        combo, damage, range = s.combo, Rules.LightDamage[s.combo], Rules.LightRange
+        profile=WeaponAttacks.Resolve("Katana",false,s.combo)
+        if not profile then return end
+        combo, damage, range = s.combo, profile.damage, profile.range
     end
 
     s.parryUntil = 0
     player:SetAttribute("KageboundParryUntil",0)
-    markBusy(player,s,now+timeline.windup+timeline.active+timeline.recovery)
+    markBusy(player,s,now+profile.windup+profile.active+profile.recovery)
     s.attackToken += 1
     local token = s.attackToken
     remote:FireAllClients("Windup",player,action,combo)
 
-    task.delay(timeline.windup,function()
+    task.delay(profile.windup,function()
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
             or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
@@ -309,10 +312,10 @@ local function attack(player, heavy)
                 or not canSwingAt(actorRoot.Position)
                 or not hasEquippedVeilblade(player,actorChar)
                 or not DuelAuthority.CanAct(player) then break end
-            local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
+            local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry,profile)
             if interrupted then break end
             if i < Rules.AttackSamples then
-                task.wait(timeline.active/(Rules.AttackSamples-1))
+                task.wait(profile.active/(Rules.AttackSamples-1))
             end
         end
     end)
