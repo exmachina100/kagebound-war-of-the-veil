@@ -3,6 +3,7 @@
 -- Server creates one tool per spawn; combat authority remains Combat.server.lua.
 local Players = game:GetService("Players")
 local ServerStorage = game:GetService("ServerStorage")
+local Authority = require(script.Parent:WaitForChild("WeaponAuthority"))
 
 local INK = Color3.fromRGB(32,30,51)
 local CRIMSON = Color3.fromRGB(145,31,65)
@@ -148,6 +149,10 @@ local function equip(player,character)
     local tool = createKatana()
     applyImportedVisual(tool) -- fallback stays visible unless Studio import exists
     tool.Parent = backpack
+    if not Authority.RegisterTool(player,character,tool,"Katana") then
+        tool:Destroy()
+        return
+    end
     -- Automatically equip for MVP combat; the player can switch weapons later.
     task.defer(function()
         if player.Character == character and humanoid.Health > 0 and tool.Parent == backpack then
@@ -158,6 +163,7 @@ end
 
 local function register(player)
     player.CharacterAdded:Connect(function(char)
+        Authority.ClearTool(player)
         task.spawn(equip,player,char)
     end)
     if player.Character then task.spawn(equip,player,player.Character) end
