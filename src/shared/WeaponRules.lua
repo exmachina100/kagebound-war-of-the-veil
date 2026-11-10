@@ -8,8 +8,8 @@ Rules.Weapons={
     Katana={kind="Sword",light={12,13,16},heavy=25,reach=7,lightCooldown=.34,heavyCooldown=1.1,windup=.13,stamina=12,guardBreak=true,implemented=true},
     Nodachi={kind="Sword",light={17,19,21},heavy=32,reach=9.5,lightCooldown=.62,heavyCooldown=1.55,windup=.28,stamina=19,guardBreak=true,implemented=true},
     Tanto={kind="Sword",light={8,9,11},heavy=18,reach=4.5,lightCooldown=.22,heavyCooldown=.85,windup=.08,stamina=8,guardBreak=false,implemented=true},
-    Naginata={kind="Polearm",light={13,15,18},heavy=29,reach=11,lightCooldown=.48,heavyCooldown=1.35,windup=.21,stamina=16,guardBreak=true,implemented=false},
-    Yari={kind="Polearm",light={11,13,16},heavy=26,reach=12.5,lightCooldown=.44,heavyCooldown=1.3,windup=.19,stamina=14,guardBreak=false,implemented=false},
+    Naginata={kind="Polearm",light={13,15,18},heavy=29,reach=11,lightCooldown=.48,heavyCooldown=1.35,windup=.21,stamina=16,guardBreak=true,implemented=true},
+    Yari={kind="Polearm",light={11,13,16},heavy=26,reach=12.5,lightCooldown=.44,heavyCooldown=1.3,windup=.19,stamina=14,guardBreak=false,implemented=true},
     Kanabo={kind="Heavy",implemented=false},
     Kusarigama={kind="Flexible",implemented=false},
     Yumi={kind="Ranged",implemented=false}
