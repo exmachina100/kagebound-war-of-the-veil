@@ -12,7 +12,7 @@ local label=Instance.new("TextLabel")
 label.Name="Region"
 label.AnchorPoint=Vector2.new(.5,0)
 label.Position=UDim2.new(.5,0,0,74)
-label.Size=UDim2.new(0,360,0,66)
+label.Size=UDim2.new(0,360,0,88)
 label.BackgroundColor3=Color3.fromRGB(27,28,44)
 label.BackgroundTransparency=.18
 label.TextColor3=Color3.fromRGB(238,225,207)
@@ -34,9 +34,12 @@ local function refresh()
         local distance=root and math.floor((Vector2.new(root.Position.X-target.x,root.Position.Z-target.z)).Magnitude)
         title=title.."\nGuide: "..target.name..(distance and (" • "..distance.." studs") or "")
     end
+    local quest=player:GetAttribute("KageboundTravelQuest")
+    if quest and quest~="" then title=title.."\\nJourney: "..quest end
     label.Text=title
 end
 player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundTravelQuest"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegion"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
 refresh()

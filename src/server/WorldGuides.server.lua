@@ -5,6 +5,28 @@ local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local Guides=require(Shared:WaitForChild("WorldGuideRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 if not World.Enabled then return end
+local active={}
+local completed={}
+local Players=game:GetService("Players")
+local Regions=require(Shared:WaitForChild("RegionRules"))
+local function publish(player)
+    local quest=active[player]
+    player:SetAttribute("KageboundTravelQuest",quest and quest.id or "")
+    player:SetAttribute("KageboundTravelTarget",quest and quest.destination or "")
+    player:SetAttribute("KageboundTravelCompleted",completed[player] and #completed[player] or 0)
+end
+Players.PlayerAdded:Connect(function(player)
+    completed[player]={}
+    publish(player)
+end)
+for _,player in ipairs(Players:GetPlayers()) do
+    completed[player]={}
+    publish(player)
+end
+Players.PlayerRemoving:Connect(function(player)
+    active[player]=nil
+    completed[player]=nil
+end)
 local folder=Instance.new("Folder")
 folder.Name="KageboundGuides"
 folder.Parent=workspace
@@ -53,6 +75,36 @@ for _,npc in ipairs(Guides.NPCs) do
                 or (root.Position-base.Position).Magnitude>15 then return end
             player:SetAttribute("KageboundGuideDestination",npc.destination)
             player:SetAttribute("KageboundGuideSpeaker",npc.name)
+            if active[player] then return end
+            completed[player]=completed[player] or {}
+            for _,done in ipairs(completed[player]) do
+                if done==npc.id then return end
+            end
+            active[player]={id=npc.id,destination=npc.destination}
+            publish(player)
         end)
     end
 end
+
+-- Quest progress is derived only from server-observed character positions.
+task.spawn(function()
+    while true do
+        task.wait(0.75)
+        for player,quest in pairs(active) do
+            local char=player.Character
+            local hum=char and char:FindFirstChildOfClass("Humanoid")
+            local root=char and char:FindFirstChild("HumanoidRootPart")
+            if hum and hum.Health>0 and root then
+                local zone=Regions.At(root.Position)
+                if zone and zone.id==quest.destination then
+                    completed[player]=completed[player] or {}
+                    table.insert(completed[player],quest.id)
+                    active[player]=nil
+                    player:SetAttribute("KageboundGuideDestination","")
+                    player:SetAttribute("KageboundLastTravelCompletion",quest.id)
+                    publish(player)
+                end
+            end
+        end
+    end
+end)
