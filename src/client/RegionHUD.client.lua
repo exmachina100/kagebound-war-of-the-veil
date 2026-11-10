@@ -12,7 +12,7 @@ local label=Instance.new("TextLabel")
 label.Name="Region"
 label.AnchorPoint=Vector2.new(.5,0)
 label.Position=UDim2.new(.5,0,0,74)
-label.Size=UDim2.new(0,320,0,44)
+label.Size=UDim2.new(0,360,0,66)
 label.BackgroundColor3=Color3.fromRGB(27,28,44)
 label.BackgroundTransparency=.18
 label.TextColor3=Color3.fromRGB(238,225,207)
@@ -26,18 +26,24 @@ corner.Parent=label
 local function refresh()
     local zone=Regions.ById(player:GetAttribute("KageboundRegion"))
     local count=player:GetAttribute("KageboundRegionsDiscovered") or 0
-    label.Text=(zone and zone.name or "Between the Veils").."  •  "..count.."/5 explored"
-end
-local function destinationHint()
+    local title=(zone and zone.name or "Between the Veils").." • "..count.."/5 explored"
     local target=Regions.ById(player:GetAttribute("KageboundGuideDestination"))
-    if not target then return end
-    local char=player.Character
-    local root=char and char:FindFirstChild("HumanoidRootPart")
-    if not root then return end
-    local distance=math.floor((Vector2.new(root.Position.X-target.x,root.Position.Z-target.z)).Magnitude)
-    label.Text=target.name.."  •  "..distance.." studs ahead"
+    if target then
+        local char=player.Character
+        local root=char and char:FindFirstChild("HumanoidRootPart")
+        local distance=root and math.floor((Vector2.new(root.Position.X-target.x,root.Position.Z-target.z)).Magnitude)
+        title=title.."\nGuide: "..target.name..(distance and (" • "..distance.." studs") or "")
+    end
+    label.Text=title
 end
-player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(destinationHint)
+player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegion"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
 refresh()
+
+task.spawn(function()
+    while gui.Parent do
+        task.wait(2)
+        if player:GetAttribute("KageboundGuideDestination") then refresh() end
+    end
+end)
