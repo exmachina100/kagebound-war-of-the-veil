@@ -23,7 +23,7 @@ Moonfall Bamboo greybox (server generated), 2 players, Shinobi, 3-hit katana com
 ### P2 — Mythic + Veilfall [Kitsune decoy, Oni knockback and Tengu wind prototype, dojo-only loadout switching and regional Veilfall scripted; Studio playtest pending]
 Kitsune clone; Oni burst; Tengu wind. Server-timed Veilfall with preview warning, added traversal routes and consistent collision for all clients.
 
-### P3 — Match loop [Shadow Duel 1v1 best-of-five + per-round Veilfall scripted; Studio test and Clan Clash pending]
+### P3 — Match loop [Shadow Duel + Veilfall + 4 warrior starter loadouts coded; Studio test and Clan Clash pending]
 Shadow Duel 1v1, Clan Clash prototype, loadouts, scoring, results, and automatic dojo return.
 
 ### P4 — Content MVP [optional animation catalog and visual fallback coded; actual model/rig/animation assets pending]
@@ -87,3 +87,6 @@ Server melee and Oni mask damage now share `src/server/EnemyDamage.lua` with cen
 
 ## Source-controlled 3D asset exports (2026-11-10)
 The asset workflow and style rules are now linked to **two actual GitHub OBJ/MTL exports**, not just concept sheets or an offline handoff ZIP: a 1220-triangle ART-003 Veilblade v02 and a 296-triangle ART-004 Dojo practice-post v01. They are reproducible using `tools/generate_kagebound_obj.js`, and a static geometry/material validation pass was recorded. Cosmetic template integration to `ServerStorage/KageboundArt` has been added with safe procedural fallback. See [ASSET_IMPORT_HANDOFF_v01.md](ASSET_IMPORT_HANDOFF_v01.md). Live Studio import, MeshId registration, visual parity and gameplay QA remain pending. This milestone does not imply full G6/G7 completion.
+
+## Four playable warrior loadouts — code committed, Roblox QA pending
+All four original player styles now have a **server-authoritative starter ability** with dojo-only selection: Shinobi Shadow Slip, Ronin Moon Guard, Onmyoji Ofuda Seal and Oni Disciple Iron Resolve. This is ONE distinct starter move per style, **not** all six proposed VFX-board moves or full final weapons. Basic WalkSpeed reflects style; main weapon and masks remain independently selectable. Class cooldowns, PvP matching, hub safety, NPC conditions, guarded hit damage and class VFX are server-controlled. See [FOUR_WARRIORS_TEST.md](FOUR_WARRIORS_TEST.md), `src/shared/ClassRules.lua`, `src/server/ClassService.lua`, `src/client/ClassHUD.client.lua`; issue #29. Actual Studio gameplay, authored visual assets, class-specific animations and competitive balancing are pending.
