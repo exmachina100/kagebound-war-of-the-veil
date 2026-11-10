@@ -58,3 +58,9 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Measured preflight: finite vertices, valid face indices, no degenerate triangles, valid MTL refs, below preliminary low-poly budgets. Both files pass the checker, **not yet Blender watertight/normal or Roblox Studio QA**.
 - Studio-only cosmetic integration: `ServerStorage/KageboundArt/VeilbladeVisual` and `ServerStorage/KageboundArt/DojoPracticePostVisual`, consumed automatically by `src/server/Veilblade.server.lua` / `src/server/DojoTraining.server.lua` with existing visual fallback. See [import handoff](ASSET_IMPORT_HANDOFF_v01.md).
 - Both assets remain **3d-draft**, not `imported` or `validated`.
+
+## Shinobi static geometry workstream — 2026-11-10
+- Asset: `KGB_CHAR_Shinobi_Default`, ART-001/ART-002. **Stage: 3d-draft (offline, pending binary GitHub upload)**; no rig, Studio import, animation, or visual sign-off.
+- Verified local output: `KAGEBOUND_Shinobi_Blockout_v01.zip` containing `kagebound_shinobi/generate_shinobi.py`, `KGB_CHAR_Shinobi_Default_BLOCKOUT_v01.glb`, `README.md`. Generated with trimesh 4.11.1; GLB reimport: **40 closed submeshes, 1,428 triangles, all watertight, zero degenerate triangles**. Y-up, -Z forward, ground pivot, nominal height 5.83 units; 7-color vertex-color appearance kit.
+- This is a **static appearance blockout**, not a skinned R15 character or finished mesh. Actual approved PNG pixel-by-pixel comparison is pending, as are bone weights, animation, UV texture work, scale/material checks, Studio import, and mobile QA. No Roblox ID assigned.
+- Binary and generator were produced in the automation working container, **not committed to GitHub**. Next: transfer the exact ZIP contents into `assets/3d-source/characters/` and `assets/roblox-ready/characters/` after reference review, then import/rig in Studio. No gameplay scripts changed.
