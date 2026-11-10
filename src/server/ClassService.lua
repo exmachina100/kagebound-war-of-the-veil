@@ -30,6 +30,7 @@ local function inHub(pos,maxRadius)
         if zone.kind=="SafeHub" then
             local delta=Vector2.new(pos.X-zone.x,pos.Z-zone.z)
             return delta.Magnitude<=math.min(maxRadius or zone.radius,zone.radius)
+                and math.abs(pos.Y)<=100
         end
     end
     return false
@@ -70,7 +71,8 @@ local function initialize(player)
     player:SetAttribute("KageboundClassCooldownUntil",0)
     player.CharacterAdded:Connect(function(character)
         local hum=character:WaitForChild("Humanoid",8)
-        if hum and state[player] then
+        local root=character:WaitForChild("HumanoidRootPart",8)
+        if hum and root and state[player] then
             state[player].guardUntil=0
             state[player].armorUntil=0
             state[player].slowUntil=0
@@ -79,7 +81,12 @@ local function initialize(player)
             applyWalkSpeed(player)
         end
     end)
-    task.defer(applyWalkSpeed,player)
+    if player.Character then
+        task.spawn(function()
+            player.Character:WaitForChild("HumanoidRootPart",8)
+            applyWalkSpeed(player)
+        end)
+    end
     return state[player]
 end
 
