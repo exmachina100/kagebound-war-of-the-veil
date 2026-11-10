@@ -152,23 +152,35 @@ end
 local function equip(player,character,weaponName)
     local backpack = player:WaitForChild("Backpack",8)
     local humanoid = character:WaitForChild("Humanoid",8)
-    if not backpack or not humanoid or player.Character ~= character then return end
+    if not backpack or not humanoid or humanoid.Health<=0
+        or player.Character ~= character then return false end
     weaponName=weaponName or Authority.Get(player)
     if not weaponName then return false end
-    local previous = backpack:FindFirstChild("Veilblade")
-    if previous then previous:Destroy() end
-    local held = character:FindFirstChild("Veilblade")
-    if held then held:Destroy() end
-    local tool = createKatana(weaponName)
-    if weaponName=="Katana" then applyImportedVisual(tool) end -- ART-003 import is Katana only
-    tool.Parent = backpack
-    if not Authority.RegisterTool(player,character,tool,weaponName) then
+
+    -- Prepare replacement before removing the current registered weapon.
+    -- No yielding after validation: selection and tool handoff stay atomic.
+    local tool=createKatana(weaponName)
+    if weaponName=="Katana" then applyImportedVisual(tool) end
+    if player.Character~=character or humanoid.Health<=0 then
         tool:Destroy()
         return false
     end
-    -- Automatically equip for MVP combat; the player can switch weapons later.
+    local previous=backpack:FindFirstChild("Veilblade")
+    local held=character:FindFirstChild("Veilblade")
+    if previous then previous.Name="VeilbladeRetired" end
+    if held then held.Name="VeilbladeRetired" end
+    tool.Parent=backpack
+    if not Authority.RegisterTool(player,character,tool,weaponName) then
+        tool:Destroy()
+        if previous then previous.Name="Veilblade" end
+        if held then held.Name="Veilblade" end
+        return false
+    end
+    if previous then previous:Destroy() end
+    if held then held:Destroy() end
     task.defer(function()
-        if player.Character == character and humanoid.Health > 0 and tool.Parent == backpack then
+        if player.Character==character and humanoid.Health>0
+            and Authority.Get(player)==weaponName and tool.Parent==backpack then
             humanoid:EquipTool(tool)
         end
     end)
