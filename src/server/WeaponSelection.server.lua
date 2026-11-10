@@ -31,7 +31,11 @@ local function canSelect(player)
 end
 local function register(player)
     -- Attributes mirror server decisions; they are never accepted as authority.
-    Authority.Reset(player)
+    -- Do not reset authority here: the equipment script may already have
+    -- issued a tool before this Script connects PlayerAdded.
+    if player:GetAttribute("KageboundPrimaryWeapon")==nil then
+        player:SetAttribute("KageboundPrimaryWeapon",Authority.Get(player))
+    end
 end
 remote.OnServerEvent:Connect(function(player,action,requested)
     if action~="Select" or not Weapons.ValidRequest(requested)
