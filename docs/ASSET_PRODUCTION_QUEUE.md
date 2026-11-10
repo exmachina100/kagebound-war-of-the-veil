@@ -69,3 +69,10 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Inspected the existing offline ZIP generator and GLB handoff. Audited the 40-part / 1,428-triangle static mesh's R15, UV/material, accessory, pivot and import limitations.
 - Source-controlled audit: `docs/assets/SHINOBI_21_GEOMETRY_PREFLIGHT_v01.md` (commit `8137fe7a5c05aacac0a998f60702abd4deb90543`).
 - Stage remains **3d-draft**; binary/source still require upload to GitHub and approved PNG pixel-level review. No rigging, Studio import or QA claimed. No gameplay scripts touched.
+
+## Shinobi #21 UV geometry v02 — 2026-11-10
+- Produced offline `KAGEBOUND_Shinobi_UV_Blockout_v02.zip`, containing original `generate_shinobi_v02.py`, `KGB_CHAR_Shinobi_Default_BLOCKOUT_v02.glb`, README, and measured `validation.json`.
+- Reimported GLB: **49,428 bytes; 40 meshes; 1,428 triangles; 40/40 watertight parts; 40/40 UV-bearing meshes; zero degenerate faces**. Cylindrical per-part UVs and tiny RGBA flat-color textures are provisional, not an approved texture atlas.
+- Y-up, -Z forward, ground pivot; height approximately 5.83 units. Previous v01 preserved.
+- **Stage remains 3d-draft**. No R15 skin/rig, animation, Studio import, screenshot or device QA. ART-001/002 exact PNG comparison pending. Binary/source are verified locally, **not pushed to GitHub**; package is a conversation attachment.
+- Next: reference comparison and R15 segmentation/weights; do not edit gameplay scripts.
