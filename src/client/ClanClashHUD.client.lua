@@ -61,6 +61,47 @@ local buttonCorner=Instance.new("UICorner")
 buttonCorner.CornerRadius=UDim.new(0,7)
 buttonCorner.Parent=action
 
+local veil=Instance.new("TextLabel")
+veil.Name="ClanVeilfallNotice"
+veil.AnchorPoint=Vector2.new(.5,0)
+veil.Position=UDim2.new(.5,0,0,143)
+veil.Size=UDim2.fromOffset(390,31)
+veil.BackgroundColor3=Color3.fromRGB(65,35,100)
+veil.BackgroundTransparency=.1
+veil.TextColor3=Color3.fromRGB(250,217,250)
+veil.Font=Enum.Font.GothamBold
+veil.TextSize=13
+veil.Visible=false
+veil.Parent=gui
+local veilCorner=Instance.new("UICorner")
+veilCorner.CornerRadius=UDim.new(0,7)
+veilCorner.Parent=veil
+local veilToken=0
+local function showVeil(kind,data)
+    veilToken+=1
+    local token=veilToken
+    if kind=="VeilWarning" or kind=="VeilClosing" then
+        local seconds=tonumber(data.seconds) or 6
+        veil.Visible=true
+        task.spawn(function()
+            for left=seconds,1,-1 do
+                if veilToken~=token then return end
+                veil.Text=kind=="VeilWarning"
+                    and ("VEILFALL IN "..left.." — ROUTES WILL OPEN")
+                    or ("VEIL CLOSES IN "..left.." — LEAVE THE BRIDGE")
+                task.wait(1)
+            end
+        end)
+    else
+        veil.Visible=true
+        veil.Text=kind=="VeilActive" and "VEILFALL — SPECTRAL BRIDGES ACTIVE"
+            or "VEIL SEALED — NORMAL ARENA"
+        task.delay(3,function()
+            if veilToken==token then veil.Visible=false end
+        end)
+    end
+end
+
 local mode="None"
 local token=0
 local function show(text,sub,nextMode)
@@ -85,6 +126,15 @@ action.MouseButton1Click:Connect(function()
 end)
 event.OnClientEvent:Connect(function(kind,data)
     data=data or {}
+    if kind=="VeilWarning" or kind=="VeilActive"
+        or kind=="VeilClosing" or kind=="VeilClosed" then
+        showVeil(kind,data)
+        return -- preserve round-timer token and team score
+    end
+    if kind=="MatchEnd" or kind=="RoundResult" then
+        veilToken+=1
+        veil.Visible=false
+    end
     token+=1
     local current=token
     if kind=="Queued" then
