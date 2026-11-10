@@ -1,0 +1,47 @@
+-- KAGEBOUND: server-owned primary weapon selection, v0.2.
+-- Only playable archetypes may be selected. No client-supplied stats or damage.
+local Players=game:GetService("Players")
+local ReplicatedStorage=game:GetService("ReplicatedStorage")
+local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
+local Weapons=require(Shared:WaitForChild("WeaponRules"))
+local World=require(Shared:WaitForChild("WorldConfig"))
+local Duel=require(script.Parent:WaitForChild("DuelService"))
+local remote=ReplicatedStorage:FindFirstChild("KageboundWeapon")
+if not remote then
+    remote=Instance.new("RemoteEvent")
+    remote.Name="KageboundWeapon"
+    remote.Parent=ReplicatedStorage
+end
+local lastRequest={}
+local function canSelect(player)
+    if player.Parent~=Players or Duel.IsParticipant(player) then return false end
+    local char=player.Character
+    local hum=char and char:FindFirstChildOfClass("Humanoid")
+    local root=char and char:FindFirstChild("HumanoidRootPart")
+    if not hum or hum.Health<=0 or not root then return false end
+    local dojo=World.Zones[1]
+    if not dojo or dojo.id~="KageDojo" then return false end
+    local dx=root.Position.X-dojo.x
+    local dz=root.Position.Z-dojo.z
+    return dx*dx+dz*dz<=Weapons.SelectionRadius*Weapons.SelectionRadius
+end
+local function register(player)
+    -- Attributes mirror server decisions; they are never accepted as authority.
+    player:SetAttribute("KageboundPrimaryWeapon",Weapons.Default)
+end
+remote.OnServerEvent:Connect(function(player,action,requested)
+    if action~="Select" or not Weapons.ValidRequest(requested)
+        or not Weapons.CanSelect(requested) then return end
+    local now=os.clock()
+    if now-(lastRequest[player] or -math.huge)<0.25 then return end
+    lastRequest[player]=now
+    if not canSelect(player) then return end
+    -- Katana remains the only playable weapon until distinct server attack
+    -- implementations and equip lifecycle are wired and Studio tested.
+    player:SetAttribute("KageboundPrimaryWeapon",requested)
+    remote:FireClient(player,"Selected",requested)
+end)
+Players.PlayerAdded:Connect(register)
+for _,player in ipairs(Players:GetPlayers()) do register(player) end
+Players.PlayerRemoving:Connect(function(player) lastRequest[player]=nil end)
+print("[KAGEBOUND] Server weapon selection policy ready; Katana only")
