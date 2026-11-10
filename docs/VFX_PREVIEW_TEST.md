@@ -22,4 +22,4 @@ A **local-only** Studio VFX preview evaluates four original warrior-style effect
 - Binary atlases are not yet verified on GitHub or as Roblox uploaded assets. Final animation/visual parity is pending.
 
 ## Limits
-The preview does NOT implement the six conceptual abilities depicted for Ronin, Onmyoji or Oni Disciple. Actual gameplay remains server-validated Shinobi melee, the three mask actives, Shadow Duel and basic Yokai PvE. Visual proof is not gameplay feature proof.
+The preview does NOT implement the six conceptual abilities depicted for Ronin, Onmyoji or Oni Disciple. Actual gameplay now also includes one original server-controlled starter active for **each of four styles**, alongside server-validated Shinobi/Veilblade melee, the three mask actives, Shadow Duel and basic Yokai PvE; see [FOUR_WARRIORS_TEST.md](FOUR_WARRIORS_TEST.md). Visual proof is not gameplay feature proof.
