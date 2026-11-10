@@ -10,10 +10,12 @@ local CRIMSON = Color3.fromRGB(145,31,65)
 local HOT = Color3.fromRGB(255,91,153)
 local GOLD = Color3.fromRGB(226,166,92)
 
-local function createKatana()
+local function createKatana(weaponName)
     local tool = Instance.new("Tool")
     tool.Name = "Veilblade"
-    tool.ToolTip = "KAGEBOUND • Shinobi Katana [ART-003]"
+    weaponName=weaponName or "Katana"
+    tool.ToolTip = "KAGEBOUND • "..weaponName.." [ART-003 prototype]"
+    tool:SetAttribute("KageboundWeaponVisual",weaponName)
     tool.CanBeDropped = false
     tool.RequiresHandle = true
     tool.Grip = CFrame.new(0,-.4,0)
@@ -67,6 +69,15 @@ local function createKatana()
         CFrame.new(0,-1.2,0),GOLD,Enum.Material.Metal)
     fitted("RedTassel",Vector3.new(.13,1.2,.13),
         CFrame.new(.35,-1.65,0),CRIMSON,Enum.Material.Fabric)
+    if weaponName=="Nodachi" then
+        for _,p in ipairs(tool:GetChildren()) do
+            if p:IsA("BasePart") and p.Name~="Handle" then p.Size=Vector3.new(p.Size.X,p.Size.Y*1.35,p.Size.Z) end
+        end
+    elseif weaponName=="Tanto" then
+        for _,p in ipairs(tool:GetChildren()) do
+            if p:IsA("BasePart") and p.Name~="Handle" then p.Size=Vector3.new(p.Size.X,p.Size.Y*.58,p.Size.Z) end
+        end
+    end
     -- Blade-attached trail is cosmetic. Client enables it only on server Swing.
     -- Attachment span creates a narrow anime-fantasy slash ribbon at the blade.
     local base = Instance.new("Attachment")
@@ -138,20 +149,22 @@ local function applyImportedVisual(tool)
     return true
 end
 
-local function equip(player,character)
+local function equip(player,character,weaponName)
     local backpack = player:WaitForChild("Backpack",8)
     local humanoid = character:WaitForChild("Humanoid",8)
     if not backpack or not humanoid or player.Character ~= character then return end
+    weaponName=weaponName or Authority.Get(player)
+    if not weaponName then return false end
     local previous = backpack:FindFirstChild("Veilblade")
     if previous then previous:Destroy() end
     local held = character:FindFirstChild("Veilblade")
     if held then held:Destroy() end
-    local tool = createKatana()
-    applyImportedVisual(tool) -- fallback stays visible unless Studio import exists
+    local tool = createKatana(weaponName)
+    if weaponName=="Katana" then applyImportedVisual(tool) end -- ART-003 import is Katana only
     tool.Parent = backpack
-    if not Authority.RegisterTool(player,character,tool,"Katana") then
+    if not Authority.RegisterTool(player,character,tool,weaponName) then
         tool:Destroy()
-        return
+        return false
     end
     -- Automatically equip for MVP combat; the player can switch weapons later.
     task.defer(function()
@@ -159,7 +172,16 @@ local function equip(player,character)
             humanoid:EquipTool(tool)
         end
     end)
+    return true
 end
+
+local equipRequest=Instance.new("BindableFunction")
+equipRequest.Name="KageboundEquipWeapon"
+equipRequest.OnInvoke=function(player,weaponName)
+    if player.Character==nil then return false end
+    return equip(player,player.Character,weaponName)==true
+end
+equipRequest.Parent=script.Parent
 
 local function register(player)
     player.CharacterAdded:Connect(function(char)
