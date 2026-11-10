@@ -8,6 +8,7 @@ local MaskRules=require(Shared:WaitForChild("MaskRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
 local EnemyDamage=require(script.Parent:WaitForChild("EnemyDamage"))
+local Classes=require(script.Parent:WaitForChild("ClassService"))
 
 local remote=ReplicatedStorage:FindFirstChild("KageboundMask")
 if not remote then
@@ -64,9 +65,12 @@ local function oniBurst(player,char,root)
                 if horizontal.Magnitude>=.1 and horizontal.Magnitude<=rules.Radius
                     and hasLineOfSight(char,targetChar,root.Position+Vector3.new(0,1,0),
                         targetRoot.Position+Vector3.new(0,1,0)) then
-                    targetHum:TakeDamage(rules.Damage)
-                    targetRoot.AssemblyLinearVelocity=horizontal.Unit*rules.Knockback
-                        +Vector3.new(0,rules.UpwardSpeed,0)
+                    local finalDamage,guarded=Classes.ResolveDefense(opponent,root.Position,rules.Damage,false)
+                    if not guarded then
+                        if finalDamage>0 then targetHum:TakeDamage(finalDamage) end
+                        targetRoot.AssemblyLinearVelocity=horizontal.Unit*rules.Knockback
+                            +Vector3.new(0,rules.UpwardSpeed,0)
+                    end
                 end
             end
         end
