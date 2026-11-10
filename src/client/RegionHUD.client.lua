@@ -28,6 +28,16 @@ local function refresh()
     local count=player:GetAttribute("KageboundRegionsDiscovered") or 0
     label.Text=(zone and zone.name or "Between the Veils").."  •  "..count.."/5 explored"
 end
+local function destinationHint()
+    local target=Regions.ById(player:GetAttribute("KageboundGuideDestination"))
+    if not target then return end
+    local char=player.Character
+    local root=char and char:FindFirstChild("HumanoidRootPart")
+    if not root then return end
+    local distance=math.floor((Vector2.new(root.Position.X-target.x,root.Position.Z-target.z)).Magnitude)
+    label.Text=target.name.."  •  "..distance.." studs ahead"
+end
+player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(destinationHint)
 player:GetAttributeChangedSignal("KageboundRegion"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
 refresh()
