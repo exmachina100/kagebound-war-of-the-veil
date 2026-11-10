@@ -64,3 +64,8 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Verified local output: `KAGEBOUND_Shinobi_Blockout_v01.zip` containing `kagebound_shinobi/generate_shinobi.py`, `KGB_CHAR_Shinobi_Default_BLOCKOUT_v01.glb`, `README.md`. Generated with trimesh 4.11.1; GLB reimport: **40 closed submeshes, 1,428 triangles, all watertight, zero degenerate triangles**. Y-up, -Z forward, ground pivot, nominal height 5.83 units; 7-color vertex-color appearance kit.
 - This is a **static appearance blockout**, not a skinned R15 character or finished mesh. Actual approved PNG pixel-by-pixel comparison is pending, as are bone weights, animation, UV texture work, scale/material checks, Studio import, and mobile QA. No Roblox ID assigned.
 - Binary and generator were produced in the automation working container, **not committed to GitHub**. Next: transfer the exact ZIP contents into `assets/3d-source/characters/` and `assets/roblox-ready/characters/` after reference review, then import/rig in Studio. No gameplay scripts changed.
+
+## Shinobi #21 source preflight — follow-up 2026-11-10
+- Inspected the existing offline ZIP generator and GLB handoff. Audited the 40-part / 1,428-triangle static mesh's R15, UV/material, accessory, pivot and import limitations.
+- Source-controlled audit: `docs/assets/SHINOBI_21_GEOMETRY_PREFLIGHT_v01.md` (commit `8137fe7a5c05aacac0a998f60702abd4deb90543`).
+- Stage remains **3d-draft**; binary/source still require upload to GitHub and approved PNG pixel-level review. No rigging, Studio import or QA claimed. No gameplay scripts touched.
