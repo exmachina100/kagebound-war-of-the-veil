@@ -8,6 +8,7 @@ local HttpService=game:GetService("HttpService")
 local Rewards=require(script.Parent:WaitForChild("RewardService"))
 local Navigation=require(script.Parent:WaitForChild("YokaiNavigation"))
 local DuelAuthority=require(script.Parent:WaitForChild("DuelService"))
+local Classes=require(script.Parent:WaitForChild("ClassService"))
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled then return end
 
@@ -190,9 +191,15 @@ for i,home in ipairs(homes) do
                                     local from=model.PrimaryPart.Position
                                     local obstruction=workspace:Raycast(from,enemyRoot.Position-from,params)
                                     if not obstruction then
-                                        hum:TakeDamage(11)
-                                        combat:FireAllClients("YokaiStrike",model)
-                                        combat:FireAllClients("Hit",target,11)
+                                        local finalDamage,guarded=Classes.ResolveDefense(target,
+                                            model.PrimaryPart.Position,11,false)
+                                        if not guarded then
+                                            if finalDamage>0 then hum:TakeDamage(finalDamage) end
+                                            combat:FireAllClients("YokaiStrike",model)
+                                            combat:FireAllClients("Hit",target,finalDamage)
+                                        else
+                                            combat:FireAllClients("Parried",target)
+                                        end
                                     end
                                 end
                             end
