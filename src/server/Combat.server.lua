@@ -8,6 +8,7 @@ local World = require(Shared:WaitForChild("WorldConfig"))
 local DuelAuthority = require(script.Parent:WaitForChild("DuelService"))
 local EnemyDamage = require(script.Parent:WaitForChild("EnemyDamage"))
 local Classes = require(script.Parent:WaitForChild("ClassService"))
+local WeaponAuthority = require(script.Parent:WaitForChild("WeaponAuthority"))
 
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
@@ -89,10 +90,8 @@ end
 
 -- Weapon ownership is checked on the server for every sword attack.
 -- Tool in Backpack is NOT equipped and cannot authorize katana damage.
-local function hasEquippedVeilblade(character)
-    local tool = character and character:FindFirstChild("Veilblade")
-    return tool ~= nil and tool:IsA("Tool") and tool.Enabled
-        and tool:FindFirstChild("Handle") ~= nil
+local function hasEquippedVeilblade(player, character)
+    return WeaponAuthority.IsEquipped(player, character, "Katana")
 end
 
 local function horizontalUnit(vector)
@@ -265,7 +264,7 @@ local function attack(player, heavy)
     local s = getState(player)
     local char, _, root = getRig(player)
     if not root or not canSwingAt(root.Position) then return end
-    if not hasEquippedVeilblade(char) or not DuelAuthority.CanAct(player) then return end
+    if not hasEquippedVeilblade(player,char) or not DuelAuthority.CanAct(player) then return end
     if now < s.busyUntil or now < s.staggerUntil
         or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
 
@@ -299,7 +298,7 @@ local function attack(player, heavy)
         local actorChar, _, actorRoot = getRig(player)
         if not actorRoot or actorChar ~= char or state[player] ~= s
             or s.attackToken ~= token or not canSwingAt(actorRoot.Position)
-            or not hasEquippedVeilblade(actorChar)
+            or not hasEquippedVeilblade(player,actorChar)
             or not DuelAuthority.CanAct(player) then return end
         remote:FireAllClients("Swing",player,action,combo)
 
@@ -308,7 +307,7 @@ local function attack(player, heavy)
             actorChar, _, actorRoot = getRig(player)
             if not actorRoot or actorChar ~= char or s.attackToken ~= token
                 or not canSwingAt(actorRoot.Position)
-                or not hasEquippedVeilblade(actorChar)
+                or not hasEquippedVeilblade(player,actorChar)
                 or not DuelAuthority.CanAct(player) then break end
             local interrupted = sweep(player,actorChar,actorRoot,s,heavy,damage,range,hitRegistry)
             if interrupted then break end
