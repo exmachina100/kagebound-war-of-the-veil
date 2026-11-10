@@ -9,6 +9,7 @@ local Rules=require(Shared:WaitForChild("ClanRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local Authority=require(script.Parent:WaitForChild("DuelService"))
 local Queues=require(script.Parent:WaitForChild("QueueRegistry"))
+local Veilfall=require(script.Parent:WaitForChild("DuelVeilfall"))
 if not World.Enabled then return end
 
 local event=ReplicatedStorage:FindFirstChild("KageboundClanClash")
@@ -63,6 +64,7 @@ for _,x in ipairs({-38,38}) do
             CFrame.new(center+Vector3.new(x,3,z)),palette.ink,true)
     end
 end
+local veilfall=Veilfall.new(arena,center,Rules,palette)
 local kioskAt=Vector3.new(45,4,45)
 local kiosk=part(Workspace,"KageboundClanKiosk",Vector3.new(8,7,2),
     CFrame.new(kioskAt),palette.ink,false,Enum.Material.Wood)
@@ -171,6 +173,7 @@ end
 local function finish(match,winner,why)
     if match.finished then return end
     match.finished=true
+    veilfall:Stop(participants(match))
     phase(match,"Finished")
     broadcast(match,"MatchEnd",{
         winner=winner,why=why or "Round limit",
@@ -212,6 +215,12 @@ local function runMatch(match)
             round=round,seconds=Rules.RoundSeconds,
             scoreA=match.scoreA,scoreB=match.scoreB
         })
+        veilfall:Start(participants(match),
+            function()
+                return active==match and not match.finished and not match.forfeit
+                    and match.phase=="Active" and allLive(match)
+            end,
+            function(kind,data) broadcast(match,kind,data) end)
         local deadline=os.clock()+Rules.RoundSeconds
         repeat
             if match.forfeit or not allLive(match) then break end
@@ -228,6 +237,7 @@ local function runMatch(match)
             end
             task.wait(.2)
         until os.clock()>=deadline
+        veilfall:Stop(participants(match))
         if match.forfeit or not allLive(match) then break end
         phase(match,"Intermission")
         local a,b,hpA,hpB=aliveAndHealth(match)
