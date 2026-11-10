@@ -134,6 +134,18 @@ local function onPlayer(player)
     player.CharacterAdded:Connect(function(character)
         task.spawn(apply,player,character)
     end)
+    player:GetAttributeChangedSignal("KageboundWarriorStyle"):Connect(function()
+        local char=player.Character
+        if not char then return end
+        local selected=player:GetAttribute("KageboundWarriorStyle")
+        local previous=char:FindFirstChild("KageboundShinobiAppearance")
+        if selected~="Shinobi" then
+            -- Never leave the Shinobi fox mask/armor on Ronin, Onmyoji or Oni.
+            if previous then previous:Destroy() end
+        elseif not previous then
+            task.spawn(apply,player,char)
+        end
+    end)
     if player.Character then task.spawn(apply,player,player.Character) end
 end
 Players.PlayerAdded:Connect(onPlayer)
