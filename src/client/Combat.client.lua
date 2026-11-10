@@ -9,6 +9,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local player = Players.LocalPlayer
 local Rules = require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("CombatRules"))
 local remote = ReplicatedStorage:WaitForChild("KageboundCombat")
+local WeaponAttacks = require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WeaponAttackRules"))
 local localReady = {Light=0,Heavy=0,Parry=0,Dash=0,DoubleJump=0}
 local delays = {
     Light=Rules.LightCooldown,
@@ -26,7 +27,13 @@ local function request(action, payload)
     end
     local now = os.clock()
     if now < localReady[action] then return end
-    localReady[action] = now + delays[action]
+    local delay = delays[action]
+    if action=="Light" or action=="Heavy" then
+        local selected=player:GetAttribute("KageboundPrimaryWeapon")
+        local profile=WeaponAttacks.Resolve(selected,action=="Heavy",1)
+        if profile then delay=profile.cooldown end
+    end
+    localReady[action] = now + delay
     remote:FireServer(action,payload)
 end
 
