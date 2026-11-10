@@ -15,6 +15,7 @@ if not remote then
     remote.Parent=ReplicatedStorage
 end
 local lastRequest={}
+local switching={}
 local function canSelect(player)
     if player.Parent~=Players or Duel.IsParticipant(player)
         or Queues.Mode(player)~=nil then return false end
@@ -43,20 +44,23 @@ remote.OnServerEvent:Connect(function(player,action,requested)
     local now=os.clock()
     if now-(lastRequest[player] or -math.huge)<0.25 then return end
     lastRequest[player]=now
-    if not canSelect(player) then return end
+    if switching[player] or not canSelect(player) then return end
     local equipment=script.Parent:FindFirstChild("KageboundEquipWeapon")
     if not equipment or not equipment:IsA("BindableFunction") then return end
+    switching[player]=true
     local previous=Authority.Get(player)
-    if not Authority.Select(player,requested) then return end
+    if not Authority.Select(player,requested) then switching[player]=nil;return end
     local ok,success=pcall(function() return equipment:Invoke(player,requested) end)
     if not ok or not success then
         Authority.Select(player,previous)
         pcall(function() equipment:Invoke(player,previous) end)
+        switching[player]=nil
         return
     end
+    switching[player]=nil
     remote:FireClient(player,"Selected",requested)
 end)
 Players.PlayerAdded:Connect(register)
 for _,player in ipairs(Players:GetPlayers()) do register(player) end
-Players.PlayerRemoving:Connect(function(player) lastRequest[player]=nil end)
+Players.PlayerRemoving:Connect(function(player) lastRequest[player]=nil; switching[player]=nil end)
 print("[KAGEBOUND] Server weapon selection with verified equipment handoff ready")
