@@ -46,3 +46,9 @@
 - No Studio client should be able to send arbitrary Veilfall commands, claim extra bridge time or damage. The event is controlled by the match controller only, not by any RemoteEvent from clients.
 - Run `tests/ShadowDuelVeilfall.studio.lua` in Studio server Command Bar. Separately test the actual timeline and collision in a **two-player Studio session**, and compare with the ART-004 environment board.
 - Match-isolated Veilfall must not alter the permanent regional Moonfall Veilfall, Grand World traversal, social Kage Dojo collision, or Player attributes outside the match.
+
+## Four-style loadout regression
+- Select Shinobi / Ronin / Onmyoji / Oni Disciple before queuing. A class loadout remains locked throughout Preparing, Countdown, Active, Intermission and Finished; only return to Kage Dojo can change it.
+- The **H / L1 / STYLE** active works only while DuelService.CanAct is true. Confirm that Onmyoji seal affects only the opponent in the same active match, never spectators or world Yokai. Ronin Moon Guard blocks a valid frontal light strike but not a heavy guard breaker. Oni Iron Resolve reduces but never negates all incoming damage; Shinobi Shadow Slip should not escape arena collision.
+- Verify class-specific WalkSpeed survives each round's character respawn, and temporary guards/slow/armor do not persist from one round to another.
+- Do not infer that class selection unlocks final R15 rig/animation assets; the four class visual sheets are separate from live imported content. See [FOUR_WARRIORS_TEST.md](FOUR_WARRIORS_TEST.md).
