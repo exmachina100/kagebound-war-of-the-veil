@@ -6,6 +6,7 @@ local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local Weapons=require(Shared:WaitForChild("WeaponRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local Duel=require(script.Parent:WaitForChild("DuelService"))
+local Queues=require(script.Parent:WaitForChild("QueueRegistry"))
 local remote=ReplicatedStorage:FindFirstChild("KageboundWeapon")
 if not remote then
     remote=Instance.new("RemoteEvent")
@@ -14,7 +15,8 @@ if not remote then
 end
 local lastRequest={}
 local function canSelect(player)
-    if player.Parent~=Players or Duel.IsParticipant(player) then return false end
+    if player.Parent~=Players or Duel.IsParticipant(player)
+        or Queues.Mode(player)~=nil then return false end
     local char=player.Character
     local hum=char and char:FindFirstChildOfClass("Humanoid")
     local root=char and char:FindFirstChild("HumanoidRootPart")
