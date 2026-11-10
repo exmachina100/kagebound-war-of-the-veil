@@ -8,6 +8,7 @@ local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local Rules=require(Shared:WaitForChild("DuelRules"))
 local World=require(Shared:WaitForChild("WorldConfig"))
 local Authority=require(script.Parent:WaitForChild("DuelService"))
+local Queues=require(script.Parent:WaitForChild("QueueRegistry"))
 local Veilfall=require(script.Parent:WaitForChild("DuelVeilfall"))
 if not World.Enabled then return end
 
@@ -105,6 +106,7 @@ local function removeFromQueue(player)
     for i=#queue,1,-1 do
         if queue[i]==player then table.remove(queue,i) end
     end
+    Queues.Leave(player,"ShadowDuel")
 end
 local function live(player)
     return player and player.Parent==Players
@@ -228,6 +230,8 @@ local function tryPair()
     while #queue>=2 do
         local a=table.remove(queue,1)
         local b=table.remove(queue,1)
+        Queues.Leave(a,"ShadowDuel")
+        Queues.Leave(b,"ShadowDuel")
         if live(a) and live(b) and a~=b and not Authority.IsParticipant(a)
             and not Authority.IsParticipant(b) then
             serial+=1
@@ -264,6 +268,10 @@ prompt.Triggered:Connect(function(player)
     if table.find(queue,player) then
         removeFromQueue(player)
         notify(player,"QueueCancelled")
+        return
+    end
+    if not Queues.Enter(player,"ShadowDuel") then
+        notify(player,"QueueBlocked")
         return
     end
     table.insert(queue,player)
