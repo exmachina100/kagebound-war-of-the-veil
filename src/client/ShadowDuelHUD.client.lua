@@ -151,6 +151,9 @@ event.OnClientEvent:Connect(function(eventName,data)
     elseif eventName=="QueueCancelled" then
         show("SHADOW DUEL","Queue cancelled.","None")
         dismissAfter(3,thisToken)
+    elseif eventName=="QueueBlocked" then
+        show("SHADOW DUEL","Already queued for another match mode.","None")
+        dismissAfter(3,thisToken)
     elseif eventName=="MatchFound" then
         show("MATCH FOUND","Preparing the Veilbound arena...","Duel")
     elseif eventName=="Countdown" then
