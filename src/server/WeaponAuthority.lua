@@ -22,6 +22,11 @@ function Authority.RegisterTool(player,character,tool,name)
     issued[player]={character=character,tool=tool,name=name}
     return true
 end
+function Authority.ActiveEquipped(player,character)
+    local name=Authority.Get(player)
+    if name and Authority.IsEquipped(player,character,name) then return name end
+    return nil
+end
 function Authority.IsEquipped(player,character,name)
     local record=issued[player]
     return record~=nil and Authority.Get(player)==name
