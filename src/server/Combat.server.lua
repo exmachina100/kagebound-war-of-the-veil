@@ -282,7 +282,7 @@ local function attack(player, heavy)
         s.combo = 0
         combo, damage, range = 0, profile.damage, profile.range
     else
-        if now-s.lightAt < Rules.LightCooldown or now-s.heavyAt < 0.7 then return end
+        if now-s.heavyAt < 0.7 then return end
         local nextCombo=Rules.NextCombo(s.combo,now-s.comboAt)
         profile=WeaponAttacks.Resolve(weaponName,false,nextCombo)
         if not profile or now-s.lightAt<profile.cooldown or not spend(player,s,"Light",now,profile.cost) then return end
