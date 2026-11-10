@@ -7,6 +7,7 @@ local Rules = require(Shared:WaitForChild("CombatRules"))
 local World = require(Shared:WaitForChild("WorldConfig"))
 local DuelAuthority = require(script.Parent:WaitForChild("DuelService"))
 local EnemyDamage = require(script.Parent:WaitForChild("EnemyDamage"))
+local Classes = require(script.Parent:WaitForChild("ClassService"))
 
 local remote = ReplicatedStorage:FindFirstChild("KageboundCombat")
 if not remote then
@@ -49,6 +50,12 @@ local function resetState(player)
     }
     player:SetAttribute("KageboundStamina", Rules.MaxStamina)
     player:SetAttribute("KageboundParryUntil", 0)
+    player:SetAttribute("KageboundCombatBusyUntil", 0)
+end
+
+local function markBusy(player,s,untilTime)
+    s.busyUntil=untilTime
+    player:SetAttribute("KageboundCombatBusyUntil",untilTime)
 end
 
 local function getState(player)
@@ -189,13 +196,23 @@ local function sweep(player, attackerChar, attackerRoot, s, heavy, damage, range
                     if isParrying then
                         opponentState.parryUntil = 0
                         opponent:SetAttribute("KageboundParryUntil",0)
-                        opponentState.busyUntil = os.clock()+Rules.GuardBreakStagger
+                        markBusy(opponent,opponentState,os.clock()+Rules.GuardBreakStagger)
                         opponentState.staggerUntil = opponentState.busyUntil
                         opponentState.attackToken += 1
                         remote:FireAllClients("GuardBroken", opponent, player)
                     end
-                    opponentHum:TakeDamage(damage)
-                    remote:FireAllClients("Hit", opponent, damage)
+                    local finalDamage,guarded=Classes.ResolveDefense(opponent,
+                        attackerRoot.Position,damage,heavy)
+                    if guarded then
+                        s.staggerUntil=os.clock()+.16
+                        s.attackToken+=1
+                        remote:FireAllClients("ClassGuard",opponent,player)
+                        return true
+                    end
+                    if finalDamage>0 then
+                        opponentHum:TakeDamage(finalDamage)
+                        remote:FireAllClients("Hit", opponent, finalDamage)
+                    end
                     hitCount += 1
                     if hitCount >= Rules.MaxPlayersHitPerSwing then return true end
                 end
@@ -249,7 +266,8 @@ local function attack(player, heavy)
     local char, _, root = getRig(player)
     if not root or not canSwingAt(root.Position) then return end
     if not hasEquippedVeilblade(char) or not DuelAuthority.CanAct(player) then return end
-    if now < s.busyUntil or now < s.staggerUntil then return end
+    if now < s.busyUntil or now < s.staggerUntil
+        or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
 
     local action = heavy and "Heavy" or "Light"
     local timeline = Rules.AttackTimeline[action]
@@ -272,7 +290,7 @@ local function attack(player, heavy)
 
     s.parryUntil = 0
     player:SetAttribute("KageboundParryUntil",0)
-    s.busyUntil = now+timeline.windup+timeline.active+timeline.recovery
+    markBusy(player,s,now+timeline.windup+timeline.active+timeline.recovery)
     s.attackToken += 1
     local token = s.attackToken
     remote:FireAllClients("Windup",player,action,combo)
@@ -306,7 +324,8 @@ remote.OnServerEvent:Connect(function(player, action, payload)
     local now = os.clock()
     local s = getState(player)
     local _, humanoid, root = getRig(player)
-    if not root or not DuelAuthority.CanAct(player) then return end
+    if not root or not DuelAuthority.CanAct(player)
+        or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
     if humanoid.FloorMaterial ~= Enum.Material.Air then s.doubleJumpUsed = false end
 
     if action == "Light" then
@@ -320,7 +339,7 @@ remote.OnServerEvent:Connect(function(player, action, payload)
         s.parryAt = now
         s.parryUntil = now+Rules.ParryWindow
         player:SetAttribute("KageboundParryUntil",s.parryUntil)
-        s.busyUntil = s.parryUntil
+        markBusy(player,s,s.parryUntil)
         remote:FireAllClients("ParryStart",player)
     elseif action == "DoubleJump" then
         if now < s.busyUntil or now < s.staggerUntil or s.doubleJumpUsed
@@ -338,7 +357,7 @@ remote.OnServerEvent:Connect(function(player, action, payload)
         local direction = horizontalUnit(payload)
         if not direction or not spend(player,s,"Dash",now) then return end
         s.dashAt = now
-        s.busyUntil = now+0.16
+        markBusy(player,s,now+0.16)
         -- Client sends normalized intent; only the server controls velocity.
         root.AssemblyLinearVelocity = direction*Rules.DashSpeed
             + Vector3.new(0,math.clamp(root.AssemblyLinearVelocity.Y,0,35),0)
