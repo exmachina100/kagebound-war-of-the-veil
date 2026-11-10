@@ -78,6 +78,36 @@ local function createKatana(weaponName)
             if p:IsA("BasePart") and p.Name~="Handle" then p.Size=Vector3.new(p.Size.X,p.Size.Y*.58,p.Size.Z) end
         end
     end
+    -- Polearm blockouts: distinct reach silhouettes without imported meshes.
+    -- Existing sword parts are hidden; these pieces weld to the same server tool.
+    if weaponName=="Naginata" or weaponName=="Yari" then
+        for _,part in ipairs(tool:GetChildren()) do
+            if part:IsA("BasePart") and part.Name~="Handle" then
+                part.Transparency=1
+            end
+        end
+        handle.Size=Vector3.new(.28,4.5,.28)
+        tool.Grip=CFrame.new(0,-1.5,0)
+        fitted("PoleShaft",Vector3.new(.25,6.5,.25),
+            CFrame.new(0,1.7,0),INK,Enum.Material.Wood)
+        fitted("PoleWrap",Vector3.new(.33,1.6,.33),
+            CFrame.new(0,-.8,0),CRIMSON,Enum.Material.Fabric)
+        fitted("PoleCollar",Vector3.new(.48,.35,.48),
+            CFrame.new(0,4.95,0),GOLD,Enum.Material.Metal)
+        if weaponName=="Naginata" then
+            fitted("NaginataCurvedBlade",Vector3.new(.23,2.6,.65),
+                CFrame.new(.12,6.25,0)*CFrame.Angles(0,0,math.rad(-8)),
+                HOT,Enum.Material.Metal)
+            fitted("NaginataEdge",Vector3.new(.09,2.35,.72),
+                CFrame.new(.3,6.25,0)*CFrame.Angles(0,0,math.rad(-8)),
+                Color3.fromRGB(245,224,235),Enum.Material.Neon)
+        else
+            fitted("YariSpearhead",Vector3.new(.27,2.4,.38),
+                CFrame.new(0,6.15,0),HOT,Enum.Material.Metal)
+            fitted("YariPoint",Vector3.new(.15,.75,.2),
+                CFrame.new(0,7.65,0),Color3.fromRGB(245,224,235),Enum.Material.Neon)
+        end
+    end
     -- Blade-attached trail is cosmetic. Client enables it only on server Swing.
     -- Attachment span creates a narrow anime-fantasy slash ribbon at the blade.
     local base = Instance.new("Attachment")
