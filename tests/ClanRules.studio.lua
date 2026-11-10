@@ -1,0 +1,18 @@
+-- KAGEBOUND Clan Clash rules contract. Run in Studio SERVER Command Bar.
+local Shared=game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared")
+local Rules=require(Shared:WaitForChild("ClanRules"))
+local function check(label,v)
+    assert(v,"[KAGEBOUND CLAN RULES FAIL] "..label)
+    print("[KAGEBOUND CLAN RULES PASS] "..label)
+end
+check("2v2 first competitive prototype",Rules.TeamSize==2 and Rules.RequiredPlayers==4)
+check("Future scalable 2v2 to 5v5",Rules.MinTeamSize==2 and Rules.MaxTeamSize==5)
+check("Match time constrained",Rules.RoundSeconds>=45 and Rules.RoundSeconds<=120)
+check("No instant round start",Rules.CountdownSeconds>=2)
+check("Score by surviving team",Rules.ResolveRound(2,0,180,0)=="A")
+check("Score by surviving opponent",Rules.ResolveRound(0,2,0,120)=="B")
+check("Tie by team HP",Rules.ResolveRound(1,1,65,120)=="B")
+check("Draw if exact HP and survivors tied",Rules.ResolveRound(1,1,100,100)=="Draw")
+check("First to three wins",Rules.MatchWinner(3,1,3)=="A")
+check("No early victory",Rules.MatchWinner(2,1,3)==nil)
+print("[KAGEBOUND] Clan rules source contract complete. Two-client test is insufficient: use four clients.")
