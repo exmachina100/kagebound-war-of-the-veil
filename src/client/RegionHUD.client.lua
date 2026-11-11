@@ -111,7 +111,10 @@ local function refresh()
         elseif hunt=="Completed" then
             title=title.."\nHunt complete: Moonfall bounty claimed"
         elseif hunt=="Available" then
-            title=title.."\nHunt available at Moonfall Bounty Board"
+            local root=player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+            local boardPosition=Vector3.new(zone.x+35,5,zone.z+45)
+            local distance=root and math.floor((root.Position-boardPosition).Magnitude)
+            title=title.."\nBounty Board: "..(distance and (distance.." studs away") or "find the notice")
         end
     end
     title=title.."\nSpirit Shards: "..shards.." | Mastery: "..mastery
@@ -133,6 +136,6 @@ task.spawn(function()
     while gui.Parent do
         task.wait(2)
         local target=player:GetAttribute("KageboundGuideDestination")
-        if target and target~="" then refresh() end
+        if (target and target~="") or player:GetAttribute("KageboundRegion")=="MoonfallBamboo" then refresh() end
     end
 end)
