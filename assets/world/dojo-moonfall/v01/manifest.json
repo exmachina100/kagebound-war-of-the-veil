@@ -1,0 +1,81 @@
+{
+  "version": "v01",
+  "style": "ART-001/004",
+  "assetCount": 8,
+  "status": "procedural mesh draft, Studio import unverified",
+  "collision": "Create separate simple Roblox collision proxies; do not use mesh collision for gameplay authority",
+  "assets": [
+    {
+      "name": "moonfall_torii",
+      "parts": 8,
+      "triangles": 136,
+      "glb": "moonfall_torii.glb",
+      "obj": "moonfall_torii.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "shrine_stone_lantern",
+      "parts": 6,
+      "triangles": 72,
+      "glb": "shrine_stone_lantern.glb",
+      "obj": "shrine_stone_lantern.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "moonfall_bamboo_cluster",
+      "parts": 48,
+      "triangles": 1248,
+      "glb": "moonfall_bamboo_cluster.glb",
+      "obj": "moonfall_bamboo_cluster.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "kage_dojo_shrine_module",
+      "parts": 13,
+      "triangles": 236,
+      "glb": "kage_dojo_shrine_module.glb",
+      "obj": "kage_dojo_shrine_module.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "moonfall_bridge",
+      "parts": 20,
+      "triangles": 240,
+      "glb": "moonfall_bridge.glb",
+      "obj": "moonfall_bridge.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "moonfall_stone_path",
+      "parts": 9,
+      "triangles": 108,
+      "glb": "moonfall_stone_path.glb",
+      "obj": "moonfall_stone_path.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "dojo_clan_banner",
+      "parts": 4,
+      "triangles": 48,
+      "glb": "dojo_clan_banner.glb",
+      "obj": "dojo_clan_banner.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    },
+    {
+      "name": "dojo_ritual_altar",
+      "parts": 6,
+      "triangles": 72,
+      "glb": "dojo_ritual_altar.glb",
+      "obj": "dojo_ritual_altar.obj",
+      "pivot": "ground-center",
+      "units": "studs"
+    }
+  ]
+}
