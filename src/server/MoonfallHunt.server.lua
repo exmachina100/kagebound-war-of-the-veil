@@ -73,7 +73,7 @@ local function register(player)
         record.progress=math.clamp(math.floor(defeats-record.baseline),0,GOAL)
         if record.progress>=GOAL then
             -- Fixed server reward policy and one session receipt.
-            local awarded=Rewards.Award(player,"WhispersQuest","MoonfallHuntV1")
+            local awarded=Rewards.Award(player,"MoonfallHunt","MoonfallHuntV1")
             if awarded then record.status="Completed" end
         end
         publish(player,record)
@@ -95,4 +95,4 @@ end)
 Players.PlayerAdded:Connect(register)
 for _,player in ipairs(Players:GetPlayers()) do register(player) end
 Players.PlayerRemoving:Connect(function(player) records[player]=nil end)
-print("[KAGEBOUND] Moonfall bounty: defeat 3 Lantern Yokai for WhispersQuest reward")
+print("[KAGEBOUND] Moonfall bounty: defeat 3 Lantern Yokai for dedicated MoonfallHunt reward")
