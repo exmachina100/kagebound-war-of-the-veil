@@ -1,5 +1,10 @@
 name: Import OpenArt KAGEBOUND UI atlas
 on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/import_openart_ui.py
+      - .github/workflows/import-openart-ui.yml
   workflow_dispatch:
     inputs:
       image_url:
@@ -21,7 +26,7 @@ jobs:
       - run: python -m pip install Pillow==11.3.0 requests==2.32.5
       - name: Download and validate generated PNG, split sprites
         env:
-          OPENART_IMAGE_URL: ${{ inputs.image_url }}
+          OPENART_IMAGE_URL: ${{ inputs.image_url || 'https://cdn.openart.ai/openart-ai/production/2026-11/create-image/zJfldFkAyO87iqeQBjIU/021794388261809681426abb3fc8758bc9af65311c7ae316516d2_1794388300738_539e970c.png' }}
         run: python scripts/import_openart_ui.py
       - name: Commit imported art to main
         run: |
