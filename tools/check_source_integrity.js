@@ -81,6 +81,23 @@ const classService=read("src/server/ClassService.lua");
 assert(classService.includes("Duel.IsParticipant(player)"),"Class switch match lock missing");
 assert(classService.includes("not inHub(root.Position,Rules.SelectionRadius)"),"Dojo selection gate missing");
 
+// Grand World and WorldSky are separate owners: prevent future agent regressions.
+const worldSky=read("src/server/WorldSky.server.lua");
+const grandWorld=read("src/server/GrandWorld.server.lua");
+const skyConfig=read("src/shared/SkyConfig.lua");
+const runtimeRegistry=read("src/shared/RuntimeAssetRegistry.lua");
+assert(worldSky.includes('WaitForChild("RuntimeAssetRegistry")'),"World sky missing published asset registry");
+assert(worldSky.includes('assetRegistry.get("ui.skybox.moonfall.v01."'),"World sky registry key drift");
+assert(worldSky.includes('GetAttributeChangedSignal("KageboundVeilfall")'),"Veilfall sky synchronization missing");
+assert(runtimeRegistry.includes("function Registry.get("),"Runtime asset registry lookup missing");
+for(const face of ["Bk","Dn","Ft","Lf","Rt","Up"]) {
+    assert(skyConfig.includes(face+" ="),"Missing skybox face "+face);
+}
+assert(!/Lighting\\.(ClockTime|Brightness|Ambient|OutdoorAmbient)\\s*=/.test(grandWorld),
+    "GrandWorld must not override WorldSky lighting ownership");
+assert(!/atmosphere\\.(Density|Haze|Color|Decay|Glare)\\s*=/.test(grandWorld),
+    "GrandWorld must not override WorldSky atmosphere ownership");
+
 console.log("KAGEBOUND integrity PASS:",required.length,"text sources,",
     refs.length,"approved concept assets, Rojo paths and server isolation guards.");
 console.log("Note: does not compile or execute Luau, Roblox networking, graphics or gameplay.");
