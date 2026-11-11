@@ -1,32 +1,30 @@
--- KAGEBOUND environment mesh integration (cosmetic-only).
--- Imported Studio templates belong in ServerStorage/KageboundArt/WorldEnvironment.
--- This script never changes gameplay hitboxes or terrain collisions.
+-- Cosmetic world-art loader. Requires Studio-imported MeshPart/Model templates and
+-- explicitly positioned placement anchors; never guesses a region's origin.
+-- Anchors: Workspace/KageboundWorld/ArtPlacementAnchors/<asset name> (BasePart).
+-- Templates: ServerStorage/KageboundArt/WorldEnvironment/<asset name>.
+-- All gameplay collision and existing procedural world parts remain untouched.
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 
 local world = Workspace:WaitForChild("KageboundWorld", 120)
 if not world then
-    warn("[KAGEBOUND] World asset integration skipped: Grand World missing")
+    warn("[KAGEBOUND] World art skipped: KageboundWorld not ready")
     return
 end
+
+local names = {
+    "KageDojoShrine", "DojoRitualAltar", "DojoClanBanner",
+    "MoonfallBambooCluster", "MoonfallBridge", "MoonfallStonePath",
+    "MoonfallToriiGate", "ShrineStoneLantern",
+}
 
 local art = ServerStorage:FindFirstChild("KageboundArt")
 local library = art and art:FindFirstChild("WorldEnvironment")
-if not library then
-    warn("[KAGEBOUND] WorldEnvironment templates not imported; procedural world preserved")
+local anchors = world:FindFirstChild("ArtPlacementAnchors")
+if not library or not anchors then
+    warn("[KAGEBOUND] World art not installed: import templates and add explicit ArtPlacementAnchors")
     return
 end
-
-local placements = {
-    {name = "KageDojoShrine", region = "KageDojo", offset = Vector3.new(0, 0, -35)},
-    {name = "DojoRitualAltar", region = "KageDojo", offset = Vector3.new(0, 0, -24)},
-    {name = "DojoClanBanner", region = "KageDojo", offset = Vector3.new(-12, 0, -27)},
-    {name = "MoonfallBambooCluster", region = "MoonfallBamboo", offset = Vector3.new(24, 0, 15)},
-    {name = "MoonfallBridge", region = "MoonfallBamboo", offset = Vector3.new(0, 0, 0)},
-    {name = "MoonfallStonePath", region = "MoonfallBamboo", offset = Vector3.new(-15, 0, 12)},
-    {name = "MoonfallToriiGate", region = "MoonfallBamboo", offset = Vector3.new(0, 0, 35)},
-    {name = "ShrineStoneLantern", region = "MoonfallBamboo", offset = Vector3.new(12, 0, 30)},
-}
 
 local installed = world:FindFirstChild("ImportedWorldArt")
 if not installed then
@@ -35,42 +33,33 @@ if not installed then
     installed.Parent = world
 end
 
-local function regionPosition(region)
-    if region:IsA("Model") then
-        return region:GetPivot().Position
-    elseif region:IsA("BasePart") then
-        return region.Position
-    elseif region:IsA("Folder") then
-        local base = region:FindFirstChildWhichIsA("BasePart", true)
-        return base and base.Position
-    end
-    return nil
-end
-
 local count = 0
-for _, entry in ipairs(placements) do
-    if not installed:FindFirstChild(entry.name) then
-        local template = library:FindFirstChild(entry.name)
-        local region = world:FindFirstChild(entry.region)
-        local position = region and regionPosition(region)
-        if template and position and (template:IsA("Model") or template:IsA("BasePart")) then
-            local copy = template:Clone()
-            copy.Name = entry.name
-            for _, descendant in ipairs(copy:GetDescendants()) do
-                if descendant:IsA("BasePart") then
-                    descendant.Anchored = true
-                    descendant.CanCollide = false
-                    descendant.CanTouch = false
-                    descendant.CanQuery = false
-                end
+for _, name in ipairs(names) do
+    local template = library:FindFirstChild(name)
+    local anchor = anchors:FindFirstChild(name)
+    if not installed:FindFirstChild(name) and template and anchor
+        and anchor:IsA("BasePart")
+        and (template:IsA("Model") or template:IsA("BasePart")) then
+        local clone = template:Clone()
+        clone.Name = name
+        local parts = {}
+        if clone:IsA("BasePart") then table.insert(parts, clone) end
+        for _, descendant in ipairs(clone:GetDescendants()) do
+            if descendant:IsA("BasePart") then table.insert(parts, descendant) end
+        end
+        if #parts > 0 then
+            for _, part in ipairs(parts) do
+                part.Anchored = true
+                part.CanCollide = false
+                part.CanTouch = false
+                part.CanQuery = false
             end
-            if copy:IsA("BasePart") then
-                copy.Anchored = true
-            end
-            copy:PivotTo(CFrame.new(position + entry.offset))
-            copy.Parent = installed
+            clone:PivotTo(anchor.CFrame)
+            clone.Parent = installed
             count += 1
+        else
+            clone:Destroy()
         end
     end
 end
-print(("[KAGEBOUND] Installed %d imported cosmetic world templates; no gameplay collision modified"):format(count))
+print(("[KAGEBOUND] World art: %d cosmetic templates placed; gameplay geometry unchanged"):format(count))
