@@ -35,7 +35,7 @@ local function refresh()
         title=title.."\nGuide: "..target.name..(distance and (" • "..distance.." studs") or "")
     end
     local quest=player:GetAttribute("KageboundTravelQuest")
-    if quest and quest~="" then title=title.."\\nJourney: "..quest end
+    if quest and quest~="" then title=title.."\nJourney: "..quest end
     local finished=player:GetAttribute("KageboundTravelCompleted") or 0
     title=title.."\nJourneys: "..finished.."/3"
     label.Text=title
