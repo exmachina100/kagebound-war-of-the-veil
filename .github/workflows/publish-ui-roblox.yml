@@ -31,7 +31,6 @@ jobs:
       - name: Upload PNGs to Roblox Open Cloud
         env:
           ROBLOX_OPEN_CLOUD_API_KEY: ${{ secrets.ROBLOX_OPEN_CLOUD_API_KEY }}
-          ROBLOX_CREATOR_GROUP_ID: ${{ secrets.ROBLOX_CREATOR_GROUP_ID }}
           ROBLOX_CREATOR_USER_ID: ${{ secrets.ROBLOX_CREATOR_USER_ID }}
         run: python scripts/upload_ui_to_roblox.py
       - name: Build Luau asset registry
