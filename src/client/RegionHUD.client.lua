@@ -13,8 +13,8 @@ local label=Instance.new("TextLabel")
 label.Name="Region"
 label.AnchorPoint=Vector2.new(.5,0)
 label.Position=UDim2.new(.5,0,0,74)
-label.Size=UDim2.new(1,-24,0,122)
-label.MaximumSize=Vector2.new(380,122)
+label.Size=UDim2.new(1,-24,0,150)
+label.MaximumSize=Vector2.new(380,150)
 label.BackgroundColor3=Color3.fromRGB(27,28,44)
 label.BackgroundTransparency=.18
 label.TextColor3=Color3.fromRGB(238,225,207)
@@ -30,7 +30,7 @@ corner.Parent=label
 local toast=Instance.new("TextLabel")
 toast.Name="RewardFeedback"
 toast.AnchorPoint=Vector2.new(.5,0)
-toast.Position=UDim2.new(.5,0,0,205)
+toast.Position=UDim2.new(.5,0,0,234)
 toast.Size=UDim2.new(1,-24,0,40)
 toast.BackgroundColor3=Color3.fromRGB(40,33,63)
 toast.BackgroundTransparency=1
@@ -101,6 +101,16 @@ local function refresh()
     local mastery=player:GetAttribute("KageboundVeilbladeMastery") or 0
     if zone and zone.id=="MoonfallBamboo" then
         title=title.."\nLantern Yokai defeated: "..defeats
+        local hunt=player:GetAttribute("KageboundHuntStatus")
+        if hunt=="Active" then
+            local progress=player:GetAttribute("KageboundHuntProgress") or 0
+            local goal=player:GetAttribute("KageboundHuntGoal") or 3
+            title=title.."\nHunt: "..progress.."/"..goal.." Lantern Yokai"
+        elseif hunt=="Completed" then
+            title=title.."\nHunt complete: Moonfall bounty claimed"
+        elseif hunt=="Available" then
+            title=title.."\nHunt available at Moonfall Bounty Board"
+        end
     end
     title=title.."\nSpirit Shards: "..shards.." | Mastery: "..mastery
     label.Text=title
@@ -113,6 +123,8 @@ player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundYokaiDefeats"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundSpiritShards"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundVeilbladeMastery"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundHuntStatus"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundHuntProgress"):Connect(refresh)
 refresh()
 
 task.spawn(function()
