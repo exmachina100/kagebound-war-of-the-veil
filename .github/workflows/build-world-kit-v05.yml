@@ -1,0 +1,47 @@
+name: KAGEBOUND Build World Art v05
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: kagebound-world-v05
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install trimesh==4.9.0 numpy==2.2.6 Pillow==11.3.0
+      - run: python scripts/build_world_kit_v05.py
+      - name: Validate binary GLB exports
+        run: |
+          python - <<'PY'
+          import json, trimesh
+          from pathlib import Path
+          p=Path("assets/world/dojo_moonfall/v05")
+          manifest=json.loads((p/"manifest.json").read_text())["assets"]
+          assert len(manifest)==6
+          for name,item in manifest.items():
+              for lod in ("lod0","lod1"):
+                  f=p/item[lod]
+                  scene=trimesh.load(f,force="scene")
+                  assert len(scene.geometry)>0, f
+                  assert sum(len(g.faces) for g in scene.geometry.values())>0, f
+              assert (p/item["obj"]).exists()
+          print("Validated",len(manifest),"world assets")
+          PY
+      - name: Commit generated asset binaries
+        run: |
+          git config user.name "kagebound-asset-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/world/dojo_moonfall/v05
+          if ! git diff --cached --quiet; then
+            git commit -m "assets(world): build six textured-material GLB world assets with LOD"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
