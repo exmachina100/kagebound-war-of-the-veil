@@ -66,6 +66,21 @@ Four GPT-generated 1672x941 RGB composite concept boards (Oni eruption, Veilfall
 - **Runtime script integration committed:** `src/shared/VFXProfiles.lua`, `src/shared/VFXTextureCatalog.lua`, `src/client/VFXFactory.lua`, `src/client/VFXSpriteEmitter.lua`, and updated combat/mask FX renderers. Without verified Roblox upload IDs the game displays procedural neon-geometry FX only.
 - **Original production instructions:** `docs/CLASS_VFX_PRODUCTION.md`, `docs/VFX_FLIPBOOK_IMPORT.md`. Do not mark effects production ready until both visual and Studio multiplayer QA pass.
 
+## World v05 — approved uploads and native Studio templates (12 November 2026)
+
+Six user-authorized Model uploads were approved and imported under creator user 1559243747. Native `.rbxm` templates, preserving PackageLinks, are source controlled under `assets/roblox-ready/world-v05/` and mapped by Rojo to `ServerStorage/KageboundWorldV05`.
+
+| Asset | Model ID | Imported MeshParts | Runtime stage |
+| --- | --- | ---: | --- |
+| Dojo curved roof | 121636272241976 | 22 | Template; placement pending |
+| Dojo offering pavilion | 76400162744526 | 11 | Noncolliding cosmetic draft in Dojo |
+| Dojo ceremonial court | 107366234868083 | 56 | Template; traversal/collision pending |
+| Moonfall arch bridge | 109639603956237 | 39 | Template; traversal/collision pending |
+| Moonfall bamboo canopy | 134708416868294 | 126 | Noncolliding cosmetic draft in Moonfall |
+| Moonfall ritual lantern | 115776513142912 | 11 | Noncolliding cosmetic draft in Dojo |
+
+Total: six Model uploads, 265 imported MeshParts, zero image uploads. Vertex colors were preserved in staging. Source dimensions, positive-Y orientation, local anchoring and collision flags were checked. The native-art structural regression passed and startup now reports 30 smoke passes. This does not establish final ART-004 parity, device performance or in-world visual acceptance. Current runtime captures show a white 3D scene with and without these models; see [validation evidence](DEV_VALIDATION_2026-11-12.md) and [import receipts/preflight](WORLD_V05_IMPORT_PREFLIGHT.md). The uploaded package versions remain unchanged; local template repairs are not published asset updates.
+
 ## Source-controlled original 3D mesh exports — actual geometry, not game-approved yet
 | Asset ID | GitHub file | Source / measured complexity | Current status |
 | --- | --- | --- | --- |

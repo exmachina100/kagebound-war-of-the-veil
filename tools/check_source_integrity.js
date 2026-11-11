@@ -21,8 +21,19 @@ const rojo=JSON.parse(read("default.project.json"));
 assert.strictEqual(rojo.tree.ServerScriptService.KageboundServer.$path,"src/server");
 assert.strictEqual(rojo.tree.ReplicatedStorage.KageboundShared.$path,"src/shared");
 assert.strictEqual(rojo.tree.StarterPlayer.StarterPlayerScripts.KageboundClient.$path,"src/client");
+assert.strictEqual(rojo.tree.ServerStorage.KageboundWorldV05.$path,"assets/roblox-ready/world-v05");
+for(const name of ["dojo_curved_roof","dojo_offering_pavilion","dojo_ceremonial_court",
+    "moonfall_arch_bridge","moonfall_bamboo_canopy","moonfall_ritual_lantern"]) {
+    const file=path.join(root,"assets/roblox-ready/world-v05",name+".rbxm");
+    assert(fs.existsSync(file),"Missing native art template: "+name);
+    assert.strictEqual(fs.readFileSync(file).subarray(0,8).toString(),"<roblox!",
+        "Invalid native model header: "+name);
+}
 
 const required=[
+    "src/client/WeaponHUD.client.lua",
+    "src/client/HUDLayout.client.lua",
+    "src/server/WorldV05Art.server.lua",
     "docs/GAME_DESIGN.md",
     "docs/GAME_DESIGN_ORIGINAL_338.md",
     "docs/ROADMAP.md",

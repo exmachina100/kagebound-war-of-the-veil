@@ -1,0 +1,156 @@
+{
+  "ownerUserId": 1559243747,
+  "universeId": 10775551787,
+  "uploads": [
+    {
+      "name": "dojo_curved_roof",
+      "path": "operations/16610129-ec3b-46e2-86d5-16c0e8b21975",
+      "operationId": "16610129-ec3b-46e2-86d5-16c0e8b21975",
+      "done": true,
+      "response": {
+        "path": "assets/121636272241976",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:06.256Z",
+        "assetId": "121636272241976",
+        "displayName": "KAGEBOUND Dojo Curved Roof v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    },
+    {
+      "name": "dojo_offering_pavilion",
+      "path": "operations/4e03b9ee-2861-425b-acab-1949e9a71408",
+      "operationId": "4e03b9ee-2861-425b-acab-1949e9a71408",
+      "done": true,
+      "response": {
+        "path": "assets/76400162744526",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:29.305Z",
+        "assetId": "76400162744526",
+        "displayName": "KAGEBOUND Dojo Offering Pavilion v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    },
+    {
+      "name": "dojo_ceremonial_court",
+      "path": "operations/f4f2cde2-3556-4b23-b6e1-b267fecd9d86",
+      "operationId": "f4f2cde2-3556-4b23-b6e1-b267fecd9d86",
+      "done": true,
+      "response": {
+        "path": "assets/107366234868083",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:33.389Z",
+        "assetId": "107366234868083",
+        "displayName": "KAGEBOUND Dojo Ceremonial Court v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    },
+    {
+      "name": "moonfall_arch_bridge",
+      "path": "operations/4ee7a30d-af44-4c5e-b656-f88c0afe2dda",
+      "operationId": "4ee7a30d-af44-4c5e-b656-f88c0afe2dda",
+      "done": true,
+      "response": {
+        "path": "assets/109639603956237",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:40.526Z",
+        "assetId": "109639603956237",
+        "displayName": "KAGEBOUND Moonfall Arch Bridge v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    },
+    {
+      "name": "moonfall_bamboo_canopy",
+      "path": "operations/3b015acb-c0f4-43a7-aed3-f93ca2070b2a",
+      "operationId": "3b015acb-c0f4-43a7-aed3-f93ca2070b2a",
+      "done": true,
+      "response": {
+        "path": "assets/134708416868294",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:47.415Z",
+        "assetId": "134708416868294",
+        "displayName": "KAGEBOUND Moonfall Bamboo Canopy v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    },
+    {
+      "name": "moonfall_ritual_lantern",
+      "path": "operations/0109dd9e-59c7-4599-9a6f-eab696c2394a",
+      "operationId": "0109dd9e-59c7-4599-9a6f-eab696c2394a",
+      "done": true,
+      "response": {
+        "path": "assets/115776513142912",
+        "revisionId": "1",
+        "revisionCreateTime": "2026-11-11T20:50:48.525Z",
+        "assetId": "115776513142912",
+        "displayName": "KAGEBOUND Moonfall Ritual Lantern v05",
+        "description": "Original KAGEBOUND v05 world art draft. Visual validation pending; source-controlled GLB.",
+        "assetType": "Model",
+        "creationContext": {
+          "creator": {
+            "userId": "1559243747"
+          }
+        },
+        "moderationResult": {
+          "moderationState": "Approved"
+        },
+        "state": "Active",
+        "isPublished": true
+      }
+    }
+  ]
+}

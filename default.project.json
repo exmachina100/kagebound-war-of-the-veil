@@ -12,6 +12,11 @@
         "$path": "src/server"
       }
     },
+    "ServerStorage": {
+      "KageboundWorldV05": {
+        "$path": "assets/roblox-ready/world-v05"
+      }
+    },
     "StarterPlayer": {
       "StarterPlayerScripts": {
         "KageboundClient": {
