@@ -14,6 +14,7 @@ local function publish(player)
     player:SetAttribute("KageboundTravelQuest",quest and quest.id or "")
     player:SetAttribute("KageboundTravelTarget",quest and quest.destination or "")
     player:SetAttribute("KageboundTravelCompleted",completed[player] and #completed[player] or 0)
+    player:SetAttribute("KageboundGuideDestination",quest and quest.destination or "")
 end
 Players.PlayerAdded:Connect(function(player)
     completed[player]={}
@@ -73,14 +74,13 @@ for _,npc in ipairs(Guides.NPCs) do
             local root=char and char:FindFirstChild("HumanoidRootPart")
             if not hum or hum.Health<=0 or not root
                 or (root.Position-base.Position).Magnitude>15 then return end
-            player:SetAttribute("KageboundGuideDestination",npc.destination)
-            player:SetAttribute("KageboundGuideSpeaker",npc.name)
             if active[player] then return end
             completed[player]=completed[player] or {}
             for _,done in ipairs(completed[player]) do
                 if done==npc.id then return end
             end
             active[player]={id=npc.id,destination=npc.destination}
+            player:SetAttribute("KageboundGuideSpeaker",npc.name)
             publish(player)
         end)
     end
@@ -100,7 +100,6 @@ task.spawn(function()
                     completed[player]=completed[player] or {}
                     table.insert(completed[player],quest.id)
                     active[player]=nil
-                    player:SetAttribute("KageboundGuideDestination","")
                     player:SetAttribute("KageboundLastTravelCompletion",quest.id)
                     publish(player)
                 end
