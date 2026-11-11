@@ -1,0 +1,13 @@
+# Original KAGEBOUND material palette (OBJ diffuse fallback)
+newmtl ink
+Kd 0.125 0.137 0.22
+newmtl slate
+Kd 0.325 0.337 0.424
+newmtl stone
+Kd 0.43 0.43 0.48
+newmtl vermilion
+Kd 0.604 0.184 0.282
+newmtl gold
+Kd 0.98 0.714 0.42
+newmtl ivory
+Kd 0.918 0.859 0.906
