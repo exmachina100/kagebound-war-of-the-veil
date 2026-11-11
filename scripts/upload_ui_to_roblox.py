@@ -23,7 +23,7 @@ def main():
     user = os.environ.get("ROBLOX_CREATOR_USER_ID", "").strip()
     if bool(group) == bool(user):
         raise RuntimeError("Configure exactly one creator ID: group or user")
-    creator = {"groupId": group} if group else {"userId": user}
+    creator = {"groupId": int(group)} if group else {"userId": int(user)}
     headers = {"x-api-key": key}
     result_path = DIRECTORY / "roblox_asset_ids.json"
     known = json.loads(result_path.read_text()) if result_path.exists() else {}
