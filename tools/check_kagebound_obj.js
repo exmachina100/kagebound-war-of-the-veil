@@ -30,6 +30,12 @@ function validate(objText,mtlText,maxTriangles){
 }
 const assets=[
  ["assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02",2000],
+ ["assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01",500],
+ ["assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01",500],
+ ["assets/roblox-ready/weapons/KGB_WPN_Naginata_GAME_v01",1000],
+ ["assets/roblox-ready/weapons/KGB_WPN_Yari_GAME_v01",1000],
+ ["assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02",1000],
+ ["assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02",1000],
  ["assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01",1000]
 ];
 let failures=0;

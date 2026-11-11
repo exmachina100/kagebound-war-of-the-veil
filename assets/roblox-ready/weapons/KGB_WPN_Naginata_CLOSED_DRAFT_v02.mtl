@@ -1,0 +1,9 @@
+# KAGEBOUND original weapon prototype materials
+newmtl DarkWood
+Kd 0.105 0.080 0.120
+newmtl GripWrap
+Kd 0.32 0.055 0.085
+newmtl Gold
+Kd 0.72 0.49 0.18
+newmtl IvorySteel
+Kd 0.82 0.86 0.88

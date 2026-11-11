@@ -1,5 +1,17 @@
 # KAGEBOUND Approved Asset Manifest
 
+## 2026-11-12 source repair and live Studio audit
+
+Actual ART-001..004 PNGs opened locally. New closed polearm **drafts**, preserved
+separately from original v01: `assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj`
+(70 vertices, 120 triangles, 5 closed solids) and `KGB_WPN_Yari_CLOSED_DRAFT_v02.obj`
+(96 vertices, 168 triangles, 6 closed solids), matching MTL, reproducible
+`tools/close_polearm_drafts.py`, `POLEARMS_v02_validation.json` and import notes.
+Positive per-component volume and consistent winding checked; assemblies are
+not Boolean-unioned. No Studio imports/IDs, measured Studio pivots/scale, UVs,
+rig or final visual signoff. Existing gameplay scripts and source PNGs unchanged.
+See [evidence and missing archive inventory](assets/STUDIO_ASSET_AUDIT_2026-11-12.md).
+
 ## Confirmed GitHub visual references — uploaded on main
 
 These are the **actual names of the four PNGs committed under** `assets/concept-art/`. Use these as the primary references for all design and implementation work.

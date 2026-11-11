@@ -1,0 +1,133 @@
+[
+  {
+    "sha256_normalization": "UTF-8 LF (Git content, independent of checkout line endings)",
+    "source": "assets/roblox-ready/weapons/KGB_WPN_Naginata_GAME_v01.obj",
+    "source_sha256": "12f1d07bba88eab6e44d60622e49723b1fa728955e91108e93db9a52c5362b35",
+    "output": "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj",
+    "output_sha256": "670177824f666f9b33f5d3689c7fca2cf98570d73d6d0b7111f339d538f9f7c2",
+    "vertices": 70,
+    "triangles": 120,
+    "bounds": [
+      [
+        -0.23,
+        0.47
+      ],
+      [
+        -3.3,
+        5.6
+      ],
+      [
+        -0.23,
+        0.23
+      ]
+    ],
+    "components": [
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.15500604166666665,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.03603236000000001,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.03580226666666664,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 8,
+        "source_boundary_edges": 3,
+        "boundary_edges": 0,
+        "signed_volume": 0.09596812499999999,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.0009673559999999997,
+        "consistent_winding": true
+      }
+    ],
+    "studio_imported": false,
+    "visual_approved": false
+  },
+  {
+    "sha256_normalization": "UTF-8 LF (Git content, independent of checkout line endings)",
+    "source": "assets/roblox-ready/weapons/KGB_WPN_Yari_GAME_v01.obj",
+    "source_sha256": "84f85ed4b721a8bbb73ad8f3c191ffdbbba7cd2a2c42d35cdd4c2b8757b6a9fc",
+    "output": "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.obj",
+    "output_sha256": "9078d3093a625a09b7420962df8edc6709f881296b29f2523ba84acafc898a4a",
+    "vertices": 96,
+    "triangles": 168,
+    "bounds": [
+      [
+        -0.32,
+        0.32
+      ],
+      [
+        -3.3,
+        5.9
+      ],
+      [
+        -0.32,
+        0.32
+      ]
+    ],
+    "components": [
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.15500604166666665,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.03603236000000001,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.03580226666666664,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.15170437866666653,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.05655576000000004,
+        "consistent_winding": true
+      },
+      {
+        "triangles": 28,
+        "source_boundary_edges": 16,
+        "boundary_edges": 0,
+        "signed_volume": 0.04054758399999982,
+        "consistent_winding": true
+      }
+    ],
+    "studio_imported": false,
+    "visual_approved": false
+  }
+]

@@ -1,5 +1,22 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Connected Studio audit and closed polearm source batch — 2026-11-12
+
+- Actual ART-001..004 PNGs opened; canonical docs and accessible chat content reviewed.
+  Full conversation/ZIP review remains incomplete: unresolved chat references and unavailable
+  archived 3D packages. See [precise audit](assets/STUDIO_ASSET_AUDIT_2026-11-12.md).
+- Connected KAGEBOUND place 92077795105213 observed in Play; read-only server inventory and
+  viewport captured. ServerStorage empty at runtime. **Zero new Studio imports**, no game
+  scripts modified or published, no new IDs or verified Studio pivots/scale.
+- Found open surfaces in repository polearm v01 variants. Preserved originals; added
+  `KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj/.mtl` (120 triangles, 5 closed components) and
+  `KGB_WPN_Yari_CLOSED_DRAFT_v02.obj/.mtl` (168 triangles, 6 closed components), reproducible
+  `tools/close_polearm_drafts.py`, component-volume/hash validation JSON. These are distinct
+  from missing chat ZIP variants. **3d-draft**, no UV/rig/import/visual approval.
+- All eight source OBJ checks pass. Desktop importer access failed at initialization;
+  specific target confirmation pending before stopping Play. Recover original archives
+  for Shinobi, masks, Yokai and guide batches; do not recreate or claim their imports.
+
 **Art references**: ART-001..ART-004, uploaded in assets/concept-art. **Current 3D status:** procedural blockouts only, no published original R15 animation assets.
 
 | Priority | Asset ID | References | Current stage | Next action |
