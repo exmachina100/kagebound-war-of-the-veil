@@ -140,14 +140,17 @@ end
 -- Optional real Studio-imported OBJ mesh visual.
 -- The live hitbox/damage does NOT change; only the fallback parts are hidden.
 -- Importers must preserve an origin at the grip midpoint (0,0,0).
-local function applyImportedVisual(tool)
+local function applyImportedVisual(tool,weaponName)
     local art = ServerStorage:FindFirstChild("KageboundArt")
-    local reference = art and art:FindFirstChild("VeilbladeVisual")
+    local variants = {Katana="VeilbladeVisual",Nodachi="NodachiVisual",Tanto="TantoVisual",Naginata="NaginataVisual",Yari="YariVisual"}
+    local visualName = variants[weaponName]
+    if not visualName then return false end
+    local reference = art and art:FindFirstChild(visualName)
     if not reference or not reference:IsA("Model") then return false end
     local handle = tool:FindFirstChild("Handle")
     if not handle or not handle:IsA("BasePart") then return false end
     local clone = reference:Clone()
-    clone.Name = "VeilbladeVisual"
+    clone.Name = visualName
     clone.Parent = tool
     clone:PivotTo(handle.CFrame)
     local count = 0
@@ -191,7 +194,7 @@ local function equip(player,character,weaponName)
     -- Prepare replacement before removing the current registered weapon.
     -- No yielding after validation: selection and tool handoff stay atomic.
     local tool=createKatana(weaponName)
-    if weaponName=="Katana" then applyImportedVisual(tool) end
+    applyImportedVisual(tool,weaponName)
     if player.Character~=character or humanoid.Health<=0 then
         tool:Destroy()
         return false
