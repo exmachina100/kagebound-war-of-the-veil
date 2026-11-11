@@ -50,7 +50,7 @@ def main():
         for _ in range(40):
             if asset_id or not op_name:
                 break
-            url = op_name if op_name.startswith("https://") else "https://apis.roblox.com/" + op_name.lstrip("/")
+            url = op_name if op_name.startswith("https://") else (BASE + "/" + op_name.lstrip("/") if op_name.startswith("operations/") else "https://apis.roblox.com/" + op_name.lstrip("/"))
             op = requests.get(url, headers=headers, timeout=30)
             op.raise_for_status()
             state = op.json()
