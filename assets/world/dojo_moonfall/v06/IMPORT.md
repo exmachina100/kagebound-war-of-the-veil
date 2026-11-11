@@ -1,0 +1,1 @@
+KAGEBOUND v06: import each lod0.gltf via Roblox Studio 3D Importer; GLTF has embedded binary, UVs and PBR material colors. Use lod1 as manual low detail replacement. Set visual meshes non-collidable, anchored. Author collision primitives per footprint in Studio; test traversal and appearance before publishing. No Roblox IDs or Studio validation claimed.
