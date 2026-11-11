@@ -1,7 +1,6 @@
 """Upload KAGEBOUND PNG icons via Roblox Open Cloud Assets API.
 
-Requires ROBLOX_OPEN_CLOUD_API_KEY and ROBLOX_CREATOR_GROUP_ID or
-ROBLOX_CREATOR_USER_ID in GitHub Actions secrets. Only reports IDs after
+Requires ROBLOX_OPEN_CLOUD_API_KEY and ROBLOX_CREATOR_USER_ID\nin GitHub Actions secrets. This game is personal-account owned. Only reports IDs after
 Roblox confirms the asynchronous operation; moderation can still delay display.
 Never place keys in Luau, generated files, logs or Git history.
 """
@@ -19,11 +18,10 @@ NAMES = ("slash", "parry", "dash", "veilfall", "kitsune", "oni", "tengu",
 
 def main():
     key = os.environ["ROBLOX_OPEN_CLOUD_API_KEY"]
-    group = os.environ.get("ROBLOX_CREATOR_GROUP_ID", "").strip()
     user = os.environ.get("ROBLOX_CREATOR_USER_ID", "").strip()
-    if bool(group) == bool(user):
-        raise RuntimeError("Configure exactly one creator ID: group or user")
-    creator = {"groupId": int(group)} if group else {"userId": int(user)}
+    if not user or not user.isdecimal() or int(user) <= 0:
+        raise RuntimeError("Set a valid positive ROBLOX_CREATOR_USER_ID secret")
+    creator = {"userId": int(user)}
     headers = {"x-api-key": key}
     result_path = DIRECTORY / "roblox_asset_ids.json"
     known = json.loads(result_path.read_text()) if result_path.exists() else {}
