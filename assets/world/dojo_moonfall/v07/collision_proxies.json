@@ -1,0 +1,107 @@
+{
+  "version": "v07",
+  "status": "approximate authoring geometry; Studio traversal QA pending",
+  "coordinateSystem": "Y-up; local pivot ground at Y=0",
+  "assets": {
+    "dojo_komainu_plinth": [
+      {
+        "shape": "box",
+        "center": [
+          0,
+          0.4,
+          0
+        ],
+        "size": [
+          2.6,
+          0.8,
+          2.6
+        ]
+      }
+    ],
+    "dojo_suspended_bell": [
+      {
+        "shape": "box",
+        "center": [
+          0,
+          3.2,
+          0
+        ],
+        "size": [
+          3,
+          6.4,
+          2.6
+        ]
+      }
+    ],
+    "dojo_ritual_banner": [
+      {
+        "shape": "box",
+        "center": [
+          0,
+          2.5,
+          0
+        ],
+        "size": [
+          2.8,
+          5,
+          0.5
+        ]
+      }
+    ],
+    "moonfall_bamboo_fan": [
+      {
+        "shape": "cylinder",
+        "center": [
+          0,
+          2,
+          0
+        ],
+        "radius": 1.6,
+        "height": 4
+      }
+    ],
+    "moonfall_stepping_stones": [
+      {
+        "shape": "box",
+        "center": [
+          0,
+          0.12,
+          0
+        ],
+        "size": [
+          7,
+          0.24,
+          8
+        ]
+      }
+    ],
+    "moonfall_lantern_arch": [
+      {
+        "shape": "box",
+        "center": [
+          -2.8,
+          2,
+          0
+        ],
+        "size": [
+          0.8,
+          4,
+          0.8
+        ]
+      },
+      {
+        "shape": "box",
+        "center": [
+          2.8,
+          2,
+          0
+        ],
+        "size": [
+          0.8,
+          4,
+          0.8
+        ]
+      }
+    ]
+  }
+}
