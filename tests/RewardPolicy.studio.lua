@@ -7,6 +7,8 @@ local function check(label, condition)
 end
 check("Whispers quest reward",policy.Get("WhispersQuest").shards == 25)
 check("Lantern Yokai reward",policy.Get("LanternYokai").shards == 6)
+check("Guide travel fixed reward",policy.Get("TravelGuide").shards == 10)
+check("Guide travel no weapon mastery",policy.Get("TravelGuide").mastery == 0)
 check("No unknown reward source", policy.Get("OtherGame") == nil)
 check("Valid GUID-like encounter key", policy.ValidKey("encounter-123"))
 check("Reject blank key", not policy.ValidKey(""))

@@ -3,7 +3,8 @@
 local Policy = {}
 Policy.Catalog = {
     WhispersQuest = {shards = 25, mastery = 0, label = "Whispers Across the Veil"},
-    LanternYokai = {shards = 6, mastery = 4, label = "Lantern Yokai"}
+    LanternYokai = {shards = 6, mastery = 4, label = "Lantern Yokai"},
+    TravelGuide = {shards = 10, mastery = 0, label = "Pilgrim of the Veil"}
 }
 function Policy.Get(source)
     if typeof(source) ~= "string" then return nil end

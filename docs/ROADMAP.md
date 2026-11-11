@@ -135,3 +135,6 @@ Single multi-file commit adds a server-owned three-guide travel quest: NPC proxi
 
 ## Travel-quest reliability batch — 2026-11-11
 One multi-file commit fixes the NPC guide target being overwritten by a second prompt while a quest is active; the guide destination is now published consistently from authoritative active quest state, including reset on completion. Corrects HUD newline rendering and adds topology tests ensuring all three NPC guides spawn in their assigned regions and their journeys follow existing world connections. No rewards, persistence, authored NPC meshes or Studio QA claimed. Next: integrate quest completion with replay-safe reward receipts and Yokai encounter objectives.
+
+## Grand World travel reward integration — 2026-11-11
+Single batch: each completed server-observed guide journey now calls existing server-only RewardService.Award with a fixed 10 Spirit Shards and the guide ID as a replay-safe session receipt. Three unique guides = maximum 30 session shards. The HUD shows journey completion count and fixes the escaped newline; reward-policy assertions and a Studio travel-reward contract were added. No client-supplied reward amount, no DataStore enablement, no persistent rewards, no Studio playtest or CI result claimed. Next: real 2-client guide route tests, Yokai Hunt objectives and session reward feedback.

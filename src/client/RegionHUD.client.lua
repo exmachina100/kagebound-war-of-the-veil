@@ -36,10 +36,13 @@ local function refresh()
     end
     local quest=player:GetAttribute("KageboundTravelQuest")
     if quest and quest~="" then title=title.."\\nJourney: "..quest end
+    local finished=player:GetAttribute("KageboundTravelCompleted") or 0
+    title=title.."\nJourneys: "..finished.."/3"
     label.Text=title
 end
 player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundTravelQuest"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundTravelCompleted"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegion"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
 refresh()
@@ -47,6 +50,7 @@ refresh()
 task.spawn(function()
     while gui.Parent do
         task.wait(2)
-        if player:GetAttribute("KageboundGuideDestination") then refresh() end
+        local target=player:GetAttribute("KageboundGuideDestination")
+        if target and target~="" then refresh() end
     end
 end)

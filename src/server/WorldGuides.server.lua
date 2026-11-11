@@ -1,5 +1,5 @@
 -- Grand World P1: three server-spawned NPC interaction prototypes.
--- Dialogue/waypoint hints only. No rewards, unlocks or client-owned quest state.
+-- Session-only server-validated guide rewards; no persistence or client-owned quest state.
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Shared=ReplicatedStorage:WaitForChild("KageboundShared")
 local Guides=require(Shared:WaitForChild("WorldGuideRules"))
@@ -9,6 +9,7 @@ local active={}
 local completed={}
 local Players=game:GetService("Players")
 local Regions=require(Shared:WaitForChild("RegionRules"))
+local Rewards=require(script.Parent:WaitForChild("RewardService"))
 local function publish(player)
     local quest=active[player]
     player:SetAttribute("KageboundTravelQuest",quest and quest.id or "")
@@ -98,9 +99,13 @@ task.spawn(function()
                 local zone=Regions.At(root.Position)
                 if zone and zone.id==quest.destination then
                     completed[player]=completed[player] or {}
-                    table.insert(completed[player],quest.id)
+                    -- Server-only receipt: one fixed reward per guide per session.
+                    local awarded=Rewards.Award(player,"TravelGuide",quest.id)
+                    if awarded then
+                        table.insert(completed[player],quest.id)
+                        player:SetAttribute("KageboundLastTravelCompletion",quest.id)
+                    end
                     active[player]=nil
-                    player:SetAttribute("KageboundLastTravelCompletion",quest.id)
                     publish(player)
                 end
             end
