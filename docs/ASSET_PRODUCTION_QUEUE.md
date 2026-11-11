@@ -84,3 +84,17 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - `KGB_WPN_Kanabo_Default_DRAFT_v01` — **672 triangles**, 46 watertight submeshes, 0 degenerate faces, Y-up height 4.45 units. ART-003. **3d-draft/offline**; gameplay archetype remains disabled. Attack handoff: heavy overhead guard break.
 - All three grip-base pivots at (0,0,0), -Z forward, vertex-color materials, no UV atlas or rig; component-wise watertight only, not Boolean union. Existing source files unchanged. Actual ART-003 pixel-level comparison and Blender/Studio import/performance QA **not performed**. OpenArt spend: **0**.
 - Target repo paths after verified binary transfer: `assets/roblox-ready/weapons/<asset>.glb`, matching `.obj`; generator `assets/3d-source/weapons/generate_weapons.py`. Next weapon tickets: Kusarigama (staged), Yumi (staged); do not claim complete art from gameplay procedural parts.
+
+## Six-asset original geometry batch — 2026-11-11
+**Locally generated and GLB reimport-verified; not yet pushed as binaries to GitHub.** Downloadable archive: `KAGEBOUND_Asset_Batch_Kusarigama_Yumi_Masks_Yokai_20261111.zip`. Includes GLB and OBJ for each asset, Python editable generator, validation.json and README. All 56 component meshes are individually watertight with no detected degenerate faces; assemblies are not Boolean-unioned. No Studio import or final-art signoff.
+
+| Asset | Reference | Triangles | Components | Stage | Handoff |
+|---|---|---:|---:|---|---|
+| KGB_WPN_Kusarigama_Default_DRAFT_v01 | ART-003 | 504 | 13 | 3d-draft, offline | Chain posed rigidly; swinging/pull animation, collision and server combat QA pending |
+| KGB_WPN_Yumi_Default_DRAFT_v01 | ART-003 | 484 | 11 | 3d-draft, offline | Bowstring decorative; draw/release animation and projectile QA pending |
+| KGB_MASK_Kitsune_Default_DRAFT_v01 | ART-003 | 760 | 8 | 3d-draft, offline | R15 head fit and wearable pivot pending |
+| KGB_MASK_Oni_Default_DRAFT_v01 | ART-003 | 572 | 8 | 3d-draft, offline | R15 head fit and wearable pivot pending |
+| KGB_MASK_Tengu_Default_DRAFT_v01 | ART-003 | 592 | 6 | 3d-draft, offline | R15 head fit and wearable pivot pending |
+| KGB_NPC_LanternYokai_Default_DRAFT_v01 | ART-001/002/004 | 716 | 10 | 3d-draft, offline | Static NPC only; rig/animation/LOD pending |
+
+All are Y-up; GLB uses vertex colors, OBJ fallback included. Per-asset bounds and file sizes recorded in archive validation.json. The approved ART-001..004 PNGs are confirmed by manifest but exact pixels could not be retrieved by this runtime; **reference parity remains pending**. OpenArt spend 0. Preserve existing Veilblade #24 OBJ and Shinobi #21 UV GLB; do not repeat their completed geometry stages. Naginata/Yari/Kanabo prior offline drafts remain pending binary transfer. GitHub target paths: `assets/roblox-ready/weapons/`, `assets/roblox-ready/masks/`, `assets/roblox-ready/characters/`; generator target `assets/3d-source/`. No gameplay scripts modified.
