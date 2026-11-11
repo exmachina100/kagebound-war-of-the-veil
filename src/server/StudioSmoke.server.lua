@@ -45,7 +45,8 @@ check("Kitsune decoy remote active",ReplicatedStorage:WaitForChild("KageboundKit
 if worldConfig.Enabled then
     local world=Workspace:WaitForChild("KageboundWorld",35)
     check("Grand World generated",world~=nil)
-    local moonfall=world and world:FindFirstChild("MoonfallBamboo")
+    -- The world folder is parented before districts are built across yielded frames.
+    local moonfall=world and world:WaitForChild("MoonfallBamboo",35)
     check("Moonfall Bamboo region",moonfall~=nil)
     local enemies=Workspace:WaitForChild("KageboundEnemies",25)
     check("Original Yokai folder created",enemies~=nil)

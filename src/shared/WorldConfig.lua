@@ -16,6 +16,7 @@ World.Zones = {
 }
 World.Routes = {
     {"KageDojo","MoonfallBamboo"},
+    {"MoonfallBamboo","ShogunLastCity"},
     {"KageDojo","ShogunLastCity"},
     {"KageDojo","FrozenShrine"},
     {"ShogunLastCity","YomiRift"}
