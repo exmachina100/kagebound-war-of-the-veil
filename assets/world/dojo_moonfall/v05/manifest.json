@@ -1,0 +1,167 @@
+{
+  "version": "v05",
+  "references": [
+    "ART-001",
+    "ART-004"
+  ],
+  "format": "GLB 2.0 + OBJ",
+  "units": "studs approximate",
+  "material": "vertex color, texture atlas supplied separately",
+  "lodPolicy": "LOD1 uses every second visual mesh; NOT screen-distance tested",
+  "assets": {
+    "dojo_curved_roof": {
+      "lod0": "dojo_curved_roof_lod0.glb",
+      "lod1": "dojo_curved_roof_lod1.glb",
+      "obj": "dojo_curved_roof.obj",
+      "triangles": 664,
+      "lod1Triangles": 332,
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            5.25,
+            0
+          ],
+          "size": [
+            9.5,
+            1.7,
+            5.6
+          ]
+        }
+      ],
+      "notes": "Ridge, curved-eave impression from tiered beams; replace proxy with roof collision as needed",
+      "pivot": "ground at Y=0"
+    },
+    "dojo_offering_pavilion": {
+      "lod0": "dojo_offering_pavilion_lod0.glb",
+      "lod1": "dojo_offering_pavilion_lod1.glb",
+      "obj": "dojo_offering_pavilion.obj",
+      "triangles": 128,
+      "lod1Triangles": 68,
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            0.25,
+            0
+          ],
+          "size": [
+            7,
+            0.5,
+            6
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            0,
+            2.5,
+            -2.3
+          ],
+          "size": [
+            7,
+            5,
+            0.5
+          ]
+        }
+      ],
+      "notes": "Walkable base and noncolliding roof ornament",
+      "pivot": "ground at Y=0"
+    },
+    "dojo_ceremonial_court": {
+      "lod0": "dojo_ceremonial_court_lod0.glb",
+      "lod1": "dojo_ceremonial_court_lod1.glb",
+      "obj": "dojo_ceremonial_court.obj",
+      "triangles": 672,
+      "lod1Triangles": 336,
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            0,
+            0
+          ],
+          "size": [
+            8,
+            0.15,
+            8
+          ]
+        }
+      ],
+      "notes": "49 individual floor stones; main walkable court proxy",
+      "pivot": "ground at Y=0"
+    },
+    "moonfall_arch_bridge": {
+      "lod0": "moonfall_arch_bridge_lod0.glb",
+      "lod1": "moonfall_arch_bridge_lod1.glb",
+      "obj": "moonfall_arch_bridge.obj",
+      "triangles": 468,
+      "lod1Triangles": 240,
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            1.1,
+            0
+          ],
+          "size": [
+            4.4,
+            2.5,
+            12
+          ]
+        }
+      ],
+      "notes": "Curved bridge deck, rail silhouettes; proxy conservative pending Studio traversal QA",
+      "pivot": "ground at Y=0"
+    },
+    "moonfall_bamboo_canopy": {
+      "lod0": "moonfall_bamboo_canopy_lod0.glb",
+      "lod1": "moonfall_bamboo_canopy_lod1.glb",
+      "obj": "moonfall_bamboo_canopy.obj",
+      "triangles": 2632,
+      "lod1Triangles": 2016,
+      "collisionProxies": [
+        {
+          "type": "cylinder",
+          "center": [
+            0,
+            4.5,
+            0
+          ],
+          "radius": 2.2,
+          "height": 9
+        }
+      ],
+      "notes": "Seven stalks, branch leaves; collision proxy intentionally approximate",
+      "pivot": "ground at Y=0"
+    },
+    "moonfall_ritual_lantern": {
+      "lod0": "moonfall_ritual_lantern_lod0.glb",
+      "lod1": "moonfall_ritual_lantern_lod1.glb",
+      "obj": "moonfall_ritual_lantern.obj",
+      "triangles": 128,
+      "lod1Triangles": 72,
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2.45,
+            0
+          ],
+          "size": [
+            2.3,
+            4.9,
+            2.5
+          ]
+        }
+      ],
+      "notes": "Open lantern cavity; gold emissive material requires Studio material assignment",
+      "pivot": "ground at Y=0"
+    }
+  }
+}
