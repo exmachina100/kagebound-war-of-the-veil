@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "units": "Roblox studs; coordinates local, Y up",
+  "status": "authoring proxies only; not Studio validated",
+  "assets": {
+    "dojo_fox_emblem_gate": [
+      {
+        "type": "box",
+        "center": [
+          -3,
+          3,
+          0
+        ],
+        "size": [
+          0.72,
+          6,
+          0.72
+        ]
+      },
+      {
+        "type": "box",
+        "center": [
+          3,
+          3,
+          0
+        ],
+        "size": [
+          0.72,
+          6,
+          0.72
+        ]
+      }
+    ],
+    "moonfall_moss_rock_arch": [
+      {
+        "type": "box",
+        "center": [
+          -3,
+          2,
+          0
+        ],
+        "size": [
+          2,
+          4,
+          2.4
+        ]
+      },
+      {
+        "type": "box",
+        "center": [
+          3,
+          2,
+          0
+        ],
+        "size": [
+          2,
+          4,
+          2.4
+        ]
+      }
+    ],
+    "dojo_kitsune_shrine_altar": [
+      {
+        "type": "box",
+        "center": [
+          0,
+          0.225,
+          0
+        ],
+        "size": [
+          6,
+          0.45,
+          4.4
+        ]
+      },
+      {
+        "type": "box",
+        "center": [
+          0,
+          1.8,
+          0
+        ],
+        "size": [
+          4.3,
+          1.8,
+          2.6
+        ]
+      }
+    ],
+    "moonfall_spirit_waystone": [
+      {
+        "type": "box",
+        "center": [
+          0,
+          2,
+          0
+        ],
+        "size": [
+          1.6,
+          4,
+          0.8
+        ]
+      }
+    ]
+  }
+}
