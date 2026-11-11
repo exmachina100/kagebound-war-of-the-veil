@@ -138,3 +138,6 @@ One multi-file commit fixes the NPC guide target being overwritten by a second p
 
 ## Grand World travel reward integration — 2026-11-11
 Single batch: each completed server-observed guide journey now calls existing server-only RewardService.Award with a fixed 10 Spirit Shards and the guide ID as a replay-safe session receipt. Three unique guides = maximum 30 session shards. The HUD shows journey completion count and fixes the escaped newline; reward-policy assertions and a Studio travel-reward contract were added. No client-supplied reward amount, no DataStore enablement, no persistent rewards, no Studio playtest or CI result claimed. Next: real 2-client guide route tests, Yokai Hunt objectives and session reward feedback.
+
+## Weapon cross-action cooldown hardening — 2026-11-11 (source-only)
+Combat now tracks a single server-owned `attackReadyAt` in addition to per-action timestamps. Both light and heavy requests must respect the previously accepted weapon profile cooldown, preventing light/heavy alternation from bypassing weapon recovery. Reset remains per spawn. Studio regression checklist: `tests/WeaponCooldown.studio.lua`. Source patch has not been Studio-playtested; issue #31 remains open.

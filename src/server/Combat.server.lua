@@ -44,6 +44,7 @@ end
 local function resetState(player)
     state[player] = {
         lightAt = -math.huge, heavyAt = -math.huge,
+        attackReadyAt = -math.huge,
         parryAt = -math.huge, dashAt = -math.huge,
         comboAt = -math.huge, combo = 0,
         parryUntil = 0, busyUntil = 0, staggerUntil = 0,
@@ -268,7 +269,7 @@ local function attack(player, heavy)
     if not root or not canSwingAt(root.Position) then return end
     local weaponName=equippedWeapon(player,char)
     if not weaponName or not DuelAuthority.CanAct(player) then return end
-    if now < s.busyUntil or now < s.staggerUntil
+    if now < s.busyUntil or now < s.staggerUntil or now < s.attackReadyAt
         or now<(player:GetAttribute("KageboundClassBusyUntil") or 0) then return end
 
     local action = heavy and "Heavy" or "Light"
@@ -292,6 +293,9 @@ local function attack(player, heavy)
         combo, damage, range = s.combo, profile.damage, profile.range
     end
 
+    -- Shared cooldown survives light/heavy alternation and cannot be bypassed
+    -- by swapping weapon profiles between requests.
+    s.attackReadyAt = now + profile.cooldown
     s.parryUntil = 0
     player:SetAttribute("KageboundParryUntil",0)
     markBusy(player,s,now+profile.windup+profile.active+profile.recovery)
