@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "units": "Roblox studs approximate",
+  "collisionMode": "separate anchored primitive proxies, imported visuals CanCollide=false",
+  "assets": {
+    "dojo_ceremonial_torii": [
+      {
+        "shape": "Box",
+        "center": [
+          -5,
+          4.7,
+          0
+        ],
+        "size": [
+          1.3,
+          9.4,
+          1.3
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          5,
+          4.7,
+          0
+        ],
+        "size": [
+          1.3,
+          9.4,
+          1.3
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          0,
+          9.3,
+          0
+        ],
+        "size": [
+          15.6,
+          1.4,
+          1.8
+        ]
+      }
+    ],
+    "moonfall_sacred_bamboo": [
+      {
+        "shape": "Box",
+        "center": [
+          0,
+          6,
+          0
+        ],
+        "size": [
+          0.6,
+          12,
+          0.6
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          -1,
+          6.4,
+          1.1
+        ],
+        "size": [
+          0.6,
+          12.8,
+          0.6
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          1.1,
+          7,
+          0
+        ],
+        "size": [
+          0.6,
+          14,
+          0.6
+        ]
+      }
+    ],
+    "dojo_shrine_arched_roof": [
+      {
+        "shape": "Box",
+        "center": [
+          0,
+          0.35,
+          0
+        ],
+        "size": [
+          10,
+          0.7,
+          7
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          0,
+          3.1,
+          0
+        ],
+        "size": [
+          9,
+          4.8,
+          6
+        ]
+      },
+      {
+        "shape": "Box",
+        "center": [
+          0,
+          6.5,
+          0
+        ],
+        "size": [
+          12,
+          3,
+          8
+        ]
+      }
+    ]
+  }
+}
