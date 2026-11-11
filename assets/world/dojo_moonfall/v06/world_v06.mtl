@@ -1,0 +1,20 @@
+newmtl ink
+Kd 0.125 0.137 0.22
+
+newmtl red
+Kd 0.604 0.184 0.282
+
+newmtl gold
+Kd 0.98 0.714 0.42
+
+newmtl stone
+Kd 0.325 0.337 0.424
+
+newmtl wood
+Kd 0.3 0.208 0.255
+
+newmtl ivory
+Kd 0.918 0.859 0.906
+
+newmtl bamboo
+Kd 0.176 0.337 0.29
