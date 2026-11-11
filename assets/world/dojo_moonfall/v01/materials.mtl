@@ -1,0 +1,16 @@
+newmtl vermilion
+Kd 0.604 0.184 0.282
+newmtl charcoal
+Kd 0.125 0.137 0.220
+newmtl stone
+Kd 0.325 0.337 0.424
+newmtl gold
+Kd 0.980 0.714 0.420
+newmtl ivory
+Kd 0.918 0.859 0.906
+newmtl bamboo
+Kd 0.176 0.337 0.290
+newmtl wood
+Kd 0.29 0.19 0.19
+newmtl roof
+Kd 0.19 0.22 0.34

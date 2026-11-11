@@ -1,0 +1,46 @@
+{
+  "version": "v01",
+  "units": "studs approximate",
+  "pivot": "world origin, ground at Y=0",
+  "collision": "author separate Roblox primitive collision; visual meshes noncollidable until Studio QA",
+  "reference": "ART-001/004",
+  "assets": {
+    "torii": {
+      "triangles": 120,
+      "vertices": 80,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    },
+    "shrine": {
+      "triangles": 192,
+      "vertices": 128,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    },
+    "lantern": {
+      "triangles": 72,
+      "vertices": 48,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    },
+    "bamboo": {
+      "triangles": 480,
+      "vertices": 432,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    },
+    "bridge": {
+      "triangles": 372,
+      "vertices": 248,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    },
+    "stones": {
+      "triangles": 84,
+      "vertices": 56,
+      "format": "OBJ",
+      "material": "materials.mtl"
+    }
+  },
+  "status": "authored source geometry; not Studio validated"
+}
