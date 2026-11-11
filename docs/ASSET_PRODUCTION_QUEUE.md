@@ -134,3 +134,8 @@ All are Y-up; GLB uses vertex colors, OBJ fallback included. Per-asset bounds an
 - Locally exported and reimported three new static GLBs: DojoMentor (204 triangles), BambooScout (268), CityArchivist (204); 51/51 closed watertight components, zero degenerate faces, 676 triangles total.
 - Source, validation and README: conversation ZIP `KAGEBOUND_GrandWorld_Three_Guide_NPCs_v01.zip`, local `/mnt/data/kagebound_guides/`. Binary/source **not on GitHub**; pending upload. Y-up, -Z front, ground origin; vertex colors, no UV atlas or rig.
 - Stage: **3d-draft**, not Studio imported or QA. Actual ART-001/002/004 image comparison and mapping to existing guide IDs pending. No gameplay changes.
+
+## Studio staging package — 2026-11-12
+- **13 actual GLB drafts independently reimported and verified:** Shinobi #21, 3 Grand World guide NPCs, 5 weapons (Naginata/Yari/Kanabo/Kusarigama/Yumi), 3 masks (Kitsune/Oni/Tengu), Lantern Yokai. Total 6,796 triangles, 210/210 individually watertight components, 0 degenerate faces.
+- **13 OBJ fallbacks newly exported** from those GLBs, with validation metadata and import notes. Exact local ZIP `/mnt/data/KAGEBOUND_Studio_Import_Handoff_20261112.zip`; local assembly script `/mnt/data/build_kagebound_studio_handoff.py`. GitHub doc `docs/assets/STUDIO_IMPORT_HANDOFF_13_ASSETS_2026-11-12.md`.
+- All 13 remain `3d-draft`. **Not** imported into Studio; no rigs, Roblox IDs, visual reference pixel comparison or QA. GitHub binary/source upload remains pending. No gameplay code changes.
