@@ -1,0 +1,35 @@
+newmtl Ink
+Kd 0.08 0.09 0.14
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
+
+newmtl Steel
+Kd 0.48 0.57 0.66
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
+
+newmtl Edge
+Kd 0.74 0.87 0.92
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
+
+newmtl Gold
+Kd 0.73 0.51 0.19
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
+
+newmtl Crimson
+Kd 0.57 0.08 0.13
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
+
+newmtl Wrap
+Kd 0.19 0.2 0.24
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 16
