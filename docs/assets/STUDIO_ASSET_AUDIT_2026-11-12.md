@@ -34,6 +34,8 @@ Still unavailable for content/hash/geometry inspection:
 - KAGEBOUND_Nine_Asset_UV_Drafts_v02.zip
 - KAGEBOUND_GrandWorld_Three_Guide_NPCs_v01.zip
 - KAGEBOUND_VFX_ConceptPack_v01.zip and KAGEBOUND_VFX_Flipbooks_v01.zip
+- KAGEBOUND_Studio_Import_Handoff_20261112.zip (discovered in concurrent main
+  commits `868c4ad` / `43fd737`; reported `/mnt/data/` package, not accessible here)
 
 These names are prior queue records, not newly verified deliverables. Recover
 the actual archives from the originating chat before importing or replacing
@@ -111,3 +113,40 @@ spear, missing the board's elaborate blade, ribbons and edge treatment.
    actual uploaded IDs before advancing to imported/gameplay-qa/visual-qa.
 
 All assets remain drafts. Gameplay code, approved PNGs and v01 geometry unchanged.
+
+## Follow-up after explicit target confirmation
+
+The user confirmed this exact KAGEBOUND project. Stopped Play through MCP and
+observed Edit mode. Edit inventory: Workspace held Terrain, Camera, Baseplate
+and SpawnLocation; ServerStorage held only `__Rojo_SessionLock`. No saved art
+templates observed. KageboundServer had 35 descendants; the full script listing
+included gameplay sources plus a Rojo script. No source writes were performed.
+
+An unparented `AssetService:CreateEditableMesh()` allocation succeeded and was
+destroyed. A second unparented four-vertex tetrahedron test returned
+`Enum.CreateContentResult.Success` from `CreateDataModelContentAsync`; its
+EditableMesh was destroyed. This establishes an available programmable mesh
+route, **not** a MeshPart insertion, OBJ import, uploaded mesh ID or saved asset.
+Official API references consulted:
+[AssetService](https://create.roblox.com/docs/reference/engine/classes/AssetService),
+[EditableMesh](https://create.roblox.com/docs/reference/engine/classes/EditableMesh).
+
+Studio switched back to Play twice after authorized stops. Multiple Edit calls
+failed with `Target is not reachable ... No OnInvoke handler responded`; a
+later call reported `Edit datamodel is not available in Play mode`. Attempts
+to collect script hashes therefore did not complete. Asked whether another
+person/chat is controlling the session and held asset mutations pending that
+answer. Repeatedly stopping a competing controller is not an import strategy.
+
+**Asset batch insertions remain 0.** Target approval is resolved; remaining
+blockers are the unstable/possibly concurrently controlled Studio session,
+desktop helper failure and missing archived asset source packages. The next
+attempt can use the programmable mesh route once the session is stable;
+verify MeshPart insertion, material transfer, pivot, scale and savability first.
+
+Concurrent main commits added a 13-asset staging handoff document while this
+audit was running. Fetched and preserved them when rebasing the documentation
+follow-up. That handoff still reports its binary/source package as offline at
+`/mnt/data/KAGEBOUND_Studio_Import_Handoff_20261112.zip`; documentation is not a
+binary transfer. Recovering this consolidated archive could unblock all 13
+static models without separately transferring every earlier ZIP.

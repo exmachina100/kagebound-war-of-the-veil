@@ -14,7 +14,10 @@
   `tools/close_polearm_drafts.py`, component-volume/hash validation JSON. These are distinct
   from missing chat ZIP variants. **3d-draft**, no UV/rig/import/visual approval.
 - All eight source OBJ checks pass. Desktop importer access failed at initialization;
-  specific target confirmation pending before stopping Play. Recover original archives
+  user subsequently confirmed the target and Play was stopped. Edit has no art templates.
+  EditableMesh allocation and savable content API tests succeeded, but no MeshPart was
+  inserted: session repeatedly returned to Play and Edit calls became unreachable.
+  Competing-controller clarification pending. Recover original archives
   for Shinobi, masks, Yokai and guide batches; do not recreate or claim their imports.
 
 **Art references**: ART-001..ART-004, uploaded in assets/concept-art. **Current 3D status:** procedural blockouts only, no published original R15 animation assets.
