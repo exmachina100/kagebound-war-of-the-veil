@@ -1,0 +1,58 @@
+{
+  "version": "v06",
+  "status": "importable source; no Studio QA",
+  "references": [
+    "ART-001",
+    "ART-004"
+  ],
+  "assets": {
+    "dojo_fox_emblem_gate": {
+      "triangles": 133,
+      "lod1Triangles": 84,
+      "vertices": 267,
+      "pivot": "Y=0",
+      "collision": "Studio primitive proxy required",
+      "files": [
+        "dojo_fox_emblem_gate.obj",
+        "dojo_fox_emblem_gate_lod0.gltf",
+        "dojo_fox_emblem_gate_lod1.gltf"
+      ]
+    },
+    "moonfall_moss_rock_arch": {
+      "triangles": 276,
+      "lod1Triangles": 132,
+      "vertices": 552,
+      "pivot": "Y=0",
+      "collision": "Studio primitive proxy required",
+      "files": [
+        "moonfall_moss_rock_arch.obj",
+        "moonfall_moss_rock_arch_lod0.gltf",
+        "moonfall_moss_rock_arch_lod1.gltf"
+      ]
+    },
+    "dojo_kitsune_shrine_altar": {
+      "triangles": 130,
+      "lod1Triangles": 62,
+      "vertices": 262,
+      "pivot": "Y=0",
+      "collision": "Studio primitive proxy required",
+      "files": [
+        "dojo_kitsune_shrine_altar.obj",
+        "dojo_kitsune_shrine_altar_lod0.gltf",
+        "dojo_kitsune_shrine_altar_lod1.gltf"
+      ]
+    },
+    "moonfall_spirit_waystone": {
+      "triangles": 73,
+      "lod1Triangles": 37,
+      "vertices": 147,
+      "pivot": "Y=0",
+      "collision": "Studio primitive proxy required",
+      "files": [
+        "moonfall_spirit_waystone.obj",
+        "moonfall_spirit_waystone_lod0.gltf",
+        "moonfall_spirit_waystone_lod1.gltf"
+      ]
+    }
+  }
+}
