@@ -1,0 +1,41 @@
+{
+  "version": "v04",
+  "reference": [
+    "ART-001",
+    "ART-004"
+  ],
+  "coordinateSystem": "Y up",
+  "units": "approximate Roblox studs",
+  "visualMeshes": "CanCollide=false; separate collision primitives required",
+  "materials": "embedded PBR in glTF and diffuse OBJ MTL",
+  "studioQA": false,
+  "assets": {
+    "dojo_ceremonial_torii": {
+      "triangles": 180,
+      "vertices": 360,
+      "formats": [
+        "obj",
+        "gltf"
+      ],
+      "uv": true
+    },
+    "moonfall_sacred_bamboo": {
+      "triangles": 920,
+      "vertices": 1840,
+      "formats": [
+        "obj",
+        "gltf"
+      ],
+      "uv": true
+    },
+    "dojo_shrine_arched_roof": {
+      "triangles": 202,
+      "vertices": 404,
+      "formats": [
+        "obj",
+        "gltf"
+      ],
+      "uv": true
+    }
+  }
+}
