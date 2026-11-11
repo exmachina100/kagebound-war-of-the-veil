@@ -1,0 +1,33 @@
+{
+  "version": "v02",
+  "reference": [
+    "ART-001",
+    "ART-004"
+  ],
+  "units": "Roblox studs approximate",
+  "pivot": "origin at ground Y=0",
+  "collision": "visual only; author collision primitives in Studio",
+  "studioQA": false,
+  "assets": {
+    "dojo_ritual_altar": {
+      "file": "dojo_ritual_altar.obj",
+      "triangles": 124,
+      "vertices": 104
+    },
+    "dojo_clan_banner": {
+      "file": "dojo_clan_banner.obj",
+      "triangles": 76,
+      "vertices": 64
+    },
+    "moonfall_rock_spires": {
+      "file": "moonfall_rock_spires.obj",
+      "triangles": 138,
+      "vertices": 134
+    },
+    "moonfall_ceremonial_steps": {
+      "file": "moonfall_ceremonial_steps.obj",
+      "triangles": 216,
+      "vertices": 144
+    }
+  }
+}
