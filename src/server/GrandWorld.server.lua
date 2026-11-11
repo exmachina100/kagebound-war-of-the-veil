@@ -169,14 +169,6 @@ for _,edge in ipairs(cfg.Routes) do
         end
     end
 end
-Lighting.ClockTime=0.5
-Lighting.Brightness=2
-Lighting.Ambient=Color3.fromRGB(84,70,122)
-Lighting.OutdoorAmbient=Color3.fromRGB(62,70,101)
-local atmosphere=Lighting:FindFirstChild("KageboundAtmosphere") or Instance.new("Atmosphere")
-atmosphere.Name="KageboundAtmosphere"
-atmosphere.Density=.19
-atmosphere.Haze=1
-atmosphere.Color=Color3.fromRGB(155,128,207)
-atmosphere.Parent=Lighting
+-- WorldSky.server.lua owns the global sky, Atmosphere and Lighting presets.
+-- Do not overwrite its moonlit baseline or Veilfall transitions here.
 print("[KAGEBOUND] Grand World generated: "..#cfg.Zones.." connected regions")
