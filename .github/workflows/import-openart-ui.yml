@@ -28,11 +28,11 @@ jobs:
         env:
           OPENART_IMAGE_URL: ${{ inputs.image_url || 'https://cdn.openart.ai/openart-ai/production/2026-11/create-image/zJfldFkAyO87iqeQBjIU/021794388261809681426abb3fc8758bc9af65311c7ae316516d2_1794388300738_539e970c.png' }}
         run: python scripts/import_openart_ui.py
-      - name: Upload icons to personal Roblox creator\n        env:\n          ROBLOX_OPEN_CLOUD_API_KEY: ${{ secrets.ROBLOX_OPEN_CLOUD_API_KEY }}\n          ROBLOX_CREATOR_USER_ID: '1559243747'\n        run: python scripts/upload_ui_to_roblox.py\n      - name: Generate Roblox runtime icon registry\n        run: python scripts/build_ui_registry.py\n      - name: Commit imported art to main
+      - name: Commit imported art to main
         run: |
           git config user.name "kagebound-ui-asset-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/ui/icons/v01/ src/shared/UIIconRegistry.lua
+          git add assets/ui/icons/v01/
           if ! git diff --cached --quiet; then
             git commit -m "assets(ui): import approved OpenArt UI icon atlas"
             git pull --rebase origin main
