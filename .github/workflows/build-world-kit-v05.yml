@@ -1,5 +1,10 @@
 name: KAGEBOUND Build World Art v05
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_world_kit_v05.py'
+      - '.github/workflows/build-world-kit-v05.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -26,6 +31,10 @@ jobs:
           p=Path("assets/world/dojo_moonfall/v05")
           manifest=json.loads((p/"manifest.json").read_text())["assets"]
           assert len(manifest)==6
+          from PIL import Image
+          with Image.open(p/"world_palette_atlas.png") as image:
+              image.verify()
+          total=0
           for name,item in manifest.items():
               for lod in ("lod0","lod1"):
                   f=p/item[lod]
@@ -33,7 +42,15 @@ jobs:
                   assert len(scene.geometry)>0, f
                   assert sum(len(g.faces) for g in scene.geometry.values())>0, f
               assert (p/item["obj"]).exists()
-          print("Validated",len(manifest),"world assets")
+              hi=trimesh.load(p/item["lod0"],force="scene")
+              lo=trimesh.load(p/item["lod1"],force="scene")
+              hi_faces=sum(len(g.faces) for g in hi.geometry.values())
+              lo_faces=sum(len(g.faces) for g in lo.geometry.values())
+              assert hi_faces==item["triangles"], (name,hi_faces,item["triangles"])
+              assert lo_faces==item["lod1Triangles"], (name,lo_faces,item["lod1Triangles"])
+              assert lo_faces < hi_faces, name
+              total+=hi_faces
+          print("Validated",len(manifest),"world assets with",total,"LOD0 triangles")
           PY
       - name: Commit generated asset binaries
         run: |
