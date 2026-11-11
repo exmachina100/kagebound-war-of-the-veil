@@ -58,21 +58,19 @@ local lastRegion = nil
 local function update()
     local id = player:GetAttribute("CurrentRegion") or ""
     if id == lastRegion then return end
-    lastRegion = id
     serial += 1
     local ticket = serial
     if id == "" then
+        lastRegion = id
         frame.Visible = false
         return
     end
     local name = player:GetAttribute("CurrentRegionName")
     if not name or name == "" then
-        -- The server writes both attributes sequentially; wait for the name.
-        task.defer(function()
-            if ticket == serial then update() end
-        end)
+        -- The server writes both attributes sequentially; name-change event retries.
         return
     end
+    lastRegion = id
     title.Text = name
     subtitle.Text = "VEILBOUND WORLD  •  REGION ENTERED"
     frame.Visible = true
