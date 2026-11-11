@@ -3,6 +3,7 @@
 local Policy = {}
 Policy.Catalog = {
     WhispersQuest = {shards = 25, mastery = 0, label = "Whispers Across the Veil"},
+    MoonfallHunt = {shards = 25, mastery = 0, label = "Moonfall Lantern Hunt"},
     LanternYokai = {shards = 6, mastery = 4, label = "Lantern Yokai"},
     TravelGuide = {shards = 10, mastery = 0, label = "Pilgrim of the Veil"}
 }
