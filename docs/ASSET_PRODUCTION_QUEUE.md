@@ -112,3 +112,8 @@ All are Y-up; GLB uses vertex colors, OBJ fallback included. Per-asset bounds an
 - Reproducible editable source **committed**: `tools/generate_kagebound_sword_pair.js`. OBJ faces and indices re-read from GitHub and checked; no Blender/Studio import performed. Primitive boxes are closed individually, but assembled meshes overlap and have not been Boolean-unioned. No UVs or GLB in this batch; OBJ/MTL is the actual Roblox-importable draft format.
 - Nodachi handoff: two-handed reach/sweep with slow recovery; Tanto handoff: short-range fast slashes and dash follow-up. These are animation notes, **not** animation clips or gameplay changes.
 - ART-003 PNG SHA was verified, but GitHub connector returned 0 binary bytes; visual fidelity comparison **blocked**. Both remain `3d-draft` (source-controlled, visual review and Studio QA pending). OpenArt 0 credits. No gameplay scripts modified.
+
+## Grand World NPC appearance batch — 2026-11-12
+- Locally exported and reimported three new static GLBs: DojoMentor (204 triangles), BambooScout (268), CityArchivist (204); 51/51 closed watertight components, zero degenerate faces, 676 triangles total.
+- Source, validation and README: conversation ZIP `KAGEBOUND_GrandWorld_Three_Guide_NPCs_v01.zip`, local `/mnt/data/kagebound_guides/`. Binary/source **not on GitHub**; pending upload. Y-up, -Z front, ground origin; vertex colors, no UV atlas or rig.
+- Stage: **3d-draft**, not Studio imported or QA. Actual ART-001/002/004 image comparison and mapping to existing guide IDs pending. No gameplay changes.
