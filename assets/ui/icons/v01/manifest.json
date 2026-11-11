@@ -1,0 +1,155 @@
+{
+  "source": "https://cdn.openart.ai/openart-ai/production/2026-11/create-image/zJfldFkAyO87iqeQBjIU/021794388261809681426abb3fc8758bc9af65311c7ae316516d2_1794388300738_539e970c.png",
+  "atlas": "atlas.png",
+  "size": [
+    1024,
+    1024
+  ],
+  "tileSize": 256,
+  "icons": {
+    "slash": {
+      "file": "slash.png",
+      "rect": [
+        0,
+        0,
+        256,
+        256
+      ]
+    },
+    "parry": {
+      "file": "parry.png",
+      "rect": [
+        256,
+        0,
+        256,
+        256
+      ]
+    },
+    "dash": {
+      "file": "dash.png",
+      "rect": [
+        512,
+        0,
+        256,
+        256
+      ]
+    },
+    "veilfall": {
+      "file": "veilfall.png",
+      "rect": [
+        768,
+        0,
+        256,
+        256
+      ]
+    },
+    "kitsune": {
+      "file": "kitsune.png",
+      "rect": [
+        0,
+        256,
+        256,
+        256
+      ]
+    },
+    "oni": {
+      "file": "oni.png",
+      "rect": [
+        256,
+        256,
+        256,
+        256
+      ]
+    },
+    "tengu": {
+      "file": "tengu.png",
+      "rect": [
+        512,
+        256,
+        256,
+        256
+      ]
+    },
+    "ofuda": {
+      "file": "ofuda.png",
+      "rect": [
+        768,
+        256,
+        256,
+        256
+      ]
+    },
+    "world_map": {
+      "file": "world_map.png",
+      "rect": [
+        0,
+        512,
+        256,
+        256
+      ]
+    },
+    "quest": {
+      "file": "quest.png",
+      "rect": [
+        256,
+        512,
+        256,
+        256
+      ]
+    },
+    "inventory": {
+      "file": "inventory.png",
+      "rect": [
+        512,
+        512,
+        256,
+        256
+      ]
+    },
+    "weapon": {
+      "file": "weapon.png",
+      "rect": [
+        768,
+        512,
+        256,
+        256
+      ]
+    },
+    "spirit_shard": {
+      "file": "spirit_shard.png",
+      "rect": [
+        0,
+        768,
+        256,
+        256
+      ]
+    },
+    "dojo": {
+      "file": "dojo.png",
+      "rect": [
+        256,
+        768,
+        256,
+        256
+      ]
+    },
+    "clan": {
+      "file": "clan.png",
+      "rect": [
+        512,
+        768,
+        256,
+        256
+      ]
+    },
+    "settings": {
+      "file": "settings.png",
+      "rect": [
+        768,
+        768,
+        256,
+        256
+      ]
+    }
+  }
+}
