@@ -1,5 +1,11 @@
 name: KAGEBOUND Generate Skybox Faces
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/generate_sky_cubemaps.py'
+      - 'scripts/validate_sky_cubemap_seams.py'
+      - '.github/workflows/generate-sky-cubemaps.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -34,6 +40,8 @@ jobs:
                       im.verify()
           print("12 square skybox faces verified")
           PY
+      - name: Verify cubemap orientation and 12 edge seams
+        run: python scripts/validate_sky_cubemap_seams.py
       - name: Commit production sky faces
         run: |
           git config user.name "kagebound-asset-bot"
