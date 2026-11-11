@@ -16,6 +16,9 @@ local names = {
     "KageDojoShrine", "DojoRitualAltar", "DojoClanBanner",
     "MoonfallBambooCluster", "MoonfallBridge", "MoonfallStonePath",
     "MoonfallToriiGate", "ShrineStoneLantern",
+    "DojoCeremonialTorii", "DojoShrineArchedRoof", "MoonfallSacredBamboo",
+    "DojoCurvedRoofModule", "DojoShojiWall", "MoonfallBambooTall",
+    "MoonfallFallenBamboo", "MoonfallStoneLanternTall", "ShrineRopeBell",
 }
 
 local art = ServerStorage:FindFirstChild("KageboundArt")
@@ -34,6 +37,7 @@ if not installed then
 end
 
 local count = 0
+local skipped = 0
 for _, name in ipairs(names) do
     local template = library:FindFirstChild(name)
     local anchor = anchors:FindFirstChild(name)
@@ -59,7 +63,10 @@ for _, name in ipairs(names) do
             count += 1
         else
             clone:Destroy()
+            skipped += 1
         end
+    elseif not installed:FindFirstChild(name) then
+        skipped += 1
     end
 end
-print(("[KAGEBOUND] World art: %d cosmetic templates placed; gameplay geometry unchanged"):format(count))
+print(("[KAGEBOUND] World art: %d cosmetic templates placed; %d unavailable or empty; gameplay geometry unchanged"):format(count,skipped))
