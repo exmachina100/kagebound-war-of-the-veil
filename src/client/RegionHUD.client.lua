@@ -12,12 +12,13 @@ local label=Instance.new("TextLabel")
 label.Name="Region"
 label.AnchorPoint=Vector2.new(.5,0)
 label.Position=UDim2.new(.5,0,0,74)
-label.Size=UDim2.new(0,360,0,88)
+label.Size=UDim2.new(0,380,0,122)
 label.BackgroundColor3=Color3.fromRGB(27,28,44)
 label.BackgroundTransparency=.18
 label.TextColor3=Color3.fromRGB(238,225,207)
 label.Font=Enum.Font.GothamBold
-label.TextScaled=true
+label.TextScaled=false
+label.TextSize=16
 label.TextWrapped=true
 label.Parent=gui
 local corner=Instance.new("UICorner")
@@ -38,6 +39,13 @@ local function refresh()
     if quest and quest~="" then title=title.."\nJourney: "..quest end
     local finished=player:GetAttribute("KageboundTravelCompleted") or 0
     title=title.."\nJourneys: "..finished.."/3"
+    local defeats=player:GetAttribute("KageboundYokaiDefeats") or 0
+    local shards=player:GetAttribute("KageboundSpiritShards") or 0
+    local mastery=player:GetAttribute("KageboundVeilbladeMastery") or 0
+    if zone and zone.id=="MoonfallBamboo" then
+        title=title.."\nLantern Yokai defeated: "..defeats
+    end
+    title=title.."\nSpirit Shards: "..shards.." | Mastery: "..mastery
     label.Text=title
 end
 player:GetAttributeChangedSignal("KageboundGuideDestination"):Connect(refresh)
@@ -45,6 +53,9 @@ player:GetAttributeChangedSignal("KageboundTravelQuest"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundTravelCompleted"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegion"):Connect(refresh)
 player:GetAttributeChangedSignal("KageboundRegionsDiscovered"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundYokaiDefeats"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundSpiritShards"):Connect(refresh)
+player:GetAttributeChangedSignal("KageboundVeilbladeMastery"):Connect(refresh)
 refresh()
 
 task.spawn(function()
