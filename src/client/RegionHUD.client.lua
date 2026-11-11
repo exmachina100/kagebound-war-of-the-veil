@@ -1,6 +1,7 @@
 -- Lightweight Grand World region HUD; server attributes are display-only.
 local Players=game:GetService("Players")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
+local TweenService=game:GetService("TweenService")
 local player=Players.LocalPlayer
 local Regions=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("RegionRules"))
 local gui=Instance.new("ScreenGui")
@@ -12,18 +13,74 @@ local label=Instance.new("TextLabel")
 label.Name="Region"
 label.AnchorPoint=Vector2.new(.5,0)
 label.Position=UDim2.new(.5,0,0,74)
-label.Size=UDim2.new(0,380,0,122)
+label.Size=UDim2.new(1,-24,0,122)
+label.MaximumSize=Vector2.new(380,122)
 label.BackgroundColor3=Color3.fromRGB(27,28,44)
 label.BackgroundTransparency=.18
 label.TextColor3=Color3.fromRGB(238,225,207)
 label.Font=Enum.Font.GothamBold
 label.TextScaled=false
-label.TextSize=16
+label.TextSize=15
 label.TextWrapped=true
 label.Parent=gui
 local corner=Instance.new("UICorner")
 corner.CornerRadius=UDim.new(0,10)
 corner.Parent=label
+-- Reward feedback uses replicated server-owned session totals; no client reward requests.
+local toast=Instance.new("TextLabel")
+toast.Name="RewardFeedback"
+toast.AnchorPoint=Vector2.new(.5,0)
+toast.Position=UDim2.new(.5,0,0,205)
+toast.Size=UDim2.new(1,-24,0,40)
+toast.BackgroundColor3=Color3.fromRGB(40,33,63)
+toast.BackgroundTransparency=1
+toast.TextColor3=Color3.fromRGB(248,212,143)
+toast.Font=Enum.Font.GothamBold
+toast.TextSize=17
+toast.TextTransparency=1
+toast.Visible=false
+toast.Parent=gui
+local toastCorner=Instance.new("UICorner")
+toastCorner.CornerRadius=UDim.new(0,9)
+toastCorner.Parent=toast
+local toastSize=Instance.new("UISizeConstraint")
+toastSize.MaxSize=Vector2.new(380,40)
+toastSize.Parent=toast
+local toastVersion=0
+local initialized={}
+local function showReward(message)
+    toastVersion+=1
+    local version=toastVersion
+    toast.Text=message
+    toast.Visible=true
+    TweenService:Create(toast,TweenInfo.new(.18),{
+        BackgroundTransparency=.12,TextTransparency=0
+    }):Play()
+    task.delay(2.6,function()
+        if version~=toastVersion or not toast.Parent then return end
+        local fade=TweenService:Create(toast,TweenInfo.new(.35),{
+            BackgroundTransparency=1,TextTransparency=1
+        })
+        fade:Play()
+        fade.Completed:Wait()
+        if version==toastVersion then toast.Visible=false end
+    end)
+end
+local function observeTotal(attribute,labelText)
+    local function changed()
+        local value=player:GetAttribute(attribute)
+        if typeof(value)~="number" then return end
+        local old=initialized[attribute]
+        initialized[attribute]=value
+        if old~=nil and value>old then
+            showReward("+"..tostring(value-old).." "..labelText)
+        end
+    end
+    player:GetAttributeChangedSignal(attribute):Connect(changed)
+    changed() -- establish baseline; joining must not show a false reward
+end
+observeTotal("KageboundSpiritShards","Spirit Shards")
+observeTotal("KageboundVeilbladeMastery","Veilblade Mastery")
 local function refresh()
     local zone=Regions.ById(player:GetAttribute("KageboundRegion"))
     local count=player:GetAttribute("KageboundRegionsDiscovered") or 0
