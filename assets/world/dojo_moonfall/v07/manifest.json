@@ -1,0 +1,142 @@
+{
+  "version": "v07",
+  "status": "source draft, not Studio tested",
+  "references": [
+    "ART-001",
+    "ART-004"
+  ],
+  "assets": {
+    "dojo_komainu_plinth": {
+      "triangles": 136,
+      "lod1Triangles": 96,
+      "vertices": 272,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    },
+    "dojo_suspended_bell": {
+      "triangles": 140,
+      "lod1Triangles": 80,
+      "vertices": 280,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    },
+    "dojo_ritual_banner": {
+      "triangles": 70,
+      "lod1Triangles": 38,
+      "vertices": 142,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    },
+    "moonfall_bamboo_fan": {
+      "triangles": 348,
+      "lod1Triangles": 150,
+      "vertices": 720,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    },
+    "moonfall_stepping_stones": {
+      "triangles": 390,
+      "lod1Triangles": 84,
+      "vertices": 780,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    },
+    "moonfall_lantern_arch": {
+      "triangles": 148,
+      "lod1Triangles": 124,
+      "vertices": 296,
+      "formats": [
+        "OBJ",
+        "glTF 2.0 embedded"
+      ],
+      "materials": [
+        "ink",
+        "red",
+        "gold",
+        "stone",
+        "wood",
+        "ivory",
+        "bamboo",
+        "leaf"
+      ],
+      "uv": true,
+      "pivot": "Y=0 ground",
+      "collision": "proxy pending Studio QA"
+    }
+  }
+}
