@@ -1,0 +1,44 @@
+{
+  "version": "v03",
+  "references": [
+    "ART-001",
+    "ART-004"
+  ],
+  "units": "studs approximate",
+  "pivot": "Y=0",
+  "collision": "Use simple Studio primitive collision; visual meshes must not independently collide",
+  "lod": "single authored low-poly LOD0; mobile LOD pending",
+  "studioQA": false,
+  "assets": {
+    "dojo_curved_roof_module": {
+      "triangles": 396,
+      "vertices": 264,
+      "format": "OBJ"
+    },
+    "dojo_shoji_wall": {
+      "triangles": 228,
+      "vertices": 152,
+      "format": "OBJ"
+    },
+    "moonfall_bamboo_tall": {
+      "triangles": 1296,
+      "vertices": 1122,
+      "format": "OBJ"
+    },
+    "moonfall_fallen_bamboo": {
+      "triangles": 392,
+      "vertices": 268,
+      "format": "OBJ"
+    },
+    "shrine_rope_bell": {
+      "triangles": 138,
+      "vertices": 116,
+      "format": "OBJ"
+    },
+    "moonfall_stone_lantern_tall": {
+      "triangles": 156,
+      "vertices": 128,
+      "format": "OBJ"
+    }
+  }
+}
