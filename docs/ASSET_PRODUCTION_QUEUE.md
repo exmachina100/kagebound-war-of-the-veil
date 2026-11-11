@@ -76,3 +76,11 @@ Once the approved Veilblade 2D views are ready, build/convert the mesh with real
 - Y-up, -Z forward, ground pivot; height approximately 5.83 units. Previous v01 preserved.
 - **Stage remains 3d-draft**. No R15 skin/rig, animation, Studio import, screenshot or device QA. ART-001/002 exact PNG comparison pending. Binary/source are verified locally, **not pushed to GitHub**; package is a conversation attachment.
 - Next: reference comparison and R15 segmentation/weights; do not edit gameplay scripts.
+
+## Weapon batch — 2026-11-11: Naginata / Yari / Kanabo geometry
+- **Three original offline GLB + OBJ draft pairs exported and GLBs reimported**, with editable `generate_weapons.py`, `validation.json` and import README packaged in conversation artifact `KAGEBOUND_Weapon_Batch_Naginata_Yari_Kanabo_v01.zip`. **Not committed as binaries to GitHub**; source generator also offline pending upload.
+- `KGB_WPN_Naginata_Default_DRAFT_v01` — **212 triangles**, 9 watertight submeshes, 0 degenerate faces, Y-up height 5.23 units. ART-003. **3d-draft/offline**; enabled gameplay playtest prototype, no Studio art import. Attack handoff: long-reach wide sweep.
+- `KGB_WPN_Yari_Default_DRAFT_v01` — **180 triangles**, 8 watertight submeshes, 0 degenerate faces, Y-up height 5.675 units. ART-003. **3d-draft/offline**; enabled gameplay playtest prototype, no Studio art import. Attack handoff: narrow forward thrust.
+- `KGB_WPN_Kanabo_Default_DRAFT_v01` — **672 triangles**, 46 watertight submeshes, 0 degenerate faces, Y-up height 4.45 units. ART-003. **3d-draft/offline**; gameplay archetype remains disabled. Attack handoff: heavy overhead guard break.
+- All three grip-base pivots at (0,0,0), -Z forward, vertex-color materials, no UV atlas or rig; component-wise watertight only, not Boolean union. Existing source files unchanged. Actual ART-003 pixel-level comparison and Blender/Studio import/performance QA **not performed**. OpenArt spend: **0**.
+- Target repo paths after verified binary transfer: `assets/roblox-ready/weapons/<asset>.glb`, matching `.obj`; generator `assets/3d-source/weapons/generate_weapons.py`. Next weapon tickets: Kusarigama (staged), Yumi (staged); do not claim complete art from gameplay procedural parts.
