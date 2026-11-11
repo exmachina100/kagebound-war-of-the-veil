@@ -16,7 +16,7 @@ local function toggle(key)
     openPanel=openPanel==key and nil or key
     layout()
 end
-for i,key in ipairs({"Journal","Loadout"}) do
+for i,key in ipairs({"Journal","Loadout","Weapons"}) do
     local button=Instance.new("TextButton")
     button.Name=key
     button.Size=UDim2.fromOffset(110,44)
@@ -39,6 +39,7 @@ UIS.InputBegan:Connect(function(input,processed)
     if processed or UIS:GetFocusedTextBox() then return end
     if input.KeyCode==Enum.KeyCode.J then toggle("Journal") end
     if input.KeyCode==Enum.KeyCode.L then toggle("Loadout") end
+    if input.KeyCode==Enum.KeyCode.B then toggle("Weapons") end
 end)
 
 local function panel(screen,name)
@@ -63,8 +64,13 @@ layout=function()
     local left=math.min(300,width-28)
     local journal=not compact or openPanel=="Journal"
     local loadout=not compact or openPanel=="Loadout"
+    local weapons=not compact or openPanel=="Weapons"
     local top=compact and 62 or 12
-    for key,button in pairs(buttons) do
+    local navWidth=math.min(110,(width-44)/3)
+    for i,key in ipairs({"Journal","Loadout","Weapons"}) do
+        local button=buttons[key]
+        button.Position=UDim2.fromOffset(14+(i-1)*(navWidth+8),8)
+        button.Size=UDim2.fromOffset(navWidth,44)
         button.Visible=compact
         button.BackgroundColor3=openPanel==key and Color3.fromRGB(118,53,135)
             or Color3.fromRGB(28,23,48)
@@ -92,7 +98,9 @@ layout=function()
         scale.Parent=styles
     end
     place(panel("KageboundAssetQuickbar","MythicEquipment"),
-        rightX,top+204,112,38,loadout)
+        rightX,top+(compact and 204 or 450),112,38,loadout)
+    place(panel("KageboundWeaponHUD","WeaponToolbar"),rightX,
+        compact and top or top+204,rightWidth,236,weapons)
 
     local touch=compact and UIS.TouchEnabled
     place(panel("KageboundProgressionHUD","Progression"),14,touch and top or height-130,
