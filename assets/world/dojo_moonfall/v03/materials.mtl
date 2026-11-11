@@ -1,0 +1,22 @@
+newmtl roof
+Kd 0.13 0.14 0.23
+newmtl gold
+Kd 0.9 0.63 0.33
+newmtl ink
+Kd 0.12 0.14 0.2
+newmtl wood
+Kd 0.24 0.13 0.13
+newmtl vermilion
+Kd 0.61 0.16 0.24
+newmtl paper
+Kd 0.82 0.78 0.72
+newmtl bamboo
+Kd 0.19 0.37 0.29
+newmtl leaf
+Kd 0.14 0.31 0.26
+newmtl stone
+Kd 0.39 0.4 0.47
+newmtl slate
+Kd 0.27 0.28 0.34
+newmtl rope
+Kd 0.69 0.55 0.38
