@@ -3,6 +3,7 @@ local Lighting = game:GetService("Lighting")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local shared = ReplicatedStorage:WaitForChild("KageboundShared")
 local cfg = require(shared:WaitForChild("SkyConfig"))
+local assetRegistry = require(shared:WaitForChild("RuntimeAssetRegistry"))
 local sky = Lighting:FindFirstChild("KageboundSky")
 if not sky then
     sky = Instance.new("Sky")
@@ -10,14 +11,21 @@ if not sky then
     sky.Parent = Lighting
 end
 local fields = {Bk="SkyboxBk", Dn="SkyboxDn", Ft="SkyboxFt", Lf="SkyboxLf", Rt="SkyboxRt", Up="SkyboxUp"}
+local resolved = {}
 local valid = true
 for key in pairs(fields) do
     local id = cfg.Faces[key]
-    if type(id) ~= "number" or id <= 0 then valid = false end
+    if type(id) == "number" and id > 0 then
+        resolved[key] = "rbxassetid://" .. tostring(id)
+    else
+        -- The asset-sync workflow publishes sky faces into the runtime registry.
+        resolved[key] = assetRegistry.get("ui.skybox.moonfall.v01." .. string.lower(key))
+    end
+    if not resolved[key] then valid = false end
 end
 if valid then
     for key, property in pairs(fields) do
-        sky[property] = "rbxassetid://" .. tostring(cfg.Faces[key])
+        sky[property] = resolved[key]
     end
 else
     warn("[KAGEBOUND] Custom cubemap pending six published Roblox images; using atmospheric fallback")
