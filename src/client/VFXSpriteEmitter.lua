@@ -34,7 +34,7 @@ function Sprite.Play(root,key,size,lifetime)
     })
     e.Parent=attachment
     e:Emit(1)
-    Debris:AddItem(attachment,(lifetime or .55)+.3)
+    Debris:AddItem(attachment,math.clamp(lifetime or .55,.2,1.5)+.3)
     return true
 end
 return Sprite
