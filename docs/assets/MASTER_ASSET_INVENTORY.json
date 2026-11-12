@@ -1,0 +1,1686 @@
+{
+  "scope": "Local bytes only; import and visual status require live Studio evidence",
+  "files": 309,
+  "formats": {
+    ".py": 1,
+    ".png": 76,
+    ".md": 13,
+    ".json": 23,
+    ".obj": 76,
+    ".mtl": 19,
+    ".glb": 77,
+    ".jpg": 1,
+    ".gltf": 23
+  },
+  "exactDuplicateGroups": [
+    [
+      "assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01.mtl",
+      "assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.mtl"
+    ],
+    [
+      "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.mtl",
+      "assets/roblox-ready/weapons/KGB_WPN_Naginata_GAME_v01.mtl",
+      "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.mtl",
+      "assets/roblox-ready/weapons/KGB_WPN_Yari_GAME_v01.mtl"
+    ],
+    [
+      "assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01.mtl",
+      "assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01.mtl"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_ceremonial_stones_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_ceremonial_stones_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_ritual_banner_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_ritual_banner_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_roof_eave_module_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_roof_eave_module_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_shrine_pavilion_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_stone_lantern_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_stone_lantern_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_dojo_torii_signature_lod0.glb",
+      "assets/world/dojo_moonfall/v08/dojo_torii_signature_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_moonfall_arch_bridge_lod0.glb",
+      "assets/world/dojo_moonfall/v08/moonfall_arch_bridge_lod0.glb"
+    ],
+    [
+      "assets/studio-import-batch/v08_moonfall_bamboo_grove_lod0.glb",
+      "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove_lod0.glb"
+    ],
+    [
+      "assets/ui/skybox/moonfall/v01/Bk.png",
+      "assets/ui/skybox/veilfall/v01/Bk.png"
+    ],
+    [
+      "assets/ui/skybox/moonfall/v01/Dn.png",
+      "assets/ui/skybox/veilfall/v01/Dn.png"
+    ],
+    [
+      "assets/ui/skybox/moonfall/v01/Rt.png",
+      "assets/ui/skybox/veilfall/v01/Rt.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/bamboo_albedo.png",
+      "assets/world/dojo_moonfall/v08/bamboo.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/gold_albedo.png",
+      "assets/world/dojo_moonfall/v08/gold.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/ink_albedo.png",
+      "assets/world/dojo_moonfall/v08/ink.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/ivory_albedo.png",
+      "assets/world/dojo_moonfall/v08/ivory.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/leaf_albedo.png",
+      "assets/world/dojo_moonfall/v08/leaf.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/stone_albedo.png",
+      "assets/world/dojo_moonfall/v08/stone.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/vermilion_albedo.png",
+      "assets/world/dojo_moonfall/v08/vermilion.png"
+    ],
+    [
+      "assets/world/dojo_moonfall/v08/wood_albedo.png",
+      "assets/world/dojo_moonfall/v08/wood.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/agedwood_albedo.png",
+      "assets/world/shogun_last_city/v09/agedwood.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/bronze_albedo.png",
+      "assets/world/shogun_last_city/v09/bronze.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/charcoal_albedo.png",
+      "assets/world/shogun_last_city/v09/charcoal.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/paper_albedo.png",
+      "assets/world/shogun_last_city/v09/paper.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/plaster_albedo.png",
+      "assets/world/shogun_last_city/v09/plaster.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/stone_albedo.png",
+      "assets/world/shogun_last_city/v09/stone.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/tile_albedo.png",
+      "assets/world/shogun_last_city/v09/tile.png"
+    ],
+    [
+      "assets/world/shogun_last_city/v09/vermillion_albedo.png",
+      "assets/world/shogun_last_city/v09/vermillion.png"
+    ]
+  ],
+  "entries": [
+    {
+      "path": "assets/3d-source/uv-draft-v02/upgrade_meshes.py",
+      "bytes": 3380,
+      "sha256": "e61d7cf95f15a948c4e7dcc7332d0b8be01b73ef46bb1054d96474d081ce324a"
+    },
+    {
+      "path": "assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_15 PM-1.png",
+      "bytes": 2685701,
+      "sha256": "e60ab483ef6b4e6f389ec3a11197443d3e083547cfa45b891e536f033466fb19"
+    },
+    {
+      "path": "assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_24 PM-2.png",
+      "bytes": 3038842,
+      "sha256": "7fecbe4e582b8b12fc96e965e09ace91977a9b73b2556e75e1638c2e8a3e97f8"
+    },
+    {
+      "path": "assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_30 PM-3.png",
+      "bytes": 2597774,
+      "sha256": "0fb24543950ebd567d9c3fbab93e911f53cca6a8b97ea2fd9f06b8e70dec010a"
+    },
+    {
+      "path": "assets/concept-art/ChatGPT Image Nov 9, 2026, 09_55_36 PM-4.png",
+      "bytes": 3202223,
+      "sha256": "91b745e21cb4637c4aa842f11b4afd7386499e45adf43080985e5404586bb2ff"
+    },
+    {
+      "path": "assets/concept-sheets/clan-vfx-v01/KGB_VFX_OniDisciple_ConceptSheet_v01.png",
+      "bytes": 3324686,
+      "sha256": "d3e7012a9094188a66b238e6ffd37723667f67c73df6f3d57ab4ee44e07955b0"
+    },
+    {
+      "path": "assets/concept-sheets/clan-vfx-v01/KGB_VFX_Onmyoji_ConceptSheet_v01.png",
+      "bytes": 3228776,
+      "sha256": "4297f6309aa0de24a1b3678b0c7e0fb2438a9c220c9bf47ce2f4d4a712366215"
+    },
+    {
+      "path": "assets/concept-sheets/clan-vfx-v01/KGB_VFX_Ronin_ConceptSheet_v01.png",
+      "bytes": 3150328,
+      "sha256": "9d07a9307fcda5086899695fe067ad05804fc53c38b5a3a417015059b45e670d"
+    },
+    {
+      "path": "assets/concept-sheets/clan-vfx-v01/KGB_VFX_Shinobi_ConceptSheet_v01.png",
+      "bytes": 3159445,
+      "sha256": "ad672bdcd61cf4f2266ace1ac2a7282bf379b119e36efb78c4f953e0fd8b5763"
+    },
+    {
+      "path": "assets/concept-sheets/clan-vfx-v01/README.md",
+      "bytes": 825,
+      "sha256": "3f877e7945374f7775bf55f6c1020bad0087700b4096c142957884e3a0561e31"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/KGB_VFX_FX005_KitsuneUltimate_CONCEPT_v01.png",
+      "bytes": 2914514,
+      "sha256": "3c2153c8617fa196d46799de37fa40648149c7ecdca12d9424b1895672f6d707"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/KGB_VFX_FX006_OniBossEruption_CONCEPT_v01.png",
+      "bytes": 3095227,
+      "sha256": "7a158692db150cb2ddd6cc6854f4addbeba8ee0dddb628a002fe4b11707460a1"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/KGB_VFX_FX008_VeilfallSequence_CONCEPT_v01.png",
+      "bytes": 2730160,
+      "sha256": "34c9f7aec51cfcca81866f900e0a2d96692ff46288df48ef0fb3ca13fc84ea4a"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/KGB_VFX_MythicMovesShowcase_CONCEPT_v01.png",
+      "bytes": 2882646,
+      "sha256": "0374ed68bbf3bd8776fe0d2c3e4ca9a83b39122069ebdbde07ad075c03dfc0f1"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/README.md",
+      "bytes": 2027,
+      "sha256": "d399ddc02357dc001f14cefb84b696efb08529b73ed3685a6e09a4e1ffd27b1a"
+    },
+    {
+      "path": "assets/concept-sheets/vfx-v01/VFX_CONCEPT_MANIFEST.json",
+      "bytes": 3133,
+      "sha256": "cb44aa85c8fc864bff716f17ca324e1126e0705427955b0900305d22eea37a56"
+    },
+    {
+      "path": "assets/prompts/OPENART_SEEDANCE_SHOTLIST.md",
+      "bytes": 1584,
+      "sha256": "616bfdbbf87aae1d5409da83658629f59652d39e0bd7b001ff7f139729299a26"
+    },
+    {
+      "path": "assets/roblox-ready/characters/class-kits/KGB_CLASS_OniBracers_STATIC_DRAFT_v01.obj",
+      "bytes": 3998,
+      "sha256": "72a40fb073084197769449d251c1fe2f5d2f82697d9e7e847ad84d43b8281362"
+    },
+    {
+      "path": "assets/roblox-ready/characters/class-kits/KGB_CLASS_OnmyojiScroll_STATIC_DRAFT_v01.obj",
+      "bytes": 3535,
+      "sha256": "106126c158907ed793da7b9a963529b68b0c190a2d11e5e926353b18b99be1cf"
+    },
+    {
+      "path": "assets/roblox-ready/characters/class-kits/KGB_CLASS_RoninMantle_STATIC_DRAFT_v01.obj",
+      "bytes": 3176,
+      "sha256": "a55ec9d3b435eb8d34418f008685e3b912fd53b8b44da4e6546afdd9bbefbf9b"
+    },
+    {
+      "path": "assets/roblox-ready/characters/class-kits/KGB_ClassKit_DRAFT_v01.mtl",
+      "bytes": 640,
+      "sha256": "d7ef2f4e88076f85d93ec965eb156055df6b7eb16074d3e28c4bd98fb8bce53a"
+    },
+    {
+      "path": "assets/roblox-ready/characters/npc/KGB_NPC_BambooScout_STATIC_DRAFT_v02.obj",
+      "bytes": 4660,
+      "sha256": "361e35ba8b91e2e7c939ec112ac816754b4a721d1e197f731248b109610ce5e7"
+    },
+    {
+      "path": "assets/roblox-ready/characters/npc/KGB_NPC_CityArchivist_STATIC_DRAFT_v02.obj",
+      "bytes": 4665,
+      "sha256": "70de257428ec2704a63518a42ccf43a2580e0b7c77b2e3164f4dade465f9a3c1"
+    },
+    {
+      "path": "assets/roblox-ready/characters/npc/KGB_NPC_DojoMentor_STATIC_DRAFT_v02.obj",
+      "bytes": 4279,
+      "sha256": "b6892de5579e6c08cdeb2f79125b0d8d2c341b91cfaf877848579edb82f5a464"
+    },
+    {
+      "path": "assets/roblox-ready/characters/npc/KGB_NPC_Guides_DRAFT_v02.mtl",
+      "bytes": 631,
+      "sha256": "c3c0bac1e52e191e320b6aa0a5fc709b04c595187ee1ba29ab30359fbd394d05"
+    },
+    {
+      "path": "assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01.mtl",
+      "bytes": 678,
+      "sha256": "65640678bf979387112eb9947342926c1ff74f7f60e00550e55d15e80fc02c28"
+    },
+    {
+      "path": "assets/roblox-ready/environment/KGB_PROP_DojoPracticePost_Default_GAME_v01.obj",
+      "bytes": 9848,
+      "sha256": "9f8fb7dd3b96a5feb2b7a3fd28f53f3c9521fac5110ac8e1982d1b61b1915f16"
+    },
+    {
+      "path": "assets/roblox-ready/masks/KGB_MASK_Kitsune_Wearable_DRAFT_v01.obj",
+      "bytes": 6410,
+      "sha256": "74771ff0b545751f9c36df682781c32d70428defbdbcd2d933e45a8f19983753"
+    },
+    {
+      "path": "assets/roblox-ready/masks/KGB_MASK_Materials_DRAFT_v01.mtl",
+      "bytes": 143,
+      "sha256": "be22a3a58c0069e7ed3c5f3b74db7a54c0e9c533d99c90382b8ec6bc3b8b616c"
+    },
+    {
+      "path": "assets/roblox-ready/masks/KGB_MASK_Oni_Wearable_DRAFT_v01.obj",
+      "bytes": 6399,
+      "sha256": "86c4dbac60fda11f8434c795d4d2b4a2b798a0e36a19a79e3e43e4fd70d9de06"
+    },
+    {
+      "path": "assets/roblox-ready/masks/KGB_MASK_Tengu_Wearable_DRAFT_v01.obj",
+      "bytes": 6235,
+      "sha256": "db7bef37278a8b14e3eb673ad8d7e2df3f8a4d8bae0edd717ecb40cdea48af92"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.mtl",
+      "bytes": 196,
+      "sha256": "dd3359ac4192ce1ce3e552f197abdf3d98748b481b9881b27717ea4930185cf3"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj",
+      "bytes": 2928,
+      "sha256": "670177824f666f9b33f5d3689c7fca2cf98570d73d6d0b7111f339d538f9f7c2"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Naginata_GAME_v01.mtl",
+      "bytes": 196,
+      "sha256": "dd3359ac4192ce1ce3e552f197abdf3d98748b481b9881b27717ea4930185cf3"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Naginata_GAME_v01.obj",
+      "bytes": 3006,
+      "sha256": "44cc02be3f8bf252b51d69e5fc102dbe8a542a7b434b21dd32d1e46edac2f336"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01.mtl",
+      "bytes": 402,
+      "sha256": "776d72a4c0a18d9722a1ce23a616a4fe90bd8fe35aadc8795e9275a46ce42169"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01.obj",
+      "bytes": 5345,
+      "sha256": "bcdd64bcdad1c54ad09f468d5cd6c88affbc2f67156dd264f6e57e403f69eab1"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01.mtl",
+      "bytes": 402,
+      "sha256": "776d72a4c0a18d9722a1ce23a616a4fe90bd8fe35aadc8795e9275a46ce42169"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01.obj",
+      "bytes": 4242,
+      "sha256": "7fac472884bd9827b330ba0e107769490cfb57bcce305a767f86a8413356698d"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.mtl",
+      "bytes": 678,
+      "sha256": "65640678bf979387112eb9947342926c1ff74f7f60e00550e55d15e80fc02c28"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.obj",
+      "bytes": 37912,
+      "sha256": "5c5373bf6c3ebcd362a8a6fd4835af054fce87f931ca14d3d5d01ed99352961e"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.mtl",
+      "bytes": 196,
+      "sha256": "dd3359ac4192ce1ce3e552f197abdf3d98748b481b9881b27717ea4930185cf3"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.obj",
+      "bytes": 3982,
+      "sha256": "9078d3093a625a09b7420962df8edc6709f881296b29f2523ba84acafc898a4a"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Yari_GAME_v01.mtl",
+      "bytes": 196,
+      "sha256": "dd3359ac4192ce1ce3e552f197abdf3d98748b481b9881b27717ea4930185cf3"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/KGB_WPN_Yari_GAME_v01.obj",
+      "bytes": 4035,
+      "sha256": "205f0dfe4307e46eb4728eb8ea55a58179811b01c4919c15ff6804c5eabed1b4"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/POLEARMS_v01_IMPORT.md",
+      "bytes": 869,
+      "sha256": "1379ec4c08585145562b115e70427e0d1e0f8b64dad0ee680738305ad367ff52"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/POLEARMS_v02_IMPORT.md",
+      "bytes": 1524,
+      "sha256": "49979d68c49361fa41dd0f89cd4a8ab70c1bcd2503bc8626fabee2cb96966a88"
+    },
+    {
+      "path": "assets/roblox-ready/weapons/POLEARMS_v02_validation.json",
+      "bytes": 3645,
+      "sha256": "85b94a5b0569897f3dc7404580a2abed42f349e5b5c2992c4a48dbf670c7c14c"
+    },
+    {
+      "path": "assets/studio-import-batch/manifest.json",
+      "bytes": 47057,
+      "sha256": "5a639b63bac6175886e8c5a7f843b13af1dd91b4e0984405973740fa75af6b62"
+    },
+    {
+      "path": "assets/studio-import-batch/mask_KGB_MASK_Kitsune_Wearable_DRAFT_v01.glb",
+      "bytes": 5216,
+      "sha256": "192f953193ca03c17fc99beec16bc81a005be4fe4f64d3d8902d03461adbf553"
+    },
+    {
+      "path": "assets/studio-import-batch/mask_KGB_MASK_Oni_Wearable_DRAFT_v01.glb",
+      "bytes": 5208,
+      "sha256": "3368cf2b6603c89b2246375b4800e969596d0c0504de371acf635828d7894749"
+    },
+    {
+      "path": "assets/studio-import-batch/mask_KGB_MASK_Tengu_Wearable_DRAFT_v01.glb",
+      "bytes": 5120,
+      "sha256": "02f6a89ba7ee0405b22a0d8785954f3759e2321eaba70ff29655aa9ea33c3feb"
+    },
+    {
+      "path": "assets/studio-import-batch/npc_KGB_NPC_BambooScout_STATIC_DRAFT_v02.glb",
+      "bytes": 5108,
+      "sha256": "1019f0e6152735f4de1dd03f25295737454fa5548b6d8ae489b5c0b0fde827c9"
+    },
+    {
+      "path": "assets/studio-import-batch/npc_KGB_NPC_CityArchivist_STATIC_DRAFT_v02.glb",
+      "bytes": 5456,
+      "sha256": "4cdb62d0545f6a38058dc484b5ba8f5589c5d3edfb60f9ea6dc0683bcd009ef8"
+    },
+    {
+      "path": "assets/studio-import-batch/npc_KGB_NPC_DojoMentor_STATIC_DRAFT_v02.glb",
+      "bytes": 5212,
+      "sha256": "54f69f94573d90d63d0dfaf8d69726ce8c861d75f912e77faaa59974fb9f3a9b"
+    },
+    {
+      "path": "assets/studio-import-batch/npc-manifest.json",
+      "bytes": 7317,
+      "sha256": "c06d40bebf86c4d71c0ed162ab0c5a90589a6bad908b0bb0f4b0addecdbae6f7"
+    },
+    {
+      "path": "assets/studio-import-batch/primitive-specs.json",
+      "bytes": 75948,
+      "sha256": "81aaf7c9bd631f303af4a2ff4ab763c7e44cfcab2d4314289a0e85d767a63311"
+    },
+    {
+      "path": "assets/studio-import-batch/source-bounds.json",
+      "bytes": 10383,
+      "sha256": "f51600fc9dad446ef6e2e45be9bf0392bc002424284195beb84b6cb5ca942059"
+    },
+    {
+      "path": "assets/studio-import-batch/store-torii-adapted.jpg",
+      "bytes": 73090,
+      "sha256": "da017e752a8dcafc50c3bb751a2bb79a8e16e682f99f2f383152299a7d933930"
+    },
+    {
+      "path": "assets/studio-import-batch/studio-snapshot-2026-11-12.json",
+      "bytes": 243013,
+      "sha256": "35eaa020a6d5de0606ed3cfd8f80fb1620b063cbe1d712c3503b58ac7e3c1f49"
+    },
+    {
+      "path": "assets/studio-import-batch/studio-validation-2026-11-12.json",
+      "bytes": 10727,
+      "sha256": "9806a67228b3fa7927f1d774fb29204e35d683f717018ebbd416347f3d6605bd"
+    },
+    {
+      "path": "assets/studio-import-batch/upload-progress.json",
+      "bytes": 4581,
+      "sha256": "668b44cf8eb3dc19aae21844791121e1124e21702f8a6215e6ce48e315c6101d"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_dojo_komainu_plinth_lod0.glb",
+      "bytes": 9744,
+      "sha256": "6c2aa2992a811a197379c191cd033acfe1c057416e0fa3b19c46049283c55988"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_dojo_ritual_banner_lod0.glb",
+      "bytes": 6352,
+      "sha256": "9faa21b115dc106a6313002063b2fe113a7e8c11eb62b1b403aa5e9e3bd425d5"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_dojo_suspended_bell_lod0.glb",
+      "bytes": 9980,
+      "sha256": "1a3be739d3b34847aec45f0aee4cf78c4a810e3aa452257817889e518ce6f7b9"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_moonfall_bamboo_fan_lod0.glb",
+      "bytes": 20888,
+      "sha256": "b5ad76a6861ff8f68207510b569235a43ad545aef67b45f1df1e8df845681e98"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_moonfall_lantern_arch_lod0.glb",
+      "bytes": 10172,
+      "sha256": "02f34b54f756219cb053b45cd48f8c9a782fc0e603cc99fd6f42220a996ec638"
+    },
+    {
+      "path": "assets/studio-import-batch/v07_moonfall_stepping_stones_lod0.glb",
+      "bytes": 22624,
+      "sha256": "7776db40437eea3884842993ce5c688aef1b4e02d4d01c028b30da12f2eabdfb"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_ceremonial_stones_lod0.glb",
+      "bytes": 34136,
+      "sha256": "fefc6f737fe951e634fc1025e839d623d3198be181ea8a8c2d2fbc09b2d99319"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_ritual_banner_lod0.glb",
+      "bytes": 23612,
+      "sha256": "2f57a695237a6005b86e41ac98fa7295f5fc2915840752810598dd845da508f5"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_roof_eave_module_lod0.glb",
+      "bytes": 44428,
+      "sha256": "96cc897039c1915ed4fe689d5c70344b37cec8192ad557a2b7652ad42ca8c447"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_shrine_pavilion_lod0.glb",
+      "bytes": 36908,
+      "sha256": "62a35ac43ea4d77f51aeccbeb1b6b2cb6402690bc5490bfd996f173f6e678488"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_stone_lantern_lod0.glb",
+      "bytes": 27528,
+      "sha256": "a43180523e839a98efa50e5b31c74a8d199aead2719e9edf6980ee53e3ee36e9"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_dojo_torii_signature_lod0.glb",
+      "bytes": 30028,
+      "sha256": "ebc5a1b9ffcf33e695576973e07c3457229dad1baab481b70bbba71d4823f597"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_moonfall_arch_bridge_lod0.glb",
+      "bytes": 56772,
+      "sha256": "be8ac12acbdfe9f45064f06b558421a2d13709ac133278a0e3cc78ba46ec976a"
+    },
+    {
+      "path": "assets/studio-import-batch/v08_moonfall_bamboo_grove_lod0.glb",
+      "bytes": 142672,
+      "sha256": "24f1641a12cd96632f621f54494deaa4d392df29ea05cd6219d80a5cf625a283"
+    },
+    {
+      "path": "assets/studio-import-batch/weapon_KGB_WPN_Naginata_CLOSED_DRAFT_v02.glb",
+      "bytes": 4172,
+      "sha256": "8d6b6617d9fcad4f62585478366c074432b288c108694b574695998bd60e880e"
+    },
+    {
+      "path": "assets/studio-import-batch/weapon_KGB_WPN_Nodachi_Default_DRAFT_v01.glb",
+      "bytes": 5596,
+      "sha256": "f631f3066bffe714c43edeacdbdf24ff9b83cdff6711173888ed7eccc31b76c4"
+    },
+    {
+      "path": "assets/studio-import-batch/weapon_KGB_WPN_Tanto_Default_DRAFT_v01.glb",
+      "bytes": 4888,
+      "sha256": "211512fd3cf97a35223f8d26e48d8cac1a1255c71be6881dc5d94a0442ad0145"
+    },
+    {
+      "path": "assets/studio-import-batch/weapon_KGB_WPN_Veilblade_Default_GAME_v02.glb",
+      "bytes": 24888,
+      "sha256": "35a373feceb4add26b13a39e0a0c25b621d8de93c605afa787b4414701a86f44"
+    },
+    {
+      "path": "assets/studio-import-batch/weapon_KGB_WPN_Yari_CLOSED_DRAFT_v02.glb",
+      "bytes": 5060,
+      "sha256": "36be7093902f15f20a83f89f68365bb2b4aca2ba610a9db67ddb5d116593b5a9"
+    },
+    {
+      "path": "assets/templates/asset-record.md",
+      "bytes": 1513,
+      "sha256": "29e6d3a669febb12eadb683886f1c6da6734e2afa1c716337a31e8441ae1c4d1"
+    },
+    {
+      "path": "assets/ui/icons/v01/atlas.png",
+      "bytes": 925110,
+      "sha256": "a042f9b0ee9d2f5fa718c4ccb8dff83e8bdeffdb0d34a6cad05ce5220b0552e2"
+    },
+    {
+      "path": "assets/ui/icons/v01/clan.png",
+      "bytes": 69779,
+      "sha256": "51f7454781969922fa3ae8e55feacce96840b52d001143ef4149cdfb5aa2b8ea"
+    },
+    {
+      "path": "assets/ui/icons/v01/dash.png",
+      "bytes": 45512,
+      "sha256": "789841f93507ba4b77fc995c72f7ad48b8ae94aca59a7be20184a7b3473f16e7"
+    },
+    {
+      "path": "assets/ui/icons/v01/dojo.png",
+      "bytes": 50755,
+      "sha256": "1c607a1bf76d8ee6ee89d01c57516137fcab2c3209c4c8a6b176829ceffc8a4b"
+    },
+    {
+      "path": "assets/ui/icons/v01/inventory.png",
+      "bytes": 61827,
+      "sha256": "eddcb9b65fdd253202e2562254e41f7ca53bac63b5327d377af7ac07099a4d0e"
+    },
+    {
+      "path": "assets/ui/icons/v01/kitsune.png",
+      "bytes": 51010,
+      "sha256": "a311e3925b0e3c1eac5769d9ebcbfbcf778caaeb313b25ec7b18fe52a567c8e9"
+    },
+    {
+      "path": "assets/ui/icons/v01/manifest.json",
+      "bytes": 2443,
+      "sha256": "7cd2377be0605a3aea672a8e9903f5274455543c3a8c9bd85681e2f12f91691f"
+    },
+    {
+      "path": "assets/ui/icons/v01/ofuda.png",
+      "bytes": 46835,
+      "sha256": "9640cb61791c4b9f8da7848d86991abc798d266f1244f1548004ccc4cb63783b"
+    },
+    {
+      "path": "assets/ui/icons/v01/oni.png",
+      "bytes": 53083,
+      "sha256": "296c4808f578c41d53d38713deaff276239aa9257d7d3d1502916f97c4e2a592"
+    },
+    {
+      "path": "assets/ui/icons/v01/parry.png",
+      "bytes": 67358,
+      "sha256": "9414e9fe1305c82328f1381e31e911174c2705cf25284e6cd82e5f5c3df5698f"
+    },
+    {
+      "path": "assets/ui/icons/v01/quest.png",
+      "bytes": 54727,
+      "sha256": "a97934f9fc843eb4c66b10eb7475774641dba42229699104a46fe4a7306b1ef2"
+    },
+    {
+      "path": "assets/ui/icons/v01/settings.png",
+      "bytes": 64001,
+      "sha256": "489130e3318253388c6c5642c5d861397c676e4bd6e285ffb3aa14ef642459da"
+    },
+    {
+      "path": "assets/ui/icons/v01/slash.png",
+      "bytes": 73184,
+      "sha256": "106bb0a665726d91369ac6dbb291ad03345c9463c7441b24214b2416fc0e4c2c"
+    },
+    {
+      "path": "assets/ui/icons/v01/spirit_shard.png",
+      "bytes": 55823,
+      "sha256": "42208a6eac07246cdab5f29a8265c1d28f780ec975dbf90dd47bcf09570e94fd"
+    },
+    {
+      "path": "assets/ui/icons/v01/tengu.png",
+      "bytes": 63716,
+      "sha256": "198eb66598e85ca7d514e1947726405bed4e38e0b24a6ed6a571955f16f13217"
+    },
+    {
+      "path": "assets/ui/icons/v01/veilfall.png",
+      "bytes": 70358,
+      "sha256": "34e0728a91eafe9d64b87f36f13fb746ea83784e27fdd60c247d4cc62e35dd01"
+    },
+    {
+      "path": "assets/ui/icons/v01/weapon.png",
+      "bytes": 30033,
+      "sha256": "a9754de2d73bc3f5c93755ec947c027f6191ddaec4ddecc79323cb3f9a5c3c2c"
+    },
+    {
+      "path": "assets/ui/icons/v01/world_map.png",
+      "bytes": 55488,
+      "sha256": "a8d80dab08ebc8609c9c0dbfacf1a2973f795523ba3bd27eb49f02cdc2baed6e"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Bk.png",
+      "bytes": 49883,
+      "sha256": "575aaedbe75333ba7b23fbef0c32fff787fd126b552e40c11e4fc765e118788a"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Dn.png",
+      "bytes": 1723,
+      "sha256": "fe4a0dab676cfb4f7ddde8d255935415af695198237cb28be277731535179cf9"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Ft.png",
+      "bytes": 49783,
+      "sha256": "befa167197c5493db6d3c59f43cbf44e0c9d2768ace1837c5010b32161d07f5c"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Lf.png",
+      "bytes": 47357,
+      "sha256": "097b7a45778da8c027caaa5d08bba6abafb9afdf9bc0b52cb446a6b0bb29accc"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Rt.png",
+      "bytes": 38850,
+      "sha256": "ba9d230661af56b7803a0442e478a4346259c6a866cf5cafdedf0620ec11fc34"
+    },
+    {
+      "path": "assets/ui/skybox/moonfall/v01/Up.png",
+      "bytes": 36224,
+      "sha256": "7520caa5089fafc4bbf1f8f14e271cb35fc95159faa2917a345846eb692b6dfd"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Bk.png",
+      "bytes": 49883,
+      "sha256": "575aaedbe75333ba7b23fbef0c32fff787fd126b552e40c11e4fc765e118788a"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Dn.png",
+      "bytes": 1723,
+      "sha256": "fe4a0dab676cfb4f7ddde8d255935415af695198237cb28be277731535179cf9"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Ft.png",
+      "bytes": 70907,
+      "sha256": "74195ab8f87862235aa2b6f3b96834295568957ba046550f2c8c53cc87b757df"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Lf.png",
+      "bytes": 53831,
+      "sha256": "11b9ee0f998d26ef8078d1acd48d241bc30bdcc0187bdbb6c948754de1aa4a70"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Rt.png",
+      "bytes": 38850,
+      "sha256": "ba9d230661af56b7803a0442e478a4346259c6a866cf5cafdedf0620ec11fc34"
+    },
+    {
+      "path": "assets/ui/skybox/veilfall/v01/Up.png",
+      "bytes": 87304,
+      "sha256": "3df24849d476afa29dc9745e81d0d3bd89154251b1cc094f4c79daef3107cf59"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/bamboo.obj",
+      "bytes": 17718,
+      "sha256": "79d9d3e8b1bd7ca327adcf476f779c5261ce5ace41c9e597ebff5b86b4acfe5a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/bridge.obj",
+      "bytes": 11672,
+      "sha256": "0a8e634dae10dcbc4c7b513bf6d9858facb168c81b950b689adb29730bbbebeb"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/lantern.obj",
+      "bytes": 2127,
+      "sha256": "438fb0427b6ee8b27e2db4c4ca406566acfe4e2744abf201cab19102ba76e3e2"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/manifest.json",
+      "bytes": 1114,
+      "sha256": "afda90626456e24943683c83068d83c04d528bae44476641ba4a421915ab5de0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/materials.mtl",
+      "bytes": 287,
+      "sha256": "5477ac12b5955d2658e26fd6f9345491194ee542d78c3be9963847a1967ef3b7"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/shrine.obj",
+      "bytes": 5736,
+      "sha256": "0d0893f287c24f7c50e7d27f9554e9559a2f044b28aa59e72085bc8202dbbc36"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/stones.obj",
+      "bytes": 2423,
+      "sha256": "98d49e5f738b0fcca23df0e0ad0640beb299f6de89728d1b918ed45939e9f980"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v01/torii.obj",
+      "bytes": 3550,
+      "sha256": "5134f53b3241959c4421886fcbeeb802d3a503a1fc496af71d5a751d8f64b8f0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/dojo_clan_banner.obj",
+      "bytes": 2656,
+      "sha256": "72f1aa2746ef67364699d5f7480d492939bf749225cd28c147403394816934e1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/dojo_ritual_altar.obj",
+      "bytes": 4276,
+      "sha256": "801c303318e432829a79172ea493ac2433e591c591af7b17fbf3a0e0d455d15d"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/manifest.json",
+      "bytes": 783,
+      "sha256": "9507b98f5b00d1bb36b08915d91009882ccb926f99ee1117cd647d5340c43a07"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/moonfall_ceremonial_steps.obj",
+      "bytes": 6696,
+      "sha256": "be5e5ce7a8852b7f99ce7c89e1146628c4f5aaf7dc00022bfaf048131fdb9e92"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/moonfall_rock_spires.obj",
+      "bytes": 5348,
+      "sha256": "12e2530824c5a2ba8bfe0d41dfa656250040416310eb0c463454054644a877e2"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v02/world_v02.mtl",
+      "bytes": 273,
+      "sha256": "6025b991deb623be8a56ddc12c0df05ee55988f328e5d904712fe853b032cfd4"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/dojo_curved_roof_module.obj",
+      "bytes": 12524,
+      "sha256": "4fe33110c390715d65d299ef215ef7906cce3117f15f6819b7488df46c5cdafc"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/dojo_shoji_wall.obj",
+      "bytes": 6820,
+      "sha256": "d10798358ebc1e5786e8769eb14255c0fec913689a72562bce5344cbe27c3e73"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/manifest.json",
+      "bytes": 1013,
+      "sha256": "36d119de4ff56c7c6977e2540161685f51c5cb2898971684e5f5f8d5bd023dbb"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/materials.mtl",
+      "bytes": 358,
+      "sha256": "301a558711b50ec98acfb831d66e4d5762aad0c32038cdcc87648dc00febb77f"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/moonfall_bamboo_tall.obj",
+      "bytes": 48395,
+      "sha256": "0a0c2f67d7c90e63ad72b59784db86678152de94595c8985ad2c584a6d0ffc98"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/moonfall_fallen_bamboo.obj",
+      "bytes": 12335,
+      "sha256": "f0bf6b7e73fbe9fd01872f54db4c70baff240731ce4f1fd994f59d3da901b81a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/moonfall_stone_lantern_tall.obj",
+      "bytes": 5313,
+      "sha256": "a46778bc6eb74fff6db9257a92111273104b102001639c5f51e482dcf54832a3"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v03/shrine_rope_bell.obj",
+      "bytes": 4716,
+      "sha256": "a9c9c06d92b68aee8369b409058e762998837bd139bae76dcb1c04f68b8dac01"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/collision_proxies.json",
+      "bytes": 2066,
+      "sha256": "97bdeda4f34f8890e31855fd88ad3a9748b0769437e21c4432263bf53399b62e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/dojo_ceremonial_torii.gltf",
+      "bytes": 15082,
+      "sha256": "929bcad97cd505fdbf1eb40df056fde2283f425fca2ef4bd75ef6137d5e92594"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/dojo_ceremonial_torii.obj",
+      "bytes": 16561,
+      "sha256": "353e74fbade4368b62c78d40e3e609483dad7156f2c7d2ead13ba371e22264bf"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/dojo_shrine_arched_roof.gltf",
+      "bytes": 17019,
+      "sha256": "728b0716e47e4ea5dae3769ab649bf8cddf975d92afdb981abbe3ce1cd6855dc"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/dojo_shrine_arched_roof.obj",
+      "bytes": 18654,
+      "sha256": "4be685151325715514cdad5739689c02899430f65a639a6f5eb6ce2cc51a530d"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/IMPORT.md",
+      "bytes": 1424,
+      "sha256": "b5706c76b37fec26b8895b4240c37bdef65b64459db99a653e3aa931d914f931"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/manifest.json",
+      "bytes": 842,
+      "sha256": "5c28ec125c124219b2424dba59a9438a0cf6e4bce6c38b5708412f2481917308"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/materials.mtl",
+      "bytes": 562,
+      "sha256": "2b98db4d81b17802fb37e2e3115b45de7efde42f7c3b3f012c22366c753d48b2"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/moonfall_sacred_bamboo.gltf",
+      "bytes": 66243,
+      "sha256": "3b5353852ebdf6ad3e9011fd9d5b9aeef51c53171d537f6066563556df3319d9"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v04/moonfall_sacred_bamboo.obj",
+      "bytes": 88275,
+      "sha256": "8b19d260eb2631607bfa2556fca20ae88380761857b8fbbcb323079de0ae3487"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_ceremonial_court_lod0.glb",
+      "bytes": 32236,
+      "sha256": "d96407d518d589688c96f2fd9ad29389a66e034bf4fcdeed5315e9a35c5fdab1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_ceremonial_court_lod1.glb",
+      "bytes": 16580,
+      "sha256": "d5c2b7396c38a68227de42a872523addb12958a3895e592a46405ae1f4264c70"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_ceremonial_court.obj",
+      "bytes": 23918,
+      "sha256": "70933cebdc089f7ea53451d3bccdca9c1a23a25947960615e739e7a23de3be03"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_curved_roof_lod0.glb",
+      "bytes": 17144,
+      "sha256": "767e918d56c24ed068cf6e70d9ead08a98a1366452090241274c88e7efeb01e2"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_curved_roof_lod1.glb",
+      "bytes": 9308,
+      "sha256": "f8239acd8670efded24c60a7ecec4244f270669afd564c87694a12f25cbfa5b6"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_curved_roof.obj",
+      "bytes": 20452,
+      "sha256": "730e306d274ac82267c480ef58c1e1e7e0d285c85545757c750f2bc865c45162"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_offering_pavilion_lod0.glb",
+      "bytes": 7864,
+      "sha256": "3b862166fe965cfad9cfd874e0ddf4eb64691cbfface741c7d5a0108cdbb6f88"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_offering_pavilion_lod1.glb",
+      "bytes": 4720,
+      "sha256": "16157f6c27fb832189ab11ab80af1a6f2a8cfa37c1b6e7e68a1fe510b87a495b"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/dojo_offering_pavilion.obj",
+      "bytes": 4241,
+      "sha256": "fd9b6739d97341b80d62c3e0dda5142b98a0e6a139c0807bafebd905c4d1ba67"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/IMPORT.md",
+      "bytes": 687,
+      "sha256": "71a3b202270f8c951152be398815c1aed2ecb565919a6c0678ab88013d8ec7db"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/manifest.json",
+      "bytes": 4190,
+      "sha256": "bf5d25f43ce069381f0a2f3eeedea29e997548205ab769dcd7d5bb9a78a1047a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_arch_bridge_lod0.glb",
+      "bytes": 22648,
+      "sha256": "9d7b824b294f1c0820cddebee247f136909366879c584ea4a49d528e3d564418"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_arch_bridge_lod1.glb",
+      "bytes": 12160,
+      "sha256": "0a477ce5520799520fa676513ec9ad003c3c506951876d48ba9f9fb7cdbceee1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_arch_bridge.obj",
+      "bytes": 16362,
+      "sha256": "ed793e276f740048aaad06c7779d28bf5affe34ad129b385da31195af1d9eb97"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_bamboo_canopy_lod0.glb",
+      "bytes": 80340,
+      "sha256": "731408bf1aa7db30f0e74f13ea5e52ce536890c2c968626294835b86dc8b9292"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_bamboo_canopy_lod1.glb",
+      "bytes": 46320,
+      "sha256": "e25f27818f541e429a8c621c272e9bc8b7d03e22a241b55767915a79df0e6e20"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_bamboo_canopy.obj",
+      "bytes": 89480,
+      "sha256": "abac22c4f08aef11d64512f6d27944bb904df26408195817c3936706c3a6ec10"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_ritual_lantern_lod0.glb",
+      "bytes": 7692,
+      "sha256": "4072b1928bbe3f5f56ea2436bcdd2a8e20364cadc4a85995ff5c5c1c3f7c5b1a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_ritual_lantern_lod1.glb",
+      "bytes": 4440,
+      "sha256": "5272708ca31f96a7cfc9d71eedd7987524a908499c7c3e51f27e7fff158a4056"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/moonfall_ritual_lantern.obj",
+      "bytes": 4244,
+      "sha256": "68a1bf4e3d044b1dc3a3d632042f420d2f8a4d4504e819c0489cbed2b05e9eec"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v05/world_palette_atlas.png",
+      "bytes": 4458,
+      "sha256": "db0d15d512badb14d166ed39255da5cd2b8536988522e7078f2934990157ac72"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/collision_proxies.json",
+      "bytes": 1681,
+      "sha256": "1f6b3d278ea37271ff1e26db81abcb668be592dbf4219b5d88190f714c9a7833"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_fox_emblem_gate_lod0.gltf",
+      "bytes": 11832,
+      "sha256": "93d1965dd847076e620c09e2132d8abad9b62f849f43c3bb19ac33ec5cdde64f"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_fox_emblem_gate_lod1.gltf",
+      "bytes": 8020,
+      "sha256": "baba49e058f5cb369ce88cde697bf40f83deb68a43a9a2d03d3c0416835db3e0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_fox_emblem_gate.obj",
+      "bytes": 15243,
+      "sha256": "7ea13592f671ca79e052ea49a687e055a43662e6015d89d3d00cde98f6618016"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_kitsune_shrine_altar_lod0.gltf",
+      "bytes": 11853,
+      "sha256": "a52abc06218cff0e43ba79e6f123ff4bcd327369f51a5a7ca5809c2a81cb6cec"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_kitsune_shrine_altar_lod1.gltf",
+      "bytes": 6942,
+      "sha256": "65a1f60ea840b7d7fff1ac58edac546cb3652264287af532d7a7ab326b679f00"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/dojo_kitsune_shrine_altar.obj",
+      "bytes": 15060,
+      "sha256": "3ecd898d17328b2d624f8029ba18c914403f15d70498335c4dd415d7aa885daf"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/IMPORT.md",
+      "bytes": 357,
+      "sha256": "9b202f293645d2ab79ee189b6807ff5d0d814f557be2ad05ef38da400b4fd639"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/manifest.json",
+      "bytes": 1568,
+      "sha256": "533e44983605d787c484d17988dcf45d4880ce8a730a7c3876c4a9ba97370494"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_moss_rock_arch_lod0.gltf",
+      "bytes": 21366,
+      "sha256": "3f125d06d748af64b15755737d2e342aa07bb9bbdb2d892d8941ac32bfe74129"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_moss_rock_arch_lod1.gltf",
+      "bytes": 11169,
+      "sha256": "3c4821d5188570c85e7b40c90f25380b4a26907db27030b27f33b25993c885a7"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_moss_rock_arch.obj",
+      "bytes": 31828,
+      "sha256": "ac04680f88e643c796d403da42a207cc5f845903f884e5898e8e56bbf9fd2e69"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_spirit_waystone_lod0.gltf",
+      "bytes": 7676,
+      "sha256": "9b8f8eb23833ced23a3ab3a73b4fbc109d6e6c7f7f1aabb6853e149ae19b48e1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_spirit_waystone_lod1.gltf",
+      "bytes": 4784,
+      "sha256": "6ae3397bce393275bc35160e9cde934c85f38d199a275214ed7a5d225fc7d969"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/moonfall_spirit_waystone.obj",
+      "bytes": 8386,
+      "sha256": "15f4734445dfc21fa803373f396d95b6494403749a7291dba5061ff09b49d769"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/STUDIO_HANDOFF.md",
+      "bytes": 988,
+      "sha256": "756f371a31b13b62ee9e29ff7f16eb6ec8853f30f7a611da1d4d83815db41189"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v06/world_v06.mtl",
+      "bytes": 253,
+      "sha256": "83be362f0d476a77f9f180b9b8e9f38e934443fab37f04e83e315f4b05803850"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/collision_proxies.json",
+      "bytes": 1749,
+      "sha256": "beaf411357a04b49f84cfd10b0d37ae842bf8686ac0f5566360be535c521db3e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_komainu_plinth_lod0.gltf",
+      "bytes": 12122,
+      "sha256": "f18b7ed3c588d1b4c291eabfa07e717d6ef101a6f8310d755b03c41a62ccf34c"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_komainu_plinth_lod1.gltf",
+      "bytes": 9152,
+      "sha256": "e37e0fcf392bd8644c95c60d50c5bdb95a1e29c549b6ea24a74d6abbba01ea42"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_komainu_plinth.obj",
+      "bytes": 20586,
+      "sha256": "11d0003e19d0235b419bd0fa83f024203ce69054c9400540f18dbb807f39d844"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_ritual_banner_lod0.gltf",
+      "bytes": 7595,
+      "sha256": "8a3b87a687e30f1d3baa5a6c6e5776083a8fd39c7e6c497b171e771c096bec5f"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_ritual_banner_lod1.gltf",
+      "bytes": 4979,
+      "sha256": "9d877d027835f45fad65742b3d888487e2ac63f02e1e92213185bc7af85aec72"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_ritual_banner.obj",
+      "bytes": 10081,
+      "sha256": "536e2434799f313389fa0b325b1296eb6e4ab9a588049ffd155feb589f45d82c"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_suspended_bell_lod0.gltf",
+      "bytes": 12424,
+      "sha256": "69ad4ba7b5b0d25749195d1b950cd355b54b2a2aa6447b0ed950f1fe476ea64a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_suspended_bell_lod1.gltf",
+      "bytes": 8042,
+      "sha256": "bd65f555ad862b3e2361b886775c3f8674835cca533bcb89d4305296193f1c0f"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/dojo_suspended_bell.obj",
+      "bytes": 21358,
+      "sha256": "fec0a1563ad6b9de9985867279473b248d204cad05f6ed0e90c50369a08db233"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/manifest.json",
+      "bytes": 2879,
+      "sha256": "5828dcf757113b70b8820c4f20c821a560f9a076c0f9d3133ee35d9b69f7f8d0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_bamboo_fan_lod0.gltf",
+      "bytes": 27096,
+      "sha256": "1fd86be7823229daa023502cd141ce831ae92750ce1b999933758466c5ec55fb"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_bamboo_fan_lod1.gltf",
+      "bytes": 12886,
+      "sha256": "f3230a844231f12579d819d33761849443541db849eaeee456287f7d515a9661"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_bamboo_fan.obj",
+      "bytes": 70965,
+      "sha256": "3643fb23e67c8fcb6b401085422fb9db074e736c21848d5ca3c4235377f6dab0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_lantern_arch_lod0.gltf",
+      "bytes": 12758,
+      "sha256": "c219d567d54c27c158b3444d8812f4beee03102edb24ac2c007dd7ec08af06fa"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_lantern_arch_lod1.gltf",
+      "bytes": 11099,
+      "sha256": "4650e657219c4d3e4c6e34826c620dc717f3b76c88d1dd75b5d05f00d296daae"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_lantern_arch.obj",
+      "bytes": 22603,
+      "sha256": "54a21c94da1f51392942487b3aca090122783f63f6f058de6e977d733bfd6eb9"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_stepping_stones_lod0.gltf",
+      "bytes": 29401,
+      "sha256": "75130b49b39ff67dd6b169f60b2d7c456949f26cf2984dd0cfec25186d2126ab"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_stepping_stones_lod1.gltf",
+      "bytes": 7787,
+      "sha256": "65972309e6376b846b4e7f31ccb85cf3758b44655a819ec13f31ab83549edf92"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/moonfall_stepping_stones.obj",
+      "bytes": 78976,
+      "sha256": "9e28f1206dd879fe2b3c164a076531ae24f3bd2677d96ddfb751affdfb7f9d7c"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/STUDIO_IMPORT.md",
+      "bytes": 1713,
+      "sha256": "75a901090bb2e0c8655739d6255369a1557f440a2dbc93d78db97d0e9715a37e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v07/world_v07.mtl",
+      "bytes": 271,
+      "sha256": "a5aa83349684fe77f7fb1391c8901702c55201a53cc9a5f2fcc8d1893019abce"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/bamboo_albedo.png",
+      "bytes": 3807,
+      "sha256": "998aa712983c26906553011044fa9ac06e41692ad2b506a795e3861775def4dc"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/bamboo.png",
+      "bytes": 3807,
+      "sha256": "998aa712983c26906553011044fa9ac06e41692ad2b506a795e3861775def4dc"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ceremonial_stones_lod0.glb",
+      "bytes": 34136,
+      "sha256": "fefc6f737fe951e634fc1025e839d623d3198be181ea8a8c2d2fbc09b2d99319"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ceremonial_stones_lod1.glb",
+      "bytes": 17380,
+      "sha256": "db26455e1cfc42f4237f96bf7af9e5b4100db696efb810478d9f30aeda9c7c20"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ceremonial_stones.obj",
+      "bytes": 24860,
+      "sha256": "1693c8758e0988207729c2f2c32698746ec9ab8d24d39d2a7567adc82d339fe2"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ritual_banner_lod0.glb",
+      "bytes": 23612,
+      "sha256": "2f57a695237a6005b86e41ac98fa7295f5fc2915840752810598dd845da508f5"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ritual_banner_lod1.glb",
+      "bytes": 12400,
+      "sha256": "2024c706c5f1382cbd2c1a4c76b3bc7073b4d2d12070055f510a6c70be6430a9"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_ritual_banner.obj",
+      "bytes": 10589,
+      "sha256": "deba9bd65a43f8f298d4ec7f51e31d38d56f5ce2fd7298248205c5ed7aed6112"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_roof_eave_module_lod0.glb",
+      "bytes": 44428,
+      "sha256": "96cc897039c1915ed4fe689d5c70344b37cec8192ad557a2b7652ad42ca8c447"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_roof_eave_module_lod1.glb",
+      "bytes": 19140,
+      "sha256": "a8fa77f771c61612c4b88534e160df6bed14ad865c34bf04abfa79376580131e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_roof_eave_module.obj",
+      "bytes": 56491,
+      "sha256": "cd589ed6621de5631d944194dbff422a931e089ec65ed9a96deb8f47c18ea32d"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion_lod0.glb",
+      "bytes": 36908,
+      "sha256": "62a35ac43ea4d77f51aeccbeb1b6b2cb6402690bc5490bfd996f173f6e678488"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion_lod1.glb",
+      "bytes": 31964,
+      "sha256": "0806e7e367c6ea663c65ae6f1ef42604d9d3e04c08e50fe0408f63f7d441006a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion.obj",
+      "bytes": 20047,
+      "sha256": "183d079b681bdb65d75ca486f4590b3153eb5180bee86c722c04b32ac550f772"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_stone_lantern_lod0.glb",
+      "bytes": 27528,
+      "sha256": "a43180523e839a98efa50e5b31c74a8d199aead2719e9edf6980ee53e3ee36e9"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_stone_lantern_lod1.glb",
+      "bytes": 17784,
+      "sha256": "d947ccde70fec430f58e2b82fedb2200789fd4286685bd1c436822aa3283e104"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_stone_lantern.obj",
+      "bytes": 17341,
+      "sha256": "f6495f40f6f64cf192f7a7b9191cae6a33455d761f6fb1cfb09f0ffe6b5403ca"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_torii_signature_lod0.glb",
+      "bytes": 30028,
+      "sha256": "ebc5a1b9ffcf33e695576973e07c3457229dad1baab481b70bbba71d4823f597"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_torii_signature_lod1.glb",
+      "bytes": 18812,
+      "sha256": "8da313b56a74cda042686b42aa1aac800dc50bc632c3bdb3d8caa5f0b513d715"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/dojo_torii_signature.obj",
+      "bytes": 13204,
+      "sha256": "4f49d6ae1dca131c30b4e7381cf47e4d4520da172b410f0ce9e267d778a3afea"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/gold_albedo.png",
+      "bytes": 3856,
+      "sha256": "92ec42aa0c800a6af4b248ec0b74bb00bf4c0ae184a5c33c63e0da52281413b8"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/gold.png",
+      "bytes": 3856,
+      "sha256": "92ec42aa0c800a6af4b248ec0b74bb00bf4c0ae184a5c33c63e0da52281413b8"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/IMPORT.md",
+      "bytes": 369,
+      "sha256": "dd5aae2ec2b43a75339a19600e7c57bb65fb66a9a467eafd17108282bea07bb0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/ink_albedo.png",
+      "bytes": 3726,
+      "sha256": "b4b18626c8d707fb793c63fde2196e95a602f1dd0fb05e0e58fd09cb17fe235e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/ink.png",
+      "bytes": 3726,
+      "sha256": "b4b18626c8d707fb793c63fde2196e95a602f1dd0fb05e0e58fd09cb17fe235e"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/ivory_albedo.png",
+      "bytes": 3709,
+      "sha256": "0e6b546e5288527d09dcc58676d235675b1ea1c1f0439008bb5c37a2c2920bf0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/ivory.png",
+      "bytes": 3709,
+      "sha256": "0e6b546e5288527d09dcc58676d235675b1ea1c1f0439008bb5c37a2c2920bf0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/leaf_albedo.png",
+      "bytes": 3808,
+      "sha256": "a417aa0e63f25500a2e0701bb4db53e203c4de30ac6516b3d87752d348ef47e1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/leaf.png",
+      "bytes": 3808,
+      "sha256": "a417aa0e63f25500a2e0701bb4db53e203c4de30ac6516b3d87752d348ef47e1"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/manifest.json",
+      "bytes": 5083,
+      "sha256": "ff84de6b3abbaf2cd8f89432e81cfcd6bef8e2fe779746d63cc80d2d1b03fa8a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/material.mtl",
+      "bytes": 835,
+      "sha256": "74803312a0a88c5079ac07bf1425c6ca38b46b8de6e47f06e96c8b900476675f"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_arch_bridge_lod0.glb",
+      "bytes": 56772,
+      "sha256": "be8ac12acbdfe9f45064f06b558421a2d13709ac133278a0e3cc78ba46ec976a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_arch_bridge_lod1.glb",
+      "bytes": 40732,
+      "sha256": "0c3a04b4c267685ae57ae9dd3dc8644d88f40ffa5288e6ada0f140cc8b9bdf05"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_arch_bridge.obj",
+      "bytes": 63976,
+      "sha256": "662a891adb6904f580b4d921e55a5146657bb727accec54735f16867791f5c81"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove_lod0.glb",
+      "bytes": 142672,
+      "sha256": "24f1641a12cd96632f621f54494deaa4d392df29ea05cd6219d80a5cf625a283"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove_lod1.glb",
+      "bytes": 34348,
+      "sha256": "f96ae4c615141714c5aa1c1ed527875cbaf0af583566429c6c58adecde70adf0"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove.obj",
+      "bytes": 211015,
+      "sha256": "e68475847bdb0b909c6ee0049a984d7ad63f625f79a4cee4c2d6598d2e89b267"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/stone_albedo.png",
+      "bytes": 3833,
+      "sha256": "a83389c6d63233b48ca311d74ddb84704fe27bb9c7189bba57919f28fa331227"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/stone.png",
+      "bytes": 3833,
+      "sha256": "a83389c6d63233b48ca311d74ddb84704fe27bb9c7189bba57919f28fa331227"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/vermilion_albedo.png",
+      "bytes": 3883,
+      "sha256": "4a4d5bd825901f158999b0cc9dd257360688146464cb6e03625b34577a2b0080"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/vermilion.png",
+      "bytes": 3883,
+      "sha256": "4a4d5bd825901f158999b0cc9dd257360688146464cb6e03625b34577a2b0080"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/violet_albedo.png",
+      "bytes": 3712,
+      "sha256": "b71823a763717c75438b62afa169f81318c69b1460a717280160cc424f77566a"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/wood_albedo.png",
+      "bytes": 3746,
+      "sha256": "2d7774833bb8453a745b83aba8f5c76719423faa245bad669c4a6f61c8c538d9"
+    },
+    {
+      "path": "assets/world/dojo_moonfall/v08/wood.png",
+      "bytes": 3746,
+      "sha256": "2d7774833bb8453a745b83aba8f5c76719423faa245bad669c4a6f61c8c538d9"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/dojo_clan_banner.glb",
+      "bytes": 3464,
+      "sha256": "244c2308b47a5c6bcf1c016e1cbaf8b4f64ab003fc86fbbf0b11a540b22bb4a0"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/dojo_clan_banner.obj",
+      "bytes": 2903,
+      "sha256": "a6bacb525b94041deace8329982749ce35a5bbaca3456694861c7222876e0b77"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/dojo_ritual_altar.glb",
+      "bytes": 4408,
+      "sha256": "a20624fcf1da2094c83cbd208618d60406d1be0b60c375d5b8645b86604a5dd8"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/dojo_ritual_altar.obj",
+      "bytes": 4387,
+      "sha256": "0a037c1e0d0a49c76ec9986adac3fb83eadd1188789982ed2fa627e88b034b4c"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/kage_dojo_shrine_module.glb",
+      "bytes": 10288,
+      "sha256": "22eebffbd253c9958e2cb30761ef38c1a4baa18eaf61690a692c4db354057612"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/kage_dojo_shrine_module.obj",
+      "bytes": 13554,
+      "sha256": "1e97c43c41039f8380c7fd81468b38acf436892013cc12f428b989e6d6ca568b"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/manifest.json",
+      "bytes": 2148,
+      "sha256": "369d60c6ef2650022265c4eb6c32ec1bc79b3e35e11a722d9d8d25cf38b26301"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_bamboo_cluster.glb",
+      "bytes": 34804,
+      "sha256": "8a34bcf0959813838305d7f36f05131d861f546e1296e2ae5dc075d4b51c61a1"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_bamboo_cluster.obj",
+      "bytes": 70441,
+      "sha256": "7dd59b1b1d5f85ad88301c2308b69bdae2fdfd1c082005904bdecb324194a22f"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_bridge.glb",
+      "bytes": 11788,
+      "sha256": "4672849c9b0fc39e21e5d15a42f32e0290258d8d3bdef6db583d4324566e1a30"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_bridge.obj",
+      "bytes": 14833,
+      "sha256": "9bac0a6a90d51375c1151f7ffc4c8e3156a852232bdccac01fd8137639a647f8"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_stone_path.glb",
+      "bytes": 5604,
+      "sha256": "3b619b879d12e758495131880880692beb19eaf66877d95bc62d23d4e27c5d90"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_stone_path.obj",
+      "bytes": 6587,
+      "sha256": "95a663e1608d8c2c45c4336ea5cf915d694c3df4f645471472db6c867cb09bcd"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_torii.glb",
+      "bytes": 6288,
+      "sha256": "a6a75073a768dd2e73c750dd6cc2041e3bcc5a6cec8b6c42ee25ef317f7b0afa"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/moonfall_torii.obj",
+      "bytes": 7705,
+      "sha256": "71a9a7fdae4089cd943d0e2b23353a6cb97739ccf3b9f2fc5b45b65b1607b60e"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/shrine_stone_lantern.glb",
+      "bytes": 4568,
+      "sha256": "2c89f049815cb597aafb552a3697f5d6282420a010e2dacced1b33539540c9d5"
+    },
+    {
+      "path": "assets/world/dojo-moonfall/v01/shrine_stone_lantern.obj",
+      "bytes": 4397,
+      "sha256": "ad916359e57c1a7d111244374fc35aff042358e5134219a64063eb02b93c0f39"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/agedwood_albedo.png",
+      "bytes": 7636,
+      "sha256": "168057e41c4372a01f8f6b89fe94886a64095157c538b4ae437116532a1a138a"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/agedwood.png",
+      "bytes": 7636,
+      "sha256": "168057e41c4372a01f8f6b89fe94886a64095157c538b4ae437116532a1a138a"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/bronze_albedo.png",
+      "bytes": 4238,
+      "sha256": "caee35ca49ad9b540d0a36dba065c32cdde1455b3fc8c294d764b37c1dc2634f"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/bronze.png",
+      "bytes": 4238,
+      "sha256": "caee35ca49ad9b540d0a36dba065c32cdde1455b3fc8c294d764b37c1dc2634f"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/charcoal_albedo.png",
+      "bytes": 4103,
+      "sha256": "4d92486c68fe981e8499bb4edba686531e15453dff84ed742d9a004b55828f4e"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/charcoal.png",
+      "bytes": 4103,
+      "sha256": "4d92486c68fe981e8499bb4edba686531e15453dff84ed742d9a004b55828f4e"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/IMPORT.md",
+      "bytes": 512,
+      "sha256": "e564b25a5011a7b6914ef802828a9eef40f778af552a8e84590f3f3a5a2c545b"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/manifest.json",
+      "bytes": 5239,
+      "sha256": "d951afb2711eb5c406650b2eb619e0ed2efa1f50adddb5e47ab9cc3a4a4024fb"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/material.mtl",
+      "bytes": 1007,
+      "sha256": "6973d35f152e73190de0cce08a5598cbcc6cb71f40a7d3b3b247d4b6d69c4ed8"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/moss_albedo.png",
+      "bytes": 4236,
+      "sha256": "724714f554dea459c5a0e8e07033cd329e42c9643dadcfb793d104fefb6bc1bf"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/paper_albedo.png",
+      "bytes": 4114,
+      "sha256": "d06e3c08292b53e7f4b561dedb45abaa07a795383d266473485044476f79fa1d"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/paper.png",
+      "bytes": 4114,
+      "sha256": "d06e3c08292b53e7f4b561dedb45abaa07a795383d266473485044476f79fa1d"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/plaster_albedo.png",
+      "bytes": 4142,
+      "sha256": "7e7e0335988f135fa6f13b042c05ee92493540fcde0789072c51f28b70f8a958"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/plaster.png",
+      "bytes": 4142,
+      "sha256": "7e7e0335988f135fa6f13b042c05ee92493540fcde0789072c51f28b70f8a958"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_canal_arch_bridge_lod0.glb",
+      "bytes": 64928,
+      "sha256": "1949a79ad894ae637f8a10d6382ae762e2ebab07b7c5a1d068facd45ecd3cc2e"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_canal_arch_bridge_lod1.glb",
+      "bytes": 46876,
+      "sha256": "1bdf7209177e67d8437813171c30ab36d54d779f04e67a03c770fe7ddb5cd300"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_canal_arch_bridge.obj",
+      "bytes": 64102,
+      "sha256": "54cbbd8ae9b0736693cf7c0fc686b646cde6db24e7e804b1a24f27d278a5db2b"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_citadel_gate_lod0.glb",
+      "bytes": 49580,
+      "sha256": "15793a033a55d7543c2249874507871e2c3198ebdebaf1e78b395e99070db269"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_citadel_gate_lod1.glb",
+      "bytes": 40780,
+      "sha256": "e50fb567a7df1959ed37ae02fdf9cc95ee2ed644726c7b31553957c183b2abcf"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_citadel_gate.obj",
+      "bytes": 17236,
+      "sha256": "8db21f4853505087785d00ea3e895541198e83b3b85f4a6d2c266702ce5b75d9"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_city_wall_module_lod0.glb",
+      "bytes": 55672,
+      "sha256": "354f3128c11e21da6be2c0b2f36a34d2e63bd82e66c5080a66af19b9f7b18de2"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_city_wall_module_lod1.glb",
+      "bytes": 39984,
+      "sha256": "3169219a12332529c9d0b3b19cb51dcb3b2e77fd7a29a5c27b7d0bac4900f2de"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_city_wall_module.obj",
+      "bytes": 18977,
+      "sha256": "37f0b5868a3b6fb39d8ffadba792551c3adde2ce64e8bf9fd60cdfcd93e02ccf"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_guard_watchpost_lod0.glb",
+      "bytes": 34060,
+      "sha256": "d72be48bf48fe2152abb0bfa2f173cf62a7cb92ebbd71df6c2c4f0bd58fd0efa"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_guard_watchpost_lod1.glb",
+      "bytes": 25292,
+      "sha256": "e5a617343d3bf17a90d0769c83783765343b063219fefff5dfac3ebbf59e22ab"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_guard_watchpost.obj",
+      "bytes": 24199,
+      "sha256": "3e5e728d855e532d72ca9e773607740ff21f95a16e6c624c5503105963fe037f"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_market_shop_lod0.glb",
+      "bytes": 41408,
+      "sha256": "cda9c260fc238087fde29eec30149dacd4937f57c8e061aa546ede0b7c92e0ff"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_market_shop_lod1.glb",
+      "bytes": 27396,
+      "sha256": "a8b820c3c0e44e8d5479d69c9acce0dfb4e8ab1f37397e2430174ea96ee569db"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_market_shop.obj",
+      "bytes": 17252,
+      "sha256": "87b4d11ad02ac4981bbe2df65c59bcbd425e5cb965c5f9525b3885c61c43f960"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_pagoda_watchtower_lod0.glb",
+      "bytes": 68392,
+      "sha256": "ac1ab841e0f095d3c6a2e6c97ba0f6d24a76b3e6389df71bac3de2a938223f34"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_pagoda_watchtower_lod1.glb",
+      "bytes": 44360,
+      "sha256": "c89451a556011a1297ce82b81ad28bba6eedc4b5ca550c28ceb75f1901f63906"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_pagoda_watchtower.obj",
+      "bytes": 72557,
+      "sha256": "3302ec6d10464cc18ef8b210c4c578d72b9b4bfe38eba862f0afb95ca816d7b0"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_stone_stairway_lod0.glb",
+      "bytes": 39112,
+      "sha256": "2b23455f9a02d9fbd33b44dfb9e467c387477a3a1262c2af5ea23d339461a22e"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_stone_stairway_lod1.glb",
+      "bytes": 21252,
+      "sha256": "4096e507010a1f07ce8e06f48df17ea79539bdcfacc21ad44a9bc42ae5e60d6c"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_stone_stairway.obj",
+      "bytes": 32044,
+      "sha256": "e5ae1959a453e8d48a932afb3f93f94f53ae2c8a8294dce3cf8dbb2522e7f63d"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_street_lantern_lod0.glb",
+      "bytes": 56268,
+      "sha256": "a52703b4f88b1f9307d8027b6e9bbffbec4e604b468e2c8d5606c7af7d62c281"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_street_lantern_lod1.glb",
+      "bytes": 45440,
+      "sha256": "1e4db56dabf695cc2bd62c59b4c51a959564dd5293a05a81b962c714c2038d17"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/shogun_street_lantern.obj",
+      "bytes": 25012,
+      "sha256": "07b4c312104477a77ad1fa0446e38a1aa585ab9ac987b1cf08cb503c3ba6e9a5"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/stone_albedo.png",
+      "bytes": 12316,
+      "sha256": "248c21bb448fd3c3a07123399731c96a2653c4eb3c302a6ffa65253af44001dc"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/stone.png",
+      "bytes": 12316,
+      "sha256": "248c21bb448fd3c3a07123399731c96a2653c4eb3c302a6ffa65253af44001dc"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/tile_albedo.png",
+      "bytes": 7411,
+      "sha256": "41ec0ee003c9855fa50bc53becae2c6dff2524fb5caf7887d67a9d09ea4fa90c"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/tile.png",
+      "bytes": 7411,
+      "sha256": "41ec0ee003c9855fa50bc53becae2c6dff2524fb5caf7887d67a9d09ea4fa90c"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/vermillion_albedo.png",
+      "bytes": 4107,
+      "sha256": "7d59da72d83f1515405374b5b6f53534704e864d2034faac749183839cdf3b32"
+    },
+    {
+      "path": "assets/world/shogun_last_city/v09/vermillion.png",
+      "bytes": 4107,
+      "sha256": "7d59da72d83f1515405374b5b6f53534704e864d2034faac749183839cdf3b32"
+    }
+  ]
+}

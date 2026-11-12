@@ -1,5 +1,16 @@
 # KAGEBOUND Approved Asset Manifest
 
+## Current reconciliation — 2026-11-12
+
+Historical no-import statements below are superseded by the verified 22-model
+staging snapshot and [unified master evidence](KAGEBOUND_MASTER.md). This pass
+reused 14 imported world templates and verified 18 runtime placements / 312
+MeshParts with no unsafe cosmetic parts or executable descendants. Saved place
+version 38; zero new mesh uploads and no final visual/gameplay signoff.
+The [master queue](ASSET_PRODUCTION_QUEUE.md) covers every workstream.
+[Local asset inventory](assets/MASTER_ASSET_INVENTORY.json) records 309 files,
+hashes and 30 exact duplicate groups; no originals were removed or overwritten.
+
 ## 2026-11-12 source repair and live Studio audit
 
 Actual ART-001..004 PNGs opened locally. New closed polearm **drafts**, preserved

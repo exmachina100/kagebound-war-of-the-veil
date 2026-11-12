@@ -3,7 +3,7 @@
 **Design decision, 2026-11-09:** KAGEBOUND is an interconnected large-scale Japanese mythological action-adventure Roblox world, with the progression, exploration and spectacle of grand anime-inspired Roblox games. It is **not** principally a small enclosed arena battler. Competitive duels remain one activity within the world.
 
 ## Source of truth
-This document expands—not replaces—[GAME_DESIGN.md](GAME_DESIGN.md), [ROADMAP.md](ROADMAP.md), [ART_DIRECTION.md](ART_DIRECTION.md), [ASSET_MANIFEST.md](ASSET_MANIFEST.md), and [VFX_SPEC.md](VFX_SPEC.md). The four approved visual references (ART-001..004) are mandatory. The original 338-line uploaded document remains pending import and should be preserved verbatim.
+This document expands—not replaces—[GAME_DESIGN.md](GAME_DESIGN.md), [ROADMAP.md](ROADMAP.md), [ART_DIRECTION.md](ART_DIRECTION.md), [ASSET_MANIFEST.md](ASSET_MANIFEST.md), and [VFX_SPEC.md](VFX_SPEC.md). The four approved visual references (ART-001..004) are mandatory. The original 338-line document is preserved in [GAME_DESIGN_ORIGINAL_338.md](GAME_DESIGN_ORIGINAL_338.md). All development is consolidated in the [unified master workspace](KAGEBOUND_MASTER.md).
 
 ## Core gameplay loop
 Explore enormous connected lands → discover hidden shrines/NPC villages/camps → acquire quests, defeat Yokai and bosses → master fighting styles, weapons and masks → earn mastery/rewards/cosmetics → access new zones, traversal techniques and Veilfall secrets → join world events, clan conflicts or optional ranked duels.

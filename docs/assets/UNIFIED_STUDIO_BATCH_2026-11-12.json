@@ -1,0 +1,53 @@
+{
+  "date": "2026-11-12",
+  "editVerification": {
+    "libraries": {
+      "KageboundWorldArt": {
+        "scripts": 0,
+        "meshes": 25,
+        "unsafe": 0,
+        "templates": 6
+      },
+      "KageboundWorldArtV08": {
+        "scripts": 0,
+        "meshes": 271,
+        "unsafe": 0,
+        "templates": 8
+      }
+    },
+    "originalStagingModels": 22,
+    "errors": [],
+    "placeId": 92077795105213,
+    "mode": "Edit"
+  },
+  "runtimeVerification": {
+    "ImportedEnvironmentArt": {
+      "placements": 10,
+      "meshes": 41,
+      "scripts": 0,
+      "unsafe": 0
+    },
+    "ImportedWorldArtV08": {
+      "placements": 8,
+      "meshes": 271,
+      "scripts": 0,
+      "unsafe": 0
+    },
+    "guides": 3
+  },
+  "save": {
+    "status": "Saved",
+    "location": "TeamCreate",
+    "version": 38,
+    "published": false
+  },
+  "checks": {
+    "cosmeticFixtureAssertions": 12,
+    "weaponFactory": "PASS",
+    "visualParity": "pending; viewport dark and sparse",
+    "multiplayer": "not executed",
+    "mobile": "not executed"
+  },
+  "newMeshUploads": 0,
+  "paidCredits": 0
+}

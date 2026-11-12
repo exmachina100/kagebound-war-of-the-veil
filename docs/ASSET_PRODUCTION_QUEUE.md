@@ -1,5 +1,32 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Master reconciliation — unified workspace, 2026-11-12
+
+This is the single active queue for **all** development. The table below
+supersedes conflicting historical statements later in this document; those
+dated entries are preserved as provenance, not current completion claims.
+See [master evidence and saved Studio batch](KAGEBOUND_MASTER.md).
+
+| Workstream | Verified current state | Next execution gate |
+| --- | --- | --- |
+| World v07/v08 | 14 existing imported templates installed; live 18 placements / 312 MeshParts; zero unsafe cosmetic parts or executable descendants; place saved v38 | Improve dark/sparse composition against ART-004; LOD and mobile performance before expansion |
+| World v05/v09 | v05 library and staging copies exist; v09 source exports exist | Reuse v05, import v09; preserve each version and collision geometry |
+| Five weapons | Existing published staging meshes; factory fixture passed five trail anchors, proportional sword geometry and physics | Equipped mesh scale/grip/camera QA; multiplayer damage regressions; do not equate staging with final equipment |
+| Three masks | Existing staging imports and R15 review displays | Head fit and ART-003 sculpt/color revision; do not activate unapproved templates |
+| Shinobi character | Procedural gameplay appearance; original static/UV archives missing | Recover exact source/binaries, preserve versions, then rig/fitting |
+| Other three classes | Three local class accessory OBJ drafts, 324 triangles total | ART-002 comparison, import and R15 fitting |
+| Guide NPCs | Three gameplay guides spawn; three OBJ/GLB drafts exist locally, 420 triangles | Actual mesh import and bind to existing guide IDs without changing quest authority |
+| Lantern Yokai | Procedural encounter script exists; archive mesh missing | Recover/import original, rig and telegraph QA |
+| UI / sky | Local icons and 12 sky faces; IDs zero/registry empty | Upload owned images, verify IDs and runtime fallback; improve HUD layout |
+| VFX | Eight local concept boards; seven blank flipbook slots | Recover original RGBA sheets; upload and inspect emitter timing/low graphics |
+| Animation | Empty owned animation slots and fallback drivers | Author/publish original R15 clips; verify permissions and combat timing |
+| Gameplay | Cosmetic fixture 12 assertions and weapon factory fixture passed live | Two-client combat, quests, mask/class actions and four-client Clan QA remain open |
+| Source/binaries | 309 local asset files, 30 exact-hash duplicate groups | See MASTER_ASSET_INVENTORY.json; preserve prepared copies and old versions |
+
+New Studio work this pass: reuse/installation and runtime placement, **zero new
+mesh uploads**. Saved TeamCreate version 38, no publish. No paid credits.
+Gameplay damage, reward and persistence policies were preserved.
+
 ## Latest MCP equipment fit continuation — 2026-11-12
 
 - Confirmed place 92077795105213; created isolated `Workspace/KageboundEquipmentFitReview` using existing Veilblade and three mask imports on neutral R15 mannequins. 14 mesh parts, 14 fit welds, zero executable sources in review rigs; originals preserved. No uploads or gameplay scripts changed.

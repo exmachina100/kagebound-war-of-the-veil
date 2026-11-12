@@ -1,5 +1,15 @@
 # KAGEBOUND: WAR OF THE VEIL
 
+## Unified workspace — current status, 2026-11-12
+
+All gameplay, world, weapons, characters, masks, NPCs, UI, VFX and animation
+development is consolidated here on `main`. Start with the
+[master workspace evidence](docs/KAGEBOUND_MASTER.md) and
+[single active queue](docs/ASSET_PRODUCTION_QUEUE.md); older milestone notes
+below are historical. Roblox MCP is accessible: 14 reused world templates now
+produce 18 verified cosmetic placements / 312 MeshParts. Studio saved version
+38. Art parity, multiplayer and mobile acceptance remain open.
+
 **Two worlds. One battlefield. Become the legend.**
 
 An original Japanese-mythology-inspired Roblox competitive action game featuring melee combat, mythic masks and **Veilfall**, a mid-match transformation of the battlefield.
