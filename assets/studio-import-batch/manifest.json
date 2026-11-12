@@ -1,0 +1,1709 @@
+{
+  "sourceUnits": "preserved; world v08 authored in approximate studs; verify in Studio",
+  "assets": [
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_ceremonial_stones_lod0.glb",
+      "sourceSha256": "fefc6f737fe951e634fc1025e839d623d3198be181ea8a8c2d2fbc09b2d99319",
+      "file": "v08_dojo_ceremonial_stones_lod0.glb",
+      "sha256": "fefc6f737fe951e634fc1025e839d623d3198be181ea8a8c2d2fbc09b2d99319",
+      "bytes": 34136,
+      "group": "v08",
+      "primitives": 30,
+      "triangles": 360,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "stone",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ivory",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_ritual_banner_lod0.glb",
+      "sourceSha256": "2f57a695237a6005b86e41ac98fa7295f5fc2915840752810598dd845da508f5",
+      "file": "v08_dojo_ritual_banner_lod0.glb",
+      "sha256": "2f57a695237a6005b86e41ac98fa7295f5fc2915840752810598dd845da508f5",
+      "bytes": 23612,
+      "group": "v08",
+      "primitives": 6,
+      "triangles": 184,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "wood",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "vermilion",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ivory",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_roof_eave_module_lod0.glb",
+      "sourceSha256": "96cc897039c1915ed4fe689d5c70344b37cec8192ad557a2b7652ad42ca8c447",
+      "file": "v08_dojo_roof_eave_module_lod0.glb",
+      "sha256": "96cc897039c1915ed4fe689d5c70344b37cec8192ad557a2b7652ad42ca8c447",
+      "bytes": 44428,
+      "group": "v08",
+      "primitives": 29,
+      "triangles": 908,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ink",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "vermilion",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion_lod0.glb",
+      "sourceSha256": "62a35ac43ea4d77f51aeccbeb1b6b2cb6402690bc5490bfd996f173f6e678488",
+      "file": "v08_dojo_shrine_pavilion_lod0.glb",
+      "sha256": "62a35ac43ea4d77f51aeccbeb1b6b2cb6402690bc5490bfd996f173f6e678488",
+      "bytes": 36908,
+      "group": "v08",
+      "primitives": 17,
+      "triangles": 316,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "stone",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "vermilion",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ink",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "wood",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_stone_lantern_lod0.glb",
+      "sourceSha256": "a43180523e839a98efa50e5b31c74a8d199aead2719e9edf6980ee53e3ee36e9",
+      "file": "v08_dojo_stone_lantern_lod0.glb",
+      "sha256": "a43180523e839a98efa50e5b31c74a8d199aead2719e9edf6980ee53e3ee36e9",
+      "bytes": 27528,
+      "group": "v08",
+      "primitives": 10,
+      "triangles": 288,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "stone",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ink",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ivory",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/dojo_torii_signature_lod0.glb",
+      "sourceSha256": "ebc5a1b9ffcf33e695576973e07c3457229dad1baab481b70bbba71d4823f597",
+      "file": "v08_dojo_torii_signature_lod0.glb",
+      "sha256": "ebc5a1b9ffcf33e695576973e07c3457229dad1baab481b70bbba71d4823f597",
+      "bytes": 30028,
+      "group": "v08",
+      "primitives": 9,
+      "triangles": 220,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "vermilion",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "stone",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ink",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 4
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "ivory",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/moonfall_arch_bridge_lod0.glb",
+      "sourceSha256": "be8ac12acbdfe9f45064f06b558421a2d13709ac133278a0e3cc78ba46ec976a",
+      "file": "v08_moonfall_arch_bridge_lod0.glb",
+      "sha256": "be8ac12acbdfe9f45064f06b558421a2d13709ac133278a0e3cc78ba46ec976a",
+      "bytes": 56772,
+      "group": "v08",
+      "primitives": 45,
+      "triangles": 988,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "wood",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "vermilion",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove_lod0.glb",
+      "sourceSha256": "24f1641a12cd96632f621f54494deaa4d392df29ea05cd6219d80a5cf625a283",
+      "file": "v08_moonfall_bamboo_grove_lod0.glb",
+      "sha256": "24f1641a12cd96632f621f54494deaa4d392df29ea05cd6219d80a5cf625a283",
+      "bytes": 142672,
+      "group": "v08",
+      "primitives": 125,
+      "triangles": 3100,
+      "materials": [
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 0
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "bamboo",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 1
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "gold",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 2
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "wood",
+          "doubleSided": false
+        },
+        {
+          "pbrMetallicRoughness": {
+            "baseColorTexture": {
+              "index": 3
+            },
+            "roughnessFactor": 0.86,
+            "metallicFactor": 0
+          },
+          "name": "leaf",
+          "doubleSided": false
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/dojo_komainu_plinth_lod0.gltf",
+      "sourceSha256": "f18b7ed3c588d1b4c291eabfa07e717d6ef101a6f8310d755b03c41a62ccf34c",
+      "file": "v07_dojo_komainu_plinth_lod0.glb",
+      "sha256": "6c2aa2992a811a197379c191cd033acfe1c057416e0fa3b19c46049283c55988",
+      "bytes": 9744,
+      "group": "v07",
+      "primitives": 5,
+      "triangles": 136,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/dojo_ritual_banner_lod0.gltf",
+      "sourceSha256": "8a3b87a687e30f1d3baa5a6c6e5776083a8fd39c7e6c497b171e771c096bec5f",
+      "file": "v07_dojo_ritual_banner_lod0.glb",
+      "sha256": "9faa21b115dc106a6313002063b2fe113a7e8c11eb62b1b403aa5e9e3bd425d5",
+      "bytes": 6352,
+      "group": "v07",
+      "primitives": 5,
+      "triangles": 70,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/dojo_suspended_bell_lod0.gltf",
+      "sourceSha256": "69ad4ba7b5b0d25749195d1b950cd355b54b2a2aa6447b0ed950f1fe476ea64a",
+      "file": "v07_dojo_suspended_bell_lod0.glb",
+      "sha256": "1a3be739d3b34847aec45f0aee4cf78c4a810e3aa452257817889e518ce6f7b9",
+      "bytes": 9980,
+      "group": "v07",
+      "primitives": 5,
+      "triangles": 140,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/moonfall_bamboo_fan_lod0.gltf",
+      "sourceSha256": "1fd86be7823229daa023502cd141ce831ae92750ce1b999933758466c5ec55fb",
+      "file": "v07_moonfall_bamboo_fan_lod0.glb",
+      "sha256": "b5ad76a6861ff8f68207510b569235a43ad545aef67b45f1df1e8df845681e98",
+      "bytes": 20888,
+      "group": "v07",
+      "primitives": 3,
+      "triangles": 348,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/moonfall_lantern_arch_lod0.gltf",
+      "sourceSha256": "c219d567d54c27c158b3444d8812f4beee03102edb24ac2c007dd7ec08af06fa",
+      "file": "v07_moonfall_lantern_arch_lod0.glb",
+      "sha256": "02f34b54f756219cb053b45cd48f8c9a782fc0e603cc99fd6f42220a996ec638",
+      "bytes": 10172,
+      "group": "v07",
+      "primitives": 4,
+      "triangles": 148,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/world/dojo_moonfall/v07/moonfall_stepping_stones_lod0.gltf",
+      "sourceSha256": "75130b49b39ff67dd6b169f60b2d7c456949f26cf2984dd0cfec25186d2126ab",
+      "file": "v07_moonfall_stepping_stones_lod0.glb",
+      "sha256": "7776db40437eea3884842993ce5c688aef1b4e02d4d01c028b30da12f2eabdfb",
+      "bytes": 22624,
+      "group": "v07",
+      "primitives": 3,
+      "triangles": 390,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.12,
+              0.14,
+              0.23,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.66,
+              0.16,
+              0.24,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.95,
+              0.64,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "stone",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.36,
+              0.37,
+              0.46,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.25,
+              0.17,
+              0.2,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.87,
+              0.83,
+              0.78,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "bamboo",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.18,
+              0.39,
+              0.27,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        },
+        {
+          "name": "leaf",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.24,
+              0.49,
+              0.32,
+              1
+            ],
+            "roughnessFactor": 0.8,
+            "metallicFactor": 0
+          },
+          "doubleSided": true
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.obj",
+      "sourceSha256": "5c5373bf6c3ebcd362a8a6fd4835af054fce87f931ca14d3d5d01ed99352961e",
+      "file": "weapon_KGB_WPN_Veilblade_Default_GAME_v02.glb",
+      "sha256": "35a373feceb4add26b13a39e0a0c25b621d8de93c605afa787b4414701a86f44",
+      "bytes": 24888,
+      "group": "weapon",
+      "primitives": 5,
+      "triangles": 1220,
+      "materials": [
+        {
+          "name": "Ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.010816382958706206,
+              0.01065484644738067,
+              0.021980947079887205,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8480882574948619,
+              0.40644830114675407,
+              0.07828831963873101,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Crimson",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.34239163959260344,
+              0.010022825574869039,
+              0.05087608817155679,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "HotPink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              1,
+              0.04696420068912289,
+              0.27383841647314605,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.9331068418238677,
+              0.8073459089125289,
+              0.9114075004063535,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01.obj",
+      "sourceSha256": "bcdd64bcdad1c54ad09f468d5cd6c88affbc2f67156dd264f6e57e403f69eab1",
+      "file": "weapon_KGB_WPN_Nodachi_Default_DRAFT_v01.glb",
+      "sha256": "f631f3066bffe714c43edeacdbdf24ff9b83cdff6711173888ed7eccc31b76c4",
+      "bytes": 5596,
+      "group": "weapon",
+      "primitives": 5,
+      "triangles": 168,
+      "materials": [
+        {
+          "name": "Gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.49190504085677866,
+              0.22341399352485986,
+              0.030074104146591292,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.007194409291082934,
+              0.008540382112116999,
+              0.017389102368488736,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Crimson",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.28464669032765505,
+              0.007194409291082934,
+              0.01532520332062848,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Steel",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.19599417930148813,
+              0.28464669032765505,
+              0.3931231302267222,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Edge",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.5070785101492276,
+              0.7293470915734015,
+              0.8275708303626798,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01.obj",
+      "sourceSha256": "7fac472884bd9827b330ba0e107769490cfb57bcce305a767f86a8413356698d",
+      "file": "weapon_KGB_WPN_Tanto_Default_DRAFT_v01.glb",
+      "sha256": "211512fd3cf97a35223f8d26e48d8cac1a1255c71be6881dc5d94a0442ad0145",
+      "bytes": 4888,
+      "group": "weapon",
+      "primitives": 5,
+      "triangles": 132,
+      "materials": [
+        {
+          "name": "Gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.49190504085677866,
+              0.22341399352485986,
+              0.030074104146591292,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.007194409291082934,
+              0.008540382112116999,
+              0.017389102368488736,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Crimson",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.28464669032765505,
+              0.007194409291082934,
+              0.01532520332062848,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Steel",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.19599417930148813,
+              0.28464669032765505,
+              0.3931231302267222,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Edge",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.5070785101492276,
+              0.7293470915734015,
+              0.8275708303626798,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj",
+      "sourceSha256": "670177824f666f9b33f5d3689c7fca2cf98570d73d6d0b7111f339d538f9f7c2",
+      "file": "weapon_KGB_WPN_Naginata_CLOSED_DRAFT_v02.glb",
+      "sha256": "8d6b6617d9fcad4f62585478366c074432b288c108694b574695998bd60e880e",
+      "bytes": 4172,
+      "group": "weapon",
+      "primitives": 4,
+      "triangles": 120,
+      "materials": [
+        {
+          "name": "DarkWood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.010816382958706206,
+              0.007194409291082934,
+              0.01341174889765847,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "GripWrap",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0835351274258047,
+              0.00440084974745434,
+              0.007850573473382362,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.47699978456654196,
+              0.20490176639819646,
+              0.027211780951381357,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "IvorySteel",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.6382832153523972,
+              0.7105664902244221,
+              0.748414103499371,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.obj",
+      "sourceSha256": "9078d3093a625a09b7420962df8edc6709f881296b29f2523ba84acafc898a4a",
+      "file": "weapon_KGB_WPN_Yari_CLOSED_DRAFT_v02.glb",
+      "sha256": "36be7093902f15f20a83f89f68365bb2b4aca2ba610a9db67ddb5d116593b5a9",
+      "bytes": 5060,
+      "group": "weapon",
+      "primitives": 4,
+      "triangles": 168,
+      "materials": [
+        {
+          "name": "DarkWood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.010816382958706206,
+              0.007194409291082934,
+              0.01341174889765847,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "GripWrap",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.0835351274258047,
+              0.00440084974745434,
+              0.007850573473382362,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "Gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.47699978456654196,
+              0.20490176639819646,
+              0.027211780951381357,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "IvorySteel",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.6382832153523972,
+              0.7105664902244221,
+              0.748414103499371,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/masks/KGB_MASK_Kitsune_Wearable_DRAFT_v01.obj",
+      "sourceSha256": "74771ff0b545751f9c36df682781c32d70428defbdbcd2d933e45a8f19983753",
+      "file": "mask_KGB_MASK_Kitsune_Wearable_DRAFT_v01.glb",
+      "sha256": "192f953193ca03c17fc99beec16bc81a005be4fe4f64d3d8902d03461adbf553",
+      "bytes": 5216,
+      "group": "mask",
+      "primitives": 3,
+      "triangles": 200,
+      "materials": [
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8235024840309313,
+              0.7087041349020049,
+              0.7993375725346408,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014349874706802563,
+              0.016753943470973413,
+              0.039681909478526005,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "crimson",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.3232355296988067,
+              0.028336686090670693,
+              0.06464067144699899,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/masks/KGB_MASK_Oni_Wearable_DRAFT_v01.obj",
+      "sourceSha256": "86c4dbac60fda11f8434c795d4d2b4a2b798a0e36a19a79e3e43e4fd70d9de06",
+      "file": "mask_KGB_MASK_Oni_Wearable_DRAFT_v01.glb",
+      "sha256": "3368cf2b6603c89b2246375b4800e969596d0c0504de371acf635828d7894749",
+      "bytes": 5208,
+      "group": "mask",
+      "primitives": 3,
+      "triangles": 200,
+      "materials": [
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8235024840309313,
+              0.7087041349020049,
+              0.7993375725346408,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014349874706802563,
+              0.016753943470973413,
+              0.039681909478526005,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.9551045992337789,
+              0.46818480273425256,
+              0.147318999244498,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/masks/KGB_MASK_Tengu_Wearable_DRAFT_v01.obj",
+      "sourceSha256": "db7bef37278a8b14e3eb673ad8d7e2df3f8a4d8bae0edd717ecb40cdea48af92",
+      "file": "mask_KGB_MASK_Tengu_Wearable_DRAFT_v01.glb",
+      "sha256": "02f6a89ba7ee0405b22a0d8785954f3759e2321eaba70ff29655aa9ea33c3feb",
+      "bytes": 5120,
+      "group": "mask",
+      "primitives": 3,
+      "triangles": 196,
+      "materials": [
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8235024840309313,
+              0.7087041349020049,
+              0.7993375725346408,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014349874706802563,
+              0.016753943470973413,
+              0.039681909478526005,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "crimson",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.3232355296988067,
+              0.028336686090670693,
+              0.06464067144699899,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    }
+  ]
+}
