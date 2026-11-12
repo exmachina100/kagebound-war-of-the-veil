@@ -163,3 +163,10 @@ All are Y-up; GLB uses vertex colors, OBJ fallback included. Per-asset bounds an
 - **5 new local rigid-accessory geometry drafts** for Shinobi #21: scarf, shoulder armor, forearm guards, waist sash, back talisman. Each has exported and reimported GLB, OBJ fallback, editable `generate.py`, `validation.json`, and import README in `KAGEBOUND_Shinobi_Modular_Accessories_v01.zip` (`/mnt/data/kagebound_shinobi_kit/`). **Local-only, GitHub binary/source upload pending**.
 - Y-up / front -Z / ground origin, ~5.5-stud character fitting approximation. Vertex colors, no UV atlas, no skin weights, no R15 attachments, no Roblox Studio import. All component meshes closed/watertight and positive-volume, exported GLB scene counts rechecked. **Stage `3d-draft`, not rigged or approved**.
 - ART-001/002 visual anchor in style documents; approved PNG pixels still unavailable from connector (0-byte response). No paid services, no gameplay script changes. Existing Shinobi base mesh preserved.
+
+## Live Studio integration and Creator Store reuse — 2026-11-12
+- User-confirmed plan: expedite with compatible Roblox assets, adapting to actual ART-001..004; visual match remains mandatory.
+- Verified/repaired 22 pre-existing staging imports (328 MeshParts; 271 textured; 10,000 source triangles), exact package IDs and per-part scene snapshot committed. These 22 were not newly imported this pass. Geometry/material staging checks passed at 0.001 studs; gameplay/visual gates pending.
+- Newly imported three free Store candidates: torii 4917170415, R6 samurai 8988047057, katana 15283548889. Zero scripts found. Originals isolated in ServerStorage; non-colliding visual review copies. Torii copied, scaled to 8 studs wide and recolored; no final approval.
+- Three source-controlled static guide OBJs converted to GLB (420 triangles); Roblox upload blocked by automatic approval review pending explicit payload approval. Shinobi/modular costume source archives remain missing locally.
+- See docs/assets/STUDIO_INTEGRATION_2026-11-12.md for exact checks, new GitHub code review, source preservation and save/performance limits.

@@ -6,6 +6,9 @@ const crypto = require('crypto');
 const root = path.resolve(__dirname, '..');
 const output = path.join(root, 'assets', 'studio-import-batch');
 fs.mkdirSync(output, {recursive: true});
+const manifestName = process.argv.includes('--npcs') ? 'npc-manifest.json' : 'manifest.json';
+const previousPath = path.join(output, manifestName);
+const previous = fs.existsSync(previousPath) ? JSON.parse(fs.readFileSync(previousPath, 'utf8')).assets : [];
 const sha = data => crypto.createHash('sha256').update(data).digest('hex');
 function glb(json, bin) {
   let j = Buffer.from(JSON.stringify(json));
@@ -72,6 +75,11 @@ for(const version of ['v08','v07']) {
 }
 for(const name of ['KGB_WPN_Veilblade_Default_GAME_v02','KGB_WPN_Nodachi_Default_DRAFT_v01','KGB_WPN_Tanto_Default_DRAFT_v01','KGB_WPN_Naginata_CLOSED_DRAFT_v02','KGB_WPN_Yari_CLOSED_DRAFT_v02']) files.push({file:path.join(root,'assets/roblox-ready/weapons',name+'.obj'),group:'weapon'});
 for(const kind of ['Kitsune','Oni','Tengu']) files.push({file:path.join(root,'assets/roblox-ready/masks',`KGB_MASK_${kind}_Wearable_DRAFT_v01.obj`),group:'mask'});
+if (process.argv.includes('--npcs')) {
+  files.length = 0;
+  for (const name of ['DojoMentor', 'BambooScout', 'CityArchivist'])
+    files.push({file:path.join(root, 'assets/roblox-ready/characters/npc', `KGB_NPC_${name}_STATIC_DRAFT_v02.obj`), group:'npc'});
+}
 const records=[];
 for(const {file,group} of files) {
   const data=fs.readFileSync(file); let prepared=data;
@@ -86,7 +94,8 @@ for(const {file,group} of files) {
   if(primitives.some(p=>json.accessors[p.indices].count/3>20000)) throw Error('Triangle budget exceeded');
   const name=group+'_'+path.basename(file).replace(/\.(obj|gltf|glb)$/,'.glb');
   fs.writeFileSync(path.join(output,name),prepared);
-  records.push({source:path.relative(root,file).replaceAll('\\','/'),sourceSha256:sha(data),file:name,sha256:sha(prepared),bytes:prepared.length,group,primitives:primitives.length,triangles,materials:json.materials||[],status:'prepared; not uploaded or Studio validated'});
+  const old = previous.find(a=>a.file===name && a.sha256===sha(prepared));
+  records.push({source:path.relative(root,file).replaceAll('\\','/'),sourceSha256:sha(data),file:name,sha256:sha(prepared),bytes:prepared.length,group,primitives:primitives.length,triangles,materials:json.materials||[],status:old?.status || 'prepared; not uploaded or Studio validated',...(old?.robloxAssetId ? {robloxAssetId:old.robloxAssetId} : {})});
 }
-fs.writeFileSync(path.join(output,'manifest.json'),JSON.stringify({sourceUnits:'preserved; world v08 authored in approximate studs; verify in Studio',assets:records},null,2)+'\n');
+fs.writeFileSync(path.join(output,manifestName),JSON.stringify({sourceUnits:'preserved; world v08 authored in approximate studs; verify in Studio',assets:records},null,2)+'\n');
 console.log(JSON.stringify(records.map(({file,triangles,primitives})=>({file,triangles,primitives})),null,2));

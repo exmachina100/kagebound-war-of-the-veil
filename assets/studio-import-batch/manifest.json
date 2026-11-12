@@ -34,7 +34,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "75167262671129"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/dojo_ritual_banner_lod0.glb",
@@ -91,7 +92,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "111211234403929"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/dojo_roof_eave_module_lod0.glb",
@@ -137,7 +139,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "92013714535211"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/dojo_shrine_pavilion_lod0.glb",
@@ -205,7 +208,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "98935659276337"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/dojo_stone_lantern_lod0.glb",
@@ -262,7 +266,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "114290653862474"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/dojo_torii_signature_lod0.glb",
@@ -330,7 +335,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "84615803427878"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/moonfall_arch_bridge_lod0.glb",
@@ -376,7 +382,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "87219643071032"
     },
     {
       "source": "assets/world/dojo_moonfall/v08/moonfall_bamboo_grove_lod0.glb",
@@ -433,7 +440,8 @@
           "doubleSided": false
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "74255070702749"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/dojo_komainu_plinth_lod0.gltf",
@@ -558,7 +566,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "81391563523322"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/dojo_ritual_banner_lod0.gltf",
@@ -683,7 +692,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "77090106300988"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/dojo_suspended_bell_lod0.gltf",
@@ -808,7 +818,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "101986748723774"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/moonfall_bamboo_fan_lod0.gltf",
@@ -933,7 +944,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "100060438693541"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/moonfall_lantern_arch_lod0.gltf",
@@ -1058,7 +1070,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "134169670984893"
     },
     {
       "source": "assets/world/dojo_moonfall/v07/moonfall_stepping_stones_lod0.gltf",
@@ -1183,7 +1196,8 @@
           "doubleSided": true
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "90783395668711"
     },
     {
       "source": "assets/roblox-ready/weapons/KGB_WPN_Veilblade_Default_GAME_v02.obj",
@@ -1261,7 +1275,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "126024118374640"
     },
     {
       "source": "assets/roblox-ready/weapons/KGB_WPN_Nodachi_Default_DRAFT_v01.obj",
@@ -1339,7 +1354,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "77758609607101"
     },
     {
       "source": "assets/roblox-ready/weapons/KGB_WPN_Tanto_Default_DRAFT_v01.obj",
@@ -1417,7 +1433,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "133939186839391"
     },
     {
       "source": "assets/roblox-ready/weapons/KGB_WPN_Naginata_CLOSED_DRAFT_v02.obj",
@@ -1482,7 +1499,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "94180165562205"
     },
     {
       "source": "assets/roblox-ready/weapons/KGB_WPN_Yari_CLOSED_DRAFT_v02.obj",
@@ -1547,7 +1565,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "113682057552861"
     },
     {
       "source": "assets/roblox-ready/masks/KGB_MASK_Kitsune_Wearable_DRAFT_v01.obj",
@@ -1599,7 +1618,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "137301916205767"
     },
     {
       "source": "assets/roblox-ready/masks/KGB_MASK_Oni_Wearable_DRAFT_v01.obj",
@@ -1651,7 +1671,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "98484823532427"
     },
     {
       "source": "assets/roblox-ready/masks/KGB_MASK_Tengu_Wearable_DRAFT_v01.obj",
@@ -1703,7 +1724,8 @@
           }
         }
       ],
-      "status": "prepared; not uploaded or Studio validated"
+      "status": "imported-staging; source geometry/material checks pass; visual/gameplay QA pending",
+      "robloxAssetId": "98289938338438"
     }
   ]
 }

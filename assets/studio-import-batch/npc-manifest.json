@@ -1,0 +1,265 @@
+{
+  "sourceUnits": "preserved; world v08 authored in approximate studs; verify in Studio",
+  "assets": [
+    {
+      "source": "assets/roblox-ready/characters/npc/KGB_NPC_DojoMentor_STATIC_DRAFT_v02.obj",
+      "sourceSha256": "b6892de5579e6c08cdeb2f79125b0d8d2c341b91cfaf877848579edb82f5a464",
+      "file": "npc_KGB_NPC_DojoMentor_STATIC_DRAFT_v02.glb",
+      "sha256": "54f69f94573d90d63d0dfaf8d69726ce8c861d75f912e77faaa59974fb9f3a9b",
+      "bytes": 5212,
+      "group": "npc",
+      "primitives": 6,
+      "triangles": 132,
+      "materials": [
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014443805936996105,
+              0.01680634727298273,
+              0.03954698074360282,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8227917256390727,
+              0.7083692136968672,
+              0.7990980417345588,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "slate",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.08650035505328048,
+              0.09305617179998556,
+              0.14996023222462854,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.3231413628581447,
+              0.028424977469782352,
+              0.06480191074791102,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.9559685738420853,
+              0.4677903824586926,
+              0.14702887010518984,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.15895763107008326,
+              0.07036123379281382,
+              0.05285984433421492,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/characters/npc/KGB_NPC_BambooScout_STATIC_DRAFT_v02.obj",
+      "sourceSha256": "361e35ba8b91e2e7c939ec112ac816754b4a721d1e197f731248b109610ce5e7",
+      "file": "npc_KGB_NPC_BambooScout_STATIC_DRAFT_v02.glb",
+      "sha256": "1019f0e6152735f4de1dd03f25295737454fa5548b6d8ae489b5c0b0fde827c9",
+      "bytes": 5108,
+      "group": "npc",
+      "primitives": 5,
+      "triangles": 144,
+      "materials": [
+        {
+          "name": "green",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.026241061847021397,
+              0.09305617179998556,
+              0.0684800369152842,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8227917256390727,
+              0.7083692136968672,
+              0.7990980417345588,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014443805936996105,
+              0.01680634727298273,
+              0.03954698074360282,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.15895763107008326,
+              0.07036123379281382,
+              0.05285984433421492,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.9559685738420853,
+              0.4677903824586926,
+              0.14702887010518984,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    },
+    {
+      "source": "assets/roblox-ready/characters/npc/KGB_NPC_CityArchivist_STATIC_DRAFT_v02.obj",
+      "sourceSha256": "70de257428ec2704a63518a42ccf43a2580e0b7c77b2e3164f4dade465f9a3c1",
+      "file": "npc_KGB_NPC_CityArchivist_STATIC_DRAFT_v02.glb",
+      "sha256": "4cdb62d0545f6a38058dc484b5ba8f5589c5d3edfb60f9ea6dc0683bcd009ef8",
+      "bytes": 5456,
+      "group": "npc",
+      "primitives": 6,
+      "triangles": 144,
+      "materials": [
+        {
+          "name": "slate",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.08650035505328048,
+              0.09305617179998556,
+              0.14996023222462854,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ivory",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.8227917256390727,
+              0.7083692136968672,
+              0.7990980417345588,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "ink",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.014443805936996105,
+              0.01680634727298273,
+              0.03954698074360282,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "red",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.3231413628581447,
+              0.028424977469782352,
+              0.06480191074791102,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "gold",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.9559685738420853,
+              0.4677903824586926,
+              0.14702887010518984,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        },
+        {
+          "name": "wood",
+          "pbrMetallicRoughness": {
+            "baseColorFactor": [
+              0.15895763107008326,
+              0.07036123379281382,
+              0.05285984433421492,
+              1
+            ],
+            "metallicFactor": 0,
+            "roughnessFactor": 0.8
+          }
+        }
+      ],
+      "status": "prepared; not uploaded or Studio validated"
+    }
+  ]
+}
