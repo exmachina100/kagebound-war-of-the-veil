@@ -1,0 +1,56 @@
+name: World v15 textured GLB export
+on:
+  push:
+    paths:
+      - 'scripts/export_world_v15.py'
+      - 'assets/world/production/v13/**'
+      - 'assets/world/production/v14/**'
+      - '.github/workflows/world-v15-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: world-v15-export-main
+  cancel-in-progress: false
+jobs:
+  export:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'numpy<3' 'trimesh>=4.6,<5' 'pillow>=10,<12' 'fast-simplification>=0.1.10,<1'
+      - name: Export and validate source readback
+        run: python scripts/export_world_v15.py
+      - name: Verify generated deliverables
+        run: |
+          python - <<'PY'
+          import json, pathlib, trimesh
+          root=pathlib.Path('.')
+          m=json.loads((root/'assets/world/production/v15/manifest.json').read_text())
+          assert len(m['assets'])==7
+          for asset in m['assets']:
+              assert len(asset['lods'])==2
+              assert asset['lods'][1]['triangles'] < asset['lods'][0]['triangles']
+              for lod in asset['lods']:
+                  p=root/lod['path']
+                  assert p.is_file() and p.stat().st_size>500
+                  scene=trimesh.load(p,force='scene')
+                  assert scene.geometry
+              assert (root/asset['texture']).is_file()
+          print('Verified 14 GLBs, 7 assets and manifest')
+          PY
+      - name: Commit only generated v15 assets
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/world/production/v15/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: publish seven textured v15 world assets with LODs and manifests"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
