@@ -20,7 +20,8 @@ local function asset(id)
     if type(id) == "string" and id:match("^rbxassetid://%d+$") then return id end
     return nil
 end
--- Prefer verified owned runtime images; creator-store sky IDs remain a complete fallback.\nlocal function resolve(variant)
+-- Prefer verified owned runtime images; creator-store sky IDs remain a complete fallback.
+local function resolve(variant)
     -- Cubemaps must be atomic: never mix published faces with fallback faces.
     local publishedFaces = {}
     local publishedComplete = true
