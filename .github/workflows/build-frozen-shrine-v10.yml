@@ -1,0 +1,65 @@
+name: KAGEBOUND Build Frozen Shrine v10
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/build_frozen_shrine_v10.py'
+      - '.github/workflows/build-frozen-shrine-v10.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: kagebound-frozen-v10
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install trimesh==4.9.0 numpy==2.2.6 Pillow==11.3.0
+      - name: Export original world meshes
+        run: python scripts/build_frozen_shrine_v10.py
+      - name: Validate generated geometry and textures
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image
+          import trimesh
+          root=Path("assets/world/frozen_shrine/v10")
+          data=json.loads((root/"manifest.json").read_text())["assets"]
+          assert len(data)==6
+          for name,item in data.items():
+              assert (root/item["source"]).stat().st_size>100
+              tris=[]
+              for lod in ("lod0","lod1"):
+                  path=root/item["lods"][lod]["file"]
+                  scene=trimesh.load(path,force="scene")
+                  count=sum(len(g.faces) for g in scene.geometry.values())
+                  assert count>0 and count==item["lods"][lod]["triangles"],(name,lod,count)
+                  tris.append(count)
+              assert tris[1]<=tris[0],name
+              assert item["collisionProxies"],name
+          textures=list(root.glob("*_albedo.png"))
+          assert len(textures)==7
+          for p in textures:
+              with Image.open(p) as im:
+                  assert im.size==(256,256) and im.mode=="RGB"
+                  im.verify()
+          print("PASS 6 OBJ, 12 GLB, 7 PNG, collision metadata")
+          PY
+      - name: Commit generated mesh binaries
+        run: |
+          git config user.name "kagebound-asset-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/world/frozen_shrine/v10
+          if ! git diff --cached --quiet; then
+            git commit -m "assets(world): publish Frozen Shrine v10 GLBs OBJ textures and manifest"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
