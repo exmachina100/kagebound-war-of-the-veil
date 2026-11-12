@@ -57,10 +57,10 @@ def build(name,low=False):
    add(box((7,h,.9),(0,h/2,z),"stone"))
    if i%3==0:add(box((7,.12,.5),(0,h+.06,z),"snow"))
  elif name=="ice_lantern":
-  add(cyl(.48,3.4,(0,1.7,0),"stone",8))
+  add(cyl(.48,3.4,(0,1.7,0),"stone",6 if low else 12))
   add(box((2.2,.35,2.2),(0,3.5,0),"stone"))
   add(box((1.6,1.6,1.6),(0,4.5,0),"gold"))
-  add(cone(1.8,1.5,(0,6.05,0),"ice"))
+  add(cone(1.8,1.5,(0,6.05,0),"ice",6 if low else 12))
   add(cyl(.25,.6,(0,6.9,0),"snow"))
  elif name=="glacier_bridge":
   for i in range(8 if low else 16):
