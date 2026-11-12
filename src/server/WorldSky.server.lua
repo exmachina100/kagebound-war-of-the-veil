@@ -21,16 +21,23 @@ local function asset(id)
     return nil
 end
 -- Prefer verified owned runtime images; creator-store sky IDs remain a complete fallback.\nlocal function resolve(variant)
-    local faces = {}
-    local configFaces = variant == "veilfall" and cfg.VeilfallFaces or cfg.Faces
+    -- Cubemaps must be atomic: never mix published faces with fallback faces.
+    local publishedFaces = {}
+    local publishedComplete = true
     for _, key in ipairs(order) do
-        local id = configFaces and asset(configFaces[key])
-        local published = registry.get("ui.skybox." .. variant .. ".v01." .. string.lower(key))
-        local resolved = asset(published) or id
-        if not resolved then return nil end
-        faces[key] = resolved
+        local value = registry.get("ui.skybox." .. variant .. ".v01." .. string.lower(key))
+        publishedFaces[key] = asset(value)
+        if not publishedFaces[key] then publishedComplete = false end
     end
-    return faces
+    if publishedComplete then return publishedFaces end
+
+    local configFaces = variant == "veilfall" and cfg.VeilfallFaces or cfg.Faces
+    local fallbackFaces = {}
+    for _, key in ipairs(order) do
+        fallbackFaces[key] = configFaces and asset(configFaces[key])
+        if not fallbackFaces[key] then return nil end
+    end
+    return fallbackFaces
 end
 local moonfall = resolve("moonfall")
 local veilfall = resolve("veilfall")
