@@ -1,5 +1,10 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## NPC handheld equipment offline batch — 2026-11-12
+
+Three new original static drafts exported and GLB/OBJ readback checked: Dojo Guide training staff (236 triangles), Shrine Keeper ritual bell (284), Lantern Yokai spirit lantern (292). Total 812 triangles, 21 individually watertight positive-volume components. Editable Python generator, 6 mesh exports, manifest and import notes packaged locally as `KAGEBOUND_NPC_Equipment_Batch_20261112.zip`; **not uploaded to GitHub**. See [batch record](asset-batches/NPC_EQUIPMENT_STATIC_DRAFTS_20261112.md). Approved PNG pixel comparison, Studio import, NPC attachment, mobile QA and rig/animation remain pending. No gameplay scripts changed.
+
+
 ## Weapon art offline geometry batch — 2026-11-12 (Kanabo / Kusarigama / Yumi)
 
 Three original editable static 3D drafts produced and GLB/OBJ readback verified: Kanabo 584 triangles / 33 closed components; Kusarigama 1232 / 15; Yumi 424 / 10. Generator and binaries delivered as local package `KAGEBOUND_WeaponDrafts_Kanabo_Kusarigama_Yumi_20261112.zip`, **not yet pushed to GitHub**. See [batch manifest](asset-batches/WEAPON_DRAFTS_KANABO_KUSARIGAMA_YUMI_20261112.md). Actual ART-003 visual comparison, UVs, Studio import, R15 fitting, animation and mobile QA pending. This batch changed no gameplay scripts. Keep weapon art distinct from procedural gameplay blockouts.
