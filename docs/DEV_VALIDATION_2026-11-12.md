@@ -63,7 +63,7 @@ Native .rbxm templates were exported using Roblox SerializationService and retai
 
 WorldV05Art.server.lua places the offering pavilion and ritual lantern in Kage Dojo and the bamboo cluster in Moonfall. All 148 placed mesh parts are anchored, noncolliding, untouchable and nonqueryable. The roof, court and bridge remain templates pending placement/traversal review. Existing geometry, collision and hitboxes are retained. StudioSmoke now includes template and placement checks and reports 30 passes in a fresh server. The source integrity check now verifies the native model mapping/headers and 30 required source documents/scripts.
 
-The current runtime screenshot has a white 3D viewport. Temporarily removing all three imported appearances did not clear it. Staging screenshots render the models and colors; in-world visual signoff and frame-rate budgets remain open. Do not describe these drafts as final concept parity or fully optimized assets.
+The MCP runtime screenshot showed a white 3D viewport, including with all three imported appearances temporarily removed. The user subsequently confirmed that the world is visible in their actual Studio Play view. This is a capture limitation, not a confirmed game-rendering failure. Staging screenshots render the models and colors. In-world comparison against the approved references and frame-rate budgets remain open; user confirmation of visibility does not establish final concept parity or optimization.
 
 ## Two-client harness investigation
 
