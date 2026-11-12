@@ -222,3 +222,16 @@ Three new **original, static OBJ geometric drafts** were committed, distinct fro
 | Oni war drum | `assets/roblox-ready/characters/class-kits/KGB_CLASS_OniWarDrum_STATIC_DRAFT_v01.obj` | 60 | ART-002 comparison, back fitting and silhouette/occlusion test |
 
 Generator: `tools/generate_kagebound_class_accessories_v01.js` (run with Node from repo root). GitHub round-trip verified 112 vertices, 84 quads (168 triangles) across three OBJs, no out-of-range face indices. No GLB, UVs, Studio import, asset IDs, or mobile QA claimed. Original ART image pixel inspection was unavailable to this asset lane, so G1 visual comparison remains open. No credits used.
+
+## Independent class accessory geometry export — 2026-11-12 (local handoff, not yet committed binaries)
+
+Four original static accessory drafts were procedurally generated and round-trip loaded as GLB in a local artifact bundle. **No Studio import or approved PNG pixel comparison was performed.** All 20 individual components are watertight positive-volume meshes; intersecting components are not Boolean-unioned. Each export includes OBJ and GLB, with editable Python generator and JSON manifest; units metres, Y up, front -Z. No UV unwrap, R15 fit, animation, collision or performance QA. Existing source files and gameplay scripts unchanged.
+
+| Local asset stem | Triangles | Components | Stage / gate |
+| --- | ---: | ---: | --- |
+| KGB_CLASS_ShinobiWristGuard_STATIC_DRAFT_v01 | 168 | 5 | 3d-draft; R15 wrist fit, ART-002 comparison |
+| KGB_CLASS_RoninCrestClasp_STATIC_DRAFT_v01 | 116 | 5 | 3d-draft; mantle placement, ART-002 comparison |
+| KGB_CLASS_OnmyojiStaffHead_STATIC_DRAFT_v01 | 196 | 5 | 3d-draft; staff-shaft fit, ART-002 comparison |
+| KGB_CLASS_OniBeltCrest_STATIC_DRAFT_v01 | 116 | 5 | 3d-draft; waist fit, ART-002 comparison |
+
+**Total 596 triangles, 20 watertight components, 8 exported meshes.** Local handoff archive: `KAGEBOUND_ClassAccessory_Batch_20261112.zip` in the producing conversation, containing `generate_batch.py`, 4 OBJ, 4 GLB, `ASSET_BATCH_MANIFEST.json`, and `validation.json`. These binary/source files are **not committed to GitHub**: use the exact local ZIP to upload into `assets/roblox-ready/characters/class-kits/` and generator into `tools/` after import review. This queue update is bookkeeping only; do not mark import, QA, or production art complete. No credits used.
