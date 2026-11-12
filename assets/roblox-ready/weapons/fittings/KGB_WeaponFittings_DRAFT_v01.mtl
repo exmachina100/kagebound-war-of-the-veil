@@ -1,0 +1,29 @@
+newmtl Ink
+Kd 0.125 0.137 0.22
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+illum 2
+
+newmtl Gold
+Kd 0.98 0.71 0.42
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+illum 2
+
+newmtl Ivory
+Kd 0.92 0.86 0.91
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+illum 2
+
+newmtl Crimson
+Kd 0.6 0.18 0.28
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+illum 2
+
+newmtl Slate
+Kd 0.33 0.34 0.42
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+illum 2
