@@ -1,0 +1,246 @@
+{
+  "version": "v08",
+  "status": "generated; Studio QA pending",
+  "units": "studs approx",
+  "up": "Y",
+  "reference": [
+    "ART-001",
+    "ART-004"
+  ],
+  "assets": {
+    "dojo_torii_signature": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            -3,
+            3,
+            0
+          ],
+          "size": [
+            0.8,
+            6,
+            0.8
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            3,
+            3,
+            0
+          ],
+          "size": [
+            0.8,
+            6,
+            0.8
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_torii_signature_lod0.glb",
+          "triangles": 220
+        },
+        "lod1": {
+          "file": "dojo_torii_signature_lod1.glb",
+          "triangles": 128
+        }
+      },
+      "source": "dojo_torii_signature.obj"
+    },
+    "dojo_roof_eave_module": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            5,
+            0
+          ],
+          "size": [
+            9,
+            2.2,
+            5.6
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_roof_eave_module_lod0.glb",
+          "triangles": 908
+        },
+        "lod1": {
+          "file": "dojo_roof_eave_module_lod1.glb",
+          "triangles": 188
+        }
+      },
+      "source": "dojo_roof_eave_module.obj"
+    },
+    "dojo_stone_lantern": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2,
+            0
+          ],
+          "size": [
+            1.6,
+            4,
+            1.6
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_stone_lantern_lod0.glb",
+          "triangles": 288
+        },
+        "lod1": {
+          "file": "dojo_stone_lantern_lod1.glb",
+          "triangles": 88
+        }
+      },
+      "source": "dojo_stone_lantern.obj"
+    },
+    "dojo_ritual_banner": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2.7,
+            0
+          ],
+          "size": [
+            0.4,
+            5.4,
+            0.4
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_ritual_banner_lod0.glb",
+          "triangles": 184
+        },
+        "lod1": {
+          "file": "dojo_ritual_banner_lod1.glb",
+          "triangles": 92
+        }
+      },
+      "source": "dojo_ritual_banner.obj"
+    },
+    "moonfall_bamboo_grove": {
+      "collisionProxies": [
+        {
+          "type": "cylinder",
+          "center": [
+            0,
+            4,
+            0
+          ],
+          "radius": 1.9,
+          "height": 8
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "moonfall_bamboo_grove_lod0.glb",
+          "triangles": 3100
+        },
+        "lod1": {
+          "file": "moonfall_bamboo_grove_lod1.glb",
+          "triangles": 1000
+        }
+      },
+      "source": "moonfall_bamboo_grove.obj"
+    },
+    "moonfall_arch_bridge": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            1.7,
+            0
+          ],
+          "size": [
+            4.2,
+            2.5,
+            14
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "moonfall_arch_bridge_lod0.glb",
+          "triangles": 988
+        },
+        "lod1": {
+          "file": "moonfall_arch_bridge_lod1.glb",
+          "triangles": 820
+        }
+      },
+      "source": "moonfall_arch_bridge.obj"
+    },
+    "dojo_ceremonial_stones": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            0.12,
+            0
+          ],
+          "size": [
+            4.6,
+            0.25,
+            8
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_ceremonial_stones_lod0.glb",
+          "triangles": 360
+        },
+        "lod1": {
+          "file": "dojo_ceremonial_stones_lod1.glb",
+          "triangles": 180
+        }
+      },
+      "source": "dojo_ceremonial_stones.obj"
+    },
+    "dojo_shrine_pavilion": {
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            0.2,
+            0
+          ],
+          "size": [
+            6,
+            0.4,
+            5
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "dojo_shrine_pavilion_lod0.glb",
+          "triangles": 316
+        },
+        "lod1": {
+          "file": "dojo_shrine_pavilion_lod1.glb",
+          "triangles": 304
+        }
+      },
+      "source": "dojo_shrine_pavilion.obj"
+    }
+  }
+}
