@@ -210,3 +210,15 @@ All are Y-up; GLB uses vertex colors, OBJ fallback included. Per-asset bounds an
 - GitHub readback verified 3/3 OBJ files, face-index bounds and face counts. Y-up, -Z front, ground-centered character coordinate frame; nominal 5.5-stud fitting assumption. Individual boxes are volumetric and closed, but assembled pieces overlap; no Boolean union, UVs, GLB, skin weights, R15 fitting, Studio import, visual screenshot or mobile QA. **Stage: 3d-draft**, not final or approved.
 - References: ART-002 warrior style board; ART-001 palette. The exact approved PNG pixel content could not be inspected through the GitHub text connector in this run; these are **provisional silhouette geometry**, not reference-approved art. No OpenArt credits, no paid 3D services, no gameplay scripts touched.
 - Next: direct ART-002 visual review, rigid attachment fitting against live R15, UV/material refinement and verified Studio import; keep all source geometry editable.
+
+## Weapon/character lane — class equipment source batch (2026-11-12)
+
+Three new **original, static OBJ geometric drafts** were committed, distinct from the existing Ronin mantle, Onmyoji scroll and Oni bracers. They are not skinned, fitted, imported, visually approved or game-ready. OBJ uses provisional meter-scale Z-up coordinates; Studio axis/scale conversion, pivot adjustment, UV/material assignment and R15 attachment testing are pending. Each part is a closed six-face box (12 triangles), but overlapping boxes are not Boolean-unioned. No gameplay scripts modified.
+
+| Asset | GitHub OBJ | Triangles | Next gate |
+| --- | --- | ---: | --- |
+| Ronin saya (sword scabbard) | `assets/roblox-ready/characters/class-kits/KGB_CLASS_RoninSaya_STATIC_DRAFT_v01.obj` | 48 | ART-002 comparison, waist fitting and sheathed-weapon clearance |
+| Onmyoji ofuda case | `assets/roblox-ready/characters/class-kits/KGB_CLASS_OnmyojiOfudaCase_STATIC_DRAFT_v01.obj` | 60 | ART-002 comparison, belt fitting and talisman access |
+| Oni war drum | `assets/roblox-ready/characters/class-kits/KGB_CLASS_OniWarDrum_STATIC_DRAFT_v01.obj` | 60 | ART-002 comparison, back fitting and silhouette/occlusion test |
+
+Generator: `tools/generate_kagebound_class_accessories_v01.js` (run with Node from repo root). GitHub round-trip verified 112 vertices, 84 quads (168 triangles) across three OBJs, no out-of-range face indices. No GLB, UVs, Studio import, asset IDs, or mobile QA claimed. Original ART image pixel inspection was unavailable to this asset lane, so G1 visual comparison remains open. No credits used.
