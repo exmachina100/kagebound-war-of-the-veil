@@ -94,7 +94,7 @@ def mesh_for_export(parts):
  scene=trimesh.Scene()
  for i,part in enumerate(parts):
   mat=part.metadata["material"]
-  part.visual=trimesh.visual.TextureVisuals(uv=np.zeros((len(part.vertices),2)),material=trimesh.visual.material.PBRMaterial(baseColorFactor=(*[x/255 for x in PALETTE[mat]],1),metallicFactor=.04,roughnessFactor=.84))
+  part.visual=trimesh.visual.TextureVisuals(uv=np.mod(part.vertices[:,[0,2]]*.125,1),material=trimesh.visual.material.PBRMaterial(baseColorFactor=(1,1,1,1),baseColorTexture=Image.open(ROOT/"textures"/(mat+".png")),metallicFactor=.04,roughnessFactor=.84))
   scene.add_geometry(part,geom_name=f"{mat}_{i}")
  return scene
 def main():
@@ -111,7 +111,7 @@ def main():
    if lod==0:
     combined=trimesh.util.concatenate(parts)
     combined.export(ROOT/f"{name}.obj")
-    (ROOT/f"{name}.gltf").write_text(json.dumps({"asset":{"version":"2.0","generator":"KAGEBOUND v10 GLB preferred"},"extras":{"note":"Use corresponding GLB for complete PBR scene"}}))
+    # GLB is the fully textured glTF 2.0 binary; OBJ is editable source.
   assert counts["lod1Triangles"]<counts["lod0Triangles"],name
   manifest["assets"][name]={**counts,"pivot":"Y=0 ground, world origin centered","collision":"primitive proxy pending Studio review","files":[f"{name}.obj",f"{name}_lod0.glb",f"{name}_lod1.glb"]}
  (ROOT/"manifest.json").write_text(json.dumps(manifest,indent=2))
