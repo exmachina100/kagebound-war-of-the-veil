@@ -99,6 +99,17 @@ assert(!/Lighting\\.(ClockTime|Brightness|Ambient|OutdoorAmbient)\\s*=/.test(gra
 assert(!/atmosphere\\.(Density|Haze|Color|Decay|Glare)\\s*=/.test(grandWorld),
     "GrandWorld must not override WorldSky atmosphere ownership");
 
+// Moonfall bounty regression: source must be parseable and rewards server-owned.
+const hunt=read("src/server/MoonfallHunt.server.lua");
+const huntRules=read("src/shared/MoonfallHuntRules.lua");
+read("tests/MoonfallHuntRules.studio.lua");
+assert(hunt.includes("Rewards.Snapshot(player)"),"Hunt must read authoritative reward session");
+assert(hunt.includes("Rules.Progress(record.baseline,current,record.progress)"),"Hunt progress policy missing");
+assert(hunt.includes("Rewards.Award(player,Rules.RewardSource,Rules.RewardToken)"),"Hunt reward source missing");
+assert(huntRules.includes('Rules.RewardSource="MoonfallHunt"'),"Hunt source policy mismatch");
+assert(!hunt.includes("\\n        record.progress"),"Escaped newline outside Moonfall script string");
+assert(!hunt.includes("\\n    record.baseline"),"Escaped newline outside Moonfall script string");
+assert(!hunt.includes("function(player)\\n"),"Escaped newline outside Moonfall script function");
 console.log("KAGEBOUND integrity PASS:",required.length,"text sources,",
     refs.length,"approved concept assets, Rojo paths and server isolation guards.");
 console.log("Note: does not compile or execute Luau, Roblox networking, graphics or gameplay.");

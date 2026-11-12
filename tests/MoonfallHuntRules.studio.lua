@@ -1,0 +1,21 @@
+-- Run from Studio Server Command Bar after Rojo sync; NOT run in GitHub CI.
+local ReplicatedStorage=game:GetService("ReplicatedStorage")
+local Rules=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("MoonfallHuntRules"))
+assert(Rules.Goal==3)
+assert(Rules.RewardSource=="MoonfallHunt")
+assert(Rules.Progress(2,2,0)==0)
+assert(Rules.Progress(2,3,0)==1)
+assert(Rules.Progress(2,5,1)==3)
+assert(Rules.Progress(2,100,0)==3)
+assert(Rules.Progress(5,2,2)==2) -- counter reset cannot erase progress
+assert(Rules.Progress(5,2,0)==0) -- reset cannot mint progress
+assert(Rules.Progress(0,0/0,0)==nil)
+assert(Rules.Progress(0,-1,0)==nil)
+assert(Rules.Progress(0,1.5,0)==nil)
+assert(Rules.Progress(0,1,-1)==nil)
+assert(Rules.CanAccept("Available",true,12))
+assert(not Rules.CanAccept("Active",true,1))
+assert(not Rules.CanAccept("Available",false,1))
+assert(not Rules.CanAccept("Available",true,16))
+assert(not Rules.CanAccept("Available",true,math.huge))
+print("MoonfallHuntRules Studio contract PASS")

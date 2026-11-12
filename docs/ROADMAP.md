@@ -141,3 +141,7 @@ Single batch: each completed server-observed guide journey now calls existing se
 
 ## Weapon cross-action cooldown hardening — 2026-11-11 (source-only)
 Combat now tracks a single server-owned `attackReadyAt` in addition to per-action timestamps. Both light and heavy requests must respect the previously accepted weapon profile cooldown, preventing light/heavy alternation from bypassing weapon recovery. Reset remains per spawn. Studio regression checklist: `tests/WeaponCooldown.studio.lua`. Source patch has not been Studio-playtested; issue #31 remains open.
+
+
+## Moonfall bounty reliability — 2026-11-12 (source commit, Studio QA pending)
+MoonfallHunt.server.lua now uses a pure MoonfallHuntRules policy for acceptance, monotonic three-kill progress and bounded interaction. It reads defeat counts from server-only RewardService.Snapshot, not mirrored Player attributes, and uses the dedicated MoonfallHunt receipt for a fixed one-time 25-shard completion award. Fixed literal escaped-newline syntax that previously prevented the hunt script from parsing. Added tests/MoonfallHuntRules.studio.lua and CI source-integrity assertions; these do not substitute for actual Studio execution. Verify two players independently accepting, three kills after acceptance, old kills excluded, spoofed client attributes ignored, death/rejoin, reset and replay attempts; persistence remains disabled.

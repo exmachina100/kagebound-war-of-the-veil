@@ -4,6 +4,7 @@ local Players=game:GetService("Players")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local Workspace=game:GetService("Workspace")
 local Rewards=require(script.Parent:WaitForChild("RewardService"))
+local Rules=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("MoonfallHuntRules"))
 local World=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 if not World.Enabled then return end
 local zone
@@ -55,7 +56,7 @@ prompt.MaxActivationDistance=12
 prompt.HoldDuration=.5
 prompt.RequiresLineOfSight=true
 prompt.Parent=questRoot
-local GOAL=3
+local GOAL=Rules.Goal
 local records={}
 local function publish(player,record)
     player:SetAttribute("KageboundHuntStatus",record.status)
@@ -63,36 +64,52 @@ local function publish(player,record)
     player:SetAttribute("KageboundHuntGoal",GOAL)
 end
 local function register(player)
-    local record={status="Available",progress=0,baseline=0,lastDefeats=0}
+    if records[player] then return end
+    local record={status="Available",progress=0,baseline=0}
     records[player]=record
     publish(player,record)
     record.defeatConnection=player:GetAttributeChangedSignal("KageboundYokaiDefeats"):Connect(function()
         if records[player]~=record or record.status~="Active" then return end
-        local defeats=player:GetAttribute("KageboundYokaiDefeats")
-        if typeof(defeats)~="number" then return end
-        -- A monotonic, server-replicated defeat counter is the sole source of progress.\n        -- Never regress progress if another server system resets the session counter.\n        record.progress=math.max(record.progress,math.clamp(math.floor(defeats-record.baseline),0,GOAL))
+        -- Read server-owned RewardService session state, not a client-facing
+        -- attribute. The attribute change is only a notification signal.
+        local snapshot=Rewards.Snapshot(player)
+        local current=snapshot and snapshot.yokaiDefeats
+        local progress=Rules.Progress(record.baseline,current,record.progress)
+        if progress==nil then return end
+        record.progress=progress
         if record.progress>=GOAL then
-            -- Fixed server reward policy and one session receipt.
-            local awarded=Rewards.Award(player,"MoonfallHunt","MoonfallHuntV1")
-            if awarded then record.status="Completed" end
+            local awarded=Rewards.Award(player,Rules.RewardSource,Rules.RewardToken)
+            if awarded then
+                record.status="Completed"
+            else
+                warn("[KAGEBOUND] Moonfall bounty reward rejected:",player.UserId)
+            end
         end
         publish(player,record)
     end)
 end
 prompt.Triggered:Connect(function(player)
     local record=records[player]
-    if not record or record.status~="Available" then return end
+    if not record then return end
     local char=player.Character
     local root=char and char:FindFirstChild("HumanoidRootPart")
     local hum=char and char:FindFirstChildOfClass("Humanoid")
-    if not root or not hum or hum.Health<=0
-        or (root.Position-questRoot.Position).Magnitude>15 then return end
-    local defeats=player:GetAttribute("KageboundYokaiDefeats")\n    record.baseline=typeof(defeats)=="number" and math.max(0,math.floor(defeats)) or 0
+    if not root or not hum then return end
+    if not Rules.CanAccept(record.status,hum.Health>0,
+        (root.Position-questRoot.Position).Magnitude) then return end
+    local snapshot=Rewards.Snapshot(player)
+    local defeats=snapshot and snapshot.yokaiDefeats
+    if not Rules.ValidCount(defeats) then return end
+    record.baseline=defeats
     record.progress=0
     record.status="Active"
     publish(player,record)
 end)
 Players.PlayerAdded:Connect(register)
 for _,player in ipairs(Players:GetPlayers()) do register(player) end
-Players.PlayerRemoving:Connect(function(player)\n    local record=records[player]\n    if record and record.defeatConnection then record.defeatConnection:Disconnect() end\n    records[player]=nil\nend)
+Players.PlayerRemoving:Connect(function(player)
+    local record=records[player]
+    if record and record.defeatConnection then record.defeatConnection:Disconnect() end
+    records[player]=nil
+end)
 print("[KAGEBOUND] Moonfall bounty: defeat 3 Lantern Yokai for dedicated MoonfallHunt reward")
