@@ -1,6 +1,7 @@
 -- KAGEBOUND v07 environment prefab integration, visuals only.
 -- Import the v07 glTFs into ServerStorage/KageboundWorldArt as named Models.
 -- Existing GrandWorld geometry retains collision and gameplay authority.
+local CosmeticWorldArt = require(script.Parent:WaitForChild("CosmeticWorldArt"))
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -36,27 +37,21 @@ for _, item in ipairs(placements) do
     local zone = zones[item.zone]
     local template = source:FindFirstChild(item.asset)
     if zone and template and (template:IsA("Model") or template:IsA("BasePart")) then
-        local copy = template:Clone()
-        copy.Name = item.asset .. "_v07"
-        copy.Parent = parent
-        local cf = CFrame.new(zone.x + item.x, 1.76, zone.z + item.z)
-            * CFrame.Angles(0, math.rad(item.yaw), 0)
-        if copy:IsA("Model") then
-            copy:ScaleTo(item.scale)
-            copy:PivotTo(cf)
-        else
-            copy.Size *= item.scale
-            copy.CFrame = cf
-        end
-        for _, part in ipairs(copy:IsA("Model") and copy:GetDescendants() or {copy}) do
-            if part:IsA("BasePart") then
-                part.Anchored = true
-                part.CanCollide = false
-                part.CanTouch = false
-                part.CanQuery = false
+        local copy = CosmeticWorldArt.Clone(template)
+        if copy then
+            copy.Name = item.asset .. "_v07"
+            local cf = CFrame.new(zone.x + item.x, 1.76, zone.z + item.z)
+                * CFrame.Angles(0, math.rad(item.yaw), 0)
+            if copy:IsA("Model") then
+                copy:ScaleTo(item.scale)
+                copy:PivotTo(cf)
+            else
+                copy.Size *= item.scale
+                copy.CFrame = cf
             end
+            copy.Parent = parent
+            placed += 1
         end
-        placed += 1
     else
         missing[item.asset] = true
     end

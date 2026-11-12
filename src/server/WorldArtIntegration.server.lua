@@ -1,6 +1,7 @@
 -- KAGEBOUND world-art placement layer. Never changes combat or authoritative gameplay.
 -- Import approved mesh prefabs into ServerStorage/KageboundWorldArt in Roblox Studio.
 -- Prefab names match manifest asset keys. Missing prefabs fail closed, preserving greybox.
+local CosmeticWorldArt = require(script.Parent:WaitForChild("CosmeticWorldArt"))
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -31,24 +32,19 @@ for _, item in ipairs(placements) do
     local zone=zoneById[item.zone]
     local prefab=source:FindFirstChild(item.prefab)
     if zone and prefab and (prefab:IsA("Model") or prefab:IsA("BasePart")) then
-        local copy=prefab:Clone()
-        copy.Name=item.prefab
-        copy.Parent=artFolder
-        if copy:IsA("Model") then
-            copy:ScaleTo(item.scale)
-            copy:PivotTo(CFrame.new(zone.x+item.x, 1.76, zone.z+item.z)*CFrame.Angles(0, math.rad(item.yaw), 0))
-        else
-            copy.Size*=item.scale
-            copy.CFrame=CFrame.new(zone.x+item.x, 1.76, zone.z+item.z)*CFrame.Angles(0, math.rad(item.yaw), 0)
-        end
-        for _, part in ipairs(copy:IsA("Model") and copy:GetDescendants() or {copy}) do
-            if part:IsA("BasePart") then
-                part.Anchored=true
-                part.CanCollide=false -- Original greybox remains collision authority until QA
-                part.CanTouch=false
+        local copy = CosmeticWorldArt.Clone(prefab)
+        if copy then
+            copy.Name=item.prefab
+            if copy:IsA("Model") then
+                copy:ScaleTo(item.scale)
+                copy:PivotTo(CFrame.new(zone.x+item.x, 1.76, zone.z+item.z)*CFrame.Angles(0, math.rad(item.yaw), 0))
+            else
+                copy.Size*=item.scale
+                copy.CFrame=CFrame.new(zone.x+item.x, 1.76, zone.z+item.z)*CFrame.Angles(0, math.rad(item.yaw), 0)
             end
+            copy.Parent = artFolder
+            count+=1
         end
-        count+=1
     end
 end
 print("[KAGEBOUND WorldArt] Placed "..count.." imported visual prefabs; greybox collision preserved")

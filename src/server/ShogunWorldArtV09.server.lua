@@ -1,5 +1,6 @@
 -- KAGEBOUND Shogun's Last City v09 optional art placement.
 -- Only imported models from ServerStorage are used; existing world collision remains authoritative.
+local CosmeticWorldArt = require(script.Parent:WaitForChild("CosmeticWorldArt"))
 local ServerStorage=game:GetService("ServerStorage")
 local Workspace=game:GetService("Workspace")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
@@ -34,26 +35,20 @@ local placed=0
 for _,entry in ipairs(placements) do
     local prefab=source:FindFirstChild(entry[1])
     if prefab and (prefab:IsA("Model") or prefab:IsA("BasePart")) then
-        local instance=prefab:Clone()
-        instance.Name=entry[1]
-        instance.Parent=parent
-        local cf=CFrame.new(zone.x+entry[2],1.76,zone.z+entry[3])*CFrame.Angles(0,math.rad(entry[4]),0)
-        if instance:IsA("Model") then
-            instance:ScaleTo(entry[5])
-            instance:PivotTo(cf)
-        else
-            instance.Size*=entry[5]
-            instance.CFrame=cf
-        end
-        local parts=instance:IsA("Model") and instance:GetDescendants() or {instance}
-        for _,part in ipairs(parts) do
-            if part:IsA("BasePart") then
-                part.Anchored=true
-                part.CanCollide=false
-                part.CanTouch=false
+        local instance = CosmeticWorldArt.Clone(prefab)
+        if instance then
+            instance.Name=entry[1]
+            local cf=CFrame.new(zone.x+entry[2],1.76,zone.z+entry[3])*CFrame.Angles(0,math.rad(entry[4]),0)
+            if instance:IsA("Model") then
+                instance:ScaleTo(entry[5])
+                instance:PivotTo(cf)
+            else
+                instance.Size*=entry[5]
+                instance.CFrame=cf
             end
+            instance.Parent = parent
+            placed+=1
         end
-        placed+=1
     end
 end
 print("[KAGEBOUND Shogun WorldArt] "..placed.." optional prefabs placed; greybox collision preserved")

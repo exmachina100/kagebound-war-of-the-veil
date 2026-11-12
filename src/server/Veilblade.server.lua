@@ -15,15 +15,16 @@ local function createKatana(weaponName)
     local tool = Instance.new("Tool")
     tool.Name = "Veilblade"
     weaponName=weaponName or "Katana"
+    local lengthScale=weaponName=="Nodachi" and 1.35 or weaponName=="Tanto" and .58 or 1
     tool.ToolTip = "KAGEBOUND • "..weaponName.." [ART-003 prototype]"
     tool:SetAttribute("KageboundWeaponVisual",weaponName)
     tool.CanBeDropped = false
     tool.RequiresHandle = true
-    tool.Grip = CFrame.new(0,-.4,0)
+    tool.Grip = CFrame.new(0,-.4*lengthScale,0)
 
     local handle = Instance.new("Part")
     handle.Name = "Handle"
-    handle.Size = Vector3.new(.37,2.2,.37)
+    handle.Size = Vector3.new(.37,2.2*lengthScale,.37)
     handle.Color = INK
     handle.Material = Enum.Material.SmoothPlastic
     handle.Anchored = false
@@ -36,10 +37,11 @@ local function createKatana(weaponName)
     local function fitted(name,size,offset,color,material)
         local p = Instance.new("Part")
         p.Name = name
-        p.Size = size
+        p.Size = Vector3.new(size.X,size.Y*lengthScale,size.Z)
         p.Color = color
         p.Material = material or Enum.Material.SmoothPlastic
-        p.CFrame = handle.CFrame*offset
+        local position=offset.Position
+        p.CFrame = handle.CFrame*CFrame.new(position.X,position.Y*lengthScale,position.Z)*offset.Rotation
         p.Anchored = false
         p.CanCollide = false
         p.CanTouch = false
@@ -70,15 +72,6 @@ local function createKatana(weaponName)
         CFrame.new(0,-1.2,0),GOLD,Enum.Material.Metal)
     fitted("RedTassel",Vector3.new(.13,1.2,.13),
         CFrame.new(.35,-1.65,0),CRIMSON,Enum.Material.Fabric)
-    if weaponName=="Nodachi" then
-        for _,p in ipairs(tool:GetChildren()) do
-            if p:IsA("BasePart") and p.Name~="Handle" then p.Size=Vector3.new(p.Size.X,p.Size.Y*1.35,p.Size.Z) end
-        end
-    elseif weaponName=="Tanto" then
-        for _,p in ipairs(tool:GetChildren()) do
-            if p:IsA("BasePart") and p.Name~="Handle" then p.Size=Vector3.new(p.Size.X,p.Size.Y*.58,p.Size.Z) end
-        end
-    end
     -- Polearm blockouts: distinct reach silhouettes without imported meshes.
     -- Existing sword parts are hidden; these pieces weld to the same server tool.
     if weaponName=="Naginata" or weaponName=="Yari" then
@@ -99,11 +92,11 @@ local function createKatana(weaponName)
             fitted("NaginataCurvedBlade",Vector3.new(.23,2.6,.65),
                 CFrame.new(.12,6.25,0)*CFrame.Angles(0,0,math.rad(-8)),
                 HOT,Enum.Material.Metal)
-            fitted("NaginataEdge",Vector3.new(.09,2.35,.72),
+            bladeEdge = fitted("NaginataEdge",Vector3.new(.09,2.35,.72),
                 CFrame.new(.3,6.25,0)*CFrame.Angles(0,0,math.rad(-8)),
                 Color3.fromRGB(245,224,235),Enum.Material.Neon)
         else
-            fitted("YariSpearhead",Vector3.new(.27,2.4,.38),
+            bladeEdge = fitted("YariSpearhead",Vector3.new(.27,2.4,.38),
                 CFrame.new(0,6.15,0),HOT,Enum.Material.Metal)
             fitted("YariPoint",Vector3.new(.15,.75,.2),
                 CFrame.new(0,7.65,0),Color3.fromRGB(245,224,235),Enum.Material.Neon)
@@ -113,11 +106,11 @@ local function createKatana(weaponName)
     -- Attachment span creates a narrow anime-fantasy slash ribbon at the blade.
     local base = Instance.new("Attachment")
     base.Name = "TrailBase"
-    base.Position = Vector3.new(0,-1.85,0)
+    base.Position = Vector3.new(0,-bladeEdge.Size.Y*.45,0)
     base.Parent = bladeEdge
     local tip = Instance.new("Attachment")
     tip.Name = "TrailTip"
-    tip.Position = Vector3.new(0,1.95,0)
+    tip.Position = Vector3.new(0,bladeEdge.Size.Y*.45,0)
     tip.Parent = bladeEdge
     local trail = Instance.new("Trail")
     trail.Name = "VeilbladeTrail"
@@ -151,11 +144,12 @@ local function applyImportedVisual(tool,weaponName)
     if not handle or not handle:IsA("BasePart") then return false end
     local clone = reference:Clone()
     clone.Name = visualName
-    clone.Parent = tool
     clone:PivotTo(handle.CFrame)
     local count = 0
     for _, part in ipairs(clone:GetDescendants()) do
-        if part:IsA("BasePart") then
+        if part:IsA("LuaSourceContainer") then
+            part:Destroy()
+        elseif part:IsA("BasePart") then
             part.Anchored = false
             part.CanCollide = false
             part.CanTouch = false
@@ -174,6 +168,8 @@ local function applyImportedVisual(tool,weaponName)
         clone:Destroy()
         return false
     end
+    -- Sanitize while detached; embedded code never enters an executing tree.
+    clone.Parent = tool
     for _,part in ipairs(tool:GetChildren()) do
         if part:IsA("BasePart") then
             part.Transparency = 1 -- preserve invisible blade trail anchor

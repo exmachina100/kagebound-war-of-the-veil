@@ -3,6 +3,7 @@
 -- Anchors: Workspace/KageboundWorld/ArtPlacementAnchors/<asset name> (BasePart).
 -- Templates: ServerStorage/KageboundArt/WorldEnvironment/<asset name>.
 -- All gameplay collision and existing procedural world parts remain untouched.
+local CosmeticWorldArt = require(script.Parent:WaitForChild("CosmeticWorldArt"))
 local ServerStorage = game:GetService("ServerStorage")
 local Workspace = game:GetService("Workspace")
 
@@ -44,25 +45,13 @@ for _, name in ipairs(names) do
     if not installed:FindFirstChild(name) and template and anchor
         and anchor:IsA("BasePart")
         and (template:IsA("Model") or template:IsA("BasePart")) then
-        local clone = template:Clone()
-        clone.Name = name
-        local parts = {}
-        if clone:IsA("BasePart") then table.insert(parts, clone) end
-        for _, descendant in ipairs(clone:GetDescendants()) do
-            if descendant:IsA("BasePart") then table.insert(parts, descendant) end
-        end
-        if #parts > 0 then
-            for _, part in ipairs(parts) do
-                part.Anchored = true
-                part.CanCollide = false
-                part.CanTouch = false
-                part.CanQuery = false
-            end
+        local clone = CosmeticWorldArt.Clone(template)
+        if clone then
+            clone.Name = name
             clone:PivotTo(anchor.CFrame)
             clone.Parent = installed
             count += 1
         else
-            clone:Destroy()
             skipped += 1
         end
     elseif not installed:FindFirstChild(name) then
