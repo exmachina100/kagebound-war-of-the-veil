@@ -87,7 +87,8 @@ const grandWorld=read("src/server/GrandWorld.server.lua");
 const skyConfig=read("src/shared/SkyConfig.lua");
 const runtimeRegistry=read("src/shared/RuntimeAssetRegistry.lua");
 assert(worldSky.includes('WaitForChild("RuntimeAssetRegistry")'),"World sky missing published asset registry");
-assert(worldSky.includes('assetRegistry.get("ui.skybox.moonfall.v01."'),"World sky registry key drift");
+assert(worldSky.includes('registry.get("ui.skybox." .. variant .. ".v01."'),"World sky registry key drift");
+assert(worldSky.includes('resolve("moonfall")') && worldSky.includes('resolve("veilfall")'),"World sky missing variant resolution");
 assert(worldSky.includes('GetAttributeChangedSignal("KageboundVeilfall")'),"Veilfall sky synchronization missing");
 assert(runtimeRegistry.includes("function Registry.get("),"Runtime asset registry lookup missing");
 for(const face of ["Bk","Dn","Ft","Lf","Rt","Up"]) {

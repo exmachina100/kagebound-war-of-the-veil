@@ -38,7 +38,7 @@ jobs:
               tris=[]
               for lod in ('lod0','lod1'):
                   path=root/item['lods'][lod]['file']
-                  scene=trimesh.load(root/path,force='scene')
+                  scene=trimesh.load(path,force='scene')
                   assert len(scene.geometry)>0, path
                   count=sum(len(mesh.faces) for mesh in scene.geometry.values())
                   assert count==item['lods'][lod]['triangles'] and count>0
