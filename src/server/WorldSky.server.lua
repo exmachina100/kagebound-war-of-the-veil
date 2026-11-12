@@ -20,13 +20,13 @@ local function asset(id)
     if type(id) == "string" and id:match("^rbxassetid://%d+$") then return id end
     return nil
 end
-local function resolve(variant)
+-- Prefer verified owned runtime images; creator-store sky IDs remain a complete fallback.\nlocal function resolve(variant)
     local faces = {}
     local configFaces = variant == "veilfall" and cfg.VeilfallFaces or cfg.Faces
     for _, key in ipairs(order) do
         local id = configFaces and asset(configFaces[key])
         local published = registry.get("ui.skybox." .. variant .. ".v01." .. string.lower(key))
-        local resolved = id or asset(published)
+        local resolved = asset(published) or id
         if not resolved then return nil end
         faces[key] = resolved
     end
