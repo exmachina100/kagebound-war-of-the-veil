@@ -12,12 +12,12 @@ local Clone = require(script.Parent:WaitForChild("CosmeticWorldArt")).Clone
 local zones = {}
 for _, zone in ipairs(Config.Zones) do zones[zone.id] = zone end
 local placements = {
-    {"KageDojo", "dojo_shrine_pavilion", -140, 100, 0},
-    {"KageDojo", "dojo_torii_signature", -140, 80, 0},
-    {"KageDojo", "dojo_stone_lantern", -152, 80, 0},
-    {"KageDojo", "dojo_ritual_banner", -128, 80, 0},
-    {"KageDojo", "dojo_ceremonial_stones", -140, 120, 0},
-    {"KageDojo", "dojo_roof_eave_module", -140, 145, 0},
+    {"KageDojo", "dojo_shrine_pavilion", 0, -155, 0, 3},
+    {"KageDojo", "dojo_torii_signature", 0, -125, 0, 2.5},
+    {"KageDojo", "dojo_stone_lantern", -22, -125, 0, 1.5},
+    {"KageDojo", "dojo_ritual_banner", 22, -125, 0, 2},
+    {"KageDojo", "dojo_ceremonial_stones", 0, -180, 0, 1.5},
+    {"KageDojo", "dojo_roof_eave_module", -45, -155, 0, 2},
     {"MoonfallBamboo", "moonfall_bamboo_grove", 105, -35, 0},
     {"MoonfallBamboo", "moonfall_arch_bridge", 105, 35, 0},
 }
@@ -30,10 +30,15 @@ folder.Parent = world
 local count = 0
 for _, item in ipairs(placements) do
     local zone, template = zones[item[1]], library:FindFirstChild(item[2])
+    local store=Storage:FindFirstChild("KageboundStoreArt")
+    if item[2]=="dojo_shrine_pavilion" and store and store:FindFirstChild("GrandShrine") then
+        continue -- Upgraded landmark is placed by WorldLandscape.
+    end
     if zone and template then
         local copy = Clone(template)
         if copy then
             copy.Name = item[2]
+            if copy:IsA("Model") then copy:ScaleTo(item[6] or 1) end
             -- Imported world pivots preserve authored ground, Y=0.
             copy:PivotTo(CFrame.new(zone.x + item[3], 1.76, zone.z + item[4])
                 * CFrame.Angles(0, math.rad(item[5]), 0))

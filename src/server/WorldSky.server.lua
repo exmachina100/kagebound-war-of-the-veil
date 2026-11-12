@@ -55,12 +55,10 @@ local function apply(veil)
         applyFaces(moonfall)
     end
 end
-sky.CelestialBodiesShown = false
+sky.CelestialBodiesShown = not moonfall -- Keep the native moon while custom faces are absent.
 sky.StarCount = 2200
-Lighting.ClockTime = 21.5
-Lighting.Brightness = 2
-Lighting.Ambient = Color3.fromRGB(45, 39, 78)
-Lighting.OutdoorAmbient = Color3.fromRGB(67, 62, 112)
+sky.MoonAngularSize = 18
+for property, value in pairs(cfg.Lighting) do Lighting[property] = value end
 if not moonfall then
     warn("[KAGEBOUND] Moonfall sky awaiting all six published image IDs; atmospheric fallback active")
 end

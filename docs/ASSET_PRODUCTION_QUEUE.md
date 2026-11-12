@@ -1,5 +1,21 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Current execution override — recovery and five-region landscape, 2026-11-12
+
+Use [KAGEBOUND_EXECUTION_PLAN.md](KAGEBOUND_EXECUTION_PLAN.md) for batch order:
+recovery → Dojo/Moonfall flagship journey → remaining atlas → playable quests
+and encounters → equipment/characters → UI/VFX → release validation.
+This remains the single asset queue. The older table below is historical where
+superseded: all five landscape prototypes now run with adapted free shrine,
+lantern, bamboo, cliff and snow-pine assets; sky and brighter lighting were
+restored after a Studio source regression. Fresh Play road-volume scan: 548
+positions, zero part overlaps at player height. Five-region scenery is not
+final art, walk-through QA or proof of mobile performance. Next: composition
+and walkable Dojo-to-Moonfall journey against ART-001/004. ChatGPT scheduled
+writers have NOT been paused from this session; owning-service action remains
+pending. See KAGEBOUND_MASTER.md for provenance and verification limits.
+
+
 ## Master reconciliation — unified workspace, 2026-11-12
 
 This is the single active queue for **all** development. The table below

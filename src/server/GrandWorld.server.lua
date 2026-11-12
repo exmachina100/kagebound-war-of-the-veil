@@ -5,6 +5,7 @@ local Workspace=game:GetService("Workspace")
 local Lighting=game:GetService("Lighting")
 local ReplicatedStorage=game:GetService("ReplicatedStorage")
 local cfg=require(ReplicatedStorage:WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
+local LandscapeRules=require(ReplicatedStorage.KageboundShared:WaitForChild("LandscapeRules"))
 if not cfg.Enabled then return end
 local previous=Workspace:FindFirstChild("KageboundWorld")
 if previous then previous:Destroy() end
@@ -87,11 +88,13 @@ for _,z in ipairs(cfg.Zones) do
     local baseY=.25
     block(district,"DistrictGround",Vector3.new(z.radius*2,1,z.radius*2),CFrame.new(z.x,baseY,z.z),z.tint,Enum.Material.Ground)
     block(district,"DistrictPlaza",Vector3.new(90,1,90),CFrame.new(z.x,1.25,z.z),p.stone,Enum.Material.Slate)
-    labelAt(district,z.name.."  |  Lv "..z.level,Vector3.new(z.x,6,z.z-54))
+    labelAt(district,z.name.."  |  Lv "..z.level,Vector3.new(z.x+20,6,z.z-54))
     torii(district,z.x,z.z-78,22)
     for j=1,8 do
         local angle=(j/8)*math.pi*2
-        lantern(district,z.x+math.cos(angle)*88,z.z+math.sin(angle)*88,z.accent)
+        local dx=math.cos(angle)*88
+        if math.abs(dx)<4 then dx=18 end
+        lantern(district,z.x+dx,z.z+math.sin(angle)*88,z.accent)
     end
     if z.id=="KageDojo" then
         for i=1,6 do
@@ -125,6 +128,7 @@ for _,z in ipairs(cfg.Zones) do
         for i=1,14 do
             local x=z.x+((i-1)%5-2)*73
             local zz=z.z+(math.floor((i-1)/5)-1)*88
+            if not LandscapeRules.RouteClear(Vector2.new(x,zz),24,cfg.Zones,cfg.Routes,18) then continue end
             local h=35+(i%4)*17
             block(district,"Tower",Vector3.new(33,h,33),CFrame.new(x,h/2+1,zz),p.ink,Enum.Material.Wood)
             block(district,"PagodaRoof",Vector3.new(44,4,44),CFrame.new(x,h+3,zz),p.vermilion,Enum.Material.Slate)
@@ -145,6 +149,7 @@ for _,z in ipairs(cfg.Zones) do
             local x=z.x+math.cos(angle)*radius
             local zz=z.z+math.sin(angle)*radius
             local height=20+(i%5)*13
+            if not LandscapeRules.RouteClear(Vector2.new(x,zz),8,cfg.Zones,cfg.Routes,18) then continue end
             block(district,"YomiMonolith",Vector3.new(10,height,10),CFrame.new(x,height/2+1,zz),p.ink,Enum.Material.Slate)
             ball(district,"SpiritWisp",Vector3.new(x,height+5,zz),4,p.spirit).Material=Enum.Material.Neon
         end

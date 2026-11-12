@@ -1,5 +1,5 @@
 -- Pure region discovery policy for Grand World P1.
-local World=game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared"):WaitForChild("WorldConfig")
+local World=require(game:GetService("ReplicatedStorage"):WaitForChild("KageboundShared"):WaitForChild("WorldConfig"))
 local Regions={}
 function Regions.At(position)
     if typeof(position)~="Vector3" then return nil end

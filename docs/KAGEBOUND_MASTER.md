@@ -1,5 +1,33 @@
 # Unified KAGEBOUND development workspace
 
+## Latest recovery and execution sequence — 2026-11-12
+
+Follow [the ordered execution plan](KAGEBOUND_EXECUTION_PLAN.md), with the single
+queue below. Studio sky sources had reverted; local improved lighting survived
+and was restored. Pending route-clearance changes were installed in GrandWorld,
+WorldLandscape and LandscapeRules. Fresh Play verified five regional landscape
+folders (Dojo 965, Moonfall 360, City 1224, Frozen 623, Yomi 80 parts), exposure
+0.65 and clock 0.8. A 548-position, 4x4x4 player-height road-volume scan found
+zero collidable part overlaps at that moment; this is not a walking, Terrain,
+mobile or dynamic-event validation. LandscapeRules passed edge cases, five
+reserved centers, 55 road samples and a clear mountain site. Three repository
+checks passed. No claim of finished concept parity or Edit-baked terrain.
+Stopped Play and saved the recovery to Roblox TeamCreate version 49; not published.
+
+Nine pre-recovery sources are preserved in assets/STUDIO_PRE_RECOVERY_2026-11-12.json.
+ChatGPT scheduled writers remain unpaused: no task-control capability is available
+here, and desktop-control initialization failed. The user was asked to pause
+those tasks in ChatGPT. No GitHub workflows or unrelated automations were disabled.
+
+Free Creator Store templates adapted this batch: stone lantern 873427672
+(nezko), bamboo 114095523 (Athiaus), cliff 79063123394886 (Thisfros1046),
+shrine 16014204266 (kedyhizm), snow pine pack 8559395722 (Cliosow),
+and sky 14828385099 (MelinoucheGirl2). Sanitized runtime copies omit imported
+code; raw review originals are stored separately. The 13,448-part castle
+96966756857506 was rejected and its newly imported review copy removed.
+Kitsune accessory 14387332690 remains review-only, not equipped.
+
+
 The user designated this workspace and its current Codex chat as the master for
 all world, weapons, characters, masks, NPCs, gameplay, UI, VFX, animation and
 Roblox integration work on 2026-11-12. Sole Studio/checkout control was confirmed.
