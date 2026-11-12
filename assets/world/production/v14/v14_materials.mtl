@@ -1,0 +1,14 @@
+newmtl lacquer_red
+Kd 0.60 0.18 0.28
+Ka 0.10 0.04 0.05
+Ns 60
+newmtl dark_wood
+Kd 0.16 0.14 0.20
+newmtl slate
+Kd 0.32 0.35 0.43
+newmtl moss
+Kd 0.18 0.34 0.29
+newmtl brass
+Kd 0.86 0.60 0.32
+newmtl ivory
+Kd 0.87 0.82 0.83
