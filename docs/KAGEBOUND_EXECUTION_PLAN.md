@@ -8,6 +8,15 @@ The transcript describes a reference-led foundation, a visual/gameplay improveme
 
 ## Ordered batches
 
+The second supplied transcript adds an asset-production-to-gameplay connection:
+models, UI, audio and animation are integrated into a real feature and then
+repaired using Play feedback. Apply that here as complete shrine encounters,
+equipment actions and readable HUD states. Preserve KAGEBOUND's skill-based
+exploration/combat design; the example's passive +1 grind, pet system, guardian
+roster and cutscenes are not automatic additions to our scope. Its Forge setup,
+model naming, service costs and quality claims are unverified. No new service,
+API credential permissions or paid generation is authorized by sharing it.
+
 | Order | Deliverable and implementation | Evidence required before advancing |
 | --- | --- | --- |
 | 0 — Recovery | Preserve current Studio sources, compare against local changes, restore reverted sky/lighting, apply pending route clearance. Pause external ChatGPT writers. | Source comparison, fresh Play, route-volume checks, saved Studio version and Git checkpoint. ChatGPT schedules remain unconfirmed until paused in their owning service. |
