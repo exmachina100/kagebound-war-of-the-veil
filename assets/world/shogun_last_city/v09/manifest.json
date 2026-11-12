@@ -1,0 +1,250 @@
+{
+  "version": "v09",
+  "biome": "ShogunLastCity",
+  "status": "Generated mesh source; Roblox Studio QA and approved art parity pending",
+  "upAxis": "Y",
+  "pivot": "asset ground at Y=0",
+  "references": [
+    "ART-001",
+    "ART-004"
+  ],
+  "assets": {
+    "shogun_citadel_gate": {
+      "source": "shogun_citadel_gate.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            -4.4,
+            3.5,
+            0
+          ],
+          "size": [
+            1,
+            7,
+            1
+          ]
+        },
+        {
+          "type": "box",
+          "center": [
+            4.4,
+            3.5,
+            0
+          ],
+          "size": [
+            1,
+            7,
+            1
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_citadel_gate_lod0.glb",
+          "triangles": 268
+        },
+        "lod1": {
+          "file": "shogun_citadel_gate_lod1.glb",
+          "triangles": 180
+        }
+      }
+    },
+    "shogun_pagoda_watchtower": {
+      "source": "shogun_pagoda_watchtower.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            7.5,
+            0
+          ],
+          "size": [
+            8,
+            15,
+            8
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_pagoda_watchtower_lod0.glb",
+          "triangles": 1112
+        },
+        "lod1": {
+          "file": "shogun_pagoda_watchtower_lod1.glb",
+          "triangles": 780
+        }
+      }
+    },
+    "shogun_city_wall_module": {
+      "source": "shogun_city_wall_module.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            3,
+            0
+          ],
+          "size": [
+            15,
+            6,
+            1.8
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_city_wall_module_lod0.glb",
+          "triangles": 292
+        },
+        "lod1": {
+          "file": "shogun_city_wall_module_lod1.glb",
+          "triangles": 168
+        }
+      }
+    },
+    "shogun_guard_watchpost": {
+      "source": "shogun_guard_watchpost.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            3.25,
+            0
+          ],
+          "size": [
+            6,
+            6.5,
+            6
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_guard_watchpost_lod0.glb",
+          "triangles": 388
+        },
+        "lod1": {
+          "file": "shogun_guard_watchpost_lod1.glb",
+          "triangles": 260
+        }
+      }
+    },
+    "shogun_market_shop": {
+      "source": "shogun_market_shop.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2.25,
+            0
+          ],
+          "size": [
+            7,
+            4.5,
+            6
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_market_shop_lod0.glb",
+          "triangles": 268
+        },
+        "lod1": {
+          "file": "shogun_market_shop_lod1.glb",
+          "triangles": 168
+        }
+      }
+    },
+    "shogun_stone_stairway": {
+      "source": "shogun_stone_stairway.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2,
+            0
+          ],
+          "size": [
+            6,
+            4,
+            10
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_stone_stairway_lod0.glb",
+          "triangles": 504
+        },
+        "lod1": {
+          "file": "shogun_stone_stairway_lod1.glb",
+          "triangles": 120
+        }
+      }
+    },
+    "shogun_canal_arch_bridge": {
+      "source": "shogun_canal_arch_bridge.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            1.6,
+            0
+          ],
+          "size": [
+            5,
+            3.2,
+            16
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_canal_arch_bridge_lod0.glb",
+          "triangles": 972
+        },
+        "lod1": {
+          "file": "shogun_canal_arch_bridge_lod1.glb",
+          "triangles": 780
+        }
+      }
+    },
+    "shogun_street_lantern": {
+      "source": "shogun_street_lantern.obj",
+      "collisionProxies": [
+        {
+          "type": "box",
+          "center": [
+            0,
+            2.3,
+            0
+          ],
+          "size": [
+            0.5,
+            4.6,
+            0.5
+          ]
+        }
+      ],
+      "lods": {
+        "lod0": {
+          "file": "shogun_street_lantern_lod0.glb",
+          "triangles": 400
+        },
+        "lod1": {
+          "file": "shogun_street_lantern_lod1.glb",
+          "triangles": 208
+        }
+      }
+    }
+  }
+}
