@@ -1,0 +1,99 @@
+{
+  "version": "v10",
+  "status": "generated source geometry; Studio QA pending",
+  "reference": [
+    "ART-001",
+    "ART-004"
+  ],
+  "units": "studs; Y-up glTF and OBJ coordinate conversion must be checked in Studio",
+  "assets": {
+    "frost_torii_gate": {
+      "lod0Triangles": 192,
+      "lod1Triangles": 128,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "frost_torii_gate.obj",
+        "frost_torii_gate_lod0.glb",
+        "frost_torii_gate_lod1.glb"
+      ]
+    },
+    "frost_shrine_hall": {
+      "lod0Triangles": 532,
+      "lod1Triangles": 340,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "frost_shrine_hall.obj",
+        "frost_shrine_hall_lod0.glb",
+        "frost_shrine_hall_lod1.glb"
+      ]
+    },
+    "ice_spire_cluster": {
+      "lod0Triangles": 288,
+      "lod1Triangles": 128,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "ice_spire_cluster.obj",
+        "ice_spire_cluster_lod0.glb",
+        "ice_spire_cluster_lod1.glb"
+      ]
+    },
+    "frozen_bell": {
+      "lod0Triangles": 180,
+      "lod1Triangles": 132,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "frozen_bell.obj",
+        "frozen_bell_lod0.glb",
+        "frozen_bell_lod1.glb"
+      ]
+    },
+    "snow_stairway": {
+      "lod0Triangles": 264,
+      "lod1Triangles": 132,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "snow_stairway.obj",
+        "snow_stairway_lod0.glb",
+        "snow_stairway_lod1.glb"
+      ]
+    },
+    "ice_lantern": {
+      "lod0Triangles": 144,
+      "lod1Triangles": 108,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "ice_lantern.obj",
+        "ice_lantern_lod0.glb",
+        "ice_lantern_lod1.glb"
+      ]
+    },
+    "glacier_bridge": {
+      "lod0Triangles": 448,
+      "lod1Triangles": 256,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "glacier_bridge.obj",
+        "glacier_bridge_lod0.glb",
+        "glacier_bridge_lod1.glb"
+      ]
+    },
+    "frost_waystone": {
+      "lod0Triangles": 120,
+      "lod1Triangles": 72,
+      "pivot": "Y=0 ground, world origin centered",
+      "collision": "primitive proxy pending Studio review",
+      "files": [
+        "frost_waystone.obj",
+        "frost_waystone_lod0.glb",
+        "frost_waystone_lod1.glb"
+      ]
+    }
+  }
+}

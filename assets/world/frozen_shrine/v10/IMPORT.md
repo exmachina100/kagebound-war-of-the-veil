@@ -1,0 +1,1 @@
+# Frozen Shrine v10\nImport *_lod0.glb via Studio 3D Importer. Preserve existing collision and script authority. Validate axes, pivots, scaling, materials, LOD, mobile frame rate and ART-004 comparison before use. LOD1 is a separate mobile candidate. No Roblox asset IDs are assigned.\n
