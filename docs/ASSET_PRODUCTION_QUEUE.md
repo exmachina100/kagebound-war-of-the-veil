@@ -1,5 +1,11 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Latest MCP equipment fit continuation — 2026-11-12
+
+- Confirmed place 92077795105213; created isolated `Workspace/KageboundEquipmentFitReview` using existing Veilblade and three mask imports on neutral R15 mannequins. 14 mesh parts, 14 fit welds, zero executable sources in review rigs; originals preserved. No uploads or gameplay scripts changed.
+- Static head/hand attachment and blade ground-clearance checks pass. Screen captures returned white; visual/head fit, reference parity, wielding scale and gameplay validation remain pending. Do not activate templates. Shinobi original archive still missing.
+- Reproducible operation: `scripts/studio/fit_weapon_masks_review.lua`; [evidence and limits](assets/EQUIPMENT_FIT_REVIEW_2026-11-12.md). No cloud save/publish; live arrangement is not serialized by Rojo.
+
 ## Connected Studio audit and closed polearm source batch — 2026-11-12
 
 - Actual ART-001..004 PNGs opened; canonical docs and accessible chat content reviewed.
