@@ -1,5 +1,10 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Weapon art offline geometry batch — 2026-11-12 (Kanabo / Kusarigama / Yumi)
+
+Three original editable static 3D drafts produced and GLB/OBJ readback verified: Kanabo 584 triangles / 33 closed components; Kusarigama 1232 / 15; Yumi 424 / 10. Generator and binaries delivered as local package `KAGEBOUND_WeaponDrafts_Kanabo_Kusarigama_Yumi_20261112.zip`, **not yet pushed to GitHub**. See [batch manifest](asset-batches/WEAPON_DRAFTS_KANABO_KUSARIGAMA_YUMI_20261112.md). Actual ART-003 visual comparison, UVs, Studio import, R15 fitting, animation and mobile QA pending. This batch changed no gameplay scripts. Keep weapon art distinct from procedural gameplay blockouts.
+
+
 ## Current execution override — recovery and five-region landscape, 2026-11-12
 
 Use [KAGEBOUND_EXECUTION_PLAN.md](KAGEBOUND_EXECUTION_PLAN.md) for batch order:
