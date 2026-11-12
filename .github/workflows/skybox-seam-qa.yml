@@ -1,0 +1,33 @@
+name: KAGEBOUND Skybox Cubemap Seam QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/ui/skybox/**'
+      - 'scripts/validate_skybox_faces.py'
+      - '.github/workflows/skybox-seam-qa.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install image QA dependency
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Validate Moonfall and Veilfall six-face cubemaps
+        run: |
+          mkdir -p reports
+          set -o pipefail
+          python scripts/validate_skybox_faces.py --root assets/ui/skybox --max-mean 32 | tee reports/skybox-seams.json
+      - name: Retain measured seam report even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: skybox-seam-qa
+          path: reports/skybox-seams.json
+          if-no-files-found: warn
