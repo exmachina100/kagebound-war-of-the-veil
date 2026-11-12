@@ -363,4 +363,4 @@ const palette={"Ink":[32,35,56],"Crimson":[154,47,72],"Gold":[250,182,107],"Ivor
 const make=(parts)=>{let s="mtllib KGB_ClassKit_DRAFT_v01.mtl\n# Y up, -Z forward; ground origin, nominal studs\n",offset=0;parts.forEach(([mat,pos,size],i)=>{let [x,y,z]=pos,[a,b,c]=size;let v=[[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];s+=`o part_${i+1}\nusemtl ${mat}\n`;for(let q of v)s+=`v ${(x+q[0]*a/2).toFixed(5)} ${(y+q[1]*b/2).toFixed(5)} ${(z+q[2]*c/2).toFixed(5)}\n`;for(let f of [[1,4,3],[1,3,2],[5,6,7],[5,7,8],[1,2,6],[1,6,5],[4,8,7],[4,7,3],[1,5,8],[1,8,4],[2,3,7],[2,7,6]])s+=`f ${f.map(n=>n+offset).join(" ")}\n`;offset+=8});return s};
 fs.mkdirSync('out',{recursive:true});
 for(const [name,parts] of Object.entries(specs)) fs.writeFileSync('out/KGB_CLASS_'+name+'_STATIC_DRAFT_v01.obj',make(parts));
-fs.writeFileSync('out/KGB_ClassKit_DRAFT_v01.mtl',Object.entries(palette).map(([n,c])=>'newmtl '+n+'\\nKd '+c.map(x=>(x/255).toFixed(6)).join(' ')+'\\n').join('\\n'));
+fs.writeFileSync('out/KGB_ClassKit_DRAFT_v01.mtl',Object.entries(palette).map(([n,c])=>'newmtl '+n+'\nKd '+c.map(x=>(x/255).toFixed(6)).join(' ')+'\n').join('\n'));
