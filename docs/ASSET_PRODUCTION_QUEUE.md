@@ -1,5 +1,10 @@
 # KAGEBOUND — Active Asset Production Queue
 
+## Mask static geometry source batch — 2026-11-13
+
+Original non-rigged, non-wearable **static drafts** committed to main: Kitsune (72 triangles, 6 closed cuboid components), Oni (84 triangles, 7 components), Tengu (72 triangles, 6 components). Files: `assets/roblox-ready/masks/KGB_MASK_{Kitsune,Oni,Tengu}_CLOSED_DRAFT_v01.obj`, shared `KGB_MASK_DRAFTS_v01.mtl`, editable `tools/generate_mask_drafts_v01.js`. All OBJ exports fetched back from main and checked for vertex/face counts and in-range indices. The individual cuboids are closed but overlapping parts are **not** unioned; no UV unwrap or texture atlas. +Y up, +Z outward, face-centered origin, approximate R15 head width only; Studio import size/pivot/fit remains unverified. These are primitive blockouts and **not** visually approved ART-003 sculpt parity. No GLB, published Roblox ID, rig, animation or Studio import. Keep existing masks and scripts untouched. Next: actual ART-003 image-level comparison, silhouette refinements, GLB conversion, fit on R15, low-end QA.
+
+
 ## NPC handheld equipment offline batch — 2026-11-12
 
 Three new original static drafts exported and GLB/OBJ readback checked: Dojo Guide training staff (236 triangles), Shrine Keeper ritual bell (284), Lantern Yokai spirit lantern (292). Total 812 triangles, 21 individually watertight positive-volume components. Editable Python generator, 6 mesh exports, manifest and import notes packaged locally as `KAGEBOUND_NPC_Equipment_Batch_20261112.zip`; **not uploaded to GitHub**. See [batch record](asset-batches/NPC_EQUIPMENT_STATIC_DRAFTS_20261112.md). Approved PNG pixel comparison, Studio import, NPC attachment, mobile QA and rig/animation remain pending. No gameplay scripts changed.
