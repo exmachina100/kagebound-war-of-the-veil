@@ -1,0 +1,56 @@
+name: World v16 textured mesh export
+on:
+  push:
+    paths:
+      - 'scripts/export_world_v16.py'
+      - 'assets/world/production/v16/*.obj'
+      - '.github/workflows/world-v16-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: world-v16-export-main
+  cancel-in-progress: false
+jobs:
+  export:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install 'numpy<3' 'trimesh>=4.6,<5' 'pillow>=10,<12' 'fast-simplification>=0.1.10,<1'
+      - name: Generate textured LOD exports
+        run: python scripts/export_world_v16.py
+      - name: Validate binaries and manifest
+        run: |
+          python - <<'PY'
+          import json,pathlib,trimesh
+          root=pathlib.Path('assets/world/production/v16')
+          m=json.loads((root/'export_manifest.json').read_text())
+          assert len(m['assets'])==3
+          for a in m['assets']:
+              assert len(a['lods'])==2
+              assert a['lods'][1]['triangles']<a['lods'][0]['triangles']
+              assert (root/a['texture']).is_file()
+              for lod in a['lods']:
+                  path=root/lod['file']
+                  assert path.stat().st_size>500
+                  scene=trimesh.load(path,force='scene')
+                  assert scene.geometry
+                  assert sum(len(g.faces) for g in scene.geometry.values())==lod['triangles']
+          print('Verified 6 GLBs / 3 assets / manifest')
+          PY
+      - name: Commit generated files to latest main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/world/production/v16/
+          if ! git diff --cached --quiet; then
+            git commit -m "assets: publish three textured v16 environment kits with two LODs"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
