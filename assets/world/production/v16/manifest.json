@@ -1,0 +1,46 @@
+{
+  "version": "v16",
+  "units": "meters",
+  "up": "Y",
+  "pivot": "ground_center",
+  "collision": "author bounding boxes in Studio; cosmetic mesh CanCollide=false",
+  "lod": "LOD0 only; LOD1 not yet produced",
+  "assets": [
+    {
+      "name": "KGB_Dojo_SpiritLantern_v16",
+      "file": "KGB_Dojo_SpiritLantern_v16.obj",
+      "vertices": 128,
+      "triangles": 168,
+      "materials": [
+        "stone",
+        "charcoal",
+        "gold",
+        "ivory",
+        "vermilion"
+      ]
+    },
+    {
+      "name": "KGB_Moonfall_CurvedBridge_v16",
+      "file": "KGB_Moonfall_CurvedBridge_v16.obj",
+      "vertices": 360,
+      "triangles": 540,
+      "materials": [
+        "stone",
+        "vermilion",
+        "gold"
+      ]
+    },
+    {
+      "name": "KGB_Dojo_CeremonialTorii_v16",
+      "file": "KGB_Dojo_CeremonialTorii_v16.obj",
+      "vertices": 72,
+      "triangles": 108,
+      "materials": [
+        "vermilion",
+        "stone",
+        "charcoal",
+        "gold"
+      ]
+    }
+  ]
+}
