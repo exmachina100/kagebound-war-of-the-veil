@@ -1,0 +1,10 @@
+// KAGEBOUND original static mask drafts; centimeters not implied. Local units = Roblox studs on import calibration.
+// Run: node tools/generate_mask_drafts_v01.js [output-directory]
+// +Z points away from face, +Y up. Each component is a closed cuboid or tapered prism.
+const fs=require('fs'),path=require('path');const out=process.argv[2]||'assets/roblox-ready/masks';fs.mkdirSync(out,{recursive:true});
+const specs={
+KGB_MASK_Kitsune_CLOSED_DRAFT_v01:[['Ivory',0,0,0,1.30,1.45,.24],['Crimson',-.40,.18,.15,.18,.36,.10],['Crimson',.40,.18,.15,.18,.36,.10],['Gold',0,-.42,.18,.28,.13,.10],['Ivory',-.49,.89,.04,.28,.70,.20],['Ivory',.49,.89,.04,.28,.70,.20]],
+KGB_MASK_Oni_CLOSED_DRAFT_v01:[['Crimson',0,0,0,1.48,1.55,.30],['Ivory',-.46,.94,.08,.30,.75,.27],['Ivory',.46,.94,.08,.30,.75,.27],['Gold',-.37,.14,.19,.20,.17,.11],['Gold',.37,.14,.19,.20,.17,.11],['Ivory',-.35,-.67,.19,.22,.40,.17],['Ivory',.35,-.67,.19,.22,.40,.17]],
+KGB_MASK_Tengu_CLOSED_DRAFT_v01:[['Ink',0,0,0,1.35,1.48,.26],['Crimson',0,-.12,.35,.28,.25,.94],['Gold',-.38,.19,.17,.19,.14,.12],['Gold',.38,.19,.17,.19,.14,.12],['Ink',-.55,.62,.02,.30,.50,.21],['Ink',.55,.62,.02,.30,.50,.21]]
+};const mtl=['newmtl Ink','Kd 0.125 0.137 0.220','newmtl Ivory','Kd 0.918 0.859 0.906','newmtl Crimson','Kd 0.604 0.184 0.282','newmtl Gold','Kd 0.980 0.714 0.420'].join('\n')+'\n';fs.writeFileSync(path.join(out,'KGB_MASK_DRAFTS_v01.mtl'),mtl);
+for(const [name,parts] of Object.entries(specs)){let lines=['# Original KAGEBOUND mask static geometry draft','# Origin at face center; +Z outward; +Y up','mtllib KGB_MASK_DRAFTS_v01.mtl'];let n=0;for(const [mat,x,y,z,w,h,d] of parts){const a=x-w/2,b=x+w/2,c=y-h/2,e=y+h/2,f=z-d/2,g=z+d/2;const vs=[[a,c,f],[b,c,f],[b,e,f],[a,e,f],[a,c,g],[b,c,g],[b,e,g],[a,e,g]];for(const v of vs)lines.push('v '+v.join(' '));lines.push('usemtl '+mat);for(const face of [[1,4,3],[1,3,2],[5,6,7],[5,7,8],[1,2,6],[1,6,5],[4,8,7],[4,7,3],[1,5,8],[1,8,4],[2,3,7],[2,7,6]])lines.push('f '+face.map(i=>i+n).join(' '));n+=8;}fs.writeFileSync(path.join(out,name+'.obj'),lines.join('\n')+'\n');console.log(name,parts.length*12,'triangles',parts.length,'closed boxes');}
